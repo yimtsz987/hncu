@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.RoleMapper">
+    <sql id="roleColumns">
+        r.id,
+        r.name,
+        r.description,
+        r.count,
+        r.role_name as "roleName",
+        r.data_scope as "dataScope",
+        p.permission,
+        p.role_id
+    </sql>
+
+
+    <select id="queryList" parameterType="User" resultType="Role">
+
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Role">
+
+    </select>
+
+    <select id="queryByUserId" parameterType="User" resultType="Role">
+        SELECT <include refid="roleColumns" />
+        FROM role r
+        LEFT JOIN permission p on p.role_id = r.id
+        LEFT JOIN user_role ur on ur.role_id = r.id
+        LEFT JOIN sys_user u on u.id = ur.user_id
+        WHERE ur.user_id = #{user.id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryPermissionByUserId" parameterType="User" resultType="Permission">
+        SELECT <include refid="roleColumns" />
+        FROM role r
+        LEFT JOIN permission p on p.role_id = r.id
+        LEFT JOIN user_role ur on ur.role_id = r.id
+        LEFT JOIN sys_user u on u.id = ur.user_id
+        WHERE ur.user_id = #{user.id, jdbcType=NUMERIC}
+    </select>
+
+</mapper>

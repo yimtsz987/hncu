@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.MajorMapper">
+    <sql id="majorColumns">
+        m.id,
+        m.name,
+        m.sort,
+        m.department_no as "department.dNo",
+        d.name as "department.name"
+    </sql>
+
+    <sql id="majorJoins">
+        JOIN department d ON d.d_no = m.department_no
+    </sql>
+
+    <select id="queryMajorNameList" resultType="string">
+        SELECT name
+        from major
+        group by name
+    </select>
+
+    <select id="queryList" parameterType="Major" resultType="Major">
+        SELECT <include refid="majorColumns" />
+        FROM major m
+        <include refid="majorJoins" />
+        <where>
+            <if test="department != null and department.dNo != null and department.dNo != ''">
+                and m.department_no = #{department.dNo,jdbcType=INTEGER}
+            </if>
+            <if test="name != null and name != ''">
+                and m.name like concat ('%', #{name}, '%')
+            </if>
+        </where>
+        ORDER BY m.sort
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Major">
+        SELECT <include refid="majorColumns" />
+        FROM major m
+        <include refid="majorJoins" />
+        WHERE m.id = #{id, jdbcType=NUMERIC}
+    </select>
+    <insert id="insert" parameterType="Major" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO major (name,sort,department_no) VALUES (#{name},#{sort},#{department.dNo})
+    </insert>
+
+    <update id="update" parameterType="Major">
+        UPDATE major SET
+          name = #{name},
+          department_no = #{department.dNo},
+          sort = #{sort}
+        WHERE id = #{id,jdbcType=NUMERIC}
+    </update>
+    <delete id="delete" parameterType="Major">
+        DELETE FROM major WHERE id = #{id,jdbcType=NUMERIC}
+    </delete>
+</mapper>

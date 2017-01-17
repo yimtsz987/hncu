@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.DepartmentMapper">
+    <sql id="departmentColumns">
+        d.id,
+        d.d_no as "dNo",
+        d.name,
+        d.count,
+        d.sort
+    </sql>
+
+    <select id="queryList" parameterType="Department" resultType="Department">
+        SELECT <include refid="departmentColumns" />
+        FROM department d
+        <where>
+            <if test="dNo != null and dNo != ''">
+            and d.d_no = #{dNo,jdbcType=INTEGER}
+        </if>
+            <if test="name != null and name != ''">
+                and d.name like concat ('%', #{name}, '%')
+            </if>
+        </where>
+        ORDER BY d.d_no
+    </select>
+
+    <select id="queryNameList" resultType="string">
+        SELECT name
+        from department
+        group by name
+    </select>
+
+    <select id="queryNodeList" resultType="string">
+        SELECT d_no
+        from department
+        group by d_no
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Department">
+        SELECT <include refid="departmentColumns" />
+        FROM department d
+        WHERE d.id = #{id, jdbcType=NUMERIC}
+    </select>
+    <insert id="insert" parameterType="Department" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO department (d_no,name,sort) VALUES (#{dNo},#{name},#{sort})
+    </insert>
+    <update id="update" parameterType="Department">
+        UPDATE department SET
+          d_no = #{dNo},
+          name = #{name},
+          sort = #{sort}
+        WHERE id = #{id,jdbcType=NUMERIC}
+    </update>
+    <delete id="delete" parameterType="Department">
+        DELETE FROM department WHERE id = #{id,jdbcType=NUMERIC}
+    </delete>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>  
+        <setting name="logImpl" value="LOG4J" />  
+    </settings>
+
+	<typeAliases>
+		<typeAlias type="com.hncu.entity.User" alias="User" />
+		<typeAlias type="com.hncu.entity.Role" alias="Role" />
+		<typeAlias type="com.hncu.entity.Permission" alias="Permission" />
+		<typeAlias type="com.hncu.entity.Classes" alias="Classes" />
+		<typeAlias type="com.hncu.entity.Dict" alias="Dict" />
+		<typeAlias type="com.hncu.entity.Department" alias="Department" />
+		<typeAlias type="com.hncu.entity.Major" alias="Major" />
+		<typeAlias type="com.hncu.entity.Title" alias="Title" />
+		<typeAlias type="com.hncu.entity.SysParam" alias="sysParam" />
+	</typeAliases>
+
+
+	
+</configuration>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.SysParamMapper">
+    <sql id="sysParamColumn">
+        id,
+        param_key as "paramKey",
+        label,
+        param_value as "paramValue"
+    </sql>
+
+    <select id="queryParamByKey" resultType="SysParam" parameterType="string">
+      SELECT <include refid="sysParamColumn" />
+        from system_parameter
+        WHERE param_key = #{paramKey, jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryLabelList" resultType="string" parameterType="SysParam">
+        SELECT label
+        from system_parameter
+        group by label
+    </select>
+
+    <select id="queryKeyList" resultType="string" parameterType="SysParam">
+        SELECT param_key
+        from system_parameter
+        group by param_key
+    </select>
+
+    <select id="queryList" parameterType="SysParam" resultType="SysParam">
+      select <include refid="sysParamColumn" />
+        FROM system_parameter
+        <where>
+            <if test="label != null and label != ''">
+                label = #{label}
+            </if>
+            <if test="paramKey != null and paramKey != ''">
+                and param_key = #{paramKey}
+            </if>
+            <if test="paramValue != null and paramValue != ''">
+                and param_value = #{paramValue}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="SysParam">
+        SELECT <include refid="sysParamColumn"/>
+        FROM system_parameter
+        WHERE id = #{id,jdbcType=NUMERIC}
+    </select>
+
+    <insert id="insert" parameterType="SysParam" useGeneratedKeys="true"
+            keyProperty="id">
+       INSERT INTO system_parameter (
+            param_key,
+            label,
+            param_value
+       ) VALUES (
+            #{paramKey},
+            #{label},
+            #{paramValue}
+       )
+    </insert>
+    <update id="update" parameterType="SysParam">
+      UPDATE system_parameter SET
+          param_key = #{paramKey},
+          label = #{label},
+          param_value = #{paramValue}
+        WHERE id = #{id,jdbcType=NUMERIC}
+    </update>
+
+    <delete id="delete" parameterType="SysParam">
+      DELETE FROM system_parameter WHERE id = #{id,jdbcType=NUMERIC}
+    </delete>
+
+</mapper>

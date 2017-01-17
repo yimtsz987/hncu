@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.DictMapper">
+    <sql id="dictColumn">
+        id,
+        value,
+        label,
+        type,
+        description,
+        sort
+    </sql>
+
+    <select id="queryTypeList" resultType="string" parameterType="Dict">
+      SELECT type
+        from dict
+        group by type
+    </select>
+
+    <select id="queryList" parameterType="Dict" resultType="Dict">
+      select <include refid="dictColumn" />
+        FROM dict
+        <where>
+            <if test="type != null and type != ''">
+                type = #{type}
+            </if>
+            <if test="description != null and description != ''">
+                and description like concat ('%', #{description}, '%')
+            </if>
+            <if test="label != null and label != ''">
+                and label = #{label}
+            </if>
+        </where>
+        order by type, sort DESC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Dict">
+        SELECT <include refid="dictColumn"/>
+        FROM dict
+        WHERE id = #{id,jdbcType=NUMERIC}
+    </select>
+
+    <insert id="insert" parameterType="Dict" useGeneratedKeys="true"
+            keyProperty="id">
+       INSERT INTO dict (
+            value,
+            label,
+            type,
+            description,
+            sort
+       ) VALUES (
+            #{value},
+            #{label},
+            #{type},
+            #{description},
+            #{sort}
+       )
+    </insert>
+    <update id="update" parameterType="Dict">
+      UPDATE dict SET
+          value = #{value},
+          label = #{label},
+          type = #{type},
+          description =  #{description},
+          sort = #{sort}
+        WHERE id = #{id,jdbcType=NUMERIC}
+    </update>
+
+    <delete id="delete" parameterType="Dict">
+      DELETE FROM dict WHERE id = #{id,jdbcType=NUMERIC}
+    </delete>
+
+</mapper>
