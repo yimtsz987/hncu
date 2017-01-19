@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.DownloadMapper">
+    <sql id="downloadColumns">
+        d.id,
+        d.title,
+        d.issuer,
+        d.issueDate,
+        d.description,
+        d.receive,
+        d.uploadFile,
+        d.uploadPath,
+        d.uploadFileOldName
+    </sql>
+
+    <select id="queryList" parameterType="DownLoad" resultType="DownLoad">
+        SELECT <include refid="downloadColumns" />
+        FROM download d
+        <where>
+            <if test="issuer != null and issuer != ''">
+                d.issuer = #{issuer}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="queryById" parameterType="string" resultType="DownLoad">
+        SELECT <include refid="downloadColumns" />
+        FROM download d
+        WHERE d.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <update id="update" parameterType="DownLoad">
+
+    </update>
+    <delete id="delete" parameterType="DownLoad">
+        DELETE FROM download WHERE id = #{id,jdbcType=NUMERIC}
+    </delete>
+</mapper>
