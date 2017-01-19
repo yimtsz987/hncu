@@ -39,6 +39,13 @@
         WHERE id = #{id,jdbcType=NUMERIC}
     </select>
 
+    <select id="checkOnly" parameterType="Dict" resultType="Dict">
+        SELECT  <include refid="dictColumn" />
+        FROM dict
+        WHERE type = #{type}
+        AND value = #{value}
+    </select>
+
     <insert id="insert" parameterType="Dict" useGeneratedKeys="true"
             keyProperty="id">
        INSERT INTO dict (

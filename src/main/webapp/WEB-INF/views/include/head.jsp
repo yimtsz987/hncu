@@ -18,3 +18,9 @@
 <script type="text/javascript" src="${ctxStatic}/js/layer.js"></script>
 <script type="text/javascript" src="${ctxStatic}/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="${ctxStatic}/js/Validform_v5.3.2_min.js" ></script>
+<script type="text/javascript" src="${ctxStatic}/js/bootstrap-filestyle.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${ctxStatic}/css/bootstrap-select.css"/>
+<link href="${ctxStatic}/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="${ctxStatic}/js/bootstrap-select.min.js"></script>
+<script type="text/javascript"src="${ctxStatic}/js/bootstrap-select.js"></script>

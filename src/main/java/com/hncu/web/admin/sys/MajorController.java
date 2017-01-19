@@ -68,12 +68,16 @@ public class MajorController extends BaseController {
             return majorEdit(major, model);
         }
         Msg msg;
-        try {
-            majorService.save(major);
-            msg = new Msg(Msg.MsgType.ok, "保存专业信息成功！！");
-        } catch (Exception e){
-            logger.error("保存专业信息失败！！");
-            msg = new Msg(Msg.MsgType.remove, "保存专业信息失败！！");
+        if (!majorService.checkOnly(major)){
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+major.getName()+"】信息已存在！！");
+        } else {
+            try {
+                majorService.save(major);
+                msg = new Msg(Msg.MSG_TYPE_OK, "保存专业信息成功！！");
+            } catch (Exception e){
+                logger.error("保存专业信息失败！！");
+                msg = new Msg(Msg.MSG_TYPE_REMOVE, "保存专业信息失败！！");
+            }
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/majorList";
@@ -85,10 +89,10 @@ public class MajorController extends BaseController {
         Msg msg;
         try {
             majorService.delete(major);
-            msg = new Msg(Msg.MsgType.ok, "删除专业信息成功！！");
+            msg = new Msg(Msg.MSG_TYPE_OK, "删除专业信息成功！！");
         } catch (Exception e) {
             logger.error("删除专业信息失败！！", e);
-            msg = new Msg(Msg.MsgType.remove, "删除专业信息失败！！");
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除专业信息失败！！");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/majorList";

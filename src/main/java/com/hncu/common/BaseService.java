@@ -76,4 +76,19 @@ public class BaseService<D extends BaseMapper <T>, T extends BaseEntity> {
         int res = mapper.delete(entity);
         return res > 0;
     }
+
+    /**
+     * 检查是否已存在
+     * @param entity
+     * @return
+     */
+    public boolean checkOnly(T entity){
+        int res = 0;
+        if (mapper.checkOnly(entity) == null){
+            res = 1;
+        } else {
+            res = 0;
+        }
+        return res > 0;
+    }
 }

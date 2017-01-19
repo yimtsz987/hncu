@@ -14,13 +14,12 @@ public class Classes extends BaseEntity {
     private Major major;
     private Department department;
     private String count;
-    private String sort;
 
     public Classes() {
     }
 
-    public Classes(String classId) {
-        this.classId = classId;
+    public Classes(String id) {
+        this.id = id;
     }
 
     public String getClassId() {
@@ -55,11 +54,4 @@ public class Classes extends BaseEntity {
         this.count = count;
     }
 
-    public String getSort() {
-        return sort;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
 }

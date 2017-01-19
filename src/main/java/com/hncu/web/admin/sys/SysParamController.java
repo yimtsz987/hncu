@@ -62,10 +62,10 @@ public class SysParamController extends BaseController {
         Msg msg;
         try {
             sysParamService.save(sysParam);
-            msg = new Msg(Msg.MsgType.ok, "保存系统参数成功");
+            msg = new Msg(Msg.MSG_TYPE_OK, "保存系统参数成功");
         } catch (Exception e) {
             logger.error("保存系统参数失败");
-            msg = new Msg(Msg.MsgType.remove, "保存系统参数失败");
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "保存系统参数失败");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/sysParamList";
@@ -76,14 +76,14 @@ public class SysParamController extends BaseController {
         SysParam sysParam = new SysParam(id);
         Msg msg;
         if ("1".equals(sysParam.getId()) || "2".equals(sysParam.getId())){
-            msg = new Msg(Msg.MsgType.remove, "删除系统默认参数不能删除");
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除系统默认参数不能删除");
         } else {
             try {
                 sysParamService.delete(sysParam);
-                msg = new Msg(Msg.MsgType.ok, "删除系统参数成功");
+                msg = new Msg(Msg.MSG_TYPE_OK, "删除系统参数成功");
             } catch (Exception e) {
                 logger.error("删除字典信息失败!", e);
-                msg = new Msg(Msg.MsgType.remove, "删除系统参数失败");
+                msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除系统参数失败");
             }
         }
         redirectAttributes.addFlashAttribute("msg", msg);

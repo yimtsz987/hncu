@@ -62,12 +62,16 @@ public class DepartmentController extends BaseController {
             return departmentEdit(department, model);
         }
         Msg msg;
-        try {
-            departmentService.save(department);
-            msg = new Msg(Msg.MsgType.ok, "保存院系菜单信息成功！！");
-        } catch (Exception e){
-            logger.error("保存院系菜单信息失败！！");
-            msg = new Msg(Msg.MsgType.remove, "保存院系菜单信息失败！！");
+        if (!departmentService.checkOnly(department)){
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+department.getName()+"】信息已存在！！");
+        } else {
+            try {
+                departmentService.save(department);
+                msg = new Msg(Msg.MSG_TYPE_OK, "保存院系菜单信息成功！！");
+            } catch (Exception e){
+                logger.error("保存院系菜单信息失败！！");
+                msg = new Msg(Msg.MSG_TYPE_REMOVE, "保存院系菜单信息失败！！");
+            }
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/departmentList";
@@ -79,10 +83,10 @@ public class DepartmentController extends BaseController {
         Msg msg;
         try {
             departmentService.delete(department);
-            msg = new Msg(Msg.MsgType.ok, "删除院系菜单信息成功！！");
+            msg = new Msg(Msg.MSG_TYPE_OK, "删除院系菜单信息成功！！");
         } catch (Exception e) {
             logger.error("删除字典信息失败!", e);
-            msg = new Msg(Msg.MsgType.remove, "删除院系菜单信息失败！！");
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除院系菜单信息失败！！");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/departmentList";

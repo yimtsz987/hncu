@@ -68,12 +68,16 @@ public class DictController extends BaseController{
             return dictEdit(dict, model);
         }
         Msg msg;
-        try {
-            dictService.save(dict);
-            msg = new Msg(Msg.MsgType.success, "保存字典成功");
-        } catch (Exception e){
-            logger.error("保存字典失败");
-            msg = new Msg(Msg.MsgType.error, "保存字典失败");
+        if (!dictService.checkOnly(dict)){
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+dict.getType()+"】的【"+dict.getValue()+"】已存在！！");
+        } else {
+            try {
+                dictService.save(dict);
+                msg = new Msg(Msg.MSG_TYPE_OK, "保存字典成功");
+            } catch (Exception e){
+                logger.error("保存字典失败");
+                msg = new Msg(Msg.MSG_TYPE_REMOVE, "保存字典失败");
+            }
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/dictList";
@@ -88,10 +92,10 @@ public class DictController extends BaseController{
         Msg msg;
         try {
             dictService.delete(dict);
-            msg = new Msg(Msg.MsgType.success, "删除字典成功");
+            msg = new Msg(Msg.MSG_TYPE_OK, "删除字典成功");
         } catch (Exception e) {
             logger.error("删除字典信息失败!", e);
-            msg = new Msg(Msg.MsgType.error, "删除字典失败");
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除字典失败");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/dictList";

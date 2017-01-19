@@ -172,7 +172,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="#" title="上传资料"class="iframeurl" name="upload.html">
+									<a href="#" title="上传资料"class="iframeurl" name="${ctx}/admin/uploadDate">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>3、上传资料
 									</a>
 								</li>
@@ -192,12 +192,17 @@
 								</li>
 								<li>
 									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/majorList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>1、专业菜单
+										<i class="subicon glyphicon glyphicon-hand-right"></i>2、专业菜单
+									</a>
+								</li>
+								<li>
+									<a href="#" title="班级菜单" class="iframeurl" name="${ctx}/admin/classesList">
+										<i class="subicon glyphicon glyphicon-hand-right"></i>3、班级菜单
 									</a>
 								</li>
 								<li>
 									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/dictList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>3、通用字典
+										<i class="subicon glyphicon glyphicon-hand-right"></i>4、通用字典
 									</a>
 								</li>
 								
@@ -208,7 +213,7 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="#" title="" class="iframeurl" name="download.html">
+							<a href="#" title="" class="iframeurl" name="${ctx}/admin/downloadList">
 							   <i class="glyphicon glyphicon-home"></i>资料下载
 							</a>
 						</li>

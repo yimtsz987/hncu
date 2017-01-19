@@ -40,6 +40,14 @@
         <include refid="majorJoins" />
         WHERE m.id = #{id, jdbcType=NUMERIC}
     </select>
+
+    <select id="checkOnly" parameterType="Major" resultType="Major">
+        SELECT  <include refid="majorColumns" />
+        FROM major m
+        <include refid="majorJoins" />
+        WHERE m.name = #{name}
+    </select>
+
     <insert id="insert" parameterType="Major" useGeneratedKeys="true"
             keyProperty="id">
         INSERT INTO major (name,sort,department_no) VALUES (#{name},#{sort},#{department.dNo})

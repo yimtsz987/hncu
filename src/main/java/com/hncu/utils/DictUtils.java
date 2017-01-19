@@ -84,6 +84,7 @@ public class DictUtils {
         return defalutValue;
     }
 
+
     public static String getDictValue (String label, String type) {
         return getDictValue (label, type, "");
     }

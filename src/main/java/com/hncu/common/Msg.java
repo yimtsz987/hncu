@@ -9,7 +9,7 @@ public class Msg implements Serializable{
 
     private static final long serialVersionUID = -6532366534692890978L;
 
-    public enum MsgType {
+    /*public enum MsgType {
         success,
         info,
         error,
@@ -17,24 +17,27 @@ public class Msg implements Serializable{
         danger,
         ok,
         remove
-    }
+    }*/
 
-    private MsgType type;
+    public static final String MSG_TYPE_OK = "ok";
+    public static final String MSG_TYPE_REMOVE = "remove";
+
+    private String type;
     private String content;
 
     public Msg() {
     }
 
-    public Msg(MsgType type, String content) {
+    public Msg(String type, String content) {
         this.type = type;
         this.content = content;
     }
 
-    public MsgType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(MsgType type) {
+    public void setType(String type) {
         this.type = type;
     }
 

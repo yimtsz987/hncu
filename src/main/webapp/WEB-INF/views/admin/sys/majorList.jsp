@@ -53,6 +53,7 @@
 					</a>
 				</span>
 			</div>
+			<sys:msg msgObj="${msg}" />
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
 					<thead>

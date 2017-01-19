@@ -14,7 +14,7 @@
         FROM department d
         <where>
             <if test="dNo != null and dNo != ''">
-            and d.d_no = #{dNo,jdbcType=INTEGER}
+             d.d_no = #{dNo,jdbcType=INTEGER}
         </if>
             <if test="name != null and name != ''">
                 and d.name like concat ('%', #{name}, '%')
@@ -40,6 +40,13 @@
         FROM department d
         WHERE d.id = #{id, jdbcType=NUMERIC}
     </select>
+
+    <select id="checkOnly" parameterType="Department" resultType="Department">
+        SELECT  <include refid="departmentColumns" />
+        FROM department d
+        WHERE d_no = #{dNo, jdbcType=NUMERIC}
+    </select>
+
     <insert id="insert" parameterType="Department" useGeneratedKeys="true"
             keyProperty="id">
         INSERT INTO department (d_no,name,sort) VALUES (#{dNo},#{name},#{sort})
