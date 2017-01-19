@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50d6e13d-5cf0-46b0-a6f5-55196800fdc1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/DownLoad.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/admin/sys/upload.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/common/BaseMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/common/BaseMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/common/BaseService.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/common/BaseService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/entity/Classes.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/entity/Classes.class" />
@@ -22,31 +19,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/web/admin/sys/DepartmentController.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/web/admin/sys/DepartmentController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/web/admin/sys/DictController.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/web/admin/sys/DictController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/web/admin/sys/MajorController.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/web/admin/sys/MajorController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/gpms_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/gpms_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gpms.iml" afterPath="$PROJECT_DIR$/gpms.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/common/BaseMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/common/BaseMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/common/BaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/common/BaseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/common/Msg.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/common/Msg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/ClassesMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/ClassesMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/DepartmentMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/DepartmentMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/DictMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/DictMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/MajorMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/admin/sys/MajorMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/Classes.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/Classes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/utils/DictUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/utils/DictUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/DepartmentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/DepartmentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/DictController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/DictController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/MajorController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/MajorController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/SysParamController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/admin/sys/SysParamController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/departmentList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/departmentList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/dictList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/dictList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/majorList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/majorList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/head.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/head.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/admin/sys/ClassesMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/admin/sys/ClassesMapper.sqlmap.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/admin/sys/DepartmentMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/admin/sys/DepartmentMapper.sqlmap.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/admin/sys/DictMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/admin/sys/DictMapper.sqlmap.xml" />
@@ -64,8 +37,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/admin/sys/index.jsp" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/admin/sys/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/admin/sys/majorList.jsp" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/admin/sys/majorList.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/include/head.jsp" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/include/head.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/download.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/download.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/upload.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/sys/upload.jsp" />
     </list>
     <ignored path="gpms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1901,7 +1872,7 @@
       <workItem from="1484747920253" duration="481000" />
       <workItem from="1484748490188" duration="14473000" />
       <workItem from="1484778671124" duration="25000" />
-      <workItem from="1484778857563" duration="23416000" />
+      <workItem from="1484778857563" duration="23449000" />
     </task>
     <task id="LOCAL-00001" summary="Rejected commit: Default">
       <created>1484699678383</created>
@@ -1910,11 +1881,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484699678383</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Rejected commit: Default">
+      <created>1484860724304</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1484860724304</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171889000" />
+    <option name="totallyTimeSpent" value="171922000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
