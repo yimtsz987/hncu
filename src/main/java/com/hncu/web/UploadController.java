@@ -1,11 +1,15 @@
 package com.hncu.web;
 
 import com.hncu.common.Msg;
+import com.hncu.entity.Upload;
 import com.hncu.service.UploadService;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
+import com.hncu.web.admin.sys.UploadDateController;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -15,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -65,41 +70,26 @@ public class UploadController {
     }
     * */
 
+
+
     @Resource
     private UploadService uploadService;
 
+    @Resource
+    private UploadDateController uploadDateController;
+
     @RequestMapping(value = "/uploadData")
-    public String uploadData(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) throws IllegalStateException, IOException {
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        String receive = request.getParameter("receive");
-        if(StringUtils.isNotBlank(title) && StringUtils.isNotBlank(description) && StringUtils.isNotBlank(receive)){
-            CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
-            if (multipartResolver.isMultipart(request)) {
-                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-                Iterator<String> iter = multiRequest.getFileNames();
-                while (iter.hasNext()) {
-                    MultipartFile file = multiRequest.getFile(iter.next());
-                    if (file != null) {
-                        String myFileName = file.getOriginalFilename();
-                        if (myFileName.trim() != "") {
-                            String fileName = new Date().getTime() + file.getOriginalFilename();
-                            String path = "E://gpmsUpload/admin/"+fileName;
-                            File localFile = new File(path); //
-                            file.transferTo(localFile);
-                            uploadService.uploadDate(title,UserUtils.getCurrentUser().getId(),description,receive,fileName,path,myFileName);
-                        }
-                    }
-                }
-            }
-            redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_OK, "上传成功！！"));
-            return "redirect:/admin/downloadList";
-        }else {
-            redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_REMOVE, "上传失败！！"));
-            return "redirect:/admin/downloadList";
+    public String uploadData(@Valid Upload upload, BindingResult br, Model model, HttpServletRequest request, HttpServletResponse response,RedirectAttributes redirectAttributes) {
+        if (br.hasErrors()){
+            return uploadDateController.uploadDate(upload,model);
         }
-
-
+        try {
+            uploadService.uploadDate(upload,request,response);
+            redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_OK, "上传成功！！"));
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_REMOVE, "上传失败！！"));
+        }
+        return "redirect:/admin/downloadList";
     }
 
 

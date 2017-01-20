@@ -1,5 +1,7 @@
 package com.hncu.dao.mapper;
 
+import com.hncu.common.BaseMapper;
+import com.hncu.entity.Upload;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -7,9 +9,11 @@ import org.springframework.stereotype.Repository;
  * 上传数据持久化操作层
  */
 @Repository
-public interface UploadMapper {
-    int uploadDate(@Param("title") String title,@Param("issuer") String issuer,
-                   @Param("description") String description,@Param("receive") String receive,
-                   @Param("uploadFile") String uploadFile,@Param("uploadPath") String uploadPath,
-                   @Param("uploadFileOldName") String uploadFileOldName);
+public interface UploadMapper extends BaseMapper<Upload> {
+    /**
+     * 资料上传
+     * @param upload
+     * @return
+     */
+    int uploadDate(Upload upload);
 }

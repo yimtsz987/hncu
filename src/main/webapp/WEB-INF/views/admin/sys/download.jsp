@@ -39,8 +39,8 @@
 			</div>
 			<div class="btn-wrap">
 				<span class="btn-left">
-					<a href="javascript:void(0)" class="btn btn-warning">
-						<i class="glyphicon glyphicon-plus"></i>新增题目
+					<a href="${ctx}/admin/uploadDate" class="btn btn-warning">
+						<i class="glyphicon glyphicon-plus"></i>上传资料
 					</a>
 					<a href="javascript:void(0)" class="btn btn-danger">
 						<i class="glyphicon glyphicon-trash"></i>批量删除
@@ -67,7 +67,7 @@
 							<td><input type="checkbox" name="node"/></td>
 							<td>${download.id}</td>
 							<td>${download.title}</td>
-							<td>${download.issuer}</td>
+							<td>${download.issuer.name}</td>
 							<td><fmt:formatDate value="${download.issueDate}" type="date" pattern="yyyy-MM-dd" /></td>
 							<td>${download.description}</td>
 							<td>

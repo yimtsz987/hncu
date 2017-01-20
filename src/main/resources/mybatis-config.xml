@@ -19,6 +19,7 @@
 		<typeAlias type="com.hncu.entity.Title" alias="Title" />
 		<typeAlias type="com.hncu.entity.SysParam" alias="sysParam" />
 		<typeAlias type="com.hncu.entity.DownLoad" alias="DownLoad" />
+		<typeAlias type="com.hncu.entity.Upload" alias="Upload" />
 	</typeAliases>
 
 

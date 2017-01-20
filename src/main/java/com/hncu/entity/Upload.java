@@ -1,16 +1,22 @@
 package com.hncu.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.common.collect.Lists;
 import com.hncu.common.BaseEntity;
+import com.hncu.utils.CollectionUtil;
+import com.hncu.utils.DateUtils;
+import com.hncu.utils.StringUtils;
+import com.hncu.utils.UserUtils;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
- * 下载信息实体类
+ * 上传实体类
  */
-public class DownLoad extends BaseEntity {
+public class Upload extends BaseEntity{
+    private static final long serialVersionUID = -3354995741505168464L;
 
-    private static final long serialVersionUID = 3540342573974480588L;
     private String title;
     private User issuer;
     private Date issueDate;
@@ -19,13 +25,17 @@ public class DownLoad extends BaseEntity {
     private String uploadFile;
     private String uploadPath;
     private String uploadFileOldName;
+    private List<Role> roleList = Lists.newArrayList();
 
-    public  DownLoad(){
 
-    }
-
-    public  DownLoad(String id){
-        this.id = id;
+    /**
+     * 上传之前调用
+     */
+    public void preInsert(){
+        Date now = Calendar.getInstance().getTime();
+        User is = new User(UserUtils.getCurrentUser().getId());
+        this.setIssuer(is);
+        this.setIssueDate(now);
     }
 
     public String getTitle() {
@@ -44,7 +54,6 @@ public class DownLoad extends BaseEntity {
         this.issuer = issuer;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getIssueDate() {
         return issueDate;
     }
@@ -89,7 +98,37 @@ public class DownLoad extends BaseEntity {
         return uploadFileOldName;
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
     public void setUploadFileOldName(String uploadFileOldName) {
         this.uploadFileOldName = uploadFileOldName;
+    }
+
+    public List<String> getRoleIdList(){
+        List<String> roleIdList = Lists.newArrayList();
+        for (Role role : roleList){
+            roleIdList.add(role.getId());
+        }
+        return roleIdList;
+    }
+
+    public void setRoleIdList(List<String> roleIdList) {
+        roleList = Lists.newArrayList();
+        for (String roleId : roleIdList) {
+            if (StringUtils.isNotBlank(roleId)) {
+                Role role = new Role(roleId);
+                roleList.add(role);
+            }
+        }
+    }
+
+    public String getRoleIds (){
+        return CollectionUtil.extractToString(roleList, "id", ",");
     }
 }

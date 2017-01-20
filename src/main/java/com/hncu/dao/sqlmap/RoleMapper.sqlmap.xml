@@ -7,35 +7,41 @@
         r.description,
         r.count,
         r.role_name as "roleName",
-        r.data_scope as "dataScope",
-        p.permission,
-        p.role_id
+        r.data_scope as "dataScope"
     </sql>
 
-
-    <select id="queryList" parameterType="User" resultType="Role">
-
-    </select>
-
-    <select id="queryById" parameterType="string" resultType="Role">
-
-    </select>
-
-    <select id="queryByUserId" parameterType="User" resultType="Role">
-        SELECT <include refid="roleColumns" />
-        FROM role r
+    <sql id="roleJoins">
         LEFT JOIN permission p on p.role_id = r.id
         LEFT JOIN user_role ur on ur.role_id = r.id
         LEFT JOIN sys_user u on u.id = ur.user_id
+    </sql>
+
+    <select id="queryList" parameterType="Role" resultType="Role">
+        SELECT <include refid="roleColumns" />
+        FROM role r
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Role">
+        SELECT <include refid="roleColumns" />
+        FROM role r
+        WHERE r.id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryByUserId" parameterType="User" resultType="Role">
+        SELECT <include refid="roleColumns" />,
+        p.permission,
+        p.role_id
+        FROM role r
+        <include refid="roleJoins" />
         WHERE ur.user_id = #{user.id, jdbcType=NUMERIC}
     </select>
 
     <select id="queryPermissionByUserId" parameterType="User" resultType="Permission">
-        SELECT <include refid="roleColumns" />
+        SELECT <include refid="roleColumns" />,
+        p.permission,
+        p.role_id
         FROM role r
-        LEFT JOIN permission p on p.role_id = r.id
-        LEFT JOIN user_role ur on ur.role_id = r.id
-        LEFT JOIN sys_user u on u.id = ur.user_id
+        <include refid="roleJoins" />
         WHERE ur.user_id = #{user.id, jdbcType=NUMERIC}
     </select>
 

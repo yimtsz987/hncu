@@ -50,7 +50,7 @@
 	</bean>
 	
 	<!-- 开启注解式事物扫描 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
 	
 	<!-- 产生sqlsessionfactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
