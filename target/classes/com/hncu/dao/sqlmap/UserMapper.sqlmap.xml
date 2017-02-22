@@ -43,12 +43,14 @@
         t.node as "teacher.node",
         t.department_no as "teacher.department.d_no",
         t.research_direction as "teacher.researchDirection",
-        t.professional_title as "teacher.professionalTitle"
+        t.professional_title as "teacher.professionalTitle",
+        d.name as "student.department.name",
+        m.name as "student.major.name"
     </sql>
 
     <sql id="userJoins">
-        LEFT JOIN expand_student s on s.expand_flag = u.expand_flag
-        LEFT JOIN expand_teacher t on t.expand_flag = u.expand_flag
+        LEFT JOIN expand_student s on s.s_id = u.id
+        LEFT JOIN expand_teacher t on t.t_id = u.id
         LEFT JOIN department d on d.d_no = s.department_no
         LEFT JOIN major m on m.id = s.major_id
     </sql>

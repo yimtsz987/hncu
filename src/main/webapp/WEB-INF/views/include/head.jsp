@@ -23,4 +23,6 @@
 <link rel="stylesheet" type="text/css" href="${ctxStatic}/css/bootstrap-select.css"/>
 <link href="${ctxStatic}/css/bootstrap-select.min.css" rel="stylesheet">
 <script src="${ctxStatic}/js/bootstrap-select.min.js"></script>
-<script type="text/javascript"src="${ctxStatic}/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="${ctxStatic}/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="${ctxStatic}/js/process.js" ></script>
+<script type="text/javascript" src="${ctxStatic}/js/process_a.js" ></script>

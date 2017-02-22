@@ -83,7 +83,7 @@
 	<body>
 		<div class="page-content">
 			<div class="alert alert-success">
-				<span class="glyphicon glyphicon-ok"></span>欢迎使用<strong>毕业设计管理系统(v1.0)</strong>,你本次登录时间为2016年12月6日16时32分,登录IP为:192.168.1.1<span id="close-alert" class="close">&times;</span>
+				<span class="glyphicon glyphicon-ok"></span>欢迎使用<strong>毕业设计管理系统(${gpms:getParamValue("version")})</strong>,你本次登录时间为${nowDate},登录IP为:${loginIp}<span id="close-alert" class="close">&times;</span>
 				<script type="text/javascript">
 					$("#close-alert").click(function(){
 						$(".alert").remove();

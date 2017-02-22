@@ -129,7 +129,7 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="学生管理" class="iframeurl" name="students-table.html">
+							<a href="javascript:void(0)" title="学生管理" class="iframeurl" name="${ctx}/admin/studentList">
 							   <i class="glyphicon glyphicon-home" ></i>学生管理
 							</a>
 						</li>
@@ -141,7 +141,7 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="设置当前年级" class="iframeurl" name="teachers-table.html">
+									<a href="#" title="设置当前年级" class="iframeurl" name="${ctx}/admin/teacherList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、教师管理
 									</a>
 								</li>

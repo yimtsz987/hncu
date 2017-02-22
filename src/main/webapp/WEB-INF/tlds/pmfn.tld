@@ -43,8 +43,31 @@
         <function-class>com.hncu.utils.SysParamUtil</function-class>
         <function-signature>java.lang.String getParamValue(java.lang.String)</function-signature>
         <example>
-            ${gpms:getParamValue()}
+            ${gpms:getParamValue("version")}
         </example>
     </function>
 
+    <function>
+        <description>
+            根据字典类型查询字典列表
+        </description>
+        <name>getDictList</name>
+        <function-class>com.hncu.utils.DictUtils</function-class>
+        <function-signature>java.util.List getDictList(java.lang.String)</function-signature>
+        <example>
+            ${gpms:getDictList("sex")}
+        </example>
+    </function>
+
+    <function>
+        <description>
+            根据字典类型以及字典的值，获取对应的标签
+        </description>
+        <name>getDictLabel</name>
+        <function-class>com.hncu.utils.DictUtils</function-class>
+        <function-signature>java.lang.String getDictLabel(java.lang.String,java.lang.String)</function-signature>
+        <example>
+            ${gpms:getDictLabel("1", "sex")}
+        </example>
+    </function>
 </taglib>

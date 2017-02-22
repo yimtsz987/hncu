@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/pageContnent.css" />
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<title></title>
+		<style>
+		.content{
+			width: 770px;
+			margin: 0 auto;
+		}
+		.progress_1{
+			width: 618px;
+			margin: 100px auto 0px;
+		}
+		.progress-height{
+			height: 25px !important;
+			
+		}
+		.text-height{
+			line-height: 25px !important;
+		}
+		.con_content_right{
+			position: relative;
+			margin-right: -1px;
+			float: right;
+			width: 720px;
+			height: 320px;
+			border: 2px dashed #c9c9c9;
+			border-radius: 50px 50px;
+			border-style: none dashed dashed none;
+			border-top-right-radius: 0px;
+			border-bottom-left-radius: 0px;
+			padding: 30px 130px 30px 80px;
+		}
+		.con_content_left{
+			position: relative;
+			margin-top: -2px;
+			margin-left: -1px;
+			float: left;
+			width: 720px;
+			height: 320px;
+			border: 2px dashed #c9c9c9;
+			border-radius: 50px 50px;
+			border-style: dashed none dashed dashed;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			padding: 30px 80px 30px 130px;
+		}
+		.con_circle_right{
+			position: absolute;
+			z-index: 10;
+			right: -51px;
+			top: 110px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50px 50px;
+			background: #048c80;
+			line-height: 100px;
+			color: #FFFFFF;
+			font-size: 50px;
+			text-align: center;
+		}
+		.con_circle_left{
+			position: absolute;
+			z-index: 10;
+			left: -51px;
+			top: 110px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50px 50px;
+			background: #048c80;
+			line-height: 100px;
+			color: #FFFFFF;
+			font-size: 50px;
+			text-align: center;
+		}
+		.con_circle_line{
+			position: absolute;
+			z-index: -10;
+			left: 49px;
+			top: -60px;
+			display: block;
+			width: 2px;
+			height: 220px;
+			background: #048c80;
+			
+		}
+		.right_two{
+			margin-top: -2px;
+			border-style: dashed dashed dashed none;
+			border-top-right-radius: 50px;
+			border-top-left-radius: 0px;
+			border-bottom-right-radius: 50px;
+		}
+		.con_content_text{
+			margin-top: 10px;
+			color: #048c80;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		.btn_color{
+			background: #048c80;
+			color: #fff;
+			font-size: 30px;
+			width: 400px;
+			height: 50px;
+			margin-top: 25px;
+		}
+		.text_color{
+			margin-top: 30px;
+			color: #ff9000;
+			font-size: 25px;
+		}
+		.p_text{
+			font-size: 18px;
+			font-weight: 600;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="page-content">
+			<div class="content">
+				<div class="progress_1">
+				<div class="progress progress-striped active progress-height">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+						<span class="text-height">40%</span>
+					</div>
+				</div>
+				</div>
+				<div class="con_content_right">
+					<div class="con_circle_right">师
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">选择教师</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step1：选择教师</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_left">
+					<div class="con_circle_left">选
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">选择课题</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step2：选择课题</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_right right_two">
+					<div class="con_circle_right">审
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">审查课题</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step3：审查课题</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_left">
+					<div class="con_circle_left">开
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">开题</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step4：开题</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_right right_two">
+					<div class="con_circle_right">设
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">设计和论文撰写</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step5：设计和论文撰写</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_left">
+					<div class="con_circle_left">批
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">老师批阅</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step6：老师批阅</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_right right_two">
+					<div class="con_circle_right">查
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">中期检查</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step7：中期检查</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_left">
+					<div class="con_circle_left">评
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">评阅</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step8：评阅</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+				<div class="con_content_right right_two">
+					<div class="con_circle_right">答
+						<span class="con_circle_line"></span>
+					</div>
+					<h3 class="text-center text-success">答辩</h3>
+					<p class="text-center con_content_text">web研究方向是非常好的！</p>
+					<p class="text-center p_text text-danger">状态：<span>未完成</span></p>
+					<a href="#" class="btn btn_color center-block">Step9：答辩</a>
+					<p class="text-center text_color">日期：2016.5.10&nbsp;&nbsp;11:20:40</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

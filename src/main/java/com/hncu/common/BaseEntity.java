@@ -25,6 +25,34 @@ public class BaseEntity implements Serializable {
      * 删除标记 - 删除
      */
     public static final String DEL_FLAG_DELETE = "1";
+    /**
+     * 验证标记 - 已验证
+     */
+    public static final String VALIDATE_YES = "1";
+    /**
+     * 验证标记 - 未验证
+     */
+    public static final String VALIDATE_NO = "0";
+    /**
+     * 拓展标记 - 管理员expandFlag
+     */
+    public static final String EXPAND_FLAG_ADMIN = "0";
+    /**
+     * 拓展标记 - 学生
+     */
+    public static final String EXPAND_FLAG_STUDENT = "1";
+    /**
+     * 拓展标记 - 教师
+     */
+    public static final String EXPAND_FLAG_TEACHER = "2";
+    /**
+     * 分组标记 - 未分组
+     */
+    public static final String ANSWER_FLAG_NO = "0";
+    /**
+     * 分组标记 - 已分组
+     */
+    public static final String ANSWER_FLAG_YES = "1";
 
     protected String id;  //主键
     protected User createBy; //创建者

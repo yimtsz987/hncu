@@ -74,7 +74,7 @@
 							<td>${department.count}</td>
 							<th>
 								<a href="${ctx}/admin/departmentEdit?id=${department.id}" class="btn btn-xs btn-primary">修改</a>
-								<a href="javascript:void(0)" class="btn btn-xs btn-danger"onclick="deleteBtn(this,${department.id})">删除</a>
+								<a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="deleteBtn(this,${department.id})">删除</a>
 							</th>
 						</tr>
 					</c:forEach>
