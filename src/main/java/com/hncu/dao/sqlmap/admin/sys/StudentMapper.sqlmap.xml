@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.StudentMapper">
+    <sql id="studentColumns">
+        u.id,
+        u.name,
+        u.username as "username",
+        u.password,
+        u.idcard as "idCard",
+        u.mobile,
+        u.address,
+        u.sex,
+        u.age,
+        u.email,
+        u.is_validate as "isValidate",
+        u.qq,
+        u.expand_flag as "expandFlag",
+        u.header_pic as "headerPic",
+        u.create_by as "createBy.id",
+        u.create_date as "createDate",
+        u.update_by as "updateBy.id",
+        u.update_date as "updateDate",
+        u.remarks,
+        s.node as "node",
+        s.department_no as "department.dNo",
+        s.major_id as "major.id",
+        s.classes as "classes.classId",
+        s.title_id as "title.id",
+        s.teacher_id as "teacher.id",
+        s.year as "year",
+        s.grade as "grade",
+        s.step_1 as "step1",
+        s.step_2 as "step2",
+        s.step_3 as "step3",
+        s.step_4 as "step4",
+        s.step_5 as "step5",
+        s.step_6 as "step6",
+        s.step_7 as "step7",
+        s.step_8 as "step8",
+        s.step_9 as "step9",
+        s.answer_flag as "answerFlag",
+        s.expand_flag as "expandFlag",
+        d.name as "department.name",
+        m.name as "major.name"
+    </sql>
+
+    <sql id="studentJoins">
+        LEFT JOIN expand_student s on s.s_id = u.id
+        LEFT JOIN department d on d.d_no = s.department_no
+        LEFT JOIN major m on m.id = s.major_id
+        LEFT JOIN classes cs on cs.class_id = s.classes
+    </sql>
+
+    <select id="queryList" parameterType="Student" resultType="Student">
+        SELECT <include refid="studentColumns" />
+        FROM sys_user u
+        <include refid="studentJoins" />
+        WHERE u.expand_flag = '1'
+        <if test="node != null and node != ''">
+            and s.node = #{node,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null and name != ''">
+            and u.name like concat ('%', #{name}, '%')
+        </if>
+        <if test="classes != null and classes.classId != null and classes.classId != ''">
+            and s.classes like concat ('%', #{classes.classId}, '%')
+        </if>
+        <if test="department != null and department.dNo != null and department.dNo != ''">
+            and s.department_no = #{department.dNo,jdbcType=INTEGER}
+        </if>
+        <if test="major != null and major.id != null and major.id != ''">
+            and s.major_id = #{major.id,jdbcType=INTEGER}
+        </if>
+        <if test="year != null and year != ''">
+            and s.year = #{year,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Student">
+        SELECT <include refid="studentColumns" />
+        FROM sys_user u
+        <include refid="studentJoins" />
+        WHERE u.id = #{id, jdbcType=NUMERIC}
+        and u.del_flag = '0'
+    </select>
+
+    <select id="checkOnly" parameterType="Student" resultType="Student">
+        SELECT  <include refid="studentColumns" />
+        FROM sys_user u
+        <include refid="studentJoins" />
+        WHERE u.username = #{node, jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertUserInfo" parameterType="Student" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="username != null" >
+                username,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="idcard != null">
+                idcard,
+            </if>
+            <if test="mobile != null" >
+                mobile,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="is_validate != null">
+                is_validate,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="expandFlag != null">
+                expand_flag,
+            </if>
+            <if test="headerPic != null">
+                header_pic,
+            </if>
+            <if test="createBy != null" >
+                create_by,
+            </if>
+            <if test="createDate != null" >
+                create_date,
+            </if>
+            <if test="updateBy != null" >
+                update_by,
+            </if>
+            <if test="updateDate != null" >
+                update_date,
+            </if>
+            <if test="remarks != null" >
+                remarks,
+            </if>
+            <if test="delFlag != null" >
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="is_validate != null">
+                #{is_validate,jdbcType=INTEGER},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="expandFlag != null">
+                #{expandFlag,jdbcType=INTEGER},
+            </if>
+            <if test="headerPic != null">
+                #{headerPic,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null" >
+                #{createBy.id,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null" >
+                #{updateBy.id,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null" >
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null" >
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null" >
+                #{delFlag,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <insert id="insertExpandInfo" parameterType="Student" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into expand_student
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="sId != null" >
+                s_id,
+            </if>
+            <if test="node != null" >
+                node,
+            </if>
+            <if test="department != null and department.dNo != null and department.dNo != ''" >
+                department_no,
+            </if>
+            <if test="major != null and major.id != null and major.id != ''" >
+                major_id,
+            </if>
+            <if test="classes != null and classes.classId != null and classes.classId != ''" >
+                classes,
+            </if>
+            <if test="year != null" >
+                year,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+            <if test="sId != null" >
+                #{sId,jdbcType=INTEGER},
+            </if>
+            <if test="node != null" >
+                #{node,jdbcType=VARCHAR},
+            </if>
+            <if test="department != null and department.dNo != null and department.dNo != ''" >
+                #{department.dNo,jdbcType=INTEGER},
+            </if>
+            <if test="major != null and major.id != null and major.id != ''" >
+                #{major.id,jdbcType=INTEGER},
+            </if>
+            <if test="classes != null and classes.classId != null and classes.classId != ''" >
+                #{classes.classId,jdbcType=INTEGER},
+            </if>
+            <if test="year != null" >
+                #{year,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <insert id="insertStudentRole" parameterType="string">
+        INSERT INTO user_role (user_id,role_id) VALUES (#{userId},'5');
+    </insert>
+    <update id="updateUserInfo" parameterType="Student">
+        update sys_user
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null" >
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="is_validate != null">
+                is_validate = #{is_validate,jdbcType=INTEGER},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="expandFlag != null">
+                expand_flag = #{expandFlag,jdbcType=INTEGER},
+            </if>
+            <if test="headerPic != null">
+                header_pic = #{headerPic,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null" >
+                create_by = #{createBy.id,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null" >
+                update_by = #{updateBy.id,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null" >
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null" >
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null" >
+                del_flag = #{delFlag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateExpandInfo" parameterType="Student">
+        update expand_student
+        <set >
+            <if test="node != null" >
+                node = #{node,jdbcType=VARCHAR},
+            </if>
+            <if test="department != null and department.dNo != null and department.dNo != ''" >
+                department_no = #{department.dNo,jdbcType=INTEGER},
+            </if>
+            <if test="major != null and major.id != null and major.id != ''" >
+                major_id = #{major.id,jdbcType=INTEGER},
+            </if>
+            <if test="classes != null and classes.classId != null and classes.classId != ''" >
+                classes = #{classes.classId,jdbcType=INTEGER},
+            </if>
+            <if test="year != null" >
+                year = #{year,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where s_id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateUserPassword">
+        update sys_user set password = #{password,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateUserLonginInfo">
+        update sys_user set login_ip = #{loginIp,jdbcType=VARCHAR},
+        login_date = #{loginDate,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteUserInfo" parameterType="Student">
+        DELETE FROM sys_user WHERE id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <delete id="deleteExpandInfo" parameterType="Student">
+        DELETE FROM expand_student WHERE s_id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <delete id="deleteStudentRole" parameterType="Student">
+        DELETE FROM user_role WHERE user_id = #{id,jdbcType=NUMERIC}
+    </delete>
+</mapper>
