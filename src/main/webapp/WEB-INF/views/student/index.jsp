@@ -144,7 +144,7 @@
 									</a>
 									</c:if>
 									<c:if test="${gpms:getUser().student.step1 eq 1}">
-										<a href="javascript:void(0)" title="选择教师" class="iframeurl" name="${ctx}/student/chooseTeacherList">
+										<a href="javascript:void(0)" title="选择教师" class="iframeurl" name="${ctx}/student/chooseTeacherInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看教师
 										</a>
 									</c:if>

@@ -25,4 +25,12 @@ public interface ChooseTeacherMapper extends BaseMapper<TeacherInfo> {
      * @return
      */
     int stepOneEnd(User user);
+
+    /**
+     * 修改学生所选教师ID
+     * @param teacherId
+     * @param sId
+     * @return
+     */
+    int teacherIdEdit(@Param("teacherId") String teacherId,@Param("sId") String sId);
 }

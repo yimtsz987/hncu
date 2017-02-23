@@ -26,7 +26,7 @@
         s.major_id as "student.major.id",
         s.classes as "student.classes",
         s.title_id as "student.title.id",
-        s.teacher_id as "student.teacher.id",
+        s.teacher_id as "student.teacherId",
         s.year as "student.year",
         s.grade as "student.grade",
         s.step_1 as "student.step1",

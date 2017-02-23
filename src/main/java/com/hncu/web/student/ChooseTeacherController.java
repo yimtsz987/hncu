@@ -43,10 +43,13 @@ public class ChooseTeacherController extends BaseController {
 
     @RequestMapping(value = "/chooseTeacherList")
     public String chooseTeacherList(TeacherInfo teacherInfo, Model model, PageParam pageParam){
-        PageInfo<TeacherInfo> teacherInfoPageInfo = chooseTeacherService.queryListWithPage(teacherInfo, pageParam);
-
-        model.addAttribute("teacherInfoPageInfo", teacherInfoPageInfo);
-        return "student/chooseTeacherList";
+        if (StringUtils.isBlank(UserUtils.getCurrentUser().getStudent().getTeacherId())){
+            PageInfo<TeacherInfo> teacherInfoPageInfo = chooseTeacherService.queryListWithPage(teacherInfo, pageParam);
+            model.addAttribute("teacherInfoPageInfo", teacherInfoPageInfo);
+            return "student/chooseTeacherList";
+        } else {
+            return "redirect:/student/chooseTeacherInfo";
+        }
     }
 
     @RequestMapping(value = "/chooseTeacher")
@@ -65,8 +68,13 @@ public class ChooseTeacherController extends BaseController {
 
     @RequestMapping(value = "/chooseTeacherInfo")
     public String chooseTeacherInfo(Model model){
-        TeacherInfo teacherInfo = chooseTeacherService.queryById(UserUtils.getCurrentUser().getStudent().getTeacher().gettId());
-        model.addAttribute("teacherInfo",teacherInfo);
-        return "student/teacherInfo";
+        if (StringUtils.isNotBlank(UserUtils.getCurrentUser().getStudent().getTeacherId())){
+            TeacherInfo teacherInfo = chooseTeacherService.queryById(UserUtils.getCurrentUser().getStudent().getTeacherId());
+            model.addAttribute("teacherInfo",teacherInfo);
+            return "student/teacherInfo";
+        } else {
+            return "redirect:/student/chooseTeacherList";
+        }
+
     }
 }

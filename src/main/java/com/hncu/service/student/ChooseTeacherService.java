@@ -24,6 +24,7 @@ public class ChooseTeacherService extends BaseService<ChooseTeacherMapper, Teach
         teacherInfo.setStudentSum(teacherInfo.getStudentSum() + 1);
         teacherInfo.setStudentIds(teacherInfo.getStudentIds() + user.getId() + ",");
         mapper.chooseTeacher(teacherInfo);
+        mapper.teacherIdEdit(teacherInfo.getId(),user.getId());
         mapper.stepOneEnd(user);
     }
 
@@ -44,6 +45,5 @@ public class ChooseTeacherService extends BaseService<ChooseTeacherMapper, Teach
             choose(teacherInfo,user);
         }
     }
-
 
 }

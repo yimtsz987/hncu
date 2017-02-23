@@ -84,8 +84,11 @@
 								</span>
 							</td>
 							<td>
-								<c:if test="${teacher.studentSum <= 8}">
+								<c:if test="${teacher.studentSum < 1}">
 								   <a href="javascript:void(0)" class="btn btn-xs btn-primary"onclick="chooseBtn(this,${teacher.id})">选择</a>
+								</c:if>
+								<c:if test="${teacher.studentSum eq 1}">
+									<strong>不可选择</strong>
 								</c:if>
 							</td>
 						</tr>

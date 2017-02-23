@@ -73,4 +73,8 @@
     <update id="stepOneEnd" parameterType="User">
         UPDATE expand_student SET step_1 = '1' WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
+
+    <update id="teacherIdEdit" parameterType="string">
+        UPDATE expand_student SET teacher_id = #{teacherId,jdbcType=INTEGER} WHERE s_id = #{sId, jdbcType=INTEGER}
+    </update>
 </mapper>
