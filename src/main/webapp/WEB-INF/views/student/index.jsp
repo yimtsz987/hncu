@@ -126,7 +126,7 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="个人信息" class="iframeurl" name="studentinfo.html">
+							<a href="javascript:void(0)" title="个人信息" class="iframeurl" name="${ctx}/student/info">
 							   <i class="glyphicon glyphicon-home" ></i>个人信息
 							</a>
 						</li>
@@ -138,9 +138,16 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="javascript:void(0)" title="选择教师" class="iframeurl" name="ChooseTeacher.html">
+									<c:if test="${gpms:getUser().student.step1 eq 0}">
+									<a href="javascript:void(0)" title="选择教师" class="iframeurl" name="${ctx}/student/chooseTeacherList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、选择教师
 									</a>
+									</c:if>
+									<c:if test="${gpms:getUser().student.step1 eq 1}">
+										<a href="javascript:void(0)" title="选择教师" class="iframeurl" name="${ctx}/student/chooseTeacherList">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看教师
+										</a>
+									</c:if>
 								</li>
 								<li>
 									<a href="javascript:void(0)" title="选择课题" class="iframeurl" name="chooseTitle.html">
@@ -148,7 +155,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="javascript:void(0)" title="审题"class="iframeurl" name="examiningTitle.html">
+									<a href="javascript:void(0)" title="审题" class="iframeurl" name="examiningTitle.html">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>3、审题
 									</a>
 								</li>
@@ -158,7 +165,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="#" title="设计和论文撰写" class="iframeurl" name="designWriting.html">
+									<a href="javascript:void(0)" title="设计和论文撰写" class="iframeurl" name="designWriting.html">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>5、设计和论文撰写
 									</a>
 								</li>

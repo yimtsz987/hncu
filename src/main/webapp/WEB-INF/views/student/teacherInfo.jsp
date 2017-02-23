@@ -1,13 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/pageContnent.css" />
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<head>
+	<%@ include file="/WEB-INF/views/include/head.jsp"%>
 		<title>查看教师信息</title>
 		<style type="text/css">
 		    body,html{box-sizing: border-box;}

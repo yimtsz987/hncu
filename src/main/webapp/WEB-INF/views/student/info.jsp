@@ -1,31 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/pageContnent.css" />
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/Validform_v5.3.2_min.js" ></script>
-		<meta charset="UTF-8">
-		<title>form表单</title>
-		<style>
-			.Validform_checktip{
-				color: #999;
-				font-size: 12px;
-			}
-			.Validform_wrong{
-				background: url(img/error.png) no-repeat left center;
-				color: red;
-			}
-			.Validform_right{
-				background: url(img/right.png) no-repeat left center;
-				color: green;
-			}
-			
-		</style>
+<head>
+	<%@ include file="/WEB-INF/views/include/head.jsp"%>
+		<title>个人信息</title>
 		<style type="text/css">
 			.info-wrap{
 				width: 100%;

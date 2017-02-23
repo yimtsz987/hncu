@@ -27,6 +27,11 @@ public class TeacherInfo extends BaseEntity {
     private String professionalTitle;
     private String expandFlag = EXPAND_FLAG_TEACHER;
 
+    //choose
+    private String year;
+    private String studentSum;
+    private String studentIds;
+
     public TeacherInfo(){
 
     }
@@ -186,5 +191,29 @@ public class TeacherInfo extends BaseEntity {
 
     public void setExpandFlag(String expandFlag) {
         this.expandFlag = expandFlag;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getStudentSum() {
+        return studentSum;
+    }
+
+    public void setStudentSum(String studentSum) {
+        this.studentSum = studentSum;
+    }
+
+    public String getStudentIds() {
+        return studentIds;
+    }
+
+    public void setStudentIds(String studentIds) {
+        this.studentIds = studentIds;
     }
 }
