@@ -80,7 +80,7 @@
 			}
 			.ui-stepBar-wrap{position:relative;width:100%;height:130px;overflow:hidden;display:none;z-index:100;margin-top: 50px;}
 			.ui-stepBar-wrap .ui-stepBar{position:relative;width:90%;height:12px;background:#cccccc;top:52px;left:5%;z-index:101;}
-			.ui-stepBar-wrap .ui-stepBar .ui-stepProcess{position:relative;width:0;height:5px;background:#516784;top:0;left:0;z-index:102;}
+			.ui-stepBar-wrap .ui-stepBar .ui-stepProcess{position:relative;width:0;height:12px;background:#516784;top:0;left:0;z-index:102;}
 			.ui-stepBar-wrap .ui-stepInfo-wrap{width:90%;margin:0 auto;height:100%;}
 			.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo{position:relative;float:left;padding-top:36px;text-align:center;}
 			.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .ui-stepSequence{position:relative;padding:18px 25px;border-radius:50%;z-index:103;font-size: 18px;}
@@ -91,6 +91,7 @@
 			.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-hind-change:hover{box-shadow:0 0 3px 1px #cccccc;}
 			.judge-stepSequence-pre{background:#516784;color:#ffffff;}
 			.judge-stepSequence-hind{background:#cccccc;color:#000000;}
+			.judge-stepSequence-pre:hover{text-decoration: none;background: #62a8d1;color: #fff}
 			.author{position:absolute;bottom:0;width:100%;text-align:center;margin:40px auto;color:#1569ec;text-shadow:1px 1px 0 #e7e7e7, 0 1px 7px #fff;}
 		</style>
 	</head>
@@ -143,39 +144,51 @@
 					<table class="ui-stepLayout" border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">1</a>
-								<p class="ui-stepName">选择教师</p>
+								<a href="${ctx}/student/chooseTeacherInfo" class="ui-stepSequence">1</a>
+								<p class="ui-stepName">
+								    ${gpms:getUser().student.step1 eq 0 ? '选择教师' : '查看教师'}
+										<c:if test="${gpms:getUser().student.stepNow eq 1}">
+											<strong style="color: red">（当前进度）</strong>
+										</c:if>
+								</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">2</a>
-								<p class="ui-stepName">选择课题</p>
+								<a href="${ctx}/student/chooseTitleInfo" class="ui-stepSequence">2</a>
+								<p class="ui-stepName">
+								    ${gpms:getUser().student.step2 eq 0 ? '选择课题' : '查看课题'}
+										<c:if test="${gpms:getUser().student.stepNow eq 2}">
+											<strong style="color: red">（当前进度）</strong>
+										</c:if>
+								</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">3</a>
-								<p class="ui-stepName">审题</p>
+								<strong class="ui-stepSequence">3</strong>
+								<p class="ui-stepName">审题<c:if test="${gpms:getUser().student.stepNow eq 3}">
+									<strong style="color: red">（当前进度）</strong>
+								</c:if></p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">4</a>
+								<strong class="ui-stepSequence">4</strong>
 								<p class="ui-stepName">开题</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">5</a>
+								<strong class="ui-stepSequence">5</strong>
 								<p class="ui-stepName">设计和论文撰写</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">6</a>
+								<strong class="ui-stepSequence">6</strong>
 								<p class="ui-stepName">教师批阅</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">7</a>
+								<strong class="ui-stepSequence">7</strong>
 								<p class="ui-stepName">中期检查</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">8</a>
+								<strong class="ui-stepSequence">8</strong>
 								<p class="ui-stepName">评阅</p>
 							</td>
 							<td class="ui-stepInfo">
-								<a class="ui-stepSequence">9</a>
+								<strong class="ui-stepSequence">9</strong>
 								<p class="ui-stepName">答辩</p>
 							</td>
 						</tr>
@@ -199,7 +212,7 @@
 	    	$(".header-pic").css({"left":page_personal_width/2 - 45 });
 		})
 		stepBar.init("stepBar", {
-			step : 1,
+			step : ${gpms:getUser().student.stepNow},
 			animation : true
 		});
 	</script>

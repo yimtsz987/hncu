@@ -31,7 +31,7 @@ public class ChooseTeacherService extends BaseService<ChooseTeacherMapper, Teach
     @Transactional(readOnly = false)
     public void chooseTeacher(TeacherInfo teacherInfo,User user){
         boolean flag = true;
-        if (teacherInfo.getStudentIds() != null){
+        if (StringUtils.isNotBlank(teacherInfo.getStudentIds())){
             for (String id : StringUtils.split(teacherInfo.getStudentIds(),",")){
                 if (user.getId().equals(id)){
                     flag = false;

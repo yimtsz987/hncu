@@ -13,9 +13,9 @@ public class Title extends BaseEntity {
     private String description;
     private String level;
     private String kind;
-    private TeacherExpand teacher;
+    private String teacherId;
     private String year;
-    private String select_flag;
+    private String selectFlag;
 
     public String getTitle() {
         return title;
@@ -49,12 +49,12 @@ public class Title extends BaseEntity {
         this.kind = kind;
     }
 
-    public TeacherExpand getTeacher() {
-        return teacher;
+    public String getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher(TeacherExpand teacher) {
-        this.teacher = teacher;
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getYear() {
@@ -65,11 +65,11 @@ public class Title extends BaseEntity {
         this.year = year;
     }
 
-    public String getSelect_flag() {
-        return select_flag;
+    public String getSelectFlag() {
+        return selectFlag;
     }
 
-    public void setSelect_flag(String select_flag) {
-        this.select_flag = select_flag;
+    public void setSelectFlag(String selectFlag) {
+        this.selectFlag = selectFlag;
     }
 }

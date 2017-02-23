@@ -85,14 +85,14 @@
 			<div class="info-wrap">
 				<div class="info-left">
 					<div class="info-headerpic">
-						<img src="img/alumni.jpg" />
+						<img src="${ctxStatic}/${teacherInfo.headerPic}" />
 					</div>
 					<div class="info-text">
-					   <p>信息科学与工程学院</p>
-					   <p>网络工程</p>
-					   <p>1406102-07</p>
-					   <p>刘佳乐</p>
-					   <p>基于java的校友会信息管理系统</p>
+					   <p>${teacherInfo.department.name}</p>
+					   <p>${teacherInfo.name}</p>
+					   <p>${teacherInfo.node}</p>
+					   <p>${gpms:getDictLabel(teacherInfo.professionalTitle, 'professional')}</p>
+					   <p>${teacherInfo.researchDirection}</p>
 					</div>
 					<div class="info-left-btn">
 						<i class="glyphicon glyphicon-chevron-right"></i>
@@ -103,61 +103,57 @@
 				        <div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">教&nbsp;&nbsp;工&nbsp;&nbsp;号:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">1406102-07</div>
+								<div class="info-right-text">${teacherInfo.node}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">刘佳乐</div>
+								<div class="info-right-text">${teacherInfo.name}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">男</div>
+								<div class="info-right-text">${gpms:getDictLabel(teacherInfo.sex, 'sex')}</div>
 							</div>
 						</div><div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">信息科学与工程学院</div>
+								<div class="info-right-text">${teacherInfo.department.name}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">网络工程</div>
+								<div class="info-right-text">${gpms:getDictLabel(teacherInfo.professionalTitle, 'professional')}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">研&nbsp;究&nbsp;方&nbsp;向:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">1406102</div>
+								<div class="info-right-text">${teacherInfo.researchDirection}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">18670050440</div>
+								<div class="info-right-text">${teacherInfo.mobile}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">394702110@qq.com</div>
+								<div class="info-right-text">${teacherInfo.email}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">394702110</div>
+								<div class="info-right-text">${teacherInfo.qq}</div>
 							</div>
 						</div>
 				    </div>
-				    <div class="center-block" style="width: 150px;">
-				    	<div class="btn btn-info center-block" onclick="history.go(-1)">返回</div>
-				    </div>
-				     
 				</div>
 			</div>
 		</div>

@@ -100,7 +100,7 @@
 							<td>${student.year}</td>
 							<td>${student.mobile}</td>
 							<td>${student.email}</td>
-							<td>%64</td>
+							<td>${((student.stepNow - 1) / 10)*100}%</td>
 							<td>
 								<span class="label label-success label-custom">
 									进行中

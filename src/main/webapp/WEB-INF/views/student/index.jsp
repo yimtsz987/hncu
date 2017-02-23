@@ -144,15 +144,22 @@
 									</a>
 									</c:if>
 									<c:if test="${gpms:getUser().student.step1 eq 1}">
-										<a href="javascript:void(0)" title="选择教师" class="iframeurl" name="${ctx}/student/chooseTeacherInfo">
+										<a href="javascript:void(0)" title="查看教师" class="iframeurl" name="${ctx}/student/chooseTeacherInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看教师
 										</a>
 									</c:if>
 								</li>
 								<li>
-									<a href="javascript:void(0)" title="选择课题" class="iframeurl" name="chooseTitle.html">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、选择课题
-									</a>
+									<c:if test="${gpms:getUser().student.step2 eq 0}">
+										<a href="javascript:void(0)" title="选择课题" class="iframeurl" name="${ctx}/student/chooseTitleList">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>2、选择课题
+										</a>
+									</c:if>
+									<c:if test="${gpms:getUser().student.step2 eq 1}">
+										<a href="javascript:void(0)" title="查看课题" class="iframeurl" name="${ctx}/student/chooseTitleInfo">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>2、查看课题
+										</a>
+									</c:if>
 								</li>
 								<li>
 									<a href="javascript:void(0)" title="审题" class="iframeurl" name="examiningTitle.html">

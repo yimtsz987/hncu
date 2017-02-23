@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.ChooseTitleMapper">
+    <sql id="titleColumns">
+        t.id,
+        t.title,
+        t.description,
+        t.level,
+        t.kind,
+        t.teacher_id as "teacherId",
+        t.year,
+        t.select_flag as "selectFlag"
+    </sql>
+
+    <select id="queryList" parameterType="Title" resultType="Title">
+        SELECT <include refid="titleColumns" />
+        FROM graduation_title t
+        <where>
+            <if test="title != null and title != ''">
+                and t.title like concat ('%', #{title}, '%')
+            </if>
+            <if test="level != null and level != ''">
+                and t.level = #{level,jdbcType=INTEGER}
+            </if>
+            <if test="kind != null and kind != ''">
+                and t.kind = #{kind,jdbcType=INTEGER}
+            </if>
+            <if test="selectFlag != null and selectFlag != ''">
+                and t.select_flag = #{selectFlag,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Title">
+        SELECT <include refid="titleColumns" />
+        FROM graduation_title t
+        WHERE t.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <update id="chooseTitle" parameterType="Title">
+        UPDATE graduation_title SET select_flag = '1' WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <update id="stepTwoEnd" parameterType="User">
+        UPDATE expand_student SET step_2 = '1',step_now = 3 WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="titleIdEdit" parameterType="string">
+        UPDATE expand_student SET title_id = #{titleId,jdbcType=INTEGER} WHERE s_id = #{sId, jdbcType=INTEGER}
+    </update>
+</mapper>

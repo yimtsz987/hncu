@@ -1,18 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/pageContnent.css" />
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/Validform_v5.3.2_min.js" ></script>
-		
-		<script type="text/javascript" src="js/bootstrap-filestyle.js"></script>
-		<meta charset="UTF-8">
-		<title>查看课题</title>
+<head>
+	<%@ include file="/WEB-INF/views/include/head.jsp"%>
+	<title>查看课题</title>
 	</head>
 	<body>
 		<div class="page-content">
@@ -25,29 +17,26 @@
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">课题:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<div class="inp" style="margin: 7px;">1406102-10</div>
+						<div class="inp" style="margin: 7px;">${title.title}</div>
 					</div>
 				</div>
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">描述:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<div class="inp" style="margin: 7px;">vate</div>
+						<div class="inp" style="margin: 7px;">${title.description}</div>
 					</div>
 				</div>
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">难度:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<div class="inp" style="margin: 7px;">课题</div>
+						<div class="inp" style="margin: 7px;">${gpms:getDictLabel(title.level, 'level')}</div>
 					</div>
 				</div>
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">类别:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<div class="inp" style="margin: 7px;">课题</div>
+						<div class="inp" style="margin: 7px;">${gpms:getDictLabel(title.kind, 'kind')}</div>
 					</div>
-				</div>
-				<div class="form-action">
-					<input class="btn btn-primary" type="button" value="返回" onclick="history.go(-1)"/>
 				</div>
 			</form>
 		</div>

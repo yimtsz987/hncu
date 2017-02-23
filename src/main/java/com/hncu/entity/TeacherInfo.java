@@ -29,7 +29,7 @@ public class TeacherInfo extends BaseEntity {
 
     //choose
     private String year;
-    private String studentSum;
+    private Integer studentSum;
     private String studentIds;
 
     public TeacherInfo(){
@@ -201,11 +201,11 @@ public class TeacherInfo extends BaseEntity {
         this.year = year;
     }
 
-    public String getStudentSum() {
+    public Integer getStudentSum() {
         return studentSum;
     }
 
-    public void setStudentSum(String studentSum) {
+    public void setStudentSum(Integer studentSum) {
         this.studentSum = studentSum;
     }
 

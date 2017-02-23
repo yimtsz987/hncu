@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-02-23 13:51:07
+Date: 2017-02-23 22:12:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -129,7 +129,7 @@ CREATE TABLE `dict` (
   `sort` decimal(10,0) NOT NULL COMMENT '排序（升序）',
   `parent_id` varchar(64) DEFAULT '0' COMMENT '父级编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dict
@@ -144,6 +144,13 @@ INSERT INTO `dict` VALUES ('7', '0', '男', 'sex', '性别', '10', '0');
 INSERT INTO `dict` VALUES ('8', '1', '女', 'sex', '性别', '20', '0');
 INSERT INTO `dict` VALUES ('9', '1', '教授', 'professional', '职称', '10', '0');
 INSERT INTO `dict` VALUES ('10', '2', '副教授', 'professional', '职称', '20', '0');
+INSERT INTO `dict` VALUES ('11', '1', '简单', 'level', '难度', '10', '0');
+INSERT INTO `dict` VALUES ('12', '2', '中等', 'level', '难度', '20', '0');
+INSERT INTO `dict` VALUES ('13', '3', '困难', 'level', '难度', '30', '0');
+INSERT INTO `dict` VALUES ('14', '1', 'javaweb开发', 'kind', '类别', '10', '0');
+INSERT INTO `dict` VALUES ('15', '2', '安卓开发', 'kind', '类别', '20', '0');
+INSERT INTO `dict` VALUES ('16', '0', '未选择', 'state', '状态', '10', '0');
+INSERT INTO `dict` VALUES ('17', '1', '已选择', 'state', '状态', '20', '0');
 
 -- ----------------------------
 -- Table structure for download
@@ -203,6 +210,7 @@ CREATE TABLE `expand_student` (
   `step_7` tinyint(1) NOT NULL DEFAULT '0',
   `step_8` tinyint(1) NOT NULL DEFAULT '0',
   `step_9` tinyint(1) NOT NULL DEFAULT '0',
+  `step_now` tinyint(1) NOT NULL DEFAULT '1',
   `answer_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '答辩分组（0未分组1已分组）',
   `expand_flag` tinyint(1) NOT NULL DEFAULT '1' COMMENT '学生拓展标识',
   PRIMARY KEY (`s_id`)
@@ -211,9 +219,9 @@ CREATE TABLE `expand_student` (
 -- ----------------------------
 -- Records of expand_student
 -- ----------------------------
-INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', null, null, '2014', null, '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
-INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', null, null, '2014', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
-INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', null, null, '2014', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', '1', '2', '2014', null, '1', '1', '0', '0', '0', '0', '0', '0', '0', '3', '0', '1');
+INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', null, '3', '2014', null, '1', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '1');
+INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', null, '2', '2014', null, '1', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '1');
 
 -- ----------------------------
 -- Table structure for expand_teacher
@@ -268,13 +276,14 @@ CREATE TABLE `graduation_title` (
   `kind` tinyint(1) NOT NULL COMMENT '种类',
   `teacher_id` int(11) NOT NULL COMMENT '教师id',
   `year` varchar(5) NOT NULL COMMENT '级数',
-  `select_flag` tinyint(1) NOT NULL COMMENT '是否选择（0未选1已选）',
+  `select_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否选择（0未选1已选）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graduation_title
 -- ----------------------------
+INSERT INTO `graduation_title` VALUES ('1', '基于java的毕业设计管理系统', '采用spring等主流框架', '1', '1', '2', '2013', '1');
 
 -- ----------------------------
 -- Table structure for major
@@ -524,7 +533,7 @@ CREATE TABLE `system_parameter` (
   `label` varchar(30) NOT NULL,
   `param_value` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of system_parameter
@@ -532,6 +541,7 @@ CREATE TABLE `system_parameter` (
 INSERT INTO `system_parameter` VALUES ('1', 'year', '当前年级', '2013');
 INSERT INTO `system_parameter` VALUES ('2', 'department', '启用学院', '信息科学与工程学院');
 INSERT INTO `system_parameter` VALUES ('3', 'version', '系统版本', 'v1.1');
+INSERT INTO `system_parameter` VALUES ('4', 'maxTeacherNum', '学生选择老师最大数量', '8');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -641,7 +651,7 @@ DROP TABLE IF EXISTS `teacher_year_student`;
 CREATE TABLE `teacher_year_student` (
   `teacher_id` int(11) NOT NULL,
   `year` varchar(5) NOT NULL,
-  `student_sum` varchar(2) NOT NULL DEFAULT '0',
+  `student_sum` int(2) NOT NULL DEFAULT '0',
   `student_ids` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -649,7 +659,8 @@ CREATE TABLE `teacher_year_student` (
 -- ----------------------------
 -- Records of teacher_year_student
 -- ----------------------------
-INSERT INTO `teacher_year_student` VALUES ('2', '2013', '01', 'null5,');
+INSERT INTO `teacher_year_student` VALUES ('2', '2013', '2', '5,8,');
+INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,');
 
 -- ----------------------------
 -- Table structure for understanding_report

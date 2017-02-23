@@ -38,6 +38,7 @@
         s.step_7 as "step7",
         s.step_8 as "step8",
         s.step_9 as "step9",
+        s.step_now as "stepNow",
         s.answer_flag as "answerFlag",
         s.expand_flag as "expandFlag",
         d.name as "department.name",

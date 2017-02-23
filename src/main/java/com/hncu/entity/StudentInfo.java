@@ -27,7 +27,7 @@ public class StudentInfo extends BaseEntity {
     private Major major;
     private Classes classes;
     private Title titleId;
-    private TeacherExpand teacher;
+    private String teacherId;
     private String year;
     private String grade;
     private String step1;
@@ -39,6 +39,7 @@ public class StudentInfo extends BaseEntity {
     private String step7;
     private String step8;
     private String step9;
+    private Integer stepNow;
     private String answerFlag = ANSWER_FLAG_NO;
     private String expandFlag = EXPAND_FLAG_STUDENT;
 
@@ -203,12 +204,12 @@ public class StudentInfo extends BaseEntity {
         this.titleId = titleId;
     }
 
-    public TeacherExpand getTeacher() {
-        return teacher;
+    public String getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher(TeacherExpand teacher) {
-        this.teacher = teacher;
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getYear() {
@@ -297,6 +298,14 @@ public class StudentInfo extends BaseEntity {
 
     public void setStep9(String step9) {
         this.step9 = step9;
+    }
+
+    public Integer getStepNow() {
+        return stepNow;
+    }
+
+    public void setStepNow(Integer stepNow) {
+        this.stepNow = stepNow;
     }
 
     public String getAnswerFlag() {
