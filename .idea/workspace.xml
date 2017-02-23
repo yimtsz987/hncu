@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="50d6e13d-5cf0-46b0-a6f5-55196800fdc1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/student/InfoStudentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/student/InfoStudentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/reply.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/reply.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/student/index.jsp" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/student/index.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/chooseTeacher.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/chooseTeacherList.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/studentinfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/info.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/teacherInfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/teacherInfo.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graduation_project_management.sql" afterPath="$PROJECT_DIR$/graduation_project_management.sql" />
     </list>
     <ignored path="gpms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1624,7 +1617,7 @@
       <workItem from="1487767700879" duration="3802000" />
       <workItem from="1487816048772" duration="6617000" />
       <workItem from="1487825439114" duration="2633000" />
-      <workItem from="1487828359716" duration="656000" />
+      <workItem from="1487828359716" duration="733000" />
     </task>
     <task id="LOCAL-00001" summary="Rejected commit: Default">
       <created>1484699678383</created>
@@ -1682,11 +1675,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487768097836</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Rejected commit: Default">
+      <created>1487829028714</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1487829028714</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252233000" />
+    <option name="totallyTimeSpent" value="252310000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1987,6 +1987,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4218">
           <caret line="222" column="18" lean-forward="false" selection-start-line="222" selection-start-column="18" selection-end-line="222" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.ChooseTeacherMapper">
+    <sql id="teacherColumns">
+        u.id,
+        u.name,
+        u.username as "username",
+        u.password,
+        u.idcard as "idCard",
+        u.mobile,
+        u.address,
+        u.sex,
+        u.age,
+        u.email,
+        u.is_validate as "isValidate",
+        u.qq,
+        u.expand_flag as "expandFlag",
+        u.header_pic as "headerPic",
+        u.create_by as "createBy.id",
+        u.create_date as "createDate",
+        u.update_by as "updateBy.id",
+        u.update_date as "updateDate",
+        u.remarks,
+        t.t_id as "tId",
+        t.node,
+        t.department_no as "department.dNo",
+        t.research_direction as "researchDirection",
+        t.professional_title as "professionalTitle",
+        t.expand_flag as "expandFlag",
+        d.name as "department.name",
+        tys.year,
+        tys.student_sum as "studentSum",
+        tys.student_ids as "studentIds"
+    </sql>
+
+    <sql id="teacherJoins">
+        LEFT JOIN expand_teacher t on t.t_id = u.id
+        LEFT JOIN department d on d.d_no = t.department_no
+        LEFT JOIN teacher_year_student tys on tys.teacher_id = u.id
+    </sql>
+
+    <select id="queryList" parameterType="Teacher" resultType="Teacher">
+        SELECT <include refid="teacherColumns" />
+        FROM sys_user u
+        <include refid="teacherJoins" />
+        WHERE u.expand_flag = '2'
+        <if test="node != null and node != ''">
+            and t.node like concat ('%', #{node}, '%')
+        </if>
+        <if test="name != null and name != ''">
+            and u.name like concat ('%', #{name}, '%')
+        </if>
+        <if test="professionalTitle != null and professionalTitle != ''">
+            and t.professional_title = #{professionalTitle,jdbcType=INTEGER}
+        </if>
+        <if test="researchDirection != null and researchDirection != ''">
+            and t.research_direction like concat ('%', #{researchDirection}, '%')
+        </if>
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Teacher">
+        SELECT <include refid="teacherColumns" />
+        FROM sys_user u
+        <include refid="teacherJoins" />
+        WHERE u.id = #{id, jdbcType=NUMERIC}
+        and u.del_flag = '0'
+    </select>
+
+    <update id="chooseTeacher" parameterType="Teacher">
+        UPDATE teacher_year_student SET student_sum = #{studentSum,jdbcType=INTEGER},student_ids = #{studentIds,jdbcType=VARCHAR} WHERE teacher_id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <update id="stepOneEnd" parameterType="User">
+        UPDATE expand_student SET step_1 = '1' WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

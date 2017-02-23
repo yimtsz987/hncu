@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-01-20 05:24:48
+Date: 2017-02-23 13:51:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -129,7 +129,7 @@ CREATE TABLE `dict` (
   `sort` decimal(10,0) NOT NULL COMMENT '排序（升序）',
   `parent_id` varchar(64) DEFAULT '0' COMMENT '父级编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dict
@@ -140,6 +140,10 @@ INSERT INTO `dict` VALUES ('3', '1', '显示', 'show_hide', '显示/隐藏', '10
 INSERT INTO `dict` VALUES ('4', '0', '隐藏', 'show_hide', '显示/隐藏', '20', '0');
 INSERT INTO `dict` VALUES ('5', '0', '未上传', 'upload', '未上传/已上传', '10', '0');
 INSERT INTO `dict` VALUES ('6', '1', '已上传', 'upload', '未上传/已上传', '20', '0');
+INSERT INTO `dict` VALUES ('7', '0', '男', 'sex', '性别', '10', '0');
+INSERT INTO `dict` VALUES ('8', '1', '女', 'sex', '性别', '20', '0');
+INSERT INTO `dict` VALUES ('9', '1', '教授', 'professional', '职称', '10', '0');
+INSERT INTO `dict` VALUES ('10', '2', '副教授', 'professional', '职称', '20', '0');
 
 -- ----------------------------
 -- Table structure for download
@@ -149,14 +153,14 @@ CREATE TABLE `download` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
   `issuer` int(11) NOT NULL,
-  `issueDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `issueDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `description` varchar(200) DEFAULT NULL,
   `receive` varchar(200) NOT NULL COMMENT '1系统管理员2教务秘书3教研室主任4教师5学生',
   `uploadFile` varchar(200) NOT NULL,
   `uploadPath` varchar(500) NOT NULL,
   `uploadFileOldName` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of download
@@ -172,6 +176,9 @@ INSERT INTO `download` VALUES ('10', '图片', '1', '2017-01-19 16:22:23', '测�
 INSERT INTO `download` VALUES ('11', '图片', '1', '2017-01-19 16:35:31', '测试', '4', '1484814931987QQ截图20170105012353.png', 'E://gpmsUpload/admin/1484814931987QQ截图20170105012353.png', 'QQ截图20170105012353.png');
 INSERT INTO `download` VALUES ('12', '图片', '1', '2017-01-19 16:37:54', '未上传/已上传', '3', '1484815074857QQ截图20170105012353.png', 'E://gpmsUpload/admin/1484815074857QQ截图20170105012353.png', 'QQ截图20170105012353.png');
 INSERT INTO `download` VALUES ('13', '图片', '1', '2017-01-19 16:38:50', '测试', '3', '1484815130467QQ截图20170105012353.png', 'E://gpmsUpload/admin/1484815130467QQ截图20170105012353.png', 'QQ截图20170105012353.png');
+INSERT INTO `download` VALUES ('15', '图片', '1', '2017-01-20 07:25:08', '测试', '4,5', '1484868294696QQ截图20170105012353.png', 'E://gpmsUpload/admin/1484868294696QQ截图20170105012353.png', 'QQ截图20170105012353.png');
+INSERT INTO `download` VALUES ('16', '图片', '1', '2017-01-20 08:23:00', '测试', '4,5', '1484871779847QQ截图20161222110826.png', 'E://gpmsUpload/admin/1484871779847QQ截图20161222110826.png', 'QQ截图20161222110826.png');
+INSERT INTO `download` VALUES ('17', '图片', '1', '2017-01-20 08:26:32', '测试', '3,4,5', '14848719926812016年项目清单.xlsx', 'E://gpmsUpload/admin/14848719926812016年项目清单.xlsx', '2016年项目清单.xlsx');
 
 -- ----------------------------
 -- Table structure for expand_student
@@ -204,7 +211,9 @@ CREATE TABLE `expand_student` (
 -- ----------------------------
 -- Records of expand_student
 -- ----------------------------
-INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', null, null, '2014', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '5');
+INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', null, null, '2014', null, '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', null, null, '2014', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', null, null, '2014', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for expand_teacher
@@ -223,8 +232,10 @@ CREATE TABLE `expand_teacher` (
 -- ----------------------------
 -- Records of expand_teacher
 -- ----------------------------
-INSERT INTO `expand_teacher` VALUES ('3', '0002', '6', '安卓开发', '1', '3');
-INSERT INTO `expand_teacher` VALUES ('4', '0003', '6', '软件开发', '1', '4');
+INSERT INTO `expand_teacher` VALUES ('2', '0001', '6', 'WEB开发', '1', '2');
+INSERT INTO `expand_teacher` VALUES ('3', '0002', '6', '安卓开发', '1', '2');
+INSERT INTO `expand_teacher` VALUES ('4', '0003', '6', '软件开发', '1', '2');
+INSERT INTO `expand_teacher` VALUES ('10', '0004', '6', '嵌入式', '1', '2');
 
 -- ----------------------------
 -- Table structure for graduation_schedule
@@ -513,13 +524,14 @@ CREATE TABLE `system_parameter` (
   `label` varchar(30) NOT NULL,
   `param_value` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of system_parameter
 -- ----------------------------
 INSERT INTO `system_parameter` VALUES ('1', 'year', '当前年级', '2013');
 INSERT INTO `system_parameter` VALUES ('2', 'department', '启用学院', '信息科学与工程学院');
+INSERT INTO `system_parameter` VALUES ('3', 'version', '系统版本', 'v1.1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -547,16 +559,19 @@ CREATE TABLE `sys_user` (
   `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除（0不删除1删除）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1', '系统管理员', 'admin', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '0', '0', '0', '0', '0', 'img/man.jpg', '1', '2016-12-23 16:39:19', '1', '2016-12-23 16:39:15', '', '0');
-INSERT INTO `sys_user` VALUES ('2', '周建存', '0001', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '40', '123456@qq.com', '0', '123456', '2', 'img/man.jpg', null, '2016-12-23 16:41:26', null, null, null, '0');
+INSERT INTO `sys_user` VALUES ('2', '周建存', '0001', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '18670050440', '湖南益阳', '0', '40', '123456@qq.com', '0', '123456', '2', 'img/man.jpg', null, '2016-12-23 16:41:26', '1', '2017-02-22 11:41:55', null, '0');
 INSERT INTO `sys_user` VALUES ('3', '小明', '0002', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '30', '222222@qq.com', '0', '222222', '2', 'img/man.jpg', null, '2016-12-23 16:42:24', null, null, null, '0');
 INSERT INTO `sys_user` VALUES ('4', '小红', '0003', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '1', '30', '333333@qq.com', '0', '333333', '2', 'img/woman.jpg', null, '2016-12-23 16:43:14', null, null, null, '0');
-INSERT INTO `sys_user` VALUES ('5', '刘佳乐', '2014051656', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '43012419403116559', '18670050440', '湖南长沙', '0', '22', '394702110@qqcom', '0', '394702110', '1', 'img/man.jpg', null, '2016-12-23 16:44:12', null, null, null, '0');
+INSERT INTO `sys_user` VALUES ('5', '刘佳乐', '2014051656', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '43012419403116559', '18670050440', '湖南长沙', '0', '22', '394702110@qq.com', '0', '394702110', '1', 'img/man.jpg', null, '2016-12-23 16:44:12', null, null, null, '0');
+INSERT INTO `sys_user` VALUES ('7', '肖帆', '2014051654', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '430124199506111234', '18670050440', '湖南长沙', '0', '20', '394702110@qq.com', '0', '394702110', '1', 'img/man.jpg', null, '2017-01-30 13:36:37', '1', '2017-02-21 11:28:42', '1', '0');
+INSERT INTO `sys_user` VALUES ('8', '张烁', '2014051655', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '430124199506111234', '18670050440', '湖南长沙', '0', '22', '394702110@qq.com', '0', '394702110', '1', 'img/man.jpg', '1', '2017-02-22 10:39:12', '1', '2017-02-22 10:39:12', '无', '0');
+INSERT INTO `sys_user` VALUES ('10', '李华', '0004', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '18670050440', '湖南长沙', '0', '20', '394702110@qq.com', '0', '394702110', '2', 'img/man.jpg', '1', '2017-02-22 11:51:47', '1', '2017-02-22 11:51:47', null, '0');
 
 -- ----------------------------
 -- Table structure for teacher_marking
@@ -626,13 +641,15 @@ DROP TABLE IF EXISTS `teacher_year_student`;
 CREATE TABLE `teacher_year_student` (
   `teacher_id` int(11) NOT NULL,
   `year` varchar(5) NOT NULL,
-  `student_sum` varchar(2) NOT NULL,
+  `student_sum` varchar(2) NOT NULL DEFAULT '0',
+  `student_ids` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_year_student
 -- ----------------------------
+INSERT INTO `teacher_year_student` VALUES ('2', '2013', '01', 'null5,');
 
 -- ----------------------------
 -- Table structure for understanding_report
@@ -672,3 +689,6 @@ INSERT INTO `user_role` VALUES ('4', '4');
 INSERT INTO `user_role` VALUES ('5', '5');
 INSERT INTO `user_role` VALUES ('2', '4');
 INSERT INTO `user_role` VALUES ('3', '4');
+INSERT INTO `user_role` VALUES ('7', '5');
+INSERT INTO `user_role` VALUES ('8', '5');
+INSERT INTO `user_role` VALUES ('10', '4');
