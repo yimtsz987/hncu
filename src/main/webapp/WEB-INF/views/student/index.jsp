@@ -143,59 +143,82 @@
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、选择教师
 									</a>
 									</c:if>
-									<c:if test="${gpms:getUser().student.step1 eq 1}">
+									<c:if test="${gpms:getUser().student.step1 ne 0}">
 										<a href="javascript:void(0)" title="查看教师" class="iframeurl" name="${ctx}/student/chooseTeacherInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看教师
 										</a>
 									</c:if>
 								</li>
+							<c:if test="${gpms:getUser().student.stepNow >= 2 and gpms:getUser().student.step1 eq 2}">
 								<li>
 									<c:if test="${gpms:getUser().student.step2 eq 0}">
 										<a href="javascript:void(0)" title="选择课题" class="iframeurl" name="${ctx}/student/chooseTitleList">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>2、选择课题
 										</a>
 									</c:if>
-									<c:if test="${gpms:getUser().student.step2 eq 1}">
+									<c:if test="${gpms:getUser().student.step2 ne 0}">
 										<a href="javascript:void(0)" title="查看课题" class="iframeurl" name="${ctx}/student/chooseTitleInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>2、查看课题
 										</a>
 									</c:if>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 3 and gpms:getUser().student.step2 eq 2}">
 								<li>
-									<a href="javascript:void(0)" title="审题" class="iframeurl" name="examiningTitle.html">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>3、审题
-									</a>
+									<c:if test="${gpms:getUser().student.step3 eq 0}">
+										<a href="javascript:void(0)" title="审题" class="iframeurl" name="${ctx}/student/understanding">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>3、审题
+										</a>
+									</c:if>
+									<c:if test="${gpms:getUser().student.step3 ne 0}">
+										<a href="javascript:void(0)" title="审题" class="iframeurl" name="${ctx}/student/understandingInfo">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>3、查看审题
+										</a>
+									</c:if>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 4 and gpms:getUser().student.step3 eq 2}">
 								<li>
 									<a href="javascript:void(0)" title="开题" class="iframeurl" name="uploadBuild.html">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>4、开题
 									</a>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 5 and gpms:getUser().student.step4 eq 2}">
 								<li>
-									<a href="javascript:void(0)" title="设计和论文撰写" class="iframeurl" name="designWriting.html">
+									<a href="javascript:void(0)" title="设计和论文撰写" class="iframeurl" name="${ctx}/student/scheduleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>5、设计和论文撰写
 									</a>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 6 and gpms:getUser().student.step5 eq 2}">
 								<li>
 									<a href="javascript:void(0)" title="教师批阅" class="iframeurl" name="teacherMarking.html">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>6、教师批阅
 									</a>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 7 and gpms:getUser().student.step6 eq 2}">
 								<li>
 									<a href="javascript:void(0)" class="iframeurl" name="middleCheck.html" title="中期检查">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>7、中期检查
 									</a>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 8 and gpms:getUser().student.step7 eq 2}">
 								<li>
 									<a href="javascript:void(0)" class="iframeurl" name="teacherReview.html" title="评阅">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>8、评阅
 									</a>
 								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow >= 9 and gpms:getUser().student.step8 eq 2}">
 								<li>
 									<a href="javascript:void(0)" class="iframeurl" name="reply.html" title="答辩">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>9、答辩
 									</a>
 								</li>
+							</c:if>
 							</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" class="iframeurl" name="procedure.html" title="流程进度">

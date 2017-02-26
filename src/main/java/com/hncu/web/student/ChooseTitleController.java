@@ -26,7 +26,6 @@ import javax.annotation.Resource;
 @RequestMapping(value = "/student")
 public class ChooseTitleController extends BaseController {
 
-    private static final long serialVersionUID = -8828412962426421254L;
     @Resource
     private ChooseTitleService chooseTitleService;
 
@@ -42,6 +41,7 @@ public class ChooseTitleController extends BaseController {
     @RequestMapping(value = "/chooseTitleList")
     public String chooseTeacherList(Title title, Model model, PageParam pageParam){
         if (StringUtils.isBlank(UserUtils.getCurrentUser().getStudent().getTitleId())){
+            title.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
             PageInfo<Title> titlePageInfo = chooseTitleService.queryListWithPage(title, pageParam);
             model.addAttribute("titlePageInfo", titlePageInfo);
             return "student/chooseTitleList";

@@ -1,32 +1,23 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/pageContnent.css" />
-		<script type="text/javascript" src="js/jquery-3.0.0.min.js" ></script>
-		<script type="text/javascript" src="js/layer.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/Validform_v5.3.2_min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap-filestyle.js"></script>
-		<title></title>
-		<style>
-			
-		</style>
+<head>
+	<%@ include file="/WEB-INF/views/include/head.jsp"%>
+		<title>上传审题报告</title>
 	</head>
 	<body>
 		<div class="page-content">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#">选题添加</a>
+					<a href="#">上传审题报告</a>
 				</li>
 			</ul>
-				<form class="form col-lg-12"style="margin-top: 50px;">
+                <form:form action="${ctx}/student/uploadReport" enctype="multipart/form-data" method="post" cssClass="form col-lg-12" cssStyle="margin-top: 50px;" id="form-id" modelAttribute="understanding">
+					<form:hidden path="id" />
 					<div class="col-lg-12" style="padding: 100px 0;">
 						<div class="form-group col-lg-6 center-block"style="width: 600px;float: none;">
-							<input type="file" accept="application/msword" id="input01">
+							<input type="file" accept="application/msword" name="file" id="input01">
 						</div>
 					</div>
 					<div class="form-action col-lg-12">
@@ -37,7 +28,7 @@
 								<input class="btn btn-primary" type="button" value="返回" onclick="history.go(-1)"/>
 						</div>
 					</div>
-				</form>
+				</form:form>
 		</div>
 	</body>
 	<script type="text/javascript">

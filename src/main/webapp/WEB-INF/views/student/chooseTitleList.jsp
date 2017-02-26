@@ -19,6 +19,8 @@
 			<div class="page-search">
 				<div class="search-title">搜索查询</div>
 				    <form:form id="searchForm" modelAttribute="title" action="${ctx}/student/chooseTitleList" method="post" cssClass="form-horizontal">
+						<input id="pageNum" name="pageNum" type="hidden" value="${titlePageInfo.pageNum}"/>
+						<input id="pageSize" name="pageSize" type="hidden" value="${titlePageInfo.pageSize}"/>
 						<div class="form-group pull-left col-lg-3">
 							<label for="title" class="col-lg-3 control-label">课题</label>
 							<div class="col-lg-9">

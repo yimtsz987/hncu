@@ -22,6 +22,8 @@
 		<typeAlias type="com.hncu.entity.Upload" alias="Upload" />
 		<typeAlias type="com.hncu.entity.StudentInfo" alias="Student" />
 		<typeAlias type="com.hncu.entity.TeacherInfo" alias="Teacher" />
+		<typeAlias type="com.hncu.entity.Understanding" alias="Understanding" />
+		<typeAlias type="com.hncu.entity.Schedule" alias="Schedule" />
 	</typeAliases>
 
 

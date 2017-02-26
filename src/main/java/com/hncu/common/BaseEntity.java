@@ -53,6 +53,32 @@ public class BaseEntity implements Serializable {
      * 分组标记 - 已分组
      */
     public static final String ANSWER_FLAG_YES = "1";
+    /**
+     * 步骤标记 - 未开始
+     */
+    public static final String STEP_FLAG_NO = "0";
+    /**
+     * 步骤标记 - 审查
+     */
+    public static final String STEP_FLAG_CHECK = "1";
+    /**
+     * 步骤标记 - 通过
+     */
+    public static final String STEP_FLAG_YES = "2";
+
+    /**
+     * 当前步骤 - 1 — 9
+     */
+    public static final String STEP_NOW_1 = "1";
+    public static final String STEP_NOW_2 = "2";
+    public static final String STEP_NOW_3 = "3";
+    public static final String STEP_NOW_4 = "4";
+    public static final String STEP_NOW_5 = "5";
+    public static final String STEP_NOW_6 = "6";
+    public static final String STEP_NOW_7 = "7";
+    public static final String STEP_NOW_8 = "8";
+    public static final String STEP_NOW_9 = "9";
+
 
     protected String id;  //主键
     protected User createBy; //创建者

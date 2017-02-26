@@ -46,7 +46,8 @@
         t.research_direction as "teacher.researchDirection",
         t.professional_title as "teacher.professionalTitle",
         d.name as "student.department.name",
-        m.name as "student.major.name"
+        m.name as "student.major.name",
+        gt.title as "student.titleName"
     </sql>
 
     <sql id="userJoins">
@@ -54,6 +55,7 @@
         LEFT JOIN expand_teacher t on t.t_id = u.id
         LEFT JOIN department d on d.d_no = s.department_no
         LEFT JOIN major m on m.id = s.major_id
+        LEFT JOIN graduation_title gt on gt.id = s.title_id
     </sql>
 
     <select id="queryList" parameterType="User" resultType="User">

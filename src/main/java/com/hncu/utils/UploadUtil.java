@@ -22,6 +22,14 @@ public class UploadUtil {
 
     public static final String UPLOAD_SYS_PATH = "E://gpmsUpload/";
 
+    /**
+     * 上传
+     * @param request
+     * @param response
+     * @return
+     * @throws IllegalStateException
+     * @throws IOException
+     */
     public static UploadParam upload(HttpServletRequest request, HttpServletResponse response) throws IllegalStateException, IOException {
         UploadParam uploadParam = new UploadParam();
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
@@ -50,5 +58,19 @@ public class UploadUtil {
             }
         }
         return uploadParam;
+    }
+
+    /**
+     * 删除单个文件
+     * @param   fileName    被删除文件的文件名
+     * @return 单个文件删除成功返回true,否则返回false
+     */
+    public static boolean deleteFile(String fileName){
+        File file = new File(fileName);
+        if (file.isFile() && file.exists()) {
+            file.delete();//"删除单个文件"+name+"成功！"
+            return true;
+        }//"删除单个文件"+name+"失败！"
+        return false;
     }
 }

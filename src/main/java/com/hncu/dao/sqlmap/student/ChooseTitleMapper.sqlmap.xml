@@ -15,7 +15,7 @@
     <select id="queryList" parameterType="Title" resultType="Title">
         SELECT <include refid="titleColumns" />
         FROM graduation_title t
-        <where>
+        WHERE t.teacher_id = #{teacherId}
             <if test="title != null and title != ''">
                 and t.title like concat ('%', #{title}, '%')
             </if>
@@ -28,7 +28,6 @@
             <if test="selectFlag != null and selectFlag != ''">
                 and t.select_flag = #{selectFlag,jdbcType=INTEGER}
             </if>
-        </where>
     </select>
 
     <select id="queryById" parameterType="string" resultType="Title">
@@ -42,7 +41,7 @@
     </update>
     
     <update id="stepTwoEnd" parameterType="User">
-        UPDATE expand_student SET step_2 = '1',step_now = 3 WHERE s_id = #{id,jdbcType=INTEGER}
+        UPDATE expand_student SET step_2 = #{STEP_FLAG_YES,jdbcType=INTEGER},step_now = #{STEP_NOW_3,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="titleIdEdit" parameterType="string">

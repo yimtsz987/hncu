@@ -119,6 +119,16 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	}
 
 	/**
+	 * 获取指定时间距离今天的天数
+	 * @param date
+	 * @return
+	 */
+	public static long distanceDays(Date date){
+		long t = date.getTime() -  new Date().getTime();
+		return t/(24*60*60*1000);
+	}
+
+	/**
 	 * 获取过去的小时
 	 * @param date
 	 * @return
