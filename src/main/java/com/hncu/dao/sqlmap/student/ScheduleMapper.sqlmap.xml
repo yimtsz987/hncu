@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.ScheduleMapper">
+    <sql id="scheduleColumns">
+        s.student_id as "studentId",
+        s.sort,
+        s.content,
+        s.start_date as "startDate",
+        s.end_date as "endDate",
+        s.report_id,
+        s.report_flag as "reportFlag",
+        s.uploadFile,
+        s.uploadPath,
+        s.uploadFileOldName
+    </sql>
+
+    <select id="queryList" parameterType="Schedule" resultType="Schedule">
+        SELECT <include refid="scheduleColumns" />
+        FROM graduation_schedule s
+        WHERE s.student_id = #{studentId,jdbcType=INTEGER}
+            <if test="sort != null and sort != ''">
+                and s.sort like concat ('%', #{sort}, '%')
+            </if>
+            <if test="content != null and content != ''">
+                and s.content like concat ('%', #{content}, '%')
+            </if>
+            <if test="reportFlag != null and reportFlag != ''">
+                and s.report_flag = #{reportFlag,jdbcType=INTEGER}
+            </if>
+        ORDER BY s.sort ASC
+    </select>
+
+</mapper>
