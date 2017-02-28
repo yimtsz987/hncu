@@ -64,7 +64,7 @@ public class BaseEntity implements Serializable {
     /**
      * 步骤标记 - 通过
      */
-    public static final String STEP_FLAG_YES = "2";
+    public static final String STEP_FLAG_PASS = "2";
 
     /**
      * 当前步骤 - 1 — 9
@@ -78,6 +78,35 @@ public class BaseEntity implements Serializable {
     public static final String STEP_NOW_7 = "7";
     public static final String STEP_NOW_8 = "8";
     public static final String STEP_NOW_9 = "9";
+
+    /**
+     * 上传标记 - 未上传
+     */
+    public static final String REPORT_FLAG_NO_UPLOAD = "0";
+    /**
+     * 上传标记 - 正在审查
+     */
+    public static final String REPORT_FLAG_CHECK = "1";
+    /**
+     * 上传标记 - 未通过
+     */
+    public static final String REPORT_FLAG_NO_PASS = "2";
+    /**
+     * 上传标记 - 通过
+     */
+    public static final String REPORT_FLAG_PASS = "3";
+    /**
+     * 审题标记 - 未查阅
+     */
+    public static final String PASS_FLAG_CHECK = "0";
+    /**
+     * 审题标记 - 未通过
+     */
+    public static final String PASS_FLAG_NO = "1";
+    /**
+     * 审题标记 - 通过
+     */
+    public static final String PASS_FLAG_YES = "2";
 
 
     protected String id;  //主键

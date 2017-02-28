@@ -4,25 +4,56 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
+	<link rel="stylesheet" href="${ctxStatic}/css/gloab.css" />
 		<title>审题报告</title>
 	</head>
 	<body>
 		<div class="page-content">
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="#">审题报告</a>
-				</li>
-			</ul>
 			<sys:msg msgObj="${msg}" />
 			<c:if test="${understandingInfo.passFlag eq 0}">
 				<h2>教师正在查阅，请耐心等待！</h2>
 			</c:if>
 			<c:if test="${understandingInfo.passFlag eq 1}">
-				<h2>很遗憾，审题报告未通过！<small>（请修改后重新提交）</small></h2>
-				<h3><a href="${ctx}/student/understanding?id=${understandingInfo.id}">点击重新提交开题报告</a></h3>
+				<h3 class="text-center"><span style="color: red;">${gpms:getUser().name}</span>同学，很遗憾，你<strong>审题报告</strong>未通过！<small>（请修改后重新提交）</small></h3>
+				<p class="c-666 f-mt30 f-mb50 text-center"><a href="${ctx}/student/understanding?id=${understandingInfo.id}">点击重新提交开题报告</a></p>
+				<h3></h3>
 			</c:if>
 			<c:if test="${understandingInfo.passFlag eq 2}">
-				<h2>恭喜，审题通过！请继续下一步骤</h2>
+				<h3 class="text-center">恭喜<span style="color: red;">${gpms:getUser().name}</span>同学，你<strong>审题报告</strong>通过，现在开始准备你下一个步骤吧！</h3>
+				<p class="c-666 f-mt30 f-mb50 text-center">页面将在<strong id="times" class="f-size18">10</strong> 秒钟后，跳转</p>
+				<div class="page-title" style="font-weight:600;text-indent:20px;">
+					课题：${gpms:getUser().student.titleName}
+				</div>
+				<div class="table-responsive table-custom">
+					<table class="table table-hover table-bordered table-striped">
+						<thead>
+						<tr>
+							<th><input id="checkbox-btn" type="checkbox" name="node" onclick="checkAll(this)"/></th>
+							<th>序号</th>
+							<th>标题</th>
+							<th>上传时间</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+						</thead>
+						<tbody id="tbodyId">
+						<tr>
+							<td><input type="checkbox" name="node"/></td>
+							<td>${understandingInfo.id}</td>
+							<td>${fn:substringBefore(understandingInfo.uploadFileOldName, ".")}</td>
+							<td><fmt:formatDate value="${understandingInfo.uploadDate}" pattern="yyyy年MM月dd日" /></td>
+							<td>
+								<span class="label label-success label-custom">
+									${gpms:getDictLabel(understandingInfo.passFlag, 'understanding')}
+								</span>
+							</td>
+							<td>
+								<a href="${ctx}/student/downloadUnderstanding?id=${understandingInfo.id}" class="btn btn-xs btn-primary">下载</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</c:if>
 		</div>
 	</body>

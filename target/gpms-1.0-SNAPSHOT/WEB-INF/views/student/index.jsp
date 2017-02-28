@@ -171,7 +171,7 @@
 										</a>
 									</c:if>
 									<c:if test="${gpms:getUser().student.step3 ne 0}">
-										<a href="javascript:void(0)" title="审题" class="iframeurl" name="${ctx}/student/understandingInfo">
+										<a href="javascript:void(0)" title="查看审题" class="iframeurl" name="${ctx}/student/understandingInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>3、查看审题
 										</a>
 									</c:if>
@@ -179,9 +179,16 @@
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow >= 4 and gpms:getUser().student.step3 eq 2}">
 								<li>
-									<a href="javascript:void(0)" title="开题" class="iframeurl" name="uploadBuild.html">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>4、开题
-									</a>
+									<c:if test="${gpms:getUser().student.step4 eq 0}">
+										<a href="javascript:void(0)" title="开题" class="iframeurl" name="${ctx}/student/openTitlePage">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>4、开题
+										</a>
+									</c:if>
+									<c:if test="${gpms:getUser().student.step4 ne 0}">
+										<a href="javascript:void(0)" title="查看开题" class="iframeurl" name="${ctx}/student/openTitleInfo">
+											<i class="subicon glyphicon glyphicon-hand-right"></i>4、查看开题
+										</a>
+									</c:if>
 								</li>
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow >= 5 and gpms:getUser().student.step4 eq 2}">

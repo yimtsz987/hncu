@@ -41,7 +41,7 @@
     </update>
     
     <update id="stepTwoEnd" parameterType="User">
-        UPDATE expand_student SET step_2 = #{STEP_FLAG_YES,jdbcType=INTEGER},step_now = #{STEP_NOW_3,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+        UPDATE expand_student SET step_2 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_3,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="titleIdEdit" parameterType="string">

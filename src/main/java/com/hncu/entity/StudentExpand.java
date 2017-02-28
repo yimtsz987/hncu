@@ -31,6 +31,7 @@ public class StudentExpand implements Serializable {
     private String step8;
     private String step9;
     private Integer stepNow;
+    private String scheduleNum;
     private String answerFlag;
     private String expandFlag;
 
@@ -192,6 +193,14 @@ public class StudentExpand implements Serializable {
 
     public void setStepNow(Integer stepNow) {
         this.stepNow = stepNow;
+    }
+
+    public String getScheduleNum() {
+        return scheduleNum;
+    }
+
+    public void setScheduleNum(String scheduleNum) {
+        this.scheduleNum = scheduleNum;
     }
 
     public String getAnswerFlag() {

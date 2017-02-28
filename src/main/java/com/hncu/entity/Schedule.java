@@ -1,6 +1,7 @@
 package com.hncu.entity;
 
 import com.hncu.common.BaseEntity;
+import com.hncu.utils.UserUtils;
 
 import java.util.Date;
 
@@ -29,6 +30,13 @@ public class Schedule extends BaseEntity {
     public Schedule(String id){
         super();
         this.id = id;
+    }
+
+    /**
+     * 上传之前调用
+     */
+    public void preInsertReport(){
+        this.setStudentId(UserUtils.getCurrentUser().getId());
     }
 
     public String getStudentId() {

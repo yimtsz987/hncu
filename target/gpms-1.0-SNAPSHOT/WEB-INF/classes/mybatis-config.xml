@@ -24,6 +24,7 @@
 		<typeAlias type="com.hncu.entity.TeacherInfo" alias="Teacher" />
 		<typeAlias type="com.hncu.entity.Understanding" alias="Understanding" />
 		<typeAlias type="com.hncu.entity.Schedule" alias="Schedule" />
+		<typeAlias type="com.hncu.entity.OpenTitle" alias="OpenTitle" />
 	</typeAliases>
 
 

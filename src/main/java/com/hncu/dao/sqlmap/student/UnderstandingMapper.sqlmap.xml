@@ -25,12 +25,12 @@
     </insert>
 
     <update id="uploadReportAlter" parameterType="Understanding">
-        UPDATE understanding_report SET upload_date = #{uploadDate,jdbcType=TIMESTAMP},uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},pass_flag = 0
+        UPDATE understanding_report SET upload_date = #{uploadDate,jdbcType=TIMESTAMP},uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},pass_flag = #{PASS_FLAG_CHECK,jdbcType=INTEGER}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="stepThreeEnd" parameterType="User">
-        UPDATE expand_student SET step_3 =  #{STEP_FLAG_CHECK,jdbcType=INTEGER},step_now = #{STEP_NOW_4,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+        UPDATE expand_student SET step_3 =  #{STEP_FLAG_CHECK,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
 
     <select id="queryUnderstandingByStudentId" parameterType="string" resultType="Understanding">

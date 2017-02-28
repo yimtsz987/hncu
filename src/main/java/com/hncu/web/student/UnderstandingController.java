@@ -7,6 +7,11 @@ import com.hncu.entity.User;
 import com.hncu.service.student.UnderstandingService;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +24,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+
+import java.io.File;
+import java.io.IOException;
 
 import static com.hncu.common.BaseEntity.STEP_FLAG_CHECK;
 import static com.hncu.common.BaseEntity.STEP_FLAG_NO;
@@ -73,5 +81,20 @@ public class UnderstandingController extends BaseController {
         Understanding understandingInfo = understandingService.queryUnderstandingByStudentId(UserUtils.getCurrentUser().getId());
         model.addAttribute("understandingInfo", understandingInfo);
         return "/student/understandingInfo";
+    }
+
+    @RequestMapping(value = "/downloadUnderstanding", produces = "application/octet-stream;charset=UTF-8")
+    public ResponseEntity<byte[]> download(@RequestParam String id) throws IOException {
+        Understanding understanding = understandingService.queryById(id);
+        if (StringUtils.isNotBlank(understanding.getUploadFileOldName())){
+            File file = new File(understanding.getUploadPath());
+            String dfileName = understanding.getUploadFileOldName();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+        }else {
+            return null;
+        }
     }
 }

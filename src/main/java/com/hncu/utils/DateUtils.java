@@ -3,13 +3,16 @@ package com.hncu.utils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * 日期工具类, 继承org.apache.commons.lang.time.DateUtils类
  */
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
-	
+
+	private static String defaultDatePattern = "yyyy-MM-dd ";
+
 	private static String[] parsePatterns = {
 		"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", 
 		"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
@@ -174,6 +177,31 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		long afterTime = after.getTime();
 		return (afterTime - beforeTime) / (1000 * 60 * 60 * 24);
 	}
-	
 
+	/**
+	 * 获得默认的 date pattern
+	 */
+	public static String getDatePattern()
+	{
+		return defaultDatePattern;
+	}
+
+	/**
+	 * 使用预设格式将字符串转为Date
+	 */
+	public static Date parse(String strDate) throws ParseException
+	{
+		return StringUtils.isBlank(strDate) ? null : parse(strDate,
+				getDatePattern());
+	}
+
+	/**
+	 * 使用参数Format将字符串转为Date
+	 */
+	public static Date parse(String strDate, String pattern)
+			throws ParseException
+	{
+		return StringUtils.isBlank(strDate) ? null : new SimpleDateFormat(
+				pattern).parse(strDate);
+	}
 }

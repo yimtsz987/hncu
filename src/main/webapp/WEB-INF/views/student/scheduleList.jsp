@@ -64,21 +64,21 @@
 						</tr>
 					</thead>
 					<tbody id="tbodyId">
-					<c:forEach items="${schedulePageInfo.list}" var="schedule">
+					<c:forEach items="${schedulePageInfo.list}" var="schedule" varStatus="status">
 						<tr>
 							<td><input type="checkbox" name="node"/></td>
 							<td>${schedule.sort}</td>
 							<td>${schedule.content}</td>
 							<td><fmt:formatDate value="${schedule.startDate}" pattern="yyyy年MM月dd日" /> - <fmt:formatDate value="${schedule.endDate}" pattern="yyyy年MM月dd日" /></td>
 							<td>
-							   <c:if test="${schedule.remainingDate >= 0 and schedule.reportFlag eq '0'}">
+							   <c:if test="${schedule.remainingDate >= 0 and schedule.reportFlag ne '3'}">
 								   <strong>${schedule.remainingDate} 天</strong>
 							   </c:if>
-								<c:if test="${schedule.remainingDate < 0 and schedule.reportFlag ne '2'}">
+								<c:if test="${schedule.remainingDate < 0 and schedule.reportFlag ne '3'}">
 									<strong>已逾期（<i style="color: red">${schedule.remainingDate * (-1)} 天</i>）</strong>
 								</c:if>
-								<c:if test="${schedule.remainingDate < 0 and schedule.reportFlag eq '2'}">
-									<strong>-</strong>
+								<c:if test="${schedule.reportFlag eq '3'}">
+									<strong>已完成</strong>
 								</c:if>
 							</td>
 							<td>
@@ -87,9 +87,23 @@
 								</span>
 							</td>
 							<td>
-								<a href="uploadDesign.html" class="btn btn-xs btn-primary">上传</a>
-								<a href="uploadDesign.html" class="btn btn-xs btn-success">修改</a>
-								<a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="remove(this,1)">下载</a>
+								<c:if test="${schedule.reportFlag eq '0'}">
+									<c:if test="${schedule.sort eq '1'}">
+										<a href="${ctx}/student/uploadSchedulePage?id=${schedule.id}" class="btn btn-xs btn-primary">上传</a>
+									</c:if>
+									<c:if test="${schedule.sort ne '1'}">
+										<a href="${ctx}/student/uploadSchedulePage?id=${schedule.id}" class="btn btn-xs btn-primary ${schedulePageInfo.list[status.index-1].reportFlag ne 3 ? 'disabled' : ''}">上传</a>
+									</c:if>
+								</c:if>
+								<c:if test="${schedule.reportFlag eq '1'}">
+									<strong>请等待审查结果</strong>
+								</c:if>
+								<c:if test="${schedule.reportFlag eq '2'}">
+									<a href="${ctx}/student/uploadSchedulePage?id=${schedule.id}" class="btn btn-xs btn-success">修改</a>
+								</c:if>
+								<c:if test="${schedule.reportFlag eq '3'}">
+									<a href="${ctx}/student/downloadSchedule?id=${schedule.id}" class="btn btn-xs btn-danger">下载</a>
+								</c:if>
 							</td>
 						</tr>
 					</c:forEach>
