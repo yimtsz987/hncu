@@ -1,35 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50d6e13d-5cf0-46b0-a6f5-55196800fdc1" name="Default" comment="Rejected commit: Default">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/common/BaseEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/common/BaseEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/entity/StudentExpand.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/entity/StudentExpand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/utils/DateUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/utils/DateUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/common/BaseEntity.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/common/BaseEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/entity/StudentExpand.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/entity/StudentExpand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/utils/DateUtils.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/utils/DateUtils.class" />
+    <list default="true" id="50d6e13d-5cf0-46b0-a6f5-55196800fdc1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/common/BaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/common/BaseEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/student/ScheduleMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/student/ScheduleMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ChooseTeacherMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ChooseTeacherMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ChooseTitleMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ChooseTitleMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ScheduleMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ScheduleMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/UnderstandingMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/UnderstandingMapper.sqlmap.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/Schedule.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/Schedule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/service/student/ScheduleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/service/student/ScheduleService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/utils/DateUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/utils/DateUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/student/ScheduleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/student/ScheduleController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/web/student/UnderstandingController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/student/UnderstandingController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/scheduleList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/scheduleList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/understandingInfo.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/understandingInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/student/index.jsp" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/student/index.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/uploadBuild.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/uploadOpenTitle.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/uploadDesign.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/uploadSchedule.jsp" />
     </list>
     <ignored path="gpms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/student/OpenTitleController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1102">
-              <caret line="58" column="57" lean-forward="true" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
+              <caret line="58" column="57" lean-forward="false" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/uploadOpenTitle.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
-              <caret line="87" column="40" lean-forward="true" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+              <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -1723,7 +1696,7 @@
       <workItem from="1488191059695" duration="18001000" />
       <workItem from="1488219814353" duration="602000" />
       <workItem from="1488244299956" duration="131000" />
-      <workItem from="1488244751211" duration="24000" />
+      <workItem from="1488244751211" duration="101000" />
     </task>
     <task id="LOCAL-00001" summary="Rejected commit: Default">
       <created>1484699678383</created>
@@ -1823,11 +1796,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488109131140</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Rejected commit: Default">
+      <created>1488244784428</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1488244784428</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322772000" />
+    <option name="totallyTimeSpent" value="322849000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1860,11 +1840,14 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26385927" sideWeight="0.49322033" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19569893" sideWeight="0.5067797" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1874,11 +1857,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34375" sideWeight="0.4466951" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2440,7 +2420,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/student/OpenTitleController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1102">
-          <caret line="58" column="57" lean-forward="true" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
+          <caret line="58" column="57" lean-forward="false" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2450,7 +2430,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/uploadOpenTitle.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="87" column="40" lean-forward="true" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+          <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
           <folding />
         </state>
       </provider>
