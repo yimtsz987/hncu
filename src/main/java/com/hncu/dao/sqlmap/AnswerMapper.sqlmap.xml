@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.AnswerMapper">
+    <sql id="answerColumns">
+        a.id,
+        a.leader_id as "leaderId",
+        a.year,
+        a.student_ids as "studentIds",
+        a.teacher_ids as "teacherIds"
+    </sql>
+
+    <select id="queryList" parameterType="Answer" resultType="Answer">
+        SELECT <include refid="answerColumns" />
+        FROM answer_group a
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Answer">
+        SELECT <include refid="answerColumns" />
+        FROM answer_group a
+        WHERE a.id = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

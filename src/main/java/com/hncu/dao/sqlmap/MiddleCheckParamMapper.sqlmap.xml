@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.MiddleCheckParamMapper">
+    <select id="queryList" parameterType="MiddleCheckParam" resultType="MiddleCheckParam">
+        SELECT mcp.id,mcp.name,mcp.description,mcp.suffix
+        FROM middle_check_parameter mcp
+        <where>
+            <if test="id != null and id != ''">
+                and mcp.id like concat ('%', #{id}, '%')
+            </if>
+            <if test="name != null and name != ''">
+                and mcp.name like concat ('%', #{name}, '%')
+            </if>
+        </where>
+        ORDER BY mcp.id ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="MiddleCheckParam">
+        SELECT mcp.id,mcp.name,mcp.description,mcp.suffix
+        FROM middle_check_parameter mcp
+        WHERE mcp.id = #{id, jdbcType=NUMERIC}
+    </select>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.ReviewMapper">
+    <sql id="reviewColumns">
+        tr.id,
+        tr.student_id as "studentId",
+        tr.supload_date as "suploadDate",
+        tr.suploadFile,
+        tr.suploadPath,
+        tr.suploadFileOldName,
+        tr.teacher_advise as "teacherAdvise",
+        tr.tupload_date as "tuploadDate",
+        tr.tuploadFile,
+        tr.tuploadPath,
+        tr.tuploadFileOldName,
+        tr.sort,
+        tr.title_id as "titleId",
+        tr.state
+    </sql>
+
+    <select id="queryById" parameterType="string" resultType="Marking">
+        SELECT <include refid="reviewColumns" />
+        FROM teacher_review tr
+        WHERE tr.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryList" parameterType="Marking" resultType="Marking">
+        SELECT <include refid="reviewColumns" />
+        FROM teacher_review tr
+        WHERE tr.student_id = #{studentId,jdbcType=INTEGER}
+        <if test="sort != null and sort != ''">
+            and tr.sort like concat ('%', #{sort}, '%')
+        </if>
+        <if test="suploadFileOldName != null and suploadFileOldName != ''">
+            and tr.suploadFileOldName like concat ('%', #{suploadFileOldName}, '%')
+        </if>
+        ORDER BY tr.sort ASC
+    </select>
+
+    <select id="queryLastReviewSort" parameterType="string" resultType="Marking">
+        SELECT tr.sort
+        FROM teacher_review tr
+        WHERE tr.student_id = #{studentId,jdbcType=INTEGER}
+        ORDER BY tr.sort DESC LIMIT 1
+    </select>
+
+    <insert id="uploadReviewReport" parameterType="Marking">
+        INSERT INTO teacher_review(student_id,supload_date,suploadFile,suploadPath,suploadFileOldName,sort,year,title_id)
+        VALUES (#{studentId,jdbcType=INTEGER},#{suploadDate,jdbcType=TIMESTAMP},#{suploadFile,jdbcType=VARCHAR},#{suploadPath,jdbcType=VARCHAR},#{suploadFileOldName,jdbcType=VARCHAR},#{sort,jdbcType=INTEGER},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER})
+    </insert>
+
+    <update id="stepEightEnd" parameterType="User">
+        UPDATE expand_student SET step_8 = #{STEP_FLAG_CHECK,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.MiddleCheckMapper">
+    <sql id="middleCheckColumns">
+        mc.id,
+        mc.student_id as "studentId",
+        mc.upload_date as "uploadDate",
+        mc.year,
+        mc.title_id as "titleId",
+        mc.state,
+        mc.uploadFile,
+        mc.uploadPath,
+        mc.uploadFileOldName,
+        mc.param_id as "paramId"
+    </sql>
+
+    <select id="queryById" parameterType="string" resultType="MiddleCheck">
+        SELECT <include refid="middleCheckColumns" />
+        FROM middle_check mc
+        WHERE mc.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryMiddleCheckByParamId" parameterType="string" resultType="MiddleCheck">
+        SELECT <include refid="middleCheckColumns" />
+        FROM middle_check mc
+        WHERE mc.param_id = #{paramId, jdbcType=NUMERIC}
+        AND mc.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
+    <insert id="uploadMiddleCheck" parameterType="MiddleCheck">
+        INSERT INTO middle_check(student_id,upload_date,year,title_id,state,uploadFile,uploadPath,uploadFileOldName,param_id)
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{REPORT_FLAG_CHECK, jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{paramId, jdbcType=INTEGER})
+    </insert>
+
+    <insert id="uploadMiddleCheckUpdate" parameterType="MiddleCheck">
+        UPDATE middle_check SET  upload_date = #{uploadDate,jdbcType=TIMESTAMP},uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},state = #{REPORT_FLAG_CHECK, jdbcType=INTEGER}
+        WHERE param_id = #{paramId, jdbcType=NUMERIC}
+        AND student_id = #{studentId, jdbcType=NUMERIC}
+    </insert>
+
+    <update id="stepSevenEnd" parameterType="User">
+        UPDATE expand_student SET step_7 = #{STEP_FLAG_CHECK,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
