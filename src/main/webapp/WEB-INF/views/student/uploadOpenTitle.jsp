@@ -38,8 +38,8 @@
                 </ul>
             </div>
         	<div class="reg-box" id="verifyCheck" style="margin-top:20px;">
-            	<div class="part1 col-lg-12" style="padding-left: 0px;">
-					<form:form action="${ctx}/student/uploadOpenTitleReport" enctype="multipart/form-data" method="post" cssClass="form col-xs-12" cssStyle="margin-top: 50px;" id="form-id" modelAttribute="openTitle">
+				<form:form action="${ctx}/student/uploadOpenTitleReport" enctype="multipart/form-data" method="post" cssClass="form col-xs-12" cssStyle="margin-top: 50px;" id="form-id" modelAttribute="openTitle">
+					<div class="part1 col-lg-12" style="padding-left: 0px;">
 						<div class="col-xs-2"></div>
 						<div class="col-xs-7" style="padding-left: 0px;">
 							<div class="form-group">
@@ -52,7 +52,7 @@
 							   <a href="javascript:;" class="btn btn-blue f-r3" id="btn_part1">下一步</a>
 							</div>
 						</div>
-				   </div>
+				    </div>
 					<div class="part2" style="display:none;padding-left: 0px;">
 						<div class="btn-wrap">
 							<span class="btn-left">
@@ -62,17 +62,6 @@
 							</span>
 						</div>
 						<div class="table-responsive table-custom">
-							<table id="tab11" style="display: none">
-								<tbody>
-									<tr>
-										<td><input type="text" class="form-control node" disabled name="sort" size="2" value="1"/></td>
-										<td><input type="text" name="content" class="form-control" /></td>
-										<td><input type="text" name="startDate" class="form-control" /></td>
-										<td><input type="text" name="endDate" class="form-control" /></td>
-										<td><a href="javascript:void(0)" class="btn btn-danger" onclick="deltr(this)">删除行</a></td>
-									</tr>
-								</tbody>
-							</table>
 							<table id="dynamicTable" class="table table-hover table-bordered table-striped">
 
 								<thead>
@@ -86,7 +75,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td><input type="text" class="form-control node" disabled name="sort" size="2" value="1"/></td>
+										<td><input type="text" class="form-control node" readonly name="sort" size="2" value="1"/></td>
 										<td><input type="text" name="content" class="form-control" /></td>
 										<td><input type="text" name="startDate" class="form-control" /></td>
 										<td><input type="text" name="endDate" class="form-control" /></td>
@@ -189,7 +178,13 @@ $(function() {
 				//alert(length);
 				if (length < show_count) //点击时候，如果当前的数字小于递增结束的条件
 				{
-					$("#tab11 tbody tr").clone().appendTo("#dynamicTable tbody"); //在表格后面添加一行
+                    $("#dynamicTable tbody").append("<tr>"
+                        +"<td><input type='text' class='form-control node' readonly name='sort' size='2' value='1'/></td>"
+                        +"<td><input type='text' name='content' class='form-control' /></td>"
+                        +"<td><input type='text' name='startDate' class='form-control' /></td>"
+                        +"<td><input type='text' name='endDate' class='form-control' /></td>"
+                        +"<td><a href='javascript:void(0)' class='btn btn-danger' onclick='deltr(this)'>删除行</a></td>"
+                        +"</tr>"); //在表格后面添加一行
 					changeIndex(); //更新行号
 				}
 			});
@@ -198,7 +193,7 @@ $(function() {
 		function changeIndex() {
 			var i = 1;
 			$("#dynamicTable tbody tr").each(function() { //循环tab tbody下的tr
-				$(this).find("input[name='sort']").val(i++); //更新行号
+				$(this).find(".node").val(i++); //更新行号
 			});
 		}
 

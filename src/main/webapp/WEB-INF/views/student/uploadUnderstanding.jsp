@@ -13,7 +13,7 @@
 					<a href="#">上传审题报告</a>
 				</li>
 			</ul>
-                <form:form action="${ctx}/student/uploadReport" enctype="multipart/form-data" method="post" cssClass="form col-lg-12" cssStyle="margin-top: 50px;" id="form-id" modelAttribute="understanding">
+                <form:form action="${ctx}/student/uploadOpenTitleReport" enctype="multipart/form-data" method="post" cssClass="form col-lg-12" cssStyle="margin-top: 50px;" id="form-id" modelAttribute="understanding">
 					<form:hidden path="id" />
 					<div class="col-lg-12" style="padding: 100px 0;">
 						<div class="form-group col-lg-6 center-block"style="width: 600px;float: none;">

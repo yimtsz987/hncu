@@ -25,6 +25,10 @@
 		<typeAlias type="com.hncu.entity.Understanding" alias="Understanding" />
 		<typeAlias type="com.hncu.entity.Schedule" alias="Schedule" />
 		<typeAlias type="com.hncu.entity.OpenTitle" alias="OpenTitle" />
+		<typeAlias type="com.hncu.entity.Marking" alias="Marking" />
+		<typeAlias type="com.hncu.entity.MiddleCheck" alias="MiddleCheck" />
+		<typeAlias type="com.hncu.entity.MiddleCheckParam" alias="MiddleCheckParam" />
+		<typeAlias type="com.hncu.entity.Answer" alias="Answer" />
 	</typeAliases>
 
 

@@ -32,6 +32,7 @@ public class StudentExpand implements Serializable {
     private String step9;
     private Integer stepNow;
     private String scheduleNum;
+    private String answerId;
     private String answerFlag;
     private String expandFlag;
 
@@ -201,6 +202,14 @@ public class StudentExpand implements Serializable {
 
     public void setScheduleNum(String scheduleNum) {
         this.scheduleNum = scheduleNum;
+    }
+
+    public String getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
     }
 
     public String getAnswerFlag() {

@@ -40,6 +40,7 @@ public class StudentInfo extends BaseEntity {
     private String step8;
     private String step9;
     private Integer stepNow;
+    private String answerId;
     private String answerFlag = ANSWER_FLAG_NO;
     private String expandFlag = EXPAND_FLAG_STUDENT;
 
@@ -306,6 +307,14 @@ public class StudentInfo extends BaseEntity {
 
     public void setStepNow(Integer stepNow) {
         this.stepNow = stepNow;
+    }
+
+    public String getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
     }
 
     public String getAnswerFlag() {

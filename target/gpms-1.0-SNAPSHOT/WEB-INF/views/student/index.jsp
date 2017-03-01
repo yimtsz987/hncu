@@ -5,6 +5,15 @@
 	<head>
 		<%@ include file="/WEB-INF/views/include/head.jsp"%>
 		<title>湖南城市学院毕业设计管理系统</title>
+		<style type="text/css">
+			.pass-flag{
+				position: absolute !important;
+				top: 10px !important;
+				right: 35px !important;
+				font-size: 15px;
+				color: red !important;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="header">
@@ -146,6 +155,9 @@
 									<c:if test="${gpms:getUser().student.step1 ne 0}">
 										<a href="javascript:void(0)" title="查看教师" class="iframeurl" name="${ctx}/student/chooseTeacherInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看教师
+											<c:if test="${gpms:getUser().student.step1 eq 2}">
+												<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+											</c:if>
 										</a>
 									</c:if>
 								</li>
@@ -159,6 +171,9 @@
 									<c:if test="${gpms:getUser().student.step2 ne 0}">
 										<a href="javascript:void(0)" title="查看课题" class="iframeurl" name="${ctx}/student/chooseTitleInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>2、查看课题
+											<c:if test="${gpms:getUser().student.step2 eq 2}">
+												<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+											</c:if>
 										</a>
 									</c:if>
 								</li>
@@ -173,6 +188,9 @@
 									<c:if test="${gpms:getUser().student.step3 ne 0}">
 										<a href="javascript:void(0)" title="查看审题" class="iframeurl" name="${ctx}/student/understandingInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>3、查看审题
+											<c:if test="${gpms:getUser().student.step3 eq 2}">
+												<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+											</c:if>
 										</a>
 									</c:if>
 								</li>
@@ -187,6 +205,9 @@
 									<c:if test="${gpms:getUser().student.step4 ne 0}">
 										<a href="javascript:void(0)" title="查看开题" class="iframeurl" name="${ctx}/student/openTitleInfo">
 											<i class="subicon glyphicon glyphicon-hand-right"></i>4、查看开题
+											<c:if test="${gpms:getUser().student.step4 eq 2}">
+												<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+											</c:if>
 										</a>
 									</c:if>
 								</li>
@@ -195,34 +216,56 @@
 								<li>
 									<a href="javascript:void(0)" title="设计和论文撰写" class="iframeurl" name="${ctx}/student/scheduleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>5、设计和论文撰写
+										<c:if test="${gpms:getUser().student.step5 eq 2}">
+											<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+										</c:if>
 									</a>
 								</li>
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow >= 6 and gpms:getUser().student.step5 eq 2}">
 								<li>
-									<a href="javascript:void(0)" title="教师批阅" class="iframeurl" name="teacherMarking.html">
+									<a href="javascript:void(0)" title="教师批阅" class="iframeurl" name="${ctx}/student/markingList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>6、教师批阅
+										<c:if test="${gpms:getUser().student.step6 eq 2}">
+											<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+										</c:if>
 									</a>
 								</li>
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow >= 7 and gpms:getUser().student.step6 eq 2}">
 								<li>
-									<a href="javascript:void(0)" class="iframeurl" name="middleCheck.html" title="中期检查">
+									<a href="javascript:void(0)" class="iframeurl" name="${ctx}/student/middleCheckList" title="中期检查">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>7、中期检查
+										<c:if test="${gpms:getUser().student.step7 eq 2}">
+											<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+										</c:if>
 									</a>
 								</li>
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow >= 8 and gpms:getUser().student.step7 eq 2}">
 								<li>
-									<a href="javascript:void(0)" class="iframeurl" name="teacherReview.html" title="评阅">
+									<a href="javascript:void(0)" class="iframeurl" name="${ctx}/student/reviewList" title="评阅">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>8、评阅
+										<c:if test="${gpms:getUser().student.step8 eq 2}">
+											<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+										</c:if>
 									</a>
 								</li>
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow >= 9 and gpms:getUser().student.step8 eq 2}">
 								<li>
-									<a href="javascript:void(0)" class="iframeurl" name="reply.html" title="答辩">
+									<a href="javascript:void(0)" class="iframeurl" name="${ctx}/student/answerList" title="答辩">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>9、答辩
+										<c:if test="${gpms:getUser().student.step9 eq 2}">
+											<i class="pass-flag glyphicon glyphicon glyphicon-ok"></i>
+										</c:if>
+									</a>
+								</li>
+							</c:if>
+							<c:if test="${gpms:getUser().student.stepNow == 10}">
+								<li>
+									<a href="javascript:void(0)" class="iframeurl" name="${ctx}/student/answerList" title="成绩查询">
+										<i class="subicon glyphicon glyphicon-hand-right"></i>10、成绩查询
 									</a>
 								</li>
 							</c:if>
@@ -230,11 +273,6 @@
 						<li class="first-nav">
 							<a href="javascript:void(0)" class="iframeurl" name="procedure.html" title="流程进度">
 							   <i class="glyphicon glyphicon-home"></i>流程进度
-							</a>
-						</li>
-						<li class="first-nav">
-							<a href="javascript:void(0)" title="成绩查询">
-							   <i class="glyphicon glyphicon-home"></i>成绩查询
 							</a>
 						</li>
 						<li class="first-nav">

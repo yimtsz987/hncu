@@ -42,4 +42,8 @@ public class OpenTitleService extends BaseService<OpenMapper, OpenTitle> {
             mapper.uploadOpenReportUpdate(openTitle);
         }
     }
+
+    public OpenTitle queryOpenReportByStudentId(){
+        return mapper.queryOpenReportByStudentId(UserUtils.getCurrentUser().getId());
+    }
 }

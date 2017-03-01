@@ -39,6 +39,7 @@
         s.step_8 as "student.step8",
         s.step_9 as "student.step9",
         s.step_now as "student.stepNow",
+        s.answer_id as "student.answerId",
         s.answer_flag as "student.answerFlag",
         s.expand_flag as "student.expandFlag",
         t.node as "teacher.node",
@@ -46,6 +47,7 @@
         t.research_direction as "teacher.researchDirection",
         t.professional_title as "teacher.professionalTitle",
         d.name as "student.department.name",
+        dt.name as "teacher.department.name",
         m.name as "student.major.name",
         gt.title as "student.titleName"
     </sql>
@@ -54,6 +56,7 @@
         LEFT JOIN expand_student s on s.s_id = u.id
         LEFT JOIN expand_teacher t on t.t_id = u.id
         LEFT JOIN department d on d.d_no = s.department_no
+        LEFT JOIN department dt on dt.d_no = t.department_no
         LEFT JOIN major m on m.id = s.major_id
         LEFT JOIN graduation_title gt on gt.id = s.title_id
     </sql>

@@ -107,6 +107,14 @@ public class BaseEntity implements Serializable {
      * 审题标记 - 通过
      */
     public static final String PASS_FLAG_YES = "2";
+    /**
+     * 批阅标记 - 未批阅
+     */
+    public static final String MARKING_FLAG_NO = "0";
+    /**
+     * 批阅状态 - 已批阅
+     */
+    public static final String MARKING_FLAG_YES = "1";
 
 
     protected String id;  //主键

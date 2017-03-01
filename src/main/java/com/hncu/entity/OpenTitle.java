@@ -23,10 +23,6 @@ public class OpenTitle extends BaseEntity {
     private String uploadPath;
     private String uploadFileOldName;
     private List<Schedule> scheduleList;
-    private String[] sort;
-    private String[] content;
-    private String[] startDate;
-    private String[] endDate;
 
     public OpenTitle(){
 
@@ -118,37 +114,5 @@ public class OpenTitle extends BaseEntity {
 
     public void setScheduleList(List<Schedule> scheduleList) {
         this.scheduleList = scheduleList;
-    }
-
-    public String[] getSort() {
-        return sort;
-    }
-
-    public void setSort(String[] sort) {
-        this.sort = sort;
-    }
-
-    public String[] getContent() {
-        return content;
-    }
-
-    public void setContent(String[] content) {
-        this.content = content;
-    }
-
-    public String[] getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String[] startDate) {
-        this.startDate = startDate;
-    }
-
-    public String[] getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String[] endDate) {
-        this.endDate = endDate;
     }
 }
