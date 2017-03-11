@@ -18,35 +18,32 @@
 		<div class="page-content">
 			<div class="page-search">
 				<div class="search-title">搜索查询</div>
-				<form:form id="searchForm" modelAttribute="understanding" action="${ctx}/teacher/understandingList" method="post" cssClass="form-horizontal">
-				<form action="" class="form-horizontal">
+				<form:form id="searchForm" modelAttribute="teacherUnderstanding" action="${ctx}/teacher/understandingList" method="post" cssClass="form-horizontal">
+					<input id="pageNum" name="pageNum" type="hidden" value="${teacherUnderstandingPageInfo.pageNum}"/>
+					<input id="pageSize" name="pageSize" type="hidden" value="${teacherUnderstandingPageInfo.pageSize}"/>
 					<div class="form-group pull-left col-lg-3">
-						<label for="title" class="col-lg-3 control-label">课题</label>
+						<label for="node" class="col-lg-3 control-label">学号</label>
 						<div class="col-lg-9">
-							<input type="text" class="form-control" name="title" id="title" value="" />
+							<form:input path="user.student.node" cssClass="form-control" maxlength="50" id="node" />
 						</div>
 					</div>
 					<div class="form-group pull-left col-lg-3">
-						<label for="type" class="col-lg-3 control-label">难度</label>
+						<label for="name" class="col-lg-3 control-label">姓名</label>
 						<div class="col-lg-9">
-							<input type="text" class="form-control" name="difficulty" id="difficulty" value="" />
+							<form:input path="user.name" cssClass="form-control" maxlength="50" id="name" />
 						</div>
 					</div>
 					<div class="form-group pull-left col-lg-3">
-						<label for="difficulty" class="col-lg-3 control-label">类别</label>
+						<label for="passFlag" class="col-lg-3 control-label">状态</label>
 						<div class="col-lg-9">
-							<input type="text" class="form-control" name="type" id="type" value="" />
-						</div>
-					</div>
-					<div class="form-group pull-left col-lg-3">
-						<label for="date" class="col-lg-3 control-label">状态</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" name="condition" id="condition" value="" />
+							<form:select path="understanding.passFlag" cssClass="form-control" id="passFlag">
+								<form:option value="" label="选择班级" />
+								<form:options items="${gpms:getDictList('understanding')}" itemLabel="label" itemValue="value" />
+							</form:select>
 						</div>
 					</div>
 					<input type="submit" class="btn btn-primary" value="查询" />
 					<div class="clearfix"></div>
-				</form>
                 </form:form>
 			</div>
 			
@@ -63,12 +60,12 @@
 						</tr>
 					</thead>
 					<tbody  id="tbodyId">
-					<c:forEach items="${teacherUnderstandingList}" var="understanding">
+					<c:forEach items="${teacherUnderstandingPageInfo.list}" var="understanding">
 						<tr>
 							<td><input type="checkbox" name="node"/></td>
 							<td>${understanding.user.student.node}</td>
 							<td>${understanding.user.name}</td>
-							<td>${understanding.user.student.student.titleName}</td>
+							<td>${understanding.user.student.titleName}</td>
 							<td>
 								<span class="label label-success label-custom">
 									${gpms:getDictLabel(understanding.understanding.passFlag, 'understanding')}
@@ -76,25 +73,16 @@
 							</td>
 							<td>
 								<a href="load.html" class="btn btn-xs btn-primary">下载</a>
-								<a href="project-change.html"  class="btn btn-xs btn-danger" >修改</a>
+								<a href="project-change.html"  class="btn btn-xs btn-danger" >审核</a>
 							</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
 			</div>
-				<div class="page-info">共100页，当前第<input type="text" class="page-input" value="1"/>页/共1000条数据</div>
-					<ul class="pagination pagination-lg pull-right">
-						<li class="disabled"><a href="#">首页</a></li>
-					    <li class="disabled"><a href="#">上一页</a></li>
-					    <li class="active"><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
-					    <li><a href="#">下一页</a></li>
-					    <li><a href="#">尾页</a></li>
-					</ul>
+			<div class="page-info">
+				${gpms:pageStr(teacherUnderstandingPageInfo)}
+			</div>
 		</div>
 	</body>
 <script type="text/javascript">
