@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-03-01 21:36:33
+Date: 2017-03-11 13:09:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,7 +101,7 @@ CREATE TABLE `dict` (
   `sort` decimal(10,0) NOT NULL COMMENT '排序（升序）',
   `parent_id` varchar(64) DEFAULT '0' COMMENT '父级编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dict
@@ -135,6 +135,8 @@ INSERT INTO `dict` VALUES ('26', '1', '已批阅', 'marking', '批阅状态', '2
 INSERT INTO `dict` VALUES ('27', '0', '未评阅', 'review', '评阅状态', '10', '0');
 INSERT INTO `dict` VALUES ('28', '1', '未通过', 'review', '评阅状态', '20', '0');
 INSERT INTO `dict` VALUES ('29', '2', '通过', 'review', '评阅状态', '30', '0');
+INSERT INTO `dict` VALUES ('30', '0', '未通过', 'report', '成绩状态', '10', '0');
+INSERT INTO `dict` VALUES ('31', '1', '通过', 'report', '成绩状态', '20', '0');
 
 -- ----------------------------
 -- Table structure for download
@@ -194,20 +196,22 @@ CREATE TABLE `expand_student` (
   `step_7` tinyint(1) NOT NULL DEFAULT '0',
   `step_8` tinyint(1) NOT NULL DEFAULT '0',
   `step_9` tinyint(1) NOT NULL DEFAULT '0',
+  `step_10` tinyint(1) NOT NULL DEFAULT '0',
   `step_now` tinyint(1) NOT NULL DEFAULT '1' COMMENT '当前步骤',
   `schedule_num` tinyint(1) DEFAULT NULL COMMENT '设计进度计划数量',
   `answer_id` int(11) DEFAULT NULL COMMENT '答辩组id',
   `answer_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '答辩分组（0未分组1已分组）',
   `expand_flag` tinyint(1) NOT NULL DEFAULT '1' COMMENT '学生拓展标识',
+  `school_report_id` tinyint(1) DEFAULT NULL COMMENT '成绩单id',
   PRIMARY KEY (`s_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of expand_student
 -- ----------------------------
-INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', '1', '2', '2014', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '9', '3', '1', '0', '1');
-INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', '2', '3', '2014', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '9', '3', '1', '0', '1');
-INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', null, '2', '2014', null, '2', '0', '0', '0', '0', '0', '0', '0', '0', '2', null, null, '0', '1');
+INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', '1', '2', '2014', null, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '10', '3', '1', '0', '1', '1');
+INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', '2', '3', '2014', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '3', '1', '0', '1', null);
+INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', '3', '2', '2014', null, '2', '2', '2', '2', '2', '0', '0', '0', '0', '0', '6', null, null, '0', '1', null);
 
 -- ----------------------------
 -- Table structure for expand_teacher
@@ -248,7 +252,7 @@ CREATE TABLE `graduation_schedule` (
   `uploadPath` varchar(500) DEFAULT NULL,
   `uploadFileOldName` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graduation_schedule
@@ -259,6 +263,8 @@ INSERT INTO `graduation_schedule` VALUES ('3', '5', '3', '系统测试', '2017-0
 INSERT INTO `graduation_schedule` VALUES ('4', '7', '1', '1', '2017-01-01 00:00:00', '2017-02-02 00:00:00', '6', '3', '1488269236660需求分析报告.doc', 'E://gpmsUpload/2014051654/1488269236660需求分析报告.doc', '需求分析报告.doc');
 INSERT INTO `graduation_schedule` VALUES ('5', '7', '2', '2', '2017-03-01 00:00:00', '2017-04-01 00:00:00', '6', '3', '1488304655460系统设计报告.doc', 'E://gpmsUpload/2014051654/1488304655460系统设计报告.doc', '系统设计报告.doc');
 INSERT INTO `graduation_schedule` VALUES ('6', '7', '3', '3', '2017-05-01 00:00:00', '2017-06-01 00:00:00', '6', '3', '1488304674047系统测试报告.doc', 'E://gpmsUpload/2014051654/1488304674047系统测试报告.doc', '系统测试报告.doc');
+INSERT INTO `graduation_schedule` VALUES ('7', '8', '1', '需求分析', '2017-01-01 00:00:00', '2017-02-01 00:00:00', '7', '1', '1488465551819需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465551819需求分析报告.doc', '需求分析报告.doc');
+INSERT INTO `graduation_schedule` VALUES ('8', '8', '2', '系统设计', '2017-03-01 00:00:00', '2017-04-01 00:00:00', '7', '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for graduation_title
@@ -274,13 +280,15 @@ CREATE TABLE `graduation_title` (
   `year` varchar(5) NOT NULL COMMENT '级数',
   `select_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否选择（0未选1已选）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graduation_title
 -- ----------------------------
 INSERT INTO `graduation_title` VALUES ('1', '基于java的毕业设计管理系统', '采用spring等主流框架', '1', '1', '2', '2013', '1');
 INSERT INTO `graduation_title` VALUES ('2', '基于java的XXXX系统开发', '测试', '1', '1', '3', '2013', '1');
+INSERT INTO `graduation_title` VALUES ('3', '基于XXXXX', '测试', '1', '2', '2', '2013', '1');
+INSERT INTO `graduation_title` VALUES ('7', '基于spring的毕业设计管理系统', 'javase', '3', '1', '2', '2013', '0');
 
 -- ----------------------------
 -- Table structure for major
@@ -407,7 +415,8 @@ CREATE TABLE `opening_report` (
 -- Records of opening_report
 -- ----------------------------
 INSERT INTO `opening_report` VALUES ('1', '5', '2017-02-26 11:06:33', '2013', '1', '2', '1487927826423基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', 'E://gpmsUpload/2014051656/1487927826423基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', '基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc');
-INSERT INTO `opening_report` VALUES ('6', '7', '2017-02-28 16:05:45', '2013', '2', '2', '1488269145404开题报告.doc', 'E://gpmsUpload/2014051654/1488269145404开题报告.doc', '开题报告.doc');
+INSERT INTO `opening_report` VALUES ('6', '7', '2017-02-28 16:05:45', '2013', '2', '1', '1488269145404开题报告.doc', 'E://gpmsUpload/2014051654/1488269145404开题报告.doc', '开题报告.doc');
+INSERT INTO `opening_report` VALUES ('7', '8', '2017-03-02 22:36:04', '2013', '3', '2', '1488465364222需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465364222需求分析报告.doc', '需求分析报告.doc');
 
 -- ----------------------------
 -- Table structure for permission
@@ -443,16 +452,17 @@ CREATE TABLE `role` (
   `role_name` varchar(30) NOT NULL,
   `data_scope` varchar(200) DEFAULT NULL COMMENT '数据范围',
   PRIMARY KEY (`id`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES ('1', '系统管理员', '拥有至高无上的权利,操作系统的所有权限', '1', 'admin', '');
-INSERT INTO `role` VALUES ('2', '教务秘书', '教务秘书', '0', 't_admin', '');
-INSERT INTO `role` VALUES ('3', '教研室主任', '教研室主任', '0', 't_admin', '');
+INSERT INTO `role` VALUES ('2', '教务秘书', '教务秘书', '0', 'secretary', '');
+INSERT INTO `role` VALUES ('3', '教研室主任', '教研室主任', '0', 'director', '');
 INSERT INTO `role` VALUES ('4', '教师', '教师', '0', 'teacher', null);
 INSERT INTO `role` VALUES ('5', '学生', '学生', '0', 'student', null);
+INSERT INTO `role` VALUES ('6', '评阅教师', '评阅教师', '0', 'review', null);
 
 -- ----------------------------
 -- Table structure for role_menu
@@ -548,6 +558,25 @@ INSERT INTO `role_menu` VALUES ('2', '38');
 INSERT INTO `role_menu` VALUES ('2', '40');
 INSERT INTO `role_menu` VALUES ('2', '41');
 INSERT INTO `role_menu` VALUES ('2', '43');
+
+-- ----------------------------
+-- Table structure for school_report
+-- ----------------------------
+DROP TABLE IF EXISTS `school_report`;
+CREATE TABLE `school_report` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `report_id` varchar(20) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `score` varchar(3) NOT NULL,
+  `pass_flag` tinyint(1) NOT NULL COMMENT '0未通过1通过',
+  `date_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of school_report
+-- ----------------------------
+INSERT INTO `school_report` VALUES ('1', '201405165620170302', '5', '95', '0', '2017-03-02 12:14:22');
 
 -- ----------------------------
 -- Table structure for system_parameter
@@ -720,14 +749,16 @@ CREATE TABLE `understanding_report` (
   `uploadFile` varchar(200) NOT NULL,
   `uploadPath` varchar(500) NOT NULL,
   `uploadFileOldName` varchar(200) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of understanding_report
 -- ----------------------------
-INSERT INTO `understanding_report` VALUES ('5', '5', '2017-02-24 17:17:06', '2013', '1', '2', '1487927826423基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', 'E://gpmsUpload/2014051656/1487927826423基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', '基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc');
-INSERT INTO `understanding_report` VALUES ('6', '7', '2017-02-25 13:16:50', '2013', '2', '2', '14879998105562010091013583525.doc', 'E://gpmsUpload/2014051654/14879998105562010091013583525.doc', '2010091013583525.doc');
+INSERT INTO `understanding_report` VALUES ('5', '5', '2017-02-24 17:17:06', '2013', '1', '1', '1487927826423基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', 'E://gpmsUpload/2014051656/1487927826423基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', '基于SpringMVC的汽车销售管理系统的设计与实现毕业论文.doc', '2');
+INSERT INTO `understanding_report` VALUES ('6', '7', '2017-02-25 13:16:50', '2013', '2', '2', '14879998105562010091013583525.doc', 'E://gpmsUpload/2014051654/14879998105562010091013583525.doc', '2010091013583525.doc', '3');
+INSERT INTO `understanding_report` VALUES ('7', '8', '2017-03-02 22:33:28', '2013', '3', '2', '1488465208498论文一稿.doc', 'E://gpmsUpload/2014051655/1488465208498论文一稿.doc', '论文一稿.doc', '2');
 
 -- ----------------------------
 -- Table structure for user_role
