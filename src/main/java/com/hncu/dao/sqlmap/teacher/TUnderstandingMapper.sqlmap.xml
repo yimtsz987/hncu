@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TUnderstandingMapper">
+    <sql id="understandingColumns">
+        ur.id,
+        ur.student_id as "studentId",
+        ur.upload_date as "uploadDate",
+        ur.year,
+        ur.title_id as "titleId",
+        ur.pass_flag as "passFlag",
+        ur.uploadFile,
+        ur.uploadPath,
+        ur.uploadFileOldName,
+        ur.teacher_id as "teacherId"
+    </sql>
+
+    <select id="queryById" parameterType="string" resultType="Understanding">
+        SELECT <include refid="understandingColumns" />
+        FROM understanding_report ur
+        WHERE ur.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryByStudentId" parameterType="string" resultType="Understanding">
+        SELECT <include refid="understandingColumns" />
+        FROM understanding_report ur
+        WHERE ur.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryDownloadByInfo" parameterType="string" resultType="Understanding">
+        SELECT <include refid="understandingColumns" />
+        FROM understanding_report ur
+        WHERE ur.id = #{id, jdbcType=NUMERIC}
+        and ur.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
+
+</mapper>

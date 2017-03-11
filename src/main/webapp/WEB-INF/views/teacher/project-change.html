@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/pageContnent.css" />
+		<link rel="stylesheet" href="js/mobile/need/layer.css"  media="all">
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/layer.js" ></script>
+		<meta charset="UTF-8">
+		<title>form表单</title>
+	</head>
+	<body>
+		<div class="page-content">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#">课题添加</a>
+				</li>
+			</ul>
+			<form action="" class="form-horizontal">
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">学号:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<input type="text" class="form-control input-sm" name="title" id="title" value maxlength="50" />
+					</div>
+				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">姓名:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						 <select class="form-control input-sm">
+						  <option>--简单--</option>
+					      <option>一般</option>
+					      <option>困难</option>
+					    </select>
+					</div>
+				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">课题:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						 <select class="form-control input-sm">
+						  <option>--请选择类别--</option>
+					      <option>java</option>
+					      <option>c语言</option>
+					      <option>网页设计</option>
+					      <option>4</option>
+					      <option>5</option>
+					      <option>5</option>
+					      <option>5</option>
+					      <option>5</option>
+					    </select>
+					</div>
+				</div>
+					<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">状态:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<div class="inp" style="margin: 4px;">
+						<label for="able"><input type="radio" name="pingyue" id="able" checked="checked">
+						可选</label>
+						<label for="disable"><input type="radio" name="pingyue" id="disable">
+						不可选</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">备注:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<textarea name="remarks" rows="3" cols="3" class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="form-action">
+					<input class="btn btn-primary" type="submit" value="保存" />
+					<input class="btn btn-default" type="button" value="返回" onclick="history.go(-1)"/>
+				</div>
+			</form>
+		</div>
+		
+	</body>
+</html>

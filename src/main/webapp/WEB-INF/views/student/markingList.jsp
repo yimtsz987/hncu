@@ -44,7 +44,7 @@
 			</c:forEach>
 			<div class="btn-wrap">
 				<span class="btn-left">
-					<c:if test="${markingCount == 0}">
+					<c:if test="${markingCount == null}">
 						<a href="${ctx}/student/markingEdit" class="btn btn-warning" >
 							<i class="glyphicon glyphicon-plus"></i>新增批阅材料
 						</a>

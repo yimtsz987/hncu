@@ -5,6 +5,7 @@ import com.hncu.common.Msg;
 import com.hncu.entity.Understanding;
 import com.hncu.entity.User;
 import com.hncu.service.student.UnderstandingService;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
 import org.apache.commons.io.FileUtils;
@@ -79,20 +80,29 @@ public class UnderstandingController extends BaseController {
     @RequestMapping(value = "/understandingInfo")
     public String understandingInfo(Model model){
         Understanding understandingInfo = understandingService.queryUnderstandingByStudentId(UserUtils.getCurrentUser().getId());
+        understandingInfo.setCheckStr(MD5Util.string2MD5(understandingInfo.getUploadFileOldName()));
         model.addAttribute("understandingInfo", understandingInfo);
         return "/student/understandingInfo";
     }
 
     @RequestMapping(value = "/downloadUnderstanding", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> download(@RequestParam String id) throws IOException {
-        Understanding understanding = understandingService.queryById(id);
-        if (StringUtils.isNotBlank(understanding.getUploadFileOldName())){
-            File file = new File(understanding.getUploadPath());
-            String dfileName = understanding.getUploadFileOldName();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
-            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+    public ResponseEntity<byte[]> download(@RequestParam String id, @RequestParam String checkStr) throws IOException {
+        Understanding understanding = understandingService.queryDownloadByInfo(id);
+        if (understanding != null){
+            if (StringUtils.isNotEmpty(understanding.getUploadFileOldName())){
+                if (checkStr.equals(MD5Util.string2MD5(understanding.getUploadFileOldName()))){
+                    File file = new File(understanding.getUploadPath());
+                    String dfileName = understanding.getUploadFileOldName();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+                    return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
         }else {
             return null;
         }

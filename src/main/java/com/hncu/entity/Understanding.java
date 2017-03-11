@@ -21,6 +21,8 @@ public class Understanding extends BaseEntity {
     private String uploadFile;
     private String uploadPath;
     private String uploadFileOldName;
+    private String checkStr;
+    private String teacherId;
 
 
     /**
@@ -32,6 +34,7 @@ public class Understanding extends BaseEntity {
         this.setStudentId(UserUtils.getCurrentUser().getId());
         this.setYear(SysParamUtil.getParamValue("year"));
         this.setTitleId(UserUtils.getCurrentUser().getStudent().getTitleId());
+        this.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
     }
 
     public String getStudentId() {
@@ -96,5 +99,21 @@ public class Understanding extends BaseEntity {
 
     public void setUploadFileOldName(String uploadFileOldName) {
         this.uploadFileOldName = uploadFileOldName;
+    }
+
+    public String getCheckStr() {
+        return checkStr;
+    }
+
+    public void setCheckStr(String checkStr) {
+        this.checkStr = checkStr;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 }

@@ -3,6 +3,7 @@ package com.hncu.common;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hncu.entity.User;
+import com.hncu.utils.SysParamUtil;
 import com.hncu.utils.UserUtils;
 import org.hibernate.validator.constraints.Length;
 
@@ -117,6 +118,7 @@ public class BaseEntity implements Serializable {
     public static final String MARKING_FLAG_YES = "1";
 
 
+
     protected String id;  //主键
     protected User createBy; //创建者
     protected User updateBy; //更新者
@@ -125,6 +127,7 @@ public class BaseEntity implements Serializable {
     protected String delFlag = DEL_FLAG_NORMAL; //删除标记  （0正常 1删除）
     @Length(max = 100, message = "备注信息不能超过100个字符")
     protected String remarks;
+    protected String sysYear;
 
     /**
      * 执行新增操作之前需要执行的操作
@@ -217,5 +220,13 @@ public class BaseEntity implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public String getSysYear() {
+        return sysYear;
+    }
+
+    public void setSysYear(String sysYear) {
+        this.sysYear = sysYear;
     }
 }

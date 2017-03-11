@@ -29,6 +29,8 @@
 		<typeAlias type="com.hncu.entity.MiddleCheck" alias="MiddleCheck" />
 		<typeAlias type="com.hncu.entity.MiddleCheckParam" alias="MiddleCheckParam" />
 		<typeAlias type="com.hncu.entity.Answer" alias="Answer" />
+		<typeAlias type="com.hncu.entity.SchoolReport" alias="SchoolReport" />
+		<typeAlias type="com.hncu.entity.TeacherAndStudent" alias="TeacherAndStudent" />
 	</typeAliases>
 
 

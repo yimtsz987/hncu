@@ -43,7 +43,12 @@
         s.answer_flag as "answerFlag",
         s.expand_flag as "expandFlag",
         d.name as "department.name",
-        m.name as "major.name"
+        m.name as "major.name",
+        sr.id as "schoolReport.id",
+        sr.report_id as "schoolReport.reportId",
+        sr.score as "schoolReport.score",
+        gt.title as "title.title",
+        su.name as "teacher.name"
     </sql>
 
     <sql id="studentJoins">
@@ -51,6 +56,9 @@
         LEFT JOIN department d on d.d_no = s.department_no
         LEFT JOIN major m on m.id = s.major_id
         LEFT JOIN classes cs on cs.class_id = s.classes
+        LEFT JOIN school_report sr on sr.id = s.school_report_id
+        LEFT JOIN graduation_title gt on gt.id = s.title_id
+        LEFT JOIN sys_user su on su.id = s.teacher_id
     </sql>
 
     <select id="queryList" parameterType="Student" resultType="Student">
@@ -76,6 +84,7 @@
         <if test="year != null and year != ''">
             and s.year = #{year,jdbcType=VARCHAR}
         </if>
+        ORDER BY s.node ASC
     </select>
 
     <select id="queryById" parameterType="string" resultType="Student">

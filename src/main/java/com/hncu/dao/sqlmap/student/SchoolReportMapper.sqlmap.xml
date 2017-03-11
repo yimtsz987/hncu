@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.SchoolReportMapper">
+    <sql id="schoolReportColumns">
+        sr.id,
+        sr.report_id as "reportId",
+        sr.student_id as "studentId",
+        sr.score,
+        sr.pass_flag as "passFlag",
+        sr.date_time
+    </sql>
+
+    <select id="queryById" parameterType="string" resultType="SchoolReport">
+        SELECT <include refid="schoolReportColumns" />
+        FROM school_report sr
+        WHERE sr.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryList" parameterType="SchoolReport" resultType="SchoolReport">
+        SELECT <include refid="schoolReportColumns" />
+        FROM school_report sr
+        <where>
+            <if test="id != null and id != ''">
+                and sr.id like concat ('%', #{id}, '%')
+            </if>
+            <if test="reportId != null and reportId != ''">
+                and sr.report_id like concat ('%', #{reportId}, '%')
+            </if>
+            <if test="studentId != null and studentId != ''">
+                and sr.student_id = #{studentId,jdbcType=NUMERIC}
+            </if>
+            <if test="passFlag != null and passFlag != ''">
+                and sr.pass_flag = #{passFlag,jdbcType=INTEGER}
+            </if>
+        </where>
+        ORDER BY sr.id ASC
+    </select>
+
+    <select id="querySchoolReportById" parameterType="string" resultType="SchoolReport">
+        SELECT <include refid="schoolReportColumns" />
+        FROM school_report sr
+        WHERE sr.report_id = #{reportId, jdbcType=NUMERIC}
+        AND sr.student_id = #{studentId,jdbcType=NUMERIC}
+    </select>
+
+    <insert id="insetSchoolReport" parameterType="SchoolReport">
+        INSERT INTO school_report(report_id student_id,score,,pass_flag ,date_time)
+        VALUES (#{reportId,jdbcType=VARCHAR},#{studentId,jdbcType=INTEGER},#{score,jdbcType=VARCHAR},#{passFlag, jdbcType=INTEGER},#{dateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+</mapper>

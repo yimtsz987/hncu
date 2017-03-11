@@ -17,6 +17,8 @@ public class Title extends BaseEntity {
     private String year;
     private String selectFlag;
 
+    private String checkTitle;
+
     public String getTitle() {
         return title;
     }
@@ -71,5 +73,13 @@ public class Title extends BaseEntity {
 
     public void setSelectFlag(String selectFlag) {
         this.selectFlag = selectFlag;
+    }
+
+    public String getCheckTitle() {
+        return checkTitle;
+    }
+
+    public void setCheckTitle(String checkTitle) {
+        this.checkTitle = checkTitle;
     }
 }

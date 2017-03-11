@@ -191,13 +191,13 @@
 							</td>
 							<td class="ui-stepInfo">
 								<c:if test="${gpms:getUser().student.stepNow eq 4}">
-									<a href="${ctx}/student/understanding" class="ui-stepSequence">4</a>
+									<a href="${ctx}/student/openTitlePage" class="ui-stepSequence">4</a>
 									<p class="ui-stepName">提交开题报告<br/>
 										<strong class="process">（当前进度）</strong>
 									</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow > 4}">
-									<a href="${ctx}/student/understandingInfo" class="ui-stepSequence">4</a>
+									<a href="${ctx}/student/openTitleInfo" class="ui-stepSequence">4</a>
 									<p class="ui-stepName">查看开题</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow < 4}">
@@ -207,13 +207,13 @@
 							</td>
 							<td class="ui-stepInfo">
 								<c:if test="${gpms:getUser().student.stepNow eq 5}">
-									<a href="${ctx}/student/understanding" class="ui-stepSequence">5</a>
+									<a href="${ctx}/student/scheduleList" class="ui-stepSequence">5</a>
 									<p class="ui-stepName">设计和论文撰写<br />
 										<strong class="process">（当前进度）</strong>
 									</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow > 5}">
-									<a href="${ctx}/student/understandingInfo" class="ui-stepSequence">5</a>
+									<a href="${ctx}/student/scheduleList" class="ui-stepSequence">5</a>
 									<p class="ui-stepName">设计和论文撰写</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow < 5}">
@@ -223,13 +223,13 @@
 							</td>
 							<td class="ui-stepInfo">
 								<c:if test="${gpms:getUser().student.stepNow eq 6}">
-									<a href="${ctx}/student/understanding" class="ui-stepSequence">6</a>
+									<a href="${ctx}/student/markingList" class="ui-stepSequence">6</a>
 									<p class="ui-stepName">教师批阅<br />
 										<strong class="process">（当前进度）</strong>
 									</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow > 6}">
-									<a href="${ctx}/student/understandingInfo" class="ui-stepSequence">6</a>
+									<a href="${ctx}/student/markingList" class="ui-stepSequence">6</a>
 									<p class="ui-stepName">教师批阅</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow < 6}">
@@ -239,13 +239,13 @@
 							</td>
 							<td class="ui-stepInfo">
 								<c:if test="${gpms:getUser().student.stepNow eq 7}">
-									<a href="${ctx}/student/understanding" class="ui-stepSequence">7</a>
+									<a href="${ctx}/student/middleCheckList" class="ui-stepSequence">7</a>
 									<p class="ui-stepName">中期检查<br />
 										<strong class="process">（当前进度）</strong>
 									</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow > 7}">
-									<a href="${ctx}/student/understandingInfo" class="ui-stepSequence">7</a>
+									<a href="${ctx}/student/middleCheckList" class="ui-stepSequence">7</a>
 									<p class="ui-stepName">中期检查</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow < 7}">
@@ -255,13 +255,13 @@
 							</td>
 							<td class="ui-stepInfo">
 								<c:if test="${gpms:getUser().student.stepNow eq 8}">
-									<a href="${ctx}/student/understanding" class="ui-stepSequence">8</a>
+									<a href="${ctx}/student/reviewList" class="ui-stepSequence">8</a>
 									<p class="ui-stepName">评阅<br />
 										<strong class="process">（当前进度）</strong>
 									</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow > 8}">
-									<a href="${ctx}/student/understandingInfo" class="ui-stepSequence">8</a>
+									<a href="${ctx}/student/reviewList" class="ui-stepSequence">8</a>
 									<p class="ui-stepName">评阅</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow < 8}">
@@ -271,13 +271,13 @@
 							</td>
 							<td class="ui-stepInfo">
 								<c:if test="${gpms:getUser().student.stepNow eq 9}">
-									<a href="${ctx}/student/understanding" class="ui-stepSequence">9</a>
+									<a href="${ctx}/student/answerList" class="ui-stepSequence">9</a>
 									<p class="ui-stepName">答辩<br />
 										<strong class="process">（当前进度）</strong>
 									</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow > 9}">
-									<a href="${ctx}/student/understandingInfo" class="ui-stepSequence">9</a>
+									<a href="${ctx}/student/answerList" class="ui-stepSequence">9</a>
 									<p class="ui-stepName">答辩</p>
 								</c:if>
 								<c:if test="${gpms:getUser().student.stepNow < 9}">
@@ -288,6 +288,14 @@
 						</tr>
 					</table>
 				</div>
+				</div>
+				<div>
+					<c:if test="${gpms:getUser().student.stepNow eq 10 and gpms:getUser().student.step10 eq 0}">
+						<h2 class="text-center">你已完成所有步骤，请耐心等待成绩结果！！</h2>
+					</c:if>
+					<c:if test="${gpms:getUser().student.stepNow eq 10 and gpms:getUser().student.step10 ne 0}">
+						<h2 class="text-center">毕业设计成绩已公布（<a href="${ctx}/student/schoolReport">点击查询</a>）</h2>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -306,7 +314,7 @@
 	    	$(".header-pic").css({"left":page_personal_width/2 - 45 });
 		})
 		stepBar.init("stepBar", {
-			step : ${gpms:getUser().student.stepNow},
+			step : ${gpms:getUser().student.stepNow >9 ? "9":gpms:getUser().student.stepNow},
 			animation : true
 		});
 	</script>

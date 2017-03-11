@@ -15,7 +15,7 @@
 			</c:if>
 			<c:if test="${understandingInfo.passFlag eq 1}">
 				<h3 class="text-center"><span style="color: red;">${gpms:getUser().name}</span>同学，很遗憾，你<strong>审题报告</strong>未通过！<small>（请修改后重新提交）</small></h3>
-				<p class="c-666 f-mt30 f-mb50 text-center"><a href="${ctx}/student/understanding?id=${understandingInfo.id}">点击重新提交开题报告</a></p>
+				<p class="c-666 f-mt30 f-mb50 text-center"><a href="${ctx}/student/understanding?id=${understandingInfo.id}">点击重新提交审题报告</a></p>
 				<h3></h3>
 			</c:if>
 			<c:if test="${understandingInfo.passFlag eq 2}">
@@ -48,7 +48,7 @@
 								</span>
 							</td>
 							<td>
-								<a href="${ctx}/student/downloadUnderstanding?id=${understandingInfo.id}" class="btn btn-xs btn-primary">下载</a>
+								<a href="${ctx}/student/downloadUnderstanding?id=${understandingInfo.id}&checkStr=${understandingInfo.checkStr}" class="btn btn-xs btn-primary">下载</a>
 							</td>
 						</tr>
 						</tbody>

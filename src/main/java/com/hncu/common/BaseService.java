@@ -103,5 +103,12 @@ public class BaseService<D extends BaseMapper <T>, T extends BaseEntity> {
         return res > 0;
     }
 
-
+    /**
+     * 查询下载信息
+     * @param id
+     * @return
+     */
+    public T queryDownloadByInfo(String id){
+        return mapper.queryDownloadByInfo(id, UserUtils.getCurrentUser().getId());
+    }
 }

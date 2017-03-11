@@ -19,6 +19,7 @@ public class StudentExpand implements Serializable {
     private String titleId;
     private String titleName;
     private String teacherId;
+    private String teacherName;
     private String year;
     private String grade;
     private String step1;
@@ -30,11 +31,13 @@ public class StudentExpand implements Serializable {
     private String step7;
     private String step8;
     private String step9;
+    private String step10;
     private Integer stepNow;
     private String scheduleNum;
     private String answerId;
     private String answerFlag;
     private String expandFlag;
+    private SchoolReport schoolReport;
 
     public String getsId() {
         return sId;
@@ -98,6 +101,14 @@ public class StudentExpand implements Serializable {
 
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public String getYear() {
@@ -188,6 +199,14 @@ public class StudentExpand implements Serializable {
         this.step9 = step9;
     }
 
+    public String getStep10() {
+        return step10;
+    }
+
+    public void setStep10(String step10) {
+        this.step10 = step10;
+    }
+
     public Integer getStepNow() {
         return stepNow;
     }
@@ -226,5 +245,13 @@ public class StudentExpand implements Serializable {
 
     public void setExpandFlag(String expandFlag) {
         this.expandFlag = expandFlag;
+    }
+
+    public SchoolReport getSchoolReport() {
+        return schoolReport;
+    }
+
+    public void setSchoolReport(SchoolReport schoolReport) {
+        this.schoolReport = schoolReport;
     }
 }

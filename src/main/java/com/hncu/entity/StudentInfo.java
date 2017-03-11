@@ -26,8 +26,8 @@ public class StudentInfo extends BaseEntity {
     private Department department;
     private Major major;
     private Classes classes;
-    private Title titleId;
-    private String teacherId;
+    private Title title;
+    private TeacherInfo teacher;
     private String year;
     private String grade;
     private String step1;
@@ -43,6 +43,7 @@ public class StudentInfo extends BaseEntity {
     private String answerId;
     private String answerFlag = ANSWER_FLAG_NO;
     private String expandFlag = EXPAND_FLAG_STUDENT;
+    private SchoolReport schoolReport;
 
     public StudentInfo(){
 
@@ -197,20 +198,20 @@ public class StudentInfo extends BaseEntity {
         this.classes = classes;
     }
 
-    public Title getTitleId() {
-        return titleId;
+    public Title getTitle() {
+        return title;
     }
 
-    public void setTitleId(Title titleId) {
-        this.titleId = titleId;
+    public void setTitle(Title title) {
+        this.title = title;
     }
 
-    public String getTeacherId() {
-        return teacherId;
+    public TeacherInfo getTeacher() {
+        return teacher;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacher(TeacherInfo teacher) {
+        this.teacher = teacher;
     }
 
     public String getYear() {
@@ -331,5 +332,13 @@ public class StudentInfo extends BaseEntity {
 
     public void setExpandFlag(String expandFlag) {
         this.expandFlag = expandFlag;
+    }
+
+    public SchoolReport getSchoolReport() {
+        return schoolReport;
+    }
+
+    public void setSchoolReport(SchoolReport schoolReport) {
+        this.schoolReport = schoolReport;
     }
 }

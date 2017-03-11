@@ -38,6 +38,7 @@
         s.step_7 as "student.step7",
         s.step_8 as "student.step8",
         s.step_9 as "student.step9",
+        s.step_10 as "student.step10",
         s.step_now as "student.stepNow",
         s.answer_id as "student.answerId",
         s.answer_flag as "student.answerFlag",
@@ -49,7 +50,11 @@
         d.name as "student.department.name",
         dt.name as "teacher.department.name",
         m.name as "student.major.name",
-        gt.title as "student.titleName"
+        gt.title as "student.titleName",
+        su.name as "student.teacherName",
+        sr.id as "student.schoolReport.id",
+        sr.report_id as "student.schoolReport.reportId",
+        sr.score as "student.schoolReport.score"
     </sql>
 
     <sql id="userJoins">
@@ -59,6 +64,8 @@
         LEFT JOIN department dt on dt.d_no = t.department_no
         LEFT JOIN major m on m.id = s.major_id
         LEFT JOIN graduation_title gt on gt.id = s.title_id
+        LEFT JOIN school_report sr on sr.id = s.school_report_id
+        LEFT JOIN sys_user su on su.id = s.teacher_id
     </sql>
 
     <select id="queryList" parameterType="User" resultType="User">

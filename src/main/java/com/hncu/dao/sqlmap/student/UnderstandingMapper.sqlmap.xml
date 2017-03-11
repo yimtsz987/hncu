@@ -10,7 +10,8 @@
         ur.pass_flag as "passFlag",
         ur.uploadFile,
         ur.uploadPath,
-        ur.uploadFileOldName
+        ur.uploadFileOldName,
+        ur.teacher_id as "teacherId"
     </sql>
 
     <select id="queryById" parameterType="string" resultType="Understanding">
@@ -19,9 +20,17 @@
         WHERE ur.id = #{id, jdbcType=NUMERIC}
     </select>
 
+    <select id="queryDownloadByInfo" parameterType="string" resultType="Understanding">
+        SELECT <include refid="understandingColumns" />
+        FROM understanding_report ur
+        WHERE ur.id = #{id, jdbcType=NUMERIC}
+        and ur.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
+
     <insert id="uploadReport" parameterType="Understanding">
-        INSERT INTO understanding_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName)
-        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR})
+        INSERT INTO understanding_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName,teacher_id)
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{#{teacherId, jdbcType=NUMERIC}})
     </insert>
 
     <update id="uploadReportAlter" parameterType="Understanding">

@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js图片左右滚动的jquery插件</title>
+<meta name="keywords" content="左右滚动,js左右滚动,图片左右滚动" />
+<meta name="description" content="js图片左右滚动/>
+<style>
+ul{ padding:0; margin:0; list-style:none;}
+a{ text-decoration:none; color:#F00}
+.lcrbox { margin: 10px 0; overflow: hidden }
+.lcr_l, .lcr_r { display: block; position: relative; top: 50%; margin-right: 0; text-align: center }
+.lcr_l { float: left }
+.lcr_r { float: right }
+.lcr_c { height: 100%; overflow: hidden; position: relative }
+.lcr_c ul { white-space: nowrap; font-size: 0 }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.lcr_c ul { display: inline-table; vertical-align: top }
+}
+.lcr_c li { display: inline; font-size: 13px }
+.lcr_c li a { display: inline-block }
+.lcr_c img { padding: 2px; border: #dadada solid 1px }
+
+.lcrbox01 { height: 110px; position: relative; margin-top: 0 }
+.lcrbox01 .lcr_l, .lcrbox01 .lcr_r { width: 17px; height: 36px; line-height:36px;  margin-top: -18px; background-color: #fff; position: absolute; z-index: 100 }
+.lcrbox01 .lcr_l { left: 0; border-radius: 0 3px 3px 0; opacity: .5; filter: alpha(opacity=50) }
+.lcrbox01 .lcr_l:hover { opacity: .8; filter: alpha(opacity=80) }
+.lcrbox01 .lcr_r { right: 0; border-radius: 3px 0 0 3px; opacity: .5; filter: alpha(opacity=50) }
+.lcrbox01 .lcr_r:hover { opacity: .8; filter: alpha(opacity=80) }
+.lcrbox01 .lcr_c { z-index: 99 }
+.lcrbox01 .lcr_c li { padding-left: 10px }
+.lcrbox01 .lcr_c .scroll_first { padding-left: 0 }
+.lcrbox01 .lcr_c img { width: 182px; height: 102px }
+.lcrbox01 .lcr_l .ico, .lcrbox01 .lcr_r .ico { margin-top: 13px }
+:root .lcrbox01 .lcr_l, :root .lcrbox01 .lcr_l:hover, :root .lcrbox01 .lcr_r, :root .lcrbox01 .lcr_r:hover { filter: none }
+</style>
+</head>
+
+<body>
+<div style="font-size:16px;">原创作者：<a href="http://www.atued.com/" target="_blank">atued</a> 的 三藏 法师</div>
+<div style="padding:20px 0; line-height:1.75;">js图片左右滚动的jquery插件可以点击滚动也可以配置成自动滚动，由<a href="http://www.atued.com/" target="_blank">atued</a> 的 三藏 法师 原创，<a href="http://www.51xuediannao.com/">懒人建站</a>整理发布</div>
+<!--DEMO 开始-->
+<div id="lcrboxslide" class="lcrbox lcrbox01" style="width:782px;"> 
+<a title="prev" class="lcr_l" href="javascript:;"><</a><a title="next" class="lcr_r" href="javascript:;">></a>
+  <div class="lcr_c">
+    <ul  style="position: absolute;" class="overview">
+      <li class="scroll_first"><a title="懒人建站" href="http://www.51xuediannao.com/"><img src="http://www.linklife.cn/Upload/2013/7/2/small_cb30e153c60849918f4d01d99da48bca.png"></a></li>
+      <li><a title="2013郑州爱心送考全城总动员" href="#/CircleParty/Details/48cdea97515b4e1190d49d11d7fb66ef"><img src="http://www.linklife.cn/Upload/2013/6/1/small_e9c3bfa27ebe4f12a484df310fba4647.png"></a></li>
+      <li><a title="jquery特效" href="http://www.51xuediannao.com/js/"><img src="http://www.linklife.cn/Upload/2013/7/9/small_94a7b04232d849208ed48073538b7b5f.png"></a></li>
+      <li><a title="建站素材" href="http://www.51xuediannao.com/sucai/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_35b351a7a0ec4d97897636634dd9c822.png"></a></li>
+      <li><a title="QQ在线客服代码" href="http://www.51xuediannao.com/qqkefu/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_813fd9a53c1f44829c36d5379821f673.png"></a></li>
+      <li><a title="atued 关注用户体验" href="http://www.atued.com/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_ce5ceb6a244448a09d27445f7640c375.png"></a></li>
+      <li><a title="2013" href="#/CircleParty/Details/48cdea97515b4e1190d49d11d7fb66ef"><img src="http://www.linklife.cn/Upload/2013/6/1/small_e9c3bfa27ebe4f12a484df310fba4647.png"></a></li>
+      <li><a title="jquery特效" href="http://www.51xuediannao.com/js/"><img src="http://www.linklife.cn/Upload/2013/7/9/small_94a7b04232d849208ed48073538b7b5f.png"></a></li>
+      <li><a title="建站素材" href="http://www.51xuediannao.com/sucai/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_35b351a7a0ec4d97897636634dd9c822.png"></a></li>
+      <li><a title="QQ在线客服代码" href="http://www.51xuediannao.com/qqkefu/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_813fd9a53c1f44829c36d5379821f673.png"></a></li>
+      <li><a title="atued 关注用户体验" href="http://www.atued.com/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_ce5ceb6a244448a09d27445f7640c375.png"></a></li>
+      <li><a title="2013" href="#/CircleParty/Details/48cdea97515b4e1190d49d11d7fb66ef"><img src="http://www.linklife.cn/Upload/2013/6/1/small_e9c3bfa27ebe4f12a484df310fba4647.png"></a></li>
+      <li><a title="jquery特效" href="http://www.51xuediannao.com/js/"><img src="http://www.linklife.cn/Upload/2013/7/9/small_94a7b04232d849208ed48073538b7b5f.png"></a></li>
+      <li><a title="建站素材" href="http://www.51xuediannao.com/sucai/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_35b351a7a0ec4d97897636634dd9c822.png"></a></li>
+      <li><a title="QQ在线客服代码" href="http://www.51xuediannao.com/qqkefu/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_813fd9a53c1f44829c36d5379821f673.png"></a></li>
+      <li><a title="atued 关注用户体验" href="http://www.atued.com/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_ce5ceb6a244448a09d27445f7640c375.png"></a></li>
+      <li><a title="2013" href="#/CircleParty/Details/48cdea97515b4e1190d49d11d7fb66ef"><img src="http://www.linklife.cn/Upload/2013/6/1/small_e9c3bfa27ebe4f12a484df310fba4647.png"></a></li>
+      <li><a title="jquery特效" href="http://www.51xuediannao.com/js/"><img src="http://www.linklife.cn/Upload/2013/7/9/small_94a7b04232d849208ed48073538b7b5f.png"></a></li>
+      <li><a title="建站素材" href="http://www.51xuediannao.com/sucai/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_35b351a7a0ec4d97897636634dd9c822.png"></a></li>
+      <li><a title="QQ在线客服代码" href="http://www.51xuediannao.com/qqkefu/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_813fd9a53c1f44829c36d5379821f673.png"></a></li>
+      <li><a title="atued 关注用户体验" href="http://www.atued.com/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_ce5ceb6a244448a09d27445f7640c375.png"></a></li>
+      <li><a title="前端路上" href="http://www.51xuediannao.com/qd63/"><img src="http://www.linklife.cn/Upload/2013/6/1/small_e9c3bfa27ebe4f12a484df310fba4647.png"></a></li>
+      <li><a title="jquery特效" href="http://www.51xuediannao.com/js/"><img src="http://www.linklife.cn/Upload/2013/7/9/small_94a7b04232d849208ed48073538b7b5f.png"></a></li>
+      <li><a title="建站素材" href="http://www.51xuediannao.com/sucai/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_35b351a7a0ec4d97897636634dd9c822.png"></a></li>
+      <li><a title="QQ在线客服代码" href="http://www.51xuediannao.com/qqkefu/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_813fd9a53c1f44829c36d5379821f673.png"></a></li>
+      <li><a title="atued 关注用户体验" href="http://www.atued.com/"><img src="http://www.linklife.cn/Upload/2013/5/4/small_ce5ceb6a244448a09d27445f7640c375.png"></a></li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.11.1/jquery.min.js"></script><!--如果你的网站还没有使用jquery，请先引用jquery-->
+<script>
+
+(function($){
+    /*左右滚动*/
+    var defaults={
+        cont:'',
+        prev:'.prev',
+        next:'.next',
+        time:1000,//滚动时间
+        distance: null, //滚动距离
+        auto: false,
+		autoDelay:"3000"
+    };
+
+    $.fn.slider=function(options){
+        var o= $.extend({},defaults,options||{}),self=this;
+        var jqCont=$(o.cont,self);
+        var jqContWidth=jqCont.width();
+        var dist= 0,maxDist=jqContWidth- o.distance;
+		
+		var setInt;             //自动滚动定时器变量
+        clearInterval(setInt);  //先清理一次
+		
+        //向前滚动
+        $(o.prev,self).bind('click',function(){
+            if(dist>=0)return;
+            dist+= o.distance;
+            if(dist>=0)dist=0;
+            jqCont.stop().animate({left:dist}, o.time);
+        });
+        //向后滚动
+        $(o.next,self).bind('click',function(){
+            if(Math.abs(dist)>=maxDist)return;
+            dist+= -o.distance;
+            if(Math.abs(dist)>=jqContWidth)dist=-maxDist;
+            jqCont.stop().animate({left:dist}, o.time);
+        });
+		
+		//自动滚动
+        self.bind({
+			'mouseenter': function() {
+				clearInterval(setInt);  
+			},
+			'mouseleave':function(){
+				setInt = setInterval(function () {
+					$(o.next, self).trigger("click");
+				},o.autoDelay);
+			}	
+		});
+		if (o.auto) {
+		  self.trigger("mouseleave");
+        }
+		
+    };
+
+})(jQuery);
+
+//滚动
+$('#lcrboxslide').slider({
+	cont: '.overview',
+	prev: '.lcr_l',
+	next: '.lcr_r',
+	distance: 792,
+	time: 1500,
+	auto: true
+});
+</script>
+<!--DEMO 结束-->
+</body>
+</html>

@@ -264,8 +264,8 @@
 							</c:if>
 							<c:if test="${gpms:getUser().student.stepNow == 10}">
 								<li>
-									<a href="javascript:void(0)" class="iframeurl" name="${ctx}/student/answerList" title="成绩查询">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>10、成绩查询
+									<a href="javascript:void(0)" class="iframeurl" name="${ctx}/student/schoolReport" title="成绩查询">
+										<i class="subicon glyphicon glyphicon-hand-right"></i>10、查看成绩
 									</a>
 								</li>
 							</c:if>

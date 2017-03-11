@@ -81,8 +81,10 @@
 							<th>级数</th>
 							<th>手机</th>
 							<th>邮箱</th>
+							<th>所选教师</th>
+							<th>所选课题</th>
 							<th>进度</th>
-							<th>状态</th>
+							<th>成绩</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -100,16 +102,42 @@
 							<td>${student.year}</td>
 							<td>${student.mobile}</td>
 							<td>${student.email}</td>
-							<td>${((student.stepNow - 1) / 10)*100}%</td>
 							<td>
-								<span class="label label-success label-custom">
-									进行中
-								</span>
+								<c:if test="${student.teacher.id ne null}">
+									${student.teacher.name}
+								</c:if>
+								<c:if test="${student.teacher.id eq null}">
+									<span class="label label-success label-custom">
+									    未选择
+								    </span>
+								</c:if>
 							</td>
 							<td>
-								<a href="chakan.html" class="btn btn-xs btn-info">查看</a>
-								<a href="javascript:void(0)" class="btn btn-xs btn-primary" onclick="deleteBtn(this,${student.id})">删除</a>
-								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-danger">修改</a>
+								<c:if test="${student.title.title ne null}">
+									${student.title.title}
+								</c:if>
+								<c:if test="${student.title.title eq null}">
+									<span class="label label-success label-custom">
+									    未选择
+								    </span>
+								</c:if>
+							</td>
+							<td>${(student.stepNow / 10)*100}%</td>
+							<td>
+								<strong>
+									<c:if test="${student.schoolReport.score eq null}">
+										成绩待定
+									</c:if>
+									<c:if test="${student.schoolReport.score ne null}">
+										${student.schoolReport.score}分
+									</c:if>
+							    </strong>
+							</td>
+							<td>
+								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-primary">修改资料</a>
+								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-success">更改教师</a>
+								<a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="deleteBtn(this,${student.id})">删除</a>
+								<a href="chakan.html" class="btn btn-xs btn-info">查看文件</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -145,6 +173,8 @@
             var trLength = $("#tbodyId tr").length;
             for (var i=0;i<10-trLength;i++) {
                 $("#tbodyId").append("<tr>"
+                    + "<td></td>"
+                    + "<td></td>"
                     + "<td></td>"
                     + "<td></td>"
                     + "<td></td>"

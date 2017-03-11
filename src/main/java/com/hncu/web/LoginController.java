@@ -52,14 +52,16 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         if (subject.hasRole("admin")){
             return "redirect:/admin/index";
-        } else if (subject.hasRole("teacher") && subject.hasRole("t_admin")){
-            return "redirect:/admin/index_teacher";
+        } else if (subject.hasRole("teacher") && subject.hasRole("secretary")){
+            return "redirect:/tsRoleSelect";
+        } else if(subject.hasRole("teacher") && subject.hasRole("director")){
+            return "redirect:/tdRoleSelect";
         } else if (subject.hasRole("teacher")){
             return "redirect:/teacher/index";
         } else if (subject.hasRole("student")){
             return "redirect:/student/index";
         } else {
-            return "redirect:/student/index";
+            return null;
         }
     }
 
@@ -70,15 +72,27 @@ public class LoginController {
     }
 
     @RequiresPermissions("secretary")
-    @RequestMapping(value = "/admin/index_teacher")
-    public String tAdminIndex(){
-        return "admin/index_teacher";
+    @RequestMapping(value = "/tsRoleSelect")
+    public String tsRoleSelect(){
+        return "admin/tsRoleSelect";
+    }
+
+    @RequiresPermissions("director")
+    @RequestMapping(value = "/tdRoleSelect")
+    public String tdRoleSelect(){
+        return "admin/tdRoleSelect";
     }
 
     @RequiresPermissions("teacher")
     @RequestMapping(value = "/teacher/index")
     public String teacherIndex(){
         return "teacher/index";
+    }
+
+    @RequiresPermissions("teacher")
+    @RequestMapping(value = "/trRoleSelect")
+    public String trRoleSelect(){
+        return "teacher/trRoleSelect";
     }
 
     @RequiresPermissions("student")
