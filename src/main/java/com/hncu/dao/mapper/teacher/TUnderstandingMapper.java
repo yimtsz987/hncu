@@ -3,6 +3,7 @@ package com.hncu.dao.mapper.teacher;
 import com.hncu.common.BaseMapper;
 import com.hncu.entity.TeacherUnderstanding;
 import com.hncu.entity.Understanding;
+import com.hncu.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -13,9 +14,16 @@ import org.springframework.stereotype.Repository;
 public interface TUnderstandingMapper extends BaseMapper<TeacherUnderstanding>{
 
     /**
-     * 查询学生审题报告
-     * @param studentId
+     * 审批学生审题报告
+     * @param teacherUnderstanding
      * @return
      */
-    TeacherUnderstanding queryByStudentId(@Param("studentId") String studentId);
+    int checkUnderstanding(TeacherUnderstanding teacherUnderstanding);
+
+    /**
+     * 更新学生步骤
+     * @param user
+     * @return
+     */
+    int updateStudentStep(User user);
 }

@@ -14,6 +14,7 @@
         u.email,
         u.is_validate as "isValidate",
         u.qq,
+        u.sysYear_paramId as "sysYearParamId",
         u.expand_flag as "expandFlag",
         u.header_pic as "headerPic",
         u.create_by as "createBy.id",
@@ -54,7 +55,9 @@
         su.name as "student.teacherName",
         sr.id as "student.schoolReport.id",
         sr.report_id as "student.schoolReport.reportId",
-        sr.score as "student.schoolReport.score"
+        sr.score as "student.schoolReport.score",
+        sp.param_value as "sysParamYear",
+        tys.answer_flag as "teacher.answerFlag"
     </sql>
 
     <sql id="userJoins">
@@ -66,6 +69,8 @@
         LEFT JOIN graduation_title gt on gt.id = s.title_id
         LEFT JOIN school_report sr on sr.id = s.school_report_id
         LEFT JOIN sys_user su on su.id = s.teacher_id
+        LEFT JOIN system_parameter sp on sp.id = u.sysYear_paramId
+        LEFT JOIN teacher_year_answer tys on tys.teacher_id = u.id and tys.year = sp.param_value
     </sql>
 
     <select id="queryList" parameterType="User" resultType="User">

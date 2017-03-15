@@ -23,6 +23,7 @@ public class Understanding extends BaseEntity {
     private String uploadFileOldName;
     private String checkStr;
     private String teacherId;
+    private String teacherAdvise;
 
 
     /**
@@ -115,5 +116,13 @@ public class Understanding extends BaseEntity {
 
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public String getTeacherAdvise() {
+        return teacherAdvise;
+    }
+
+    public void setTeacherAdvise(String teacherAdvise) {
+        this.teacherAdvise = teacherAdvise;
     }
 }

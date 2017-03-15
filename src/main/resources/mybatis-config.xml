@@ -32,6 +32,10 @@
 		<typeAlias type="com.hncu.entity.SchoolReport" alias="SchoolReport" />
 		<typeAlias type="com.hncu.entity.TeacherAndStudent" alias="TeacherAndStudent" />
 		<typeAlias type="com.hncu.entity.TeacherUnderstanding" alias="TeacherUnderstanding" />
+		<typeAlias type="com.hncu.entity.TeacherOpenTitle" alias="TeacherOpenTitle" />
+		<typeAlias type="com.hncu.entity.TeacherSchedule" alias="TeacherSchedule" />
+		<typeAlias type="com.hncu.entity.TeacherMarking" alias="TeacherMarking" />
+		<typeAlias type="com.hncu.entity.TeacherMiddleCheck" alias="TeacherMiddleCheck" />
 	</typeAliases>
 
 

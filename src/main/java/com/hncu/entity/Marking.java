@@ -19,6 +19,7 @@ public class Marking extends BaseEntity {
     private String suploadPath;
     private String suploadFileOldName;
     private String studentQuestion;
+    private String teacherId;
     private String teacherAdvise;
     private Date tuploadDate;
     private String tuploadFile;
@@ -28,6 +29,8 @@ public class Marking extends BaseEntity {
     private String year;
     private String titleId;
     private String state;
+    private String teacherCheckStr;
+    private String studentCheckStr;
 
     /**
      * 学生上传之前调用
@@ -38,6 +41,7 @@ public class Marking extends BaseEntity {
         this.setStudentId(UserUtils.getCurrentUser().getId());
         this.setYear(SysParamUtil.getParamValue("year"));
         this.setTitleId(UserUtils.getCurrentUser().getStudent().getTitleId());
+        this.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
     }
 
     /**
@@ -94,6 +98,14 @@ public class Marking extends BaseEntity {
 
     public void setStudentQuestion(String studentQuestion) {
         this.studentQuestion = studentQuestion;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getTeacherAdvise() {
@@ -166,5 +178,21 @@ public class Marking extends BaseEntity {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getTeacherCheckStr() {
+        return teacherCheckStr;
+    }
+
+    public void setTeacherCheckStr(String teacherCheckStr) {
+        this.teacherCheckStr = teacherCheckStr;
+    }
+
+    public String getStudentCheckStr() {
+        return studentCheckStr;
+    }
+
+    public void setStudentCheckStr(String studentCheckStr) {
+        this.studentCheckStr = studentCheckStr;
     }
 }

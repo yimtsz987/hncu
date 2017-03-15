@@ -22,6 +22,11 @@ public class MiddleCheck extends BaseEntity{
     private String uploadPath;
     private String uploadFileOldName;
     private String paramId;
+    private String checkStr;
+    private String teacherId;
+    private String teacherAdvise;
+    private String paramName;
+    private String paramDescription;
 
     /**
      * 上传中期材料之前调用
@@ -104,5 +109,45 @@ public class MiddleCheck extends BaseEntity{
 
     public void setParamId(String paramId) {
         this.paramId = paramId;
+    }
+
+    public String getCheckStr() {
+        return checkStr;
+    }
+
+    public void setCheckStr(String checkStr) {
+        this.checkStr = checkStr;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public String getTeacherAdvise() {
+        return teacherAdvise;
+    }
+
+    public void setTeacherAdvise(String teacherAdvise) {
+        this.teacherAdvise = teacherAdvise;
+    }
+
+    public String getParamName() {
+        return paramName;
+    }
+
+    public void setParamName(String paramName) {
+        this.paramName = paramName;
+    }
+
+    public String getParamDescription() {
+        return paramDescription;
+    }
+
+    public void setParamDescription(String paramDescription) {
+        this.paramDescription = paramDescription;
     }
 }

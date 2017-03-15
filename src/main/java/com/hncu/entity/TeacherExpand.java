@@ -14,7 +14,8 @@ public class TeacherExpand implements Serializable {
     private Department department;
     private String researchDirection;
     private String professionalTitle;
-    private String expand_flag;
+    private String expandFlag;
+    private String answerFlag;
 
     public String gettId() {
         return tId;
@@ -56,11 +57,19 @@ public class TeacherExpand implements Serializable {
         this.professionalTitle = professional_title;
     }
 
-    public String getExpand_flag() {
-        return expand_flag;
+    public String getExpandFlag() {
+        return expandFlag;
     }
 
-    public void setExpand_flag(String expand_flag) {
-        this.expand_flag = expand_flag;
+    public void setExpandFlag(String expandFlag) {
+        this.expandFlag = expandFlag;
+    }
+
+    public String getAnswerFlag() {
+        return answerFlag;
+    }
+
+    public void setAnswerFlag(String answerFlag) {
+        this.answerFlag = answerFlag;
     }
 }

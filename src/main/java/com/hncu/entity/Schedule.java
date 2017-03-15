@@ -22,6 +22,10 @@ public class Schedule extends BaseEntity {
     private String uploadPath;
     private String uploadFileOldName;
     private long remainingDate;
+    private String checkStr;
+    private String teacherId;
+    private String teacherAdvise;
+    private String lastSort;
 
     public Schedule(){
 
@@ -125,5 +129,37 @@ public class Schedule extends BaseEntity {
 
     public void setRemainingDate(long remainingDate) {
         this.remainingDate = remainingDate;
+    }
+
+    public String getCheckStr() {
+        return checkStr;
+    }
+
+    public void setCheckStr(String checkStr) {
+        this.checkStr = checkStr;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public String getTeacherAdvise() {
+        return teacherAdvise;
+    }
+
+    public void setTeacherAdvise(String teacherAdvise) {
+        this.teacherAdvise = teacherAdvise;
+    }
+
+    public String getLastSort() {
+        return lastSort;
+    }
+
+    public void setLastSort(String lastSort) {
+        this.lastSort = lastSort;
     }
 }

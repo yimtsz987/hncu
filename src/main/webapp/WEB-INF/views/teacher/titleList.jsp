@@ -93,7 +93,7 @@
 							<td>${title.description}</td>
 							<td>${gpms:getDictLabel(title.kind, 'kind')}</td>
 							<td>${gpms:getDictLabel(title.level, 'level')}</td>
-							<td>朱尚文</td>
+							<td>${title.studentName == null ? '-':title.studentName}</td>
 							<td>
 								<span class="label label-success label-custom">
 									${gpms:getDictLabel(title.selectFlag, 'state')}

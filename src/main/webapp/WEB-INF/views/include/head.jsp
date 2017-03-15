@@ -14,11 +14,16 @@
 <link rel="stylesheet" href="${ctxStatic}/css/reset.css" />
 <link rel="stylesheet" href="${ctxStatic}/css/index.css" />
 <link rel="stylesheet" href="${ctxStatic}/css/pageContnent.css" />
+<link rel="stylesheet" href="${ctxStatic}/css/iCheck/square/blue.css" >
+
 <script type="text/javascript" src="${ctxStatic}/js/jquery-1.11.1.min.js" ></script>
 <script type="text/javascript" src="${ctxStatic}/js/layer.js"></script>
 <script type="text/javascript" src="${ctxStatic}/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="${ctxStatic}/js/Validform_v5.3.2_min.js" ></script>
 <script type="text/javascript" src="${ctxStatic}/js/bootstrap-filestyle.js"></script>
+<script type="text/javascript" src="${ctxStatic}/js/icheck.js"></script>
+<script type="text/javascript" src="${ctxStatic}/js/nicEdit.js" ></script>
+
 
 <link rel="stylesheet" type="text/css" href="${ctxStatic}/css/bootstrap-select.css"/>
 <link href="${ctxStatic}/css/bootstrap-select.min.css" rel="stylesheet">

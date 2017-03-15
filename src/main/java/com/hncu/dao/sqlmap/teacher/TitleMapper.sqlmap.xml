@@ -9,12 +9,14 @@
         t.kind,
         t.teacher_id as "teacherId",
         t.year,
-        t.select_flag as "selectFlag"
+        t.select_flag as "selectFlag",
+        su.name as "studentName"
     </sql>
 
     <select id="queryList" parameterType="Title" resultType="Title">
         SELECT <include refid="titleColumns" />
         FROM graduation_title t
+        LEFT JOIN sys_user su on su.id = t.student_id
         WHERE t.teacher_id = #{teacherId}
             <if test="title != null and title != ''">
                 and t.title like concat ('%', #{title}, '%')
@@ -33,6 +35,7 @@
     <select id="queryById" parameterType="string" resultType="Title">
         SELECT <include refid="titleColumns" />
         FROM graduation_title t
+        LEFT JOIN sys_user su on su.id = t.student_id
         WHERE t.id = #{id, jdbcType=NUMERIC}
     </select>
 

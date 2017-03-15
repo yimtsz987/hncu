@@ -13,7 +13,7 @@
 					<a href="#">查看批阅</a>
 				</li>
 			</ul>
-			<form action="" class="form-horizontal"id="form-id">
+			<form action="" class="form-horizontal" id="form-id">
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">课题:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">

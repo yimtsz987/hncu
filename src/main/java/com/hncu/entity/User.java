@@ -30,6 +30,9 @@ public class User extends BaseEntity {
     private String headerPic;
     private List<Role> roleList;//一个用户具有多个角色
 
+    private String sysYearParamId;
+    private String sysParamYear;
+
     public User(){
 
     }
@@ -178,5 +181,21 @@ public class User extends BaseEntity {
             set.add(role.getRoleName());
         }
         return set;
+    }
+
+    public String getSysYearParamId() {
+        return sysYearParamId;
+    }
+
+    public void setSysYearParamId(String sysYearParamId) {
+        this.sysYearParamId = sysYearParamId;
+    }
+
+    public String getSysParamYear() {
+        return sysParamYear;
+    }
+
+    public void setSysParamYear(String sysParamYear) {
+        this.sysParamYear = sysParamYear;
     }
 }

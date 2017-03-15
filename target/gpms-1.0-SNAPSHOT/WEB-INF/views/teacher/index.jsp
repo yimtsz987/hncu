@@ -91,7 +91,7 @@
 								<li><a href="${ctx}/tsRoleSelect"><span class="glyphicon glyphicon-registration-mark"></span>&nbsp;&nbsp;角色切换</a></li>
 								<li><a href="password.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;修改密码</a></li>
 								<li class="divider"></li>
-								<li><a href="/login"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;注销</a></li>
+								<li><a href="/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;注销</a></li>
 							</ul>
 						</div>
 					</li>
@@ -153,39 +153,39 @@
 									</a>
 								</li>
 								<li>
-									<a href="#" title="检查开题报告" class="iframeurl" name="face.html">
+									<a href="#" title="检查开题报告" class="iframeurl" name="${ctx}/teacher/openTitleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>4、查看开题报告
 									</a>
 								</li>
 								<li>
-									<a href="#" title="学生分期报告" class="iframeurl" name="search.html">
+									<a href="#" title="学生分期报告" class="iframeurl" name="${ctx}/teacher/scheduleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>5、学生分期报告
 									</a>
 								</li>
 								<li>
-									<a href="#" title="学生分期报告" class="iframeurl" name="found.html">
+									<a href="#" title="学生分期报告" class="iframeurl" name="${ctx}/teacher/markingList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>6、教师批阅
 									</a>
 								</li>
 								<li>
-									<a href="#" title="审阅中期资料" class="iframeurl" name="data.html">
+									<a href="#" title="审阅中期资料" class="iframeurl" name="${ctx}/teacher/middleCheckList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>7、查看中期资料
 									</a>
 								</li>
 								<li>
-									<a href="#" title="查看评阅材料" class="iframeurl" name="pingyue.html">
+									<a href="#" title="查看评阅材料" class="iframeurl" name="${ctx}/teacher/reviewList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>8、查看评阅材料
 									</a>
 								</li>
 								<li>
-									<a href="#" title="查看答辩信息">
+									<a href="#" title="查看答辩信息" class="iframeurl" name="${ctx}/teacher/studentAnswerList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>9、查看答辩信息
 									</a>
 								</li>
 							</ul>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="流程进度">
-							   <i class="glyphicon glyphicon-home"></i>流程进度
+							<a href="javascript:void(0)" title="答辩分组" class="iframeurl" name="inform.html">
+								<i class="glyphicon glyphicon-home"></i>答辩分组
 							</a>
 						</li>
 						<li class="first-nav">

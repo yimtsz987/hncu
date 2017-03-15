@@ -12,6 +12,7 @@
         ur.uploadPath as "understanding.uploadPath",
         ur.uploadFileOldName as "understanding.uploadFileOldName",
         ur.teacher_id as "understanding.teacherId",
+        ur.teacher_advise as "understanding.teacherAdvise",
         u.name as "user.name",
         es.node as "user.student.node",
         gt.title as "user.student.titleName"
@@ -35,29 +36,25 @@
                 and u.name like concat ('%', #{user.name}, '%')
             </if>
             <if test="understanding != null and understanding.passFlag != null and understanding.passFlag != ''">
-                and ur.pass_flag = #{understanding.passFlag}
+                and ur.pass_flag = #{understanding.passFlag,jdbcType=INTEGER}
             </if>
-        order by ur.id DESC
+        order by es.node ASC
     </select>
 
     <select id="queryById" parameterType="string" resultType="TeacherUnderstanding">
         SELECT <include refid="understandingColumns" />
         FROM understanding_report ur
+        <include refid="understandingJoins" />
         WHERE ur.id = #{id, jdbcType=NUMERIC}
     </select>
 
-    <select id="queryByStudentId" parameterType="string" resultType="TeacherUnderstanding">
-        SELECT <include refid="understandingColumns" />
-        FROM understanding_report ur
-        WHERE ur.student_id = #{studentId, jdbcType=NUMERIC}
-    </select>
+    <update id="checkUnderstanding" parameterType="TeacherUnderstanding">
+        UPDATE understanding_report SET pass_flag = #{understanding.passFlag,jdbcType=INTEGER},teacher_advise = #{understanding.teacherAdvise}
+        WHERE id = #{understanding.id, jdbcType=NUMERIC}
+        and student_id = #{understanding.studentId, jdbcType=NUMERIC}
+    </update>
 
-    <select id="queryDownloadByInfo" parameterType="string" resultType="TeacherUnderstanding">
-        SELECT <include refid="understandingColumns" />
-        FROM understanding_report ur
-        WHERE ur.id = #{id, jdbcType=NUMERIC}
-        and ur.student_id = #{studentId, jdbcType=NUMERIC}
-    </select>
-
-
+    <update id="updateStudentStep" parameterType="User">
+        UPDATE expand_student SET step_3 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_4,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

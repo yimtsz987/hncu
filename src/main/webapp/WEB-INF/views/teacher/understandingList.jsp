@@ -37,7 +37,7 @@
 						<label for="passFlag" class="col-lg-3 control-label">状态</label>
 						<div class="col-lg-9">
 							<form:select path="understanding.passFlag" cssClass="form-control" id="passFlag">
-								<form:option value="" label="选择班级" />
+								<form:option value="" label="选择状态" />
 								<form:options items="${gpms:getDictList('understanding')}" itemLabel="label" itemValue="value" />
 							</form:select>
 						</div>
@@ -46,7 +46,10 @@
 					<div class="clearfix"></div>
                 </form:form>
 			</div>
-			
+			<sys:msg msgObj="${msg}" />
+			<div class="page-title" style="font-weight:600;text-indent:20px;">
+				审题报告
+			</div>
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
 					<thead>
@@ -72,8 +75,12 @@
 								</span>
 							</td>
 							<td>
-								<a href="load.html" class="btn btn-xs btn-primary">下载</a>
-								<a href="project-change.html"  class="btn btn-xs btn-danger" >审核</a>
+								<c:if test="${understanding.understanding.passFlag eq 0}">
+									<a href="${ctx}/teacher/understandingCheck?id=${understanding.understanding.id}"  class="btn btn-xs btn-danger" >审核</a>
+								</c:if>
+								<c:if test="${understanding.understanding.passFlag ne 0}">
+									<a href="${ctx}/teacher/understandingCheck?id=${understanding.understanding.id}"  class="btn btn-xs btn-primary" >查看审核</a>
+								</c:if>
 							</td>
 						</tr>
 					</c:forEach>

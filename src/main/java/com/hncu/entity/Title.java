@@ -16,6 +16,7 @@ public class Title extends BaseEntity {
     private String teacherId;
     private String year;
     private String selectFlag;
+    private String studentName;
 
     private String checkTitle;
 
@@ -81,5 +82,13 @@ public class Title extends BaseEntity {
 
     public void setCheckTitle(String checkTitle) {
         this.checkTitle = checkTitle;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 }

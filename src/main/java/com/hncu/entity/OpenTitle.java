@@ -23,6 +23,9 @@ public class OpenTitle extends BaseEntity {
     private String uploadPath;
     private String uploadFileOldName;
     private List<Schedule> scheduleList;
+    private String checkStr;
+    private String teacherId;
+    private String teacherAdvise;
 
     public OpenTitle(){
 
@@ -114,5 +117,29 @@ public class OpenTitle extends BaseEntity {
 
     public void setScheduleList(List<Schedule> scheduleList) {
         this.scheduleList = scheduleList;
+    }
+
+    public String getCheckStr() {
+        return checkStr;
+    }
+
+    public void setCheckStr(String checkStr) {
+        this.checkStr = checkStr;
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public String getTeacherAdvise() {
+        return teacherAdvise;
+    }
+
+    public void setTeacherAdvise(String teacherAdvise) {
+        this.teacherAdvise = teacherAdvise;
     }
 }
