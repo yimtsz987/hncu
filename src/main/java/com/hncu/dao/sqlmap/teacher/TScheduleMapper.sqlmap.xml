@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TScheduleMapper">
+    <sql id="scheduleColumns">
+         s.id as "schedule.id",
+         s.student_id as "schedule.studentId",
+         s.sort as "schedule.sort",
+         s.content as "schedule.content",
+         s.start_date as "schedule.startDate",
+         s.end_date as "schedule.endDate",
+         s.report_id as "schedule.reportId",
+         s.report_flag as "schedule.reportFlag",
+         s.uploadFile as "schedule.uploadFile",
+         s.uploadPath as "schedule.uploadPath",
+         s.uploadFileOldName as "schedule.uploadFileOldName",
+         s.teacher_id as "schedule.teacherId",
+         s.teacher_advise as "schedule.teacherAdvise",
+         u.name as "user.name",
+         es.node as "user.student.node",
+         gt.title as "user.student.titleName"
+    </sql>
+
+    <sql id="scheduleJoins">
+        LEFT JOIN sys_user u on u.id = s.student_id
+        LEFT JOIN expand_student es on es.s_id = s.student_id
+        LEFT JOIN graduation_title gt on gt.id = es.title_id
+    </sql>
+
+    <select id="queryList" parameterType="TeacherSchedule" resultType="TeacherSchedule">
+        select <include refid="scheduleColumns" />
+        FROM graduation_schedule s
+        <include refid="scheduleJoins" />
+        WHERE s.teacher_id = #{schedule.teacherId, jdbcType=NUMERIC}
+        AND s.report_id = #{schedule.reportId, jdbcType=NUMERIC}
+        AND s.student_id = #{schedule.studentId, jdbcType=NUMERIC}
+        <if test="user != null and user.student.node != null and user.student.node != ''">
+                and es.node = #{user.student.node,jdbcType=VARCHAR}
+            </if>
+            <if test="user != null and user.name != null and user.name != ''">
+                and u.name like concat ('%', #{user.name}, '%')
+            </if>
+            <if test="schedule != null and schedule.reportFlag != null and schedule.reportFlag != ''">
+                and s.report_flag = #{schedule.reportFlag,jdbcType=INTEGER}
+            </if>
+        order by s.sort ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="TeacherSchedule">
+        SELECT <include refid="scheduleColumns" />
+        FROM graduation_schedule s
+        <include refid="scheduleJoins" />
+        WHERE s.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <update id="checkSchedule" parameterType="TeacherSchedule">
+        UPDATE graduation_schedule SET report_flag = #{schedule.reportFlag,jdbcType=INTEGER},teacher_advise = #{schedule.teacherAdvise}
+        WHERE id = #{schedule.id, jdbcType=NUMERIC}
+        and student_id = #{schedule.studentId, jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateStudentStep" parameterType="User">
+        UPDATE expand_student SET step_5 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_6,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

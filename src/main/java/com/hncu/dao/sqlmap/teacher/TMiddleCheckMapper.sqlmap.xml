@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TMiddleCheckMapper">
+    <sql id="middleCheckColumns">
+         mc.id as "middleCheck.id",
+         mc.student_id as "middleCheck.studentId",
+         mc.upload_date as "middleCheck.uploadDate",
+         mc.year as "middleCheck.year",
+         mc.title_id as "middleCheck.titleId",
+         mc.state as "middleCheck.state",
+         mc.uploadFile as "middleCheck.uploadFile",
+         mc.uploadPath as "middleCheck.uploadPath",
+         mc.uploadFileOldName as "middleCheck.uploadFileOldName",
+         mc.param_id as "middleCheck.paramId",
+         mc.teacher_id as "middleCheck.teacherId",
+         mc.teacher_advise as "middleCheck.teacherAdvise",
+         u.name as "user.name",
+         u.id as "user.id",
+         es.node as "user.student.node",
+         gt.title as "user.student.titleName",
+         mcp.name as "middleCheck.paramName",
+         mcp.description as "middleCheck.paramDescription"
+    </sql>
+
+    <sql id="middleCheckJoins">
+        LEFT JOIN sys_user u on u.id = mc.student_id
+        LEFT JOIN expand_student es on es.s_id = mc.student_id
+        LEFT JOIN graduation_title gt on gt.id = es.title_id
+        LEFT JOIN middle_check_parameter mcp on mcp.id = mc.param_id
+    </sql>
+
+    <select id="queryList" parameterType="TeacherMiddleCheck" resultType="TeacherMiddleCheck">
+        select <include refid="middleCheckColumns" />
+        FROM middle_check mc
+        <include refid="middleCheckJoins" />
+        WHERE mc.teacher_id = #{middleCheck.teacherId, jdbcType=NUMERIC}
+        AND mc.student_id = #{middleCheck.studentId, jdbcType=NUMERIC}
+        <if test="middleCheck != null and middleCheck.paramId != null and middleCheck.paramId != ''">
+                and mc.param_id = #{middleCheck.paramId,jdbcType=INTEGER}
+            </if>
+            <if test="middleCheck != null and middleCheck.paramName != null and middleCheck.paramName != ''">
+                and mcp.name like concat ('%', #{middleCheck.paramName}, '%')
+            </if>
+            <if test="middleCheck != null and middleCheck.state != null and middleCheck.state != ''">
+                and mc.state = #{middleCheck.state,jdbcType=INTEGER}
+            </if>
+        order by mc.param_id ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="TeacherMiddleCheck">
+        SELECT <include refid="middleCheckColumns" />
+        FROM middle_check mc
+        <include refid="middleCheckJoins" />
+        WHERE mc.id = #{id, jdbcType=NUMERIC}
+    </select>
+</mapper>

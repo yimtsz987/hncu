@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TReviewMapper">
+    <sql id="reviewColumns">
+         tr.id as "marking.id",
+         tr.student_id as "marking.studentId",
+         tr.supload_date as "marking.suploadDate",
+         tr.suploadFile as "marking.suploadFile",
+         tr.suploadPath as "marking.suploadPath",
+         tr.suploadFileOldName as "marking.suploadFileOldName",
+         tr.tupload_date as "marking.tuploadDate",
+         tr.tuploadFile as "marking.tuploadFile",
+         tr.tuploadPath as "marking.tuploadPath",
+         tr.tuploadFileOldName as "marking.tuploadFileOldName",
+         tr.sort as "marking.sort",
+         tr.title_id as "marking.titleId",
+         tr.state as "marking.state",
+         tr.teacher_id as "marking.teacherId",
+         tr.teacher_advise as "marking.teacherAdvise",
+         u.name as "user.name",
+         u.id as "user.id",
+         es.node as "user.student.node",
+         gt.title as "user.student.titleName"
+    </sql>
+
+    <sql id="reviewJoins">
+        LEFT JOIN sys_user u on u.id = tr.student_id
+        LEFT JOIN expand_student es on es.s_id = tr.student_id
+        LEFT JOIN graduation_title gt on gt.id = es.title_id
+    </sql>
+
+    <select id="queryList" parameterType="TeacherMarking" resultType="TeacherMarking">
+        select <include refid="reviewColumns" />
+        FROM teacher_review tr
+        <include refid="reviewJoins" />
+        WHERE tr.teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
+        AND tr.student_id = #{marking.studentId, jdbcType=NUMERIC}
+            <if test="marking != null and marking.sort != null and marking.sort != ''">
+                and tr.sort = #{marking.sort,jdbcType=INTEGER}
+            </if>
+            <if test="marking != null and marking.suploadFileOldName != null and marking.suploadFileOldName != ''">
+                and tr.suploadFileOldName like concat ('%', #{marking.suploadFileOldName}, '%')
+            </if>
+            <if test="marking != null and marking.state != null and marking.state != ''">
+                and tr.state = #{marking.state,jdbcType=INTEGER}
+            </if>
+        order by tr.sort ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="TeacherMarking">
+        SELECT <include refid="reviewColumns" />
+        FROM teacher_review tr
+        <include refid="reviewJoins" />
+        WHERE tr.id = #{id, jdbcType=NUMERIC}
+    </select>
+</mapper>

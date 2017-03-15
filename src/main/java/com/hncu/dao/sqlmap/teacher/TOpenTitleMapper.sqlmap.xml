@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TOpenTitleMapper">
+    <sql id="openTitleColumns">
+        ot.id as "openTitle.id",
+        ot.student_id as "openTitle.studentId",
+        ot.upload_date as "openTitle.uploadDate",
+        ot.year as "openTitle.year",
+        ot.title_id as "openTitle.titleId",
+        ot.report_flag as "openTitle.reportFlag",
+        ot.uploadFile as "openTitle.uploadFile",
+        ot.uploadPath as "openTitle.uploadPath",
+        ot.uploadFileOldName as "openTitle.uploadFileOldName",
+        ot.teacher_id as "openTitle.teacherId",
+        ot.teacher_advise as "openTitle.teacherAdvise",
+        u.id as "user.id",
+        u.name as "user.name",
+        es.node as "user.student.node",
+        es.answer_id as "user.student.answerId",
+        gt.title as "user.student.titleName"
+    </sql>
+
+    <sql id="openTitleJoins">
+        LEFT JOIN sys_user u on u.id = ot.student_id
+        LEFT JOIN expand_student es on es.s_id = ot.student_id
+        LEFT JOIN graduation_title gt on gt.id = es.title_id
+    </sql>
+
+    <select id="queryList" parameterType="TeacherOpenTitle" resultType="TeacherOpenTitle">
+        select <include refid="openTitleColumns" />
+        FROM opening_report ot
+        <include refid="openTitleJoins" />
+        WHERE ot.teacher_id = #{openTitle.teacherId, jdbcType=NUMERIC}
+            <if test="user != null and user.student.node != null and user.student.node != ''">
+                and es.node = #{user.student.node,jdbcType=VARCHAR}
+            </if>
+            <if test="user != null and user.name != null and user.name != ''">
+                and u.name like concat ('%', #{user.name}, '%')
+            </if>
+            <if test="openTitle != null and openTitle.reportFlag != null and openTitle.reportFlag != ''">
+                and ot.report_flag = #{openTitle.reportFlag,jdbcType=INTEGER}
+            </if>
+        order by es.node ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="TeacherOpenTitle">
+        SELECT <include refid="openTitleColumns" />
+        FROM opening_report ot
+        <include refid="openTitleJoins" />
+        WHERE ot.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <update id="checkOpenTitle" parameterType="TeacherOpenTitle">
+        UPDATE opening_report SET report_flag = #{openTitle.reportFlag,jdbcType=INTEGER},teacher_advise = #{openTitle.teacherAdvise}
+        WHERE id = #{openTitle.id, jdbcType=NUMERIC}
+        and student_id = #{openTitle.studentId, jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateStudentStep" parameterType="User">
+        UPDATE expand_student SET step_4 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_5,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

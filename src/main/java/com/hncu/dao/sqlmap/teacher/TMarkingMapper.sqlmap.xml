@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TMarkingMapper">
+    <sql id="markingColumns">
+         tm.id as "marking.id",
+         tm.student_id as "marking.studentId",
+         tm.supload_date as "marking.suploadDate",
+         tm.student_question as "marking.studentQuestion",
+         tm.suploadFile as "marking.suploadFile",
+         tm.suploadPath as "marking.suploadPath",
+         tm.suploadFileOldName as "marking.suploadFileOldName",
+         tm.tupload_date as "marking.tuploadDate",
+         tm.tuploadFile as "marking.tuploadFile",
+         tm.tuploadPath as "marking.tuploadPath",
+         tm.tuploadFileOldName as "marking.tuploadFileOldName",
+         tm.sort as "marking.sort",
+         tm.title_id as "marking.titleId",
+         tm.state as "marking.state",
+         tm.teacher_id as "marking.teacherId",
+         tm.teacher_advise as "marking.teacherAdvise",
+         u.name as "user.name",
+         u.id as "user.id",
+         es.node as "user.student.node",
+         gt.title as "user.student.titleName"
+    </sql>
+
+    <sql id="markingJoins">
+        LEFT JOIN sys_user u on u.id = tm.student_id
+        LEFT JOIN expand_student es on es.s_id = tm.student_id
+        LEFT JOIN graduation_title gt on gt.id = es.title_id
+    </sql>
+
+    <select id="queryList" parameterType="TeacherMarking" resultType="TeacherMarking">
+        select <include refid="markingColumns" />
+        FROM teacher_marking tm
+        <include refid="markingJoins" />
+        WHERE tm.teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
+        AND tm.student_id = #{marking.studentId, jdbcType=NUMERIC}
+            <if test="marking != null and marking.sort != null and marking.sort != ''">
+                and tm.sort = #{marking.sort,jdbcType=INTEGER}
+            </if>
+            <if test="marking != null and marking.suploadFileOldName != null and marking.suploadFileOldName != ''">
+                and tm.suploadFileOldName like concat ('%', #{marking.suploadFileOldName}, '%')
+            </if>
+            <if test="marking != null and marking.state != null and marking.state != ''">
+                and tm.state = #{marking.state,jdbcType=INTEGER}
+            </if>
+        order by es.node ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="TeacherMarking">
+        SELECT <include refid="markingColumns" />
+        FROM teacher_marking tm
+        <include refid="markingJoins" />
+        WHERE tm.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <update id="checkMarking" parameterType="TeacherMarking">
+        UPDATE teacher_marking SET state = #{MARKING_FLAG_YES},teacher_advise = #{marking.teacherAdvise},tuploadFile = #{marking.tuploadFile,jdbcType=VARCHAR},tuploadPath = #{marking.tuploadPath,jdbcType=VARCHAR},tuploadFileOldName = #{marking.tuploadFileOldName,jdbcType=VARCHAR}
+        WHERE id = #{marking.id, jdbcType=NUMERIC}
+        and teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateStudentStep" parameterType="User">
+        UPDATE expand_student SET step_6 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_7,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
