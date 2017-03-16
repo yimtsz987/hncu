@@ -55,7 +55,7 @@ public class ChooseTitleController extends BaseController {
         Title title = chooseTitleService.queryById(id);
         Msg msg;
         try {
-            chooseTitleService.chooseTitle(title,UserUtils.getCurrentUser());
+            chooseTitleService.chooseTitle(title);
             msg = new Msg(Msg.MSG_TYPE_OK, "选择【"+title.getTitle()+"】课题成功！！");
         } catch (Exception e){
             logger.error("选择老师失败！！", e);

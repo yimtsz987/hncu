@@ -18,8 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class ChooseTitleService extends BaseService<ChooseTitleMapper, Title>{
 
     @Transactional(readOnly = false)
-    public void chooseTitle(Title title,User user){
+    public void chooseTitle(Title title){
         if (StringUtils.isNotBlank(title.getId())){
+            title.setStudentId(UserUtils.getCurrentUser().getId());
             mapper.chooseTitle(title);
             mapper.titleIdEdit(title.getId(), UserUtils.getCurrentUser().getId());
             mapper.stepTwoEnd(UserUtils.getCurrentUser());

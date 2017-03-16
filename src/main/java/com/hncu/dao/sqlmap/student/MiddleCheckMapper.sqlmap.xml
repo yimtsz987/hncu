@@ -11,7 +11,9 @@
         mc.uploadFile,
         mc.uploadPath,
         mc.uploadFileOldName,
-        mc.param_id as "paramId"
+        mc.param_id as "paramId",
+        mc.teacher_id as "teacherId",
+        mc.teacher_advise as "teacherAdvise"
     </sql>
 
     <select id="queryById" parameterType="string" resultType="MiddleCheck">
@@ -28,8 +30,8 @@
     </select>
 
     <insert id="uploadMiddleCheck" parameterType="MiddleCheck">
-        INSERT INTO middle_check(student_id,upload_date,year,title_id,state,uploadFile,uploadPath,uploadFileOldName,param_id)
-        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{REPORT_FLAG_CHECK, jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{paramId, jdbcType=INTEGER})
+        INSERT INTO middle_check(student_id,upload_date,year,title_id,state,uploadFile,uploadPath,uploadFileOldName,param_id,teacher_id)
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{REPORT_FLAG_CHECK, jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{paramId, jdbcType=INTEGER},#{teacherId, jdbcType=NUMERIC})
     </insert>
 
     <insert id="uploadMiddleCheckUpdate" parameterType="MiddleCheck">

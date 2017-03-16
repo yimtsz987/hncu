@@ -48,7 +48,7 @@
 			</div>
 			<sys:msg msgObj="${msg}" />
 			<c:forEach items="${teacherSchedulePageInfo.list}" var="schedule" varStatus="sc">
-				<c:set var="lastSort" value="${teacherSchedulePageInfo.list[sc.last].schedule.sort}" scope="page" />
+				<c:set var="lastSort" value="${teacherSchedulePageInfo.list[sc.first].user.student.scheduleNum}" scope="page" />
 				<c:set var="titleName" value="${teacherSchedulePageInfo.list[sc.first].user.student.titleName}" scope="page" />
 				<c:set var="studentName" value="${teacherSchedulePageInfo.list[sc.first].user.name}" scope="page" />
 			</c:forEach>
@@ -77,7 +77,7 @@
 						</tr>
 					</thead>
 					<tbody  id="tbodyId">
-					<c:forEach items="${teacherSchedulePageInfo.list}" var="schedule" varStatus="sc">
+					<c:forEach items="${teacherSchedulePageInfo.list}" var="schedule">
 						<tr>
 							<td><input type="checkbox" name="node"/></td>
 							<td>${schedule.schedule.sort}</td>
@@ -107,7 +107,7 @@
 									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${lastSort}"  class="btn btn-xs btn-danger" >审核</a>
 								</c:if>
 								<c:if test="${schedule.schedule.reportFlag ne 1 and schedule.schedule.reportFlag ne 0}">
-									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${teacherSchedulePageInfo.list[sc.last].schedule.sort}"  class="btn btn-xs btn-primary" >查看审核</a>
+									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${lastSort}"  class="btn btn-xs btn-primary" >查看审核</a>
 								</c:if>
 							</td>
 						</tr>

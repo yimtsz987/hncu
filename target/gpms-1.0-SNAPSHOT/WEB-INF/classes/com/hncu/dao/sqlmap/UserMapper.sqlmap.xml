@@ -41,6 +41,7 @@
         s.step_9 as "student.step9",
         s.step_10 as "student.step10",
         s.step_now as "student.stepNow",
+        s.schedule_num as "student.scheduleNum",
         s.answer_id as "student.answerId",
         s.answer_flag as "student.answerFlag",
         s.expand_flag as "student.expandFlag",

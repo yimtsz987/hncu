@@ -10,7 +10,9 @@
         ot.report_flag as "reportFlag",
         ot.uploadFile as "uploadFile",
         ot.uploadPath as "uploadPath",
-        ot.uploadFileOldName as "uploadFileOldName"
+        ot.uploadFileOldName as "uploadFileOldName",
+        ot.teacher_id as "teacherId",
+        ot.teacher_advise as "teacherAdvise"
     </sql>
 
     <select id="queryById" parameterType="string" resultType="OpenTitle">
@@ -26,20 +28,20 @@
     </select>
 
     <insert id="uploadOpenReport" parameterType="OpenTitle" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO opening_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName)
-        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR})
+        INSERT INTO opening_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName,teacher_id)
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
     </insert>
 
     <insert id="insertSchedule" parameterType="OpenTitle">
-        INSERT INTO graduation_schedule (student_id,sort,content,start_date,end_date,report_id)
+        INSERT INTO graduation_schedule (student_id,sort,content,start_date,end_date,report_id,teacher_id)
         VALUES
         <foreach collection="scheduleList" item="schedule" separator=",">
-            (#{studentId,jdbcType=INTEGER},#{schedule.sort,jdbcType=VARCHAR},#{schedule.content,jdbcType=VARCHAR},#{schedule.startDate,jdbcType=TIMESTAMP},#{schedule.endDate,jdbcType=TIMESTAMP},#{id,jdbcType=INTEGER})
+            (#{studentId,jdbcType=INTEGER},#{schedule.sort,jdbcType=VARCHAR},#{schedule.content,jdbcType=VARCHAR},#{schedule.startDate,jdbcType=TIMESTAMP},#{schedule.endDate,jdbcType=TIMESTAMP},#{id,jdbcType=INTEGER},#{teacherId, jdbcType=NUMERIC})
         </foreach>
     </insert>
     
     <update id="stepFourEnd" parameterType="User">
-        UPDATE expand_student SET step_4 = #{STEP_FLAG_CHECK,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+        UPDATE expand_student SET step_4 = #{STEP_FLAG_CHECK,jdbcType=INTEGER},schedule_num = #{scheduleNum, jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="uploadOpenReportUpdate" parameterType="OpenTitle">

@@ -9,7 +9,8 @@
         t.kind,
         t.teacher_id as "teacherId",
         t.year,
-        t.select_flag as "selectFlag"
+        t.select_flag as "selectFlag",
+        t.student_id as "studentId"
     </sql>
 
     <select id="queryList" parameterType="Title" resultType="Title">
@@ -37,7 +38,7 @@
     </select>
 
     <update id="chooseTitle" parameterType="Title">
-        UPDATE graduation_title SET select_flag = '1' WHERE id = #{id,jdbcType=INTEGER}
+        UPDATE graduation_title SET select_flag = '1',student_id = {studentId, jdbcType=INTEGER} WHERE id = #{id,jdbcType=INTEGER}
     </update>
     
     <update id="stepTwoEnd" parameterType="User">

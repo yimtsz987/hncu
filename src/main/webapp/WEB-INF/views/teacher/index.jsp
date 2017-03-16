@@ -184,6 +184,19 @@
 								</li>
 							</ul>
 						<li class="first-nav">
+							<a href="javascript:void(0)" title="评阅工作" class="iframeurl">
+								<i class="glyphicon glyphicon-home"></i>评阅工作
+								<b class="nav-sign arrow glyphicon glyphicon-plus"></b>
+							</a>
+						</li>
+						<ul class="submenu">
+							<li>
+								<a href="#" title="查看学生" class="iframeurl" name="${ctx}/teacher/studentList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看学生
+								</a>
+							</li>
+						</ul>
+						<li class="first-nav">
 							<a href="javascript:void(0)" title="答辩分组" class="iframeurl" name="inform.html">
 								<i class="glyphicon glyphicon-home"></i>答辩分组
 							</a>

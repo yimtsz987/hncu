@@ -45,6 +45,7 @@ public class OpenTitle extends BaseEntity {
         this.setStudentId(UserUtils.getCurrentUser().getId());
         this.setYear(SysParamUtil.getParamValue("year"));
         this.setTitleId(UserUtils.getCurrentUser().getStudent().getTitleId());
+        this.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
     }
 
     public String getStudentId() {

@@ -19,6 +19,7 @@ public class Title extends BaseEntity {
     private String studentName;
 
     private String checkTitle;
+    private String studentId;
 
     public String getTitle() {
         return title;
@@ -90,5 +91,13 @@ public class Title extends BaseEntity {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }

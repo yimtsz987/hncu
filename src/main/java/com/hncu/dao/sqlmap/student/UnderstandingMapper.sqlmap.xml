@@ -11,7 +11,8 @@
         ur.uploadFile,
         ur.uploadPath,
         ur.uploadFileOldName,
-        ur.teacher_id as "teacherId"
+        ur.teacher_id as "teacherId",
+        ur.teacher_advise as "teacherAdvise"
     </sql>
 
     <select id="queryById" parameterType="string" resultType="Understanding">
@@ -30,7 +31,7 @@
 
     <insert id="uploadReport" parameterType="Understanding">
         INSERT INTO understanding_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName,teacher_id)
-        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{#{teacherId, jdbcType=NUMERIC}})
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
     </insert>
 
     <update id="uploadReportAlter" parameterType="Understanding">
