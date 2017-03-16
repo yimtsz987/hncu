@@ -4,7 +4,9 @@ import com.hncu.common.SpringContextHolder;
 import com.hncu.entity.SysParam;
 import com.hncu.service.admin.sys.SysParamService;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,5 +67,17 @@ public class SysParamUtil {
 
     public static String getParamValue(String key){
         return getParamValue(key, "");
+    }
+
+    /**
+     * 通过键名获取对应的日期值
+     * @param key
+     * @return
+     */
+    public static Date getParamDateValue (String key) throws ParseException {
+        if (StringUtils.isNotBlank(key)){
+            return DateUtils.parse(getSysParam(key).getParamValue(),"yyyy-MM-dd");
+        }
+        return null;
     }
 }

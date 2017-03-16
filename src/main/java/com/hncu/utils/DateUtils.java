@@ -44,6 +44,13 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		}
 		return formatDate;
 	}
+
+	/**
+	 * 得到当前时间字符串 格式（yyyy-MM-dd）
+	 */
+	public static String getCurrentDate() {
+		return formatDate(new Date(), "yyyy-MM-dd");
+	}
 	
 	/**
 	 * 得到日期时间字符串，转换格式（yyyy-MM-dd HH:mm:ss）
@@ -203,5 +210,14 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	{
 		return StringUtils.isBlank(strDate) ? null : new SimpleDateFormat(
 				pattern).parse(strDate);
+	}
+
+	/**
+	 * 获取当前日期(格式：yyyy-MM-dd)
+	 */
+	public static Date getCurrentDatePattern() throws ParseException
+	{
+
+		return parse(getCurrentDate());
 	}
 }

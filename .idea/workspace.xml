@@ -2,11 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50d6e13d-5cf0-46b0-a6f5-55196800fdc1" name="Default" comment="Rejected commit: Default">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/teacher/ReviewWorkMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/ReviewWorkMapper.sqlmap.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/service/teacher/ReviewWorkService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/ReviewWorkController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/entity/StudentExpand.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/entity/StudentExpand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/entity/TeacherExpand.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/entity/TeacherExpand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/utils/DateUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/utils/DateUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/utils/SysParamUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/hncu/utils/SysParamUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/entity/StudentExpand.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/entity/StudentExpand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/entity/TeacherExpand.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/entity/TeacherExpand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/utils/DateUtils.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/utils/DateUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/utils/SysParamUtil.class" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/utils/SysParamUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graduation_project_management.sql" afterPath="$PROJECT_DIR$/graduation_project_management.sql" />
-    </list>
-    <list id="082b54e8-9c5e-42d1-988f-2059ac547a4b" name="Failed commit: Default" comment="Rejected commit: Default">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingCheck.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TReviewMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TReviewMapper.sqlmap.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/Marking.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/Marking.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherExpand.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherExpand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/utils/DateUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/utils/DateUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hncu/utils/SysParamUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/hncu/utils/SysParamUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tlds/pmfn.tld" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tlds/pmfn.tld" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/target/classes/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/classes/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/tlds/pmfn.tld" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/tlds/pmfn.tld" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/teacher/index.jsp" afterPath="$PROJECT_DIR$/target/gpms-1.0-SNAPSHOT/WEB-INF/views/teacher/index.jsp" />
     </list>
     <ignored path="gpms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,7 +36,6 @@
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <file path="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingCheck.jsp" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,35 +58,14 @@
     <favorites_list name="gpms" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="208" column="46" lean-forward="true" selection-start-line="208" selection-start-column="46" selection-end-line="208" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="markingCheck.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingCheck.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -94,21 +94,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/service/teacher/TMarkingService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/MarkingMapper.sqlmap.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/Marking.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherMiddleCheck.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/teacher/TMiddleCheck.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/teacher/TMiddleCheckMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/service/teacher/TMiddleCheckService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/middleCheckList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingList.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TMiddleCheckMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMiddleCheckController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/middleCheckInfoList.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherExpand.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/teacher/TReviewMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/reviewList.jsp" />
@@ -118,7 +108,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TReviewController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingInfoList.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TReviewMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TMarkingMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TOpenTitleMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/studentAnswerInfoList.jsp" />
@@ -138,13 +127,24 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/UnderstandingMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/OpenTitleMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/service/student/OpenTitleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TScheduleMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/scheduleInfoList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingCheck.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/MiddleCheckMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/MiddleCheck.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/utils/SysParamUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/utils/DateUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tlds/pmfn.tld" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherExpand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/entity/Marking.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TReviewMapper.sqlmap.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/ReviewWorkMapper.sqlmap.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/teacher/ReviewWorkMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/service/teacher/ReviewWorkService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/ReviewWorkController.java" />
       </list>
     </option>
   </component>
@@ -378,11 +378,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teacher" />
+              <option name="myItemId" value="tlds" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -519,40 +515,6 @@
               <option name="myItemId" value="hncu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="student" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hncu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -615,70 +577,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="teacher" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hncu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="student" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hncu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -784,44 +682,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sqlmap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="student" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hncu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="mapper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -860,15 +720,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="student" />
+              <option name="myItemId" value="teacher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hncu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -883,12 +773,8 @@
     <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\gpms\src\main\webapp\WEB-INF\views\teacher" />
-      <recent name="E:\gpms\src\main\java\com\hncu\dao\sqlmap\teacher" />
-      <recent name="E:\gpms\src\main\webapp\static\js" />
-      <recent name="E:\gpms\src\main\webapp\static\img" />
-      <recent name="E:\gpms\src\main\webapp\static\css\iCheck\square" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\gpms\src\main\webapp\static\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hncu.web.teacher" />
@@ -897,8 +783,12 @@
       <recent name="com.hncu.web.student" />
       <recent name="com.hncu.service.student" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\gpms\src\main\webapp\static\css" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\gpms\src\main\java\com\hncu\dao\sqlmap\teacher" />
+      <recent name="E:\gpms\src\main\webapp\WEB-INF\views\teacher" />
+      <recent name="E:\gpms\src\main\webapp\static\js" />
+      <recent name="E:\gpms\src\main\webapp\static\img" />
+      <recent name="E:\gpms\src\main\webapp\static\css\iCheck\square" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.gpms">
@@ -1745,7 +1635,8 @@
       <workItem from="1489552903558" duration="651000" />
       <workItem from="1489555451802" duration="613000" />
       <workItem from="1489570998892" duration="9437000" />
-      <workItem from="1489644205793" duration="109000" />
+      <workItem from="1489644205793" duration="181000" />
+      <workItem from="1489661936907" duration="12700000" />
     </task>
     <task id="LOCAL-00001" summary="Rejected commit: Default">
       <created>1484699678383</created>
@@ -1915,7 +1806,21 @@
       <option name="project" value="LOCAL" />
       <updated>1489644231492</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Rejected commit: Default">
+      <created>1489644321331</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1489644321331</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Rejected commit: Default">
+      <created>1489644362189</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1489644362189</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1927,7 +1832,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="523456000" />
+    <option name="totallyTimeSpent" value="536228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1958,6 +1863,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34151787" sideWeight="0.5714286" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34375" sideWeight="0.4445629" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1966,7 +1872,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26012793" sideWeight="0.49322033" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23507462" sideWeight="0.49322033" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19569893" sideWeight="0.5067797" order="7" side_tool="true" content_ui="tabs" />
@@ -1976,7 +1882,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34375" sideWeight="0.4445629" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2003,38 +1908,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java</url>
-          <line>104</line>
-          <properties />
-          <option name="timeStamp" value="530" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="531" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="532" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java</url>
-          <line>107</line>
-          <properties />
-          <option name="timeStamp" value="533" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java</url>
-          <line>113</line>
-          <properties />
-          <option name="timeStamp" value="534" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -2047,149 +1920,17 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingInfoList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TReviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="83" column="13" lean-forward="true" selection-start-line="78" selection-start-column="12" selection-end-line="83" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TReviewMapper.sqlmap.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="42" column="17" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="42" selection-end-column="17" />
-          <folding>
-            <marker date="1489470450075" expanded="true" signature="1439:2287" ph="select FROM teacher_review" />
-            <marker date="1489470450075" expanded="true" signature="2390:2547" ph="SELECT FROM teacher_review" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="62" column="85" lean-forward="false" selection-start-line="62" selection-start-column="85" selection-end-line="62" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TMarkingMapper.sqlmap.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-          <folding>
-            <marker date="1489471873533" expanded="true" signature="1501:2352" ph="select FROM teacher_marking" />
-            <marker date="1489471873533" expanded="true" signature="2455:2615" ph="SELECT FROM teacher_marking" />
-            <marker date="1489471873533" expanded="true" signature="2701:3088" ph="UPDATE teach... " />
-            <marker date="1489471873533" expanded="true" signature="3169:3316" ph="UPDATE expan... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/studentAnswerList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1216">
-          <caret line="64" column="39" lean-forward="false" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/studentAnswerInfoList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="37" column="77" lean-forward="false" selection-start-line="37" selection-start-column="77" selection-end-line="37" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/student/StudentAnswerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="53" column="5" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TitleMapper.sqlmap.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <marker date="1489541773507" expanded="true" signature="1334:1504" ph="SELECT FROM graduation_title" />
-            <marker date="1489541773507" expanded="true" signature="1580:1835" ph="INSERT INTO graduation_title... " />
-            <marker date="1489541773507" expanded="true" signature="1911:2214" ph="UPDATE gradu... " />
-            <marker date="1489541773507" expanded="true" signature="2291:2409" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/understandingList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="51" column="18" lean-forward="false" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/titleList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2375">
-          <caret line="125" column="25" lean-forward="false" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/pageContnent.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="60" lean-forward="false" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherMarking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TAnswerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="64" column="9" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/ChooseTitleMapper.sqlmap.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-          <folding>
-            <marker date="1489572333697" expanded="true" signature="1289:1405" ph="SELECT FROM graduation_title" />
-            <marker date="1489572333697" expanded="true" signature="1481:1603" ph="UPDATE gradu... " />
-            <marker date="1489572333697" expanded="true" signature="1681:1828" ph="UPDATE expan... " />
-            <marker date="1489572333697" expanded="true" signature="1905:2007" ph="UPDATE expan... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/Title.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
           <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
-            <element signature="e#1633#1634#0" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#1917#1918#0" expanded="true" />
-            <element signature="e#1967#1968#0" expanded="true" />
-            <element signature="e#2009#2010#0" expanded="true" />
+            <element signature="e#1633#1634#0" expanded="false" />
+            <element signature="e#1677#1678#0" expanded="false" />
+            <element signature="e#1885#1886#0" expanded="false" />
+            <element signature="e#1917#1918#0" expanded="false" />
+            <element signature="e#1967#1968#0" expanded="false" />
+            <element signature="e#2009#2010#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2258,14 +1999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/OpenTitle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TUnderstandingMapper.sqlmap.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -2320,14 +2053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/student/OpenTitleMapper.sqlmap.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="592">
@@ -2366,19 +2091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TOpenTitleMapper.sqlmap.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-          <folding>
-            <marker date="1489471883219" expanded="true" signature="1296:2057" ph="select FROM opening_report" />
-            <marker date="1489471883219" expanded="true" signature="2162:2325" ph="SELECT FROM opening_report" />
-            <marker date="1489471883219" expanded="true" signature="2415:2658" ph="UPDATE openi... " />
-            <marker date="1489471883219" expanded="true" signature="2739:2886" ph="UPDATE expan... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TScheduleMapper.sqlmap.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="687">
@@ -2389,14 +2101,6 @@
             <marker date="1489580259142" expanded="true" signature="2585:2829" ph="UPDATE gradu... " />
             <marker date="1489580259142" expanded="true" signature="2910:3057" ph="UPDATE expan... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="102" column="52" lean-forward="false" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2421,21 +2125,6 @@
         <state relative-caret-position="152">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="109" column="55" lean-forward="true" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
-          <folding>
-            <marker date="1489580114208" expanded="true" signature="4197:4371" ph="SELECT FROM sys_user" />
-            <marker date="1489580114208" expanded="true" signature="4450:4633" ph="SELECT FROM sys_user" />
-            <marker date="1489580114208" expanded="true" signature="12378:16213" ph="update sys_u... " />
-            <marker date="1489580114208" expanded="true" signature="16273:16374" ph="update sys_u... " />
-            <marker date="1489580114208" expanded="true" signature="16436:16590" ph="update sys_u... " />
-            <marker date="1489580114208" expanded="true" signature="16659:16751" ph="update sys_u... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2487,14 +2176,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/MiddleCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -2503,18 +2184,230 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/OpenTitle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="208" column="46" lean-forward="true" selection-start-line="208" selection-start-column="46" selection-end-line="208" selection-end-column="46" />
+        <state relative-caret-position="817">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/MiddleCheck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TReviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherAndStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/StudentExpand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="34" />
+          <folding>
+            <element signature="e#2258#2259#0" expanded="true" />
+            <element signature="e#2296#2297#0" expanded="true" />
+            <element signature="e#2358#2359#0" expanded="true" />
+            <element signature="e#2412#2413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/UserMapper.sqlmap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-106">
+          <caret line="76" column="96" lean-forward="true" selection-start-line="76" selection-start-column="96" selection-end-line="76" selection-end-column="96" />
+          <folding>
+            <marker date="1489668016699" expanded="true" signature="4394:4568" ph="SELECT FROM sys_user" />
+            <marker date="1489668016699" expanded="true" signature="4647:4830" ph="SELECT FROM sys_user" />
+            <marker date="1489668016699" expanded="true" signature="12575:16410" ph="update sys_u... " />
+            <marker date="1489668016699" expanded="true" signature="16470:16571" ph="update sys_u... " />
+            <marker date="1489668016699" expanded="true" signature="16633:16787" ph="update sys_u... " />
+            <marker date="1489668016699" expanded="true" signature="16856:16948" ph="update sys_u... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/TeacherExpand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="e#1709#1710#0" expanded="true" />
+            <element signature="e#1761#1762#0" expanded="true" />
+            <element signature="e#1805#1806#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/utils/SysParamUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="78" column="34" lean-forward="false" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tlds/pmfn.tld">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/utils/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="217" column="44" lean-forward="false" selection-start-line="217" selection-start-column="23" selection-end-line="217" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/markingCheck.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+        <state relative-caret-position="228">
+          <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TReviewMapper.sqlmap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="52" lean-forward="false" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+          <folding>
+            <marker date="1489670018247" expanded="true" signature="1492:2340" ph="select FROM teacher_review" />
+            <marker date="1489670018247" expanded="true" signature="2443:2600" ph="SELECT FROM teacher_review" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TOpenTitleMapper.sqlmap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding>
+            <marker date="1489471883219" expanded="true" signature="1296:2057" ph="select FROM opening_report" />
+            <marker date="1489471883219" expanded="true" signature="2162:2325" ph="SELECT FROM opening_report" />
+            <marker date="1489471883219" expanded="true" signature="2415:2658" ph="UPDATE openi... " />
+            <marker date="1489471883219" expanded="true" signature="2739:2886" ph="UPDATE expan... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/TMarkingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="751">
+          <caret line="186" column="5" lean-forward="true" selection-start-line="154" selection-start-column="4" selection-end-line="186" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/TMarkingMapper.sqlmap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="65" column="13" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="65" selection-end-column="13" />
+          <folding>
+            <marker date="1489471873533" expanded="true" signature="1501:2352" ph="select FROM teacher_marking" />
+            <marker date="1489471873533" expanded="true" signature="2455:2615" ph="SELECT FROM teacher_marking" />
+            <marker date="1489471873533" expanded="true" signature="2701:3088" ph="UPDATE teach... " />
+            <marker date="1489471873533" expanded="true" signature="3169:3316" ph="UPDATE expan... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/common/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="109" column="44" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/entity/Marking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/service/teacher/TMarkingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="53" selection-start-column="2" selection-end-line="55" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/sqlmap/teacher/ReviewWorkMapper.sqlmap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <folding>
+            <marker date="1489676495340" expanded="true" signature="1495:2282" ph="select FROM teacher_review" />
+            <marker date="1489676495340" expanded="true" signature="2385:2542" ph="SELECT FROM teacher_review" />
+            <marker date="1489676495340" expanded="true" signature="2631:3024" ph="UPDATE teach... " />
+            <marker date="1489676495340" expanded="true" signature="3111:3258" ph="UPDATE expan... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/dao/mapper/teacher/ReviewWorkMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/service/teacher/ReviewWorkService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="47" column="84" lean-forward="true" selection-start-line="47" selection-start-column="84" selection-end-line="47" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2654#2655#0" expanded="true" />
+            <element signature="e#2717#2718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hncu/web/teacher/ReviewWorkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="67" column="41" lean-forward="true" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+          <folding>
+            <element signature="e#2446#2447#0" expanded="true" />
+            <element signature="e#2494#2495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/teacher/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="188" column="80" lean-forward="true" selection-start-line="188" selection-start-column="80" selection-end-line="188" selection-end-column="80" />
           <folding />
         </state>
       </provider>

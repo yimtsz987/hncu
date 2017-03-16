@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hncu.dao.mapper.teacher.TReviewMapper">
+<mapper namespace="com.hncu.dao.mapper.teacher.ReviewWorkMapper">
     <sql id="reviewColumns">
          tr.id as "marking.id",
          tr.student_id as "marking.studentId",
@@ -34,8 +34,7 @@
         select <include refid="reviewColumns" />
         FROM teacher_review tr
         <include refid="reviewJoins" />
-        WHERE tr.teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
-        AND tr.student_id = #{marking.studentId, jdbcType=NUMERIC}
+        WHERE tr.review_tId = #{marking.reviewTeacherId, jdbcType=NUMERIC}
             <if test="marking != null and marking.sort != null and marking.sort != ''">
                 and tr.sort = #{marking.sort,jdbcType=INTEGER}
             </if>
@@ -54,4 +53,14 @@
         <include refid="reviewJoins" />
         WHERE tr.id = #{id, jdbcType=NUMERIC}
     </select>
+
+    <update id="reviewWorkCheck" parameterType="TeacherMarking">
+        UPDATE teacher_marking SET state = #{MARKING_FLAG_YES},teacher_advise = #{marking.teacherAdvise},tuploadFile = #{marking.tuploadFile,jdbcType=VARCHAR},tuploadPath = #{marking.tuploadPath,jdbcType=VARCHAR},tuploadFileOldName = #{marking.tuploadFileOldName,jdbcType=VARCHAR}
+        WHERE id = #{marking.id, jdbcType=NUMERIC}
+        and review_tId = #{marking.reviewTeacherId, jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateStudentReviewStep" parameterType="User">
+        UPDATE expand_student SET step_8 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_9,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

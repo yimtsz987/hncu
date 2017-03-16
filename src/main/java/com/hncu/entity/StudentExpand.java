@@ -19,6 +19,7 @@ public class StudentExpand implements Serializable {
     private String titleId;
     private String titleName;
     private String teacherId;
+    private String reviewTeacherId;
     private String teacherName;
     private String year;
     private String grade;
@@ -101,6 +102,14 @@ public class StudentExpand implements Serializable {
 
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public String getReviewTeacherId() {
+        return reviewTeacherId;
+    }
+
+    public void setReviewTeacherId(String reviewTeacherId) {
+        this.reviewTeacherId = reviewTeacherId;
     }
 
     public String getTeacherName() {

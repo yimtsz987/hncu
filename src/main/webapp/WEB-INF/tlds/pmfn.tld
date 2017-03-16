@@ -49,6 +49,30 @@
 
     <function>
         <description>
+            通过键名获取对应的日期值
+        </description>
+        <name>getParamDateValue</name>
+        <function-class>com.hncu.utils.SysParamUtil</function-class>
+        <function-signature>java.util.Date getParamDateValue(java.lang.String)</function-signature>
+        <example>
+            ${gpms:getParamDateValue("reviewDate")}
+        </example>
+    </function>
+
+    <function>
+        <description>
+            获取系统日期
+        </description>
+        <name>getCurrentDatePattern</name>
+        <function-class>com.hncu.utils.DateUtils</function-class>
+        <function-signature>java.util.Date getCurrentDatePattern()</function-signature>
+        <example>
+            ${gpms:getCurrentDatePattern()}
+        </example>
+    </function>
+
+    <function>
+        <description>
             根据字典类型查询字典列表
         </description>
         <name>getDictList</name>

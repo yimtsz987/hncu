@@ -32,6 +32,8 @@ public class Marking extends BaseEntity {
     private String teacherCheckStr;
     private String studentCheckStr;
 
+    private String reviewTeacherId;
+
     /**
      * 学生上传之前调用
      */
@@ -194,5 +196,13 @@ public class Marking extends BaseEntity {
 
     public void setStudentCheckStr(String studentCheckStr) {
         this.studentCheckStr = studentCheckStr;
+    }
+
+    public String getReviewTeacherId() {
+        return reviewTeacherId;
+    }
+
+    public void setReviewTeacherId(String reviewTeacherId) {
+        this.reviewTeacherId = reviewTeacherId;
     }
 }

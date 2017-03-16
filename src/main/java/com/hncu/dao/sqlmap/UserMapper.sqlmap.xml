@@ -28,6 +28,7 @@
         s.classes as "student.classes",
         s.title_id as "student.titleId",
         s.teacher_id as "student.teacherId",
+        s.review_tId as "student.reviewTeacherId",
         s.year as "student.year",
         s.grade as "student.grade",
         s.step_1 as "student.step1",
@@ -58,7 +59,8 @@
         sr.report_id as "student.schoolReport.reportId",
         sr.score as "student.schoolReport.score",
         sp.param_value as "sysParamYear",
-        tys.answer_flag as "teacher.answerFlag"
+        tys.answer_flag as "teacher.answerFlag",
+        tyr.review_flag as "teacher.reviewFlag"
     </sql>
 
     <sql id="userJoins">
@@ -72,6 +74,7 @@
         LEFT JOIN sys_user su on su.id = s.teacher_id
         LEFT JOIN system_parameter sp on sp.id = u.sysYear_paramId
         LEFT JOIN teacher_year_answer tys on tys.teacher_id = u.id and tys.year = sp.param_value
+        LEFT JOIN teacher_year_review tyr on tyr.teacher_id = u.id and tyr.year = sp.param_value
     </sql>
 
     <select id="queryList" parameterType="User" resultType="User">
