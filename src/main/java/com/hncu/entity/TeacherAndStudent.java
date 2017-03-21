@@ -12,6 +12,11 @@ public class TeacherAndStudent extends BaseEntity {
     private String year;
     private Integer studentSum;
     private String studentIds;
+    private String reviewTeacherId;
+
+    public TeacherAndStudent(){
+        super();
+    }
 
     public String getTeacherId() {
         return teacherId;
@@ -43,5 +48,13 @@ public class TeacherAndStudent extends BaseEntity {
 
     public void setStudentIds(String studentIds) {
         this.studentIds = studentIds;
+    }
+
+    public String getReviewTeacherId() {
+        return reviewTeacherId;
+    }
+
+    public void setReviewTeacherId(String reviewTeacherId) {
+        this.reviewTeacherId = reviewTeacherId;
     }
 }

@@ -56,19 +56,44 @@ public class ReviewWorkController extends BaseController{
 
     @RequestMapping(value = "/reviewWorkStudentList")
     public String reviewWorkStudentList(TeacherMarking teacherMarking, Model model, PageParam pageParam){
-        teacherMarking.getMarking().setReviewTeacherId(UserUtils.getCurrentUser().getId());
-        PageInfo<TeacherMarking> teacherReviewPageInfo = reviewWorkService.queryListWithPage(teacherMarking, pageParam);
+        Marking marking = new Marking();
+        marking.setReviewTeacherId(UserUtils.getCurrentUser().getId());
+        teacherMarking.setMarking(marking);
+        PageInfo<TeacherMarking> teacherReviewPageInfo = reviewWorkService.queryStudentInfoListWithPage(teacherMarking, pageParam);
         model.addAttribute("teacherReviewPageInfo", teacherReviewPageInfo);
         return "teacher/reviewWorkStudentList";
     }
 
+    @RequestMapping(value = "/reviewWorkInfoList")
+    public String reviewWorkInfoList(TeacherMarking teacherMarking, Model model, PageParam pageParam){
+        Marking marking = new Marking();
+        marking.setReviewTeacherId(UserUtils.getCurrentUser().getId());
+        marking.setStudentId(teacherMarking.getMarking().getStudentId());
+        if(teacherMarking.getMarking() != null){
+            if (StringUtils.isNotBlank(teacherMarking.getMarking().getState())){
+                marking.setState(teacherMarking.getMarking().getState());
+            }
+            if (teacherMarking.getMarking().getSort() != null){
+                marking.setSort(teacherMarking.getMarking().getSort());
+            }
+            if (StringUtils.isNotBlank(teacherMarking.getMarking().getSuploadFileOldName())){
+                marking.setSuploadFileOldName(teacherMarking.getMarking().getSuploadFileOldName());
+            }
+        }
+        teacherMarking.setMarking(marking);
+        PageInfo<TeacherMarking> teacherReviewPageInfo = reviewWorkService.queryListWithPage(teacherMarking, pageParam);
+        User studentInfo = userService.queryById(marking.getStudentId());
+        model.addAttribute("teacherReviewPageInfo", teacherReviewPageInfo);
+        model.addAttribute("studentInfo", studentInfo);
+        return "teacher/reviewWorkInfoList";
+    }
 
     @RequestMapping(value = "/reviewWorkCheck")
     public String reviewWorkCheck(TeacherMarking teacherMarking, Model model){
         return "teacher/reviewWorkCheck";
     }
 
-    @RequestMapping(value = "/downloadStudentReview", produces = "application/octet-stream;charset=UTF-8")
+    @RequestMapping(value = "/downloadStudentReviewWork", produces = "application/octet-stream;charset=UTF-8")
     public ResponseEntity<byte[]> downloadStudent(@RequestParam String id, @RequestParam String checkStr) throws IOException {
         TeacherMarking teacherMarking = reviewWorkService.queryById(id);
         if (teacherMarking != null){
@@ -91,7 +116,7 @@ public class ReviewWorkController extends BaseController{
         }
     }
 
-    @RequestMapping(value = "/downloadTeacherReview", produces = "application/octet-stream;charset=UTF-8")
+    @RequestMapping(value = "/downloadTeacherReviewWork", produces = "application/octet-stream;charset=UTF-8")
     public ResponseEntity<byte[]> downloadTeacher(@RequestParam String id, @RequestParam String checkStr) throws IOException {
         TeacherMarking teacherMarking = reviewWorkService.queryById(id);
         if (teacherMarking != null){

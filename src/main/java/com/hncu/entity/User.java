@@ -34,7 +34,7 @@ public class User extends BaseEntity {
     private String sysParamYear;
 
     public User(){
-
+        super();
     }
 
     public User(String id){
@@ -42,6 +42,7 @@ public class User extends BaseEntity {
     }
 
     public User(String id,String username){
+        super();
         this.id = id;
         this.username = username;
     }

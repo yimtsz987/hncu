@@ -28,4 +28,6 @@ public interface BaseMapper<T> {
      * @return
      */
     T queryDownloadByInfo(@Param("id") String id, @Param("studentId") String studentId);
+
+    List<T> queryStudentInfoList(T entity);
 }

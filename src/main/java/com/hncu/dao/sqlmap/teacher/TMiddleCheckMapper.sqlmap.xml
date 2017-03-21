@@ -17,6 +17,7 @@
          u.name as "user.name",
          u.id as "user.id",
          es.node as "user.student.node",
+         es.step_7 as "user.student.step7",
          gt.title as "user.student.titleName",
          mcp.name as "middleCheck.paramName",
          mcp.description as "middleCheck.paramDescription"
@@ -45,6 +46,23 @@
                 and mc.state = #{middleCheck.state,jdbcType=INTEGER}
             </if>
         order by mc.param_id ASC
+    </select>
+
+    <select id="queryStudentInfoList" parameterType="TeacherMiddleCheck" resultType="TeacherMiddleCheck">
+        select <include refid="middleCheckColumns" />
+        FROM middle_check mc
+        <include refid="middleCheckJoins" />
+        WHERE mc.teacher_id = #{middleCheck.teacherId, jdbcType=NUMERIC}
+        <if test="middleCheck != null and middleCheck.paramId != null and middleCheck.paramId != ''">
+            and mc.param_id = #{middleCheck.paramId,jdbcType=INTEGER}
+        </if>
+        <if test="middleCheck != null and middleCheck.paramName != null and middleCheck.paramName != ''">
+            and mcp.name like concat ('%', #{middleCheck.paramName}, '%')
+        </if>
+        <if test="user != null and user.student.step7 != null and user.student.step7 != ''">
+            and es.step_7 = #{user.student.step7,jdbcType=INTEGER}
+        </if>
+        GROUP BY u.id
     </select>
 
     <select id="queryById" parameterType="string" resultType="TeacherMiddleCheck">

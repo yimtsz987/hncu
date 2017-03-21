@@ -5,13 +5,21 @@
         tys.teacher_id as "teacherId",
         tys.year,
         tys.student_sum as "studentSum",
-        tys.student_ids as "studentIds"
+        tys.student_ids as "studentIds",
+        tys.review_tId as "reviewTeacherId"
     </sql>
 
     <select id="queryByTeacherId" parameterType="string" resultType="TeacherAndStudent">
         SELECT <include refid="tStudentColumns" />
         FROM teacher_year_student tys
         WHERE tys.teacher_id = #{teacherId, jdbcType=NUMERIC}
+        and tys.year = #{sysYear, jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryByReviewId" parameterType="string" resultType="TeacherAndStudent">
+        SELECT <include refid="tStudentColumns" />
+        FROM teacher_year_student tys
+        WHERE tys.review_tId = #{reviewTeacherId, jdbcType=NUMERIC}
         and tys.year = #{sysYear, jdbcType=VARCHAR}
     </select>
 

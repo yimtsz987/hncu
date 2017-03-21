@@ -42,9 +42,6 @@ public class TMiddleCheckController extends BaseController{
     private TMiddleCheckService tMiddleCheckService;
 
     @Resource
-    private TOpenTitleService tOpenTitleService;
-
-    @Resource
     private UserService userService;
 
     @ModelAttribute
@@ -57,16 +54,11 @@ public class TMiddleCheckController extends BaseController{
     }
 
     @RequestMapping(value = "/middleCheckList")
-    public String middleCheckList(TeacherOpenTitle teacherOpenTitle, Model model, PageParam pageParam){
-        OpenTitle openTitle = new OpenTitle();
-        openTitle.setTeacherId(UserUtils.getCurrentUser().getId());
-        if(teacherOpenTitle.getOpenTitle() != null){
-            if (StringUtils.isNotBlank(teacherOpenTitle.getOpenTitle().getReportFlag())){
-                openTitle.setReportFlag(teacherOpenTitle.getOpenTitle().getReportFlag());
-            }
-        }
-        teacherOpenTitle.setOpenTitle(openTitle);
-        PageInfo<TeacherOpenTitle> teacherMiddleCheckPageInfo = tOpenTitleService.queryListWithPage(teacherOpenTitle, pageParam);
+    public String middleCheckList(TeacherMiddleCheck teacherMiddleCheck, Model model, PageParam pageParam){
+        MiddleCheck middleCheck = new MiddleCheck();
+        middleCheck.setTeacherId(UserUtils.getCurrentUser().getId());
+        teacherMiddleCheck.setMiddleCheck(middleCheck);
+        PageInfo<TeacherMiddleCheck> teacherMiddleCheckPageInfo = tMiddleCheckService.queryStudentInfoListWithPage(teacherMiddleCheck, pageParam);
         model.addAttribute("teacherMiddleCheckPageInfo", teacherMiddleCheckPageInfo);
         return "teacher/middleCheckList";
     }

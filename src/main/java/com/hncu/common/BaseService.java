@@ -111,4 +111,20 @@ public class BaseService<D extends BaseMapper <T>, T extends BaseEntity> {
     public T queryDownloadByInfo(String id){
         return mapper.queryDownloadByInfo(id, UserUtils.getCurrentUser().getId());
     }
+
+    /**
+     * 分页查询列表 pageHelper PageInfo 分页参数，起始页码 每一页的大小， 排序
+     * @param entity
+     * @param pageParam
+     * @return
+     */
+    public PageInfo<T> queryStudentInfoListWithPage (T entity, PageParam pageParam) {
+        //判断是否含有排序的字符串
+        if (StringUtils.isNotBlank(pageParam.getOrderBy())) {
+            PageHelper.orderBy(pageParam.getOrderBy());
+        }
+        PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize());
+        List<T> resultList = mapper.queryStudentInfoList(entity);
+        return new PageInfo<T>(resultList);
+    }
 }

@@ -2,7 +2,9 @@ package com.hncu.common;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hncu.entity.SysParam;
 import com.hncu.entity.User;
+import com.hncu.utils.SpringViewListener;
 import com.hncu.utils.SysParamUtil;
 import com.hncu.utils.UserUtils;
 import org.hibernate.validator.constraints.Length;
@@ -155,9 +157,11 @@ public class BaseEntity implements Serializable {
     }
 
     public BaseEntity() {
+        this.sysYear = SpringViewListener.getSysParamYear();
     }
 
     public BaseEntity(String id) {
+        this.sysYear = SpringViewListener.getSysParamYear();
         this.id = id;
     }
 

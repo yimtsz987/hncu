@@ -113,10 +113,10 @@
 					     	<img src="${ctxStatic}/${gpms:getUser().headerPic}" width="100" height="100" />
 					     </div>
 					     <div class="info-text">
-					     	<p>${gpms:getUser().name}，老师</p>
-					     	<p>信息科学与工程学院</p>
-					     	<p>${gpms:getUser().teacher.professional_title}</p>
-					     	<p>${gpms:getUser().teacher.node}</p>
+					     	<p>教工号：${gpms:getUser().teacher.node}</p>
+					     	<p>${gpms:getUser().name}，老师${gpms:getUser().sysYear}</p>
+							<p>${gpms:getUser().teacher.department.name}</p>
+					     	<p>职称：${gpms:getDictLabel(gpms:getUser().teacher.professional_title, 'professional' )}</p>
 					     </div>
 					</div>
 					<ul class="nav-list">
@@ -185,7 +185,7 @@
 							</ul>
 						<c:if test="${gpms:getCurrentDatePattern() >= gpms:getParamDateValue('reviewDate') and gpms:getUser().teacher.reviewFlag eq 1}">
 							<li class="first-nav">
-								<a href="javascript:void(0)" title="评阅工作" class="iframeurl">
+								<a href="javascript:void(0)" title="评阅工作" class="iframeurl" name="${ctx}/teacher/reviewWorkStudentList">
 									<i class="glyphicon glyphicon-home"></i>评阅工作
 								</a>
 							</li>

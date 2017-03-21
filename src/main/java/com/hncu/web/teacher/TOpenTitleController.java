@@ -54,13 +54,8 @@ public class TOpenTitleController extends BaseController{
     public String openTitleList(TeacherOpenTitle teacherOpenTitle, Model model, PageParam pageParam){
         OpenTitle openTitle = new OpenTitle();
         openTitle.setTeacherId(UserUtils.getCurrentUser().getId());
-        if(teacherOpenTitle.getOpenTitle() != null){
-            if (StringUtils.isNotBlank(teacherOpenTitle.getOpenTitle().getReportFlag())){
-                openTitle.setReportFlag(teacherOpenTitle.getOpenTitle().getReportFlag());
-            }
-        }
         teacherOpenTitle.setOpenTitle(openTitle);
-        PageInfo<TeacherOpenTitle> teacherOpenTitlePageInfo = tOpenTitleService.queryListWithPage(teacherOpenTitle, pageParam);
+        PageInfo<TeacherOpenTitle> teacherOpenTitlePageInfo = tOpenTitleService.queryStudentInfoListWithPage(teacherOpenTitle, pageParam);
         model.addAttribute("teacherOpenTitlePageInfo", teacherOpenTitlePageInfo);
         return "teacher/openTitleList";
     }

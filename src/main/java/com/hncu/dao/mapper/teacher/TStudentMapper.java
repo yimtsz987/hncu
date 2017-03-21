@@ -13,10 +13,33 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TStudentMapper extends BaseMapper<TeacherAndStudent>{
 
+    /**
+     * 通过指导老师查询学生
+     * @param teacherId
+     * @param sysYear
+     * @return
+     */
     TeacherAndStudent queryByTeacherId(@Param("teacherId") String teacherId, @Param("sysYear") String sysYear);
 
+    /**
+     * 通过评阅教师查询学生
+     * @param reviewTeacherId
+     * @param sysYear
+     * @return
+     */
+    TeacherAndStudent queryByReviewId(@Param("reviewTeacherId") String reviewTeacherId, @Param("sysYear") String sysYear);
 
+    /**
+     * 删除学生
+     * @param teacherAndStudent
+     * @return
+     */
     int deleteStudent(TeacherAndStudent teacherAndStudent);
 
+    /**
+     * 删除教师id
+     * @param user
+     * @return
+     */
     int deleteTeacherId(User user);
 }

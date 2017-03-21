@@ -48,6 +48,7 @@ public class OpenTitle extends BaseEntity {
         this.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
     }
 
+
     public String getStudentId() {
         return studentId;
     }

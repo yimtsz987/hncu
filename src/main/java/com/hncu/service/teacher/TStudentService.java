@@ -39,4 +39,15 @@ public class TStudentService extends BaseService<TStudentMapper, TeacherAndStude
         mapper.deleteStudent(teacherAndStudent);
         mapper.deleteTeacherId(user);
     }
+
+    public List<User> queryByReviewId(String reviewTeacherId, String sysYear){
+        List<User> userList = Lists.newArrayList();
+        TeacherAndStudent teacherAndStudent =  mapper.queryByReviewId(reviewTeacherId, sysYear);
+        User user;
+        for (String id : StringUtils.split(teacherAndStudent.getStudentIds(),",")){
+            user = userService.queryById(id);
+            userList.add(user);
+        }
+        return userList;
+    }
 }

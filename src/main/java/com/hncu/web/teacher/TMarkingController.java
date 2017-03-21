@@ -45,8 +45,6 @@ public class TMarkingController extends BaseController{
     @Resource
     private TMarkingService tMarkingService;
 
-    @Resource
-    private TOpenTitleService tOpenTitleService;
 
     @Resource
     private UserService userService;
@@ -61,16 +59,11 @@ public class TMarkingController extends BaseController{
     }
 
     @RequestMapping(value = "/markingList")
-    public String markingList(TeacherOpenTitle teacherOpenTitle, Model model, PageParam pageParam){
-        OpenTitle openTitle = new OpenTitle();
-        openTitle.setTeacherId(UserUtils.getCurrentUser().getId());
-        if(teacherOpenTitle.getOpenTitle() != null){
-            if (StringUtils.isNotBlank(teacherOpenTitle.getOpenTitle().getReportFlag())){
-                openTitle.setReportFlag(teacherOpenTitle.getOpenTitle().getReportFlag());
-            }
-        }
-        teacherOpenTitle.setOpenTitle(openTitle);
-        PageInfo<TeacherOpenTitle> teacherMarkingPageInfo = tOpenTitleService.queryListWithPage(teacherOpenTitle, pageParam);
+    public String markingList(TeacherMarking teacherMarking, Model model, PageParam pageParam){
+        Marking marking = new Marking();
+        marking.setTeacherId(UserUtils.getCurrentUser().getId());
+        teacherMarking.setMarking(marking);
+        PageInfo<TeacherMarking> teacherMarkingPageInfo = tMarkingService.queryStudentInfoListWithPage(teacherMarking, pageParam);
         model.addAttribute("teacherMarkingPageInfo", teacherMarkingPageInfo);
         return "teacher/markingList";
     }

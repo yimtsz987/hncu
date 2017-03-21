@@ -17,6 +17,7 @@
         u.name as "user.name",
         es.node as "user.student.node",
         es.answer_id as "user.student.answerId",
+        es.step_4 as "user.student.step4",
         gt.title as "user.student.titleName"
     </sql>
 
@@ -31,6 +32,7 @@
         FROM opening_report ot
         <include refid="openTitleJoins" />
         WHERE ot.teacher_id = #{openTitle.teacherId, jdbcType=NUMERIC}
+        AND ot.year = #{sysYear, jdbcType=VARCHAR}
             <if test="user != null and user.student.node != null and user.student.node != ''">
                 and es.node = #{user.student.node,jdbcType=VARCHAR}
             </if>
@@ -41,6 +43,24 @@
                 and ot.report_flag = #{openTitle.reportFlag,jdbcType=INTEGER}
             </if>
         order by es.node ASC
+    </select>
+
+    <select id="queryStudentInfoList" parameterType="TeacherOpenTitle" resultType="TeacherOpenTitle">
+        select <include refid="openTitleColumns" />
+        FROM opening_report ot
+        <include refid="openTitleJoins" />
+        WHERE ot.teacher_id = #{openTitle.teacherId, jdbcType=NUMERIC}
+        AND ot.year = #{sysYear, jdbcType=VARCHAR}
+        <if test="user != null and user.student.node != null and user.student.node != ''">
+            and es.node = #{user.student.node,jdbcType=VARCHAR}
+        </if>
+        <if test="user != null and user.name != null and user.name != ''">
+            and u.name like concat ('%', #{user.name}, '%')
+        </if>
+        <if test="user != null and user.student.step4 != null and user.student.step4 != ''">
+            and es.step_4 = #{user.student.step4,jdbcType=INTEGER}
+        </if>
+        GROUP BY u.id
     </select>
 
     <select id="queryById" parameterType="string" resultType="TeacherOpenTitle">
