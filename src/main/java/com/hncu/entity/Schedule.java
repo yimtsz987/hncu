@@ -26,6 +26,7 @@ public class Schedule extends BaseEntity {
     private String teacherId;
     private String teacherAdvise;
     private String lastSort;
+    private String year;
 
     public Schedule(){
 
@@ -161,5 +162,13 @@ public class Schedule extends BaseEntity {
 
     public void setLastSort(String lastSort) {
         this.lastSort = lastSort;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

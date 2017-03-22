@@ -17,6 +17,7 @@ public class TeacherExpand implements Serializable {
     private String expandFlag;
     private String answerFlag;
     private String reviewFlag;
+    private String answerId;
 
     public String gettId() {
         return tId;
@@ -80,5 +81,13 @@ public class TeacherExpand implements Serializable {
 
     public void setReviewFlag(String reviewFlag) {
         this.reviewFlag = reviewFlag;
+    }
+
+    public String getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
     }
 }

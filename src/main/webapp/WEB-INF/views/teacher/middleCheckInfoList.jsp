@@ -48,6 +48,14 @@
 				</form:form>
 			</div>
 			<sys:msg msgObj="${msg}" />
+			<div class="btn-wrap">
+				<span class="btn-right">
+					<a href="javascript:void(0)" class="btn btn-warning" onclick="history.go(-1)">
+						<i class="glyphicon glyphicon-share-alt"></i>返回上一页
+					</a>
+				</span>
+				<span class="btn-title">中期检查</span>
+			</div>
 			<div class="page-title" style="font-weight:600;text-indent:20px;">
 				课题：${studentInfo.student.titleName} —— ${studentInfo.name}
 			</div>

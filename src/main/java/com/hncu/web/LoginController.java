@@ -72,6 +72,12 @@ public class LoginController {
     }
 
     @RequiresPermissions("secretary")
+    @RequestMapping(value = "/secretary/index")
+    public String secretaryIndex(){
+        return "admin/secretary/index";
+    }
+
+    @RequiresPermissions("secretary")
     @RequestMapping(value = "/tsRoleSelect")
     public String tsRoleSelect(){
         return "admin/tsRoleSelect";

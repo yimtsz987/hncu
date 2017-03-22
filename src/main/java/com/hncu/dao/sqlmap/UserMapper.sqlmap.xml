@@ -59,7 +59,8 @@
         sr.report_id as "student.schoolReport.reportId",
         sr.score as "student.schoolReport.score",
         sp.param_value as "sysParamYear",
-        tys.answer_flag as "teacher.answerFlag",
+        tya.answer_flag as "teacher.answerFlag",
+        tya.answer_id as "teacher.answerId",
         tyr.review_flag as "teacher.reviewFlag"
     </sql>
 
@@ -73,7 +74,7 @@
         LEFT JOIN school_report sr on sr.id = s.school_report_id
         LEFT JOIN sys_user su on su.id = s.teacher_id
         LEFT JOIN system_parameter sp on sp.id = u.sysYear_paramId
-        LEFT JOIN teacher_year_answer tys on tys.teacher_id = u.id and tys.year = sp.param_value
+        LEFT JOIN teacher_year_answer tya on tya.teacher_id = u.id and tya.year = sp.param_value
         LEFT JOIN teacher_year_review tyr on tyr.teacher_id = u.id and tyr.year = sp.param_value
     </sql>
 

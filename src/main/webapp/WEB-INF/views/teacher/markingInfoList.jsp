@@ -71,6 +71,11 @@
 						</a>
 					</c:if>
 				</span>
+				<span class="btn-right">
+					<a href="javascript:void(0)" class="btn btn-warning" onclick="history.go(-1)">
+						<i class="glyphicon glyphicon-share-alt"></i>返回上一页
+					</a>
+				</span>
 			</div>
 			<div class="page-title" style="font-weight:600;text-indent:20px;">
 				课题：${studentInfo.student.titleName} —— ${studentInfo.name}

@@ -12,6 +12,7 @@
     <select id="queryList" parameterType="Answer" resultType="Answer">
         SELECT <include refid="answerColumns" />
         FROM answer_group a
+        WHERE a.year = #{sysYear, jdbcType=VARCHAR}
     </select>
 
     <select id="queryById" parameterType="string" resultType="Answer">

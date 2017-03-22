@@ -28,6 +28,12 @@ public class MiddleCheck extends BaseEntity{
     private String paramName;
     private String paramDescription;
 
+    private String checkId;
+
+    public MiddleCheck(){
+        super();
+    }
+
     /**
      * 上传中期材料之前调用
      */
@@ -150,5 +156,13 @@ public class MiddleCheck extends BaseEntity{
 
     public void setParamDescription(String paramDescription) {
         this.paramDescription = paramDescription;
+    }
+
+    public String getCheckId() {
+        return checkId;
+    }
+
+    public void setCheckId(String checkId) {
+        this.checkId = checkId;
     }
 }

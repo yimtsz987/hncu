@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-03-16 23:08:48
+Date: 2017-03-22 16:19:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,6 +32,36 @@ CREATE TABLE `answer_group` (
 -- Records of answer_group
 -- ----------------------------
 INSERT INTO `answer_group` VALUES ('1', '2', '2013', '5,7,', '3,4,');
+
+-- ----------------------------
+-- Table structure for answer_group_member
+-- ----------------------------
+DROP TABLE IF EXISTS `answer_group_member`;
+CREATE TABLE `answer_group_member` (
+  `group_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `year` varchar(5) NOT NULL,
+  PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of answer_group_member
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for answer_group_student
+-- ----------------------------
+DROP TABLE IF EXISTS `answer_group_student`;
+CREATE TABLE `answer_group_student` (
+  `group_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `year` varchar(5) NOT NULL,
+  PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of answer_group_student
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for classes
@@ -101,7 +131,7 @@ CREATE TABLE `dict` (
   `sort` decimal(10,0) NOT NULL COMMENT '排序（升序）',
   `parent_id` varchar(64) DEFAULT '0' COMMENT '父级编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dict
@@ -137,6 +167,9 @@ INSERT INTO `dict` VALUES ('28', '1', '未通过', 'review', '评阅状态', '20
 INSERT INTO `dict` VALUES ('29', '2', '通过', 'review', '评阅状态', '30', '0');
 INSERT INTO `dict` VALUES ('30', '0', '未通过', 'report', '成绩状态', '10', '0');
 INSERT INTO `dict` VALUES ('31', '1', '通过', 'report', '成绩状态', '20', '0');
+INSERT INTO `dict` VALUES ('32', '0', '未开始', 'step', '步骤状态', '10', '0');
+INSERT INTO `dict` VALUES ('33', '1', '正在进行', 'step', '步骤状态', '20', '0');
+INSERT INTO `dict` VALUES ('34', '2', '已完成', 'step', '步骤状态', '30', '0');
 
 -- ----------------------------
 -- Table structure for download
@@ -210,10 +243,10 @@ CREATE TABLE `expand_student` (
 -- ----------------------------
 -- Records of expand_student
 -- ----------------------------
-INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', '1', '2', '2', '2014', null, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '10', '3', '1', '0', '1', '1');
-INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', '2', '3', '3', '2014', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '3', '1', '0', '1', null);
-INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', '3', '2', '2', '2014', null, '2', '2', '2', '2', '2', '2', '0', '0', '0', '0', '7', null, null, '0', '1', null);
-INSERT INTO `expand_student` VALUES ('11', '2014051629', '6', '1', '1406101', '7', '2', '2', '2013', null, '2', '2', '2', '2', '2', '2', '1', '0', '0', '0', '7', '3', null, '0', '1', null);
+INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', '1', '2', '2', '2013', null, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '10', '3', '1', '0', '1', '1');
+INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', '2', '3', '3', '2013', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '3', '1', '0', '1', null);
+INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', '3', '2', '2', '2013', null, '2', '2', '2', '2', '2', '2', '0', '0', '0', '0', '7', null, null, '0', '1', null);
+INSERT INTO `expand_student` VALUES ('11', '2014051629', '6', '1', '1406101', '7', '2', '2', '2013', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '3', null, '0', '1', null);
 
 -- ----------------------------
 -- Table structure for expand_teacher
@@ -255,23 +288,24 @@ CREATE TABLE `graduation_schedule` (
   `uploadFileOldName` varchar(200) DEFAULT NULL,
   `teacher_id` int(11) NOT NULL,
   `teacher_advise` text COMMENT '教师意见',
+  `year` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graduation_schedule
 -- ----------------------------
-INSERT INTO `graduation_schedule` VALUES ('1', '5', '1', '需求分析', '2017-02-26 11:08:06', '2017-02-23 11:08:09', '1', '3', '1488198440515需求分析报告 （改）.doc', 'E://gpmsUpload/2014051656/1488198440515需求分析报告 （改）.doc', '需求分析报告 （改）.doc', '2', null);
-INSERT INTO `graduation_schedule` VALUES ('2', '5', '2', '系统设计', '2017-03-01 11:11:15', '2017-03-03 11:11:26', '1', '3', '1488198488727系统设计报告.doc', 'E://gpmsUpload/2014051656/1488198488727系统设计报告.doc', '系统设计报告.doc', '2', null);
-INSERT INTO `graduation_schedule` VALUES ('3', '5', '3', '系统测试', '2017-03-04 11:13:12', '2017-03-06 11:13:21', '1', '3', '1488198660804系统测试报告.doc', 'E://gpmsUpload/2014051656/1488198660804系统测试报告.doc', '系统测试报告.doc', '2', null);
-INSERT INTO `graduation_schedule` VALUES ('4', '7', '1', '1', '2017-01-01 00:00:00', '2017-02-02 00:00:00', '6', '3', '1488269236660需求分析报告.doc', 'E://gpmsUpload/2014051654/1488269236660需求分析报告.doc', '需求分析报告.doc', '3', null);
-INSERT INTO `graduation_schedule` VALUES ('5', '7', '2', '2', '2017-03-01 00:00:00', '2017-04-01 00:00:00', '6', '3', '1488304655460系统设计报告.doc', 'E://gpmsUpload/2014051654/1488304655460系统设计报告.doc', '系统设计报告.doc', '3', null);
-INSERT INTO `graduation_schedule` VALUES ('6', '7', '3', '3', '2017-05-01 00:00:00', '2017-06-01 00:00:00', '6', '3', '1488304674047系统测试报告.doc', 'E://gpmsUpload/2014051654/1488304674047系统测试报告.doc', '系统测试报告.doc', '3', null);
-INSERT INTO `graduation_schedule` VALUES ('7', '8', '1', '需求分析', '2017-01-01 00:00:00', '2017-02-01 00:00:00', '7', '3', '1488465551819需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465551819需求分析报告.doc', '需求分析报告.doc', '2', '<font size=\"5\">测试啊啊啊啊啊啊啊啊啊啊啊</font>');
-INSERT INTO `graduation_schedule` VALUES ('8', '8', '2', '系统设计', '2017-03-01 00:00:00', '2017-04-01 00:00:00', '7', '3', '1488465551819需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465551819需求分析报告.doc', '需求分析报告.doc', '2', '测试');
-INSERT INTO `graduation_schedule` VALUES ('9', '11', '1', '需求分析', '2017-03-15 00:00:00', '2017-04-15 00:00:00', '8', '3', '1489577059523需求分析报告.doc', 'E://gpmsUpload/2014051629/1489577059523需求分析报告.doc', '需求分析报告.doc', '2', '<br>');
-INSERT INTO `graduation_schedule` VALUES ('10', '11', '2', '系统设计', '2017-04-16 00:00:00', '2017-05-16 00:00:00', '8', '3', '1489577152894系统设计报告.doc', 'E://gpmsUpload/2014051629/1489577152894系统设计报告.doc', '系统设计报告.doc', '2', '通过');
-INSERT INTO `graduation_schedule` VALUES ('11', '11', '3', '系统测试', '2017-05-17 00:00:00', '2017-06-17 00:00:00', '8', '3', '1489577190744系统测试报告.doc', 'E://gpmsUpload/2014051629/1489577190744系统测试报告.doc', '系统测试报告.doc', '2', '测试');
+INSERT INTO `graduation_schedule` VALUES ('1', '5', '1', '需求分析', '2017-02-26 11:08:06', '2017-02-23 11:08:09', '1', '3', '1488198440515需求分析报告 （改）.doc', 'E://gpmsUpload/2014051656/1488198440515需求分析报告 （改）.doc', '需求分析报告 （改）.doc', '2', null, '2013');
+INSERT INTO `graduation_schedule` VALUES ('2', '5', '2', '系统设计', '2017-03-01 11:11:15', '2017-03-03 11:11:26', '1', '3', '1488198488727系统设计报告.doc', 'E://gpmsUpload/2014051656/1488198488727系统设计报告.doc', '系统设计报告.doc', '2', null, '2013');
+INSERT INTO `graduation_schedule` VALUES ('3', '5', '3', '系统测试', '2017-03-04 11:13:12', '2017-03-06 11:13:21', '1', '3', '1488198660804系统测试报告.doc', 'E://gpmsUpload/2014051656/1488198660804系统测试报告.doc', '系统测试报告.doc', '2', null, '2013');
+INSERT INTO `graduation_schedule` VALUES ('4', '7', '1', '1', '2017-01-01 00:00:00', '2017-02-02 00:00:00', '6', '3', '1488269236660需求分析报告.doc', 'E://gpmsUpload/2014051654/1488269236660需求分析报告.doc', '需求分析报告.doc', '3', null, '2013');
+INSERT INTO `graduation_schedule` VALUES ('5', '7', '2', '2', '2017-03-01 00:00:00', '2017-04-01 00:00:00', '6', '3', '1488304655460系统设计报告.doc', 'E://gpmsUpload/2014051654/1488304655460系统设计报告.doc', '系统设计报告.doc', '3', null, '2013');
+INSERT INTO `graduation_schedule` VALUES ('6', '7', '3', '3', '2017-05-01 00:00:00', '2017-06-01 00:00:00', '6', '3', '1488304674047系统测试报告.doc', 'E://gpmsUpload/2014051654/1488304674047系统测试报告.doc', '系统测试报告.doc', '3', null, '2013');
+INSERT INTO `graduation_schedule` VALUES ('7', '8', '1', '需求分析', '2017-01-01 00:00:00', '2017-02-01 00:00:00', '7', '3', '1488465551819需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465551819需求分析报告.doc', '需求分析报告.doc', '2', '<font size=\"5\">测试啊啊啊啊啊啊啊啊啊啊啊</font>', '2013');
+INSERT INTO `graduation_schedule` VALUES ('8', '8', '2', '系统设计', '2017-03-01 00:00:00', '2017-04-01 00:00:00', '7', '3', '1488465551819需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465551819需求分析报告.doc', '需求分析报告.doc', '2', '测试', '2013');
+INSERT INTO `graduation_schedule` VALUES ('9', '11', '1', '需求分析', '2017-03-15 00:00:00', '2017-04-15 00:00:00', '8', '3', '1489577059523需求分析报告.doc', 'E://gpmsUpload/2014051629/1489577059523需求分析报告.doc', '需求分析报告.doc', '2', '<br>', '2013');
+INSERT INTO `graduation_schedule` VALUES ('10', '11', '2', '系统设计', '2017-04-16 00:00:00', '2017-05-16 00:00:00', '8', '3', '1489577152894系统设计报告.doc', 'E://gpmsUpload/2014051629/1489577152894系统设计报告.doc', '系统设计报告.doc', '2', '通过', '2013');
+INSERT INTO `graduation_schedule` VALUES ('11', '11', '3', '系统测试', '2017-05-17 00:00:00', '2017-06-17 00:00:00', '8', '3', '1489577190744系统测试报告.doc', 'E://gpmsUpload/2014051629/1489577190744系统测试报告.doc', '系统测试报告.doc', '2', '测试', '2013');
 
 -- ----------------------------
 -- Table structure for graduation_title
@@ -355,21 +389,22 @@ CREATE TABLE `middle_check` (
   `param_id` int(11) DEFAULT NULL,
   `teacher_id` int(11) NOT NULL,
   `teacher_advise` text COMMENT '教师意见',
+  `check_id` int(11) DEFAULT NULL COMMENT '审核教师id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of middle_check
 -- ----------------------------
-INSERT INTO `middle_check` VALUES ('1', '5', '2017-03-01 02:08:56', '2013', '1', '3', '1488305336525论文一稿.doc', 'E://gpmsUpload/2014051656/1488305336525论文一稿.doc', '论文一稿.doc', '1', '2', null);
-INSERT INTO `middle_check` VALUES ('2', '5', '2017-03-01 00:01:56', '2013', '1', '1', '1488297716256中期检查.doc', 'E://gpmsUpload/2014051656/1488297716256中期检查.doc', '中期检查.doc', '2', '2', null);
-INSERT INTO `middle_check` VALUES ('3', '5', '2017-03-01 00:20:03', '2013', '1', '1', '1488298803650学生工作处.zip', 'E://gpmsUpload/2014051656/1488298803650学生工作处.zip', '学生工作处.zip', '3', '2', null);
-INSERT INTO `middle_check` VALUES ('4', '7', '2017-03-01 01:59:35', '2013', '2', '1', '1488304775609论文一稿.doc', 'E://gpmsUpload/2014051654/1488304775609论文一稿.doc', '论文一稿.doc', '1', '3', null);
-INSERT INTO `middle_check` VALUES ('5', '7', '2017-03-01 11:59:08', '2013', '2', '1', '1488340748200学生工作处.zip', 'E://gpmsUpload/2014051654/1488340748200学生工作处.zip', '学生工作处.zip', '2', '3', null);
-INSERT INTO `middle_check` VALUES ('6', '7', '2017-03-01 11:57:49', '2013', '2', '3', '1488340669941xsgz.zip', 'E://gpmsUpload/2014051654/1488340669941xsgz.zip', 'xsgz.zip', '3', '3', null);
-INSERT INTO `middle_check` VALUES ('7', '11', '2017-03-15 20:44:04', '2013', '7', '1', '1489581844069论文一稿.doc', 'E://gpmsUpload/2014051629/1489581844069论文一稿.doc', '论文一稿.doc', '1', '2', null);
-INSERT INTO `middle_check` VALUES ('8', '11', '2017-03-15 20:44:11', '2013', '7', '1', '1489581851262xsgz.zip', 'E://gpmsUpload/2014051629/1489581851262xsgz.zip', 'xsgz.zip', '2', '2', null);
-INSERT INTO `middle_check` VALUES ('9', '11', '2017-03-15 20:44:19', '2013', '7', '1', '1489581859581icheck.zip', 'E://gpmsUpload/2014051629/1489581859581icheck.zip', 'icheck.zip', '3', '2', null);
+INSERT INTO `middle_check` VALUES ('1', '5', '2017-03-01 02:08:56', '2013', '1', '3', '1488305336525论文一稿.doc', 'E://gpmsUpload/2014051656/1488305336525论文一稿.doc', '论文一稿.doc', '1', '2', null, null);
+INSERT INTO `middle_check` VALUES ('2', '5', '2017-03-01 00:01:56', '2013', '1', '1', '1488297716256中期检查.doc', 'E://gpmsUpload/2014051656/1488297716256中期检查.doc', '中期检查.doc', '2', '2', null, null);
+INSERT INTO `middle_check` VALUES ('3', '5', '2017-03-01 00:20:03', '2013', '1', '1', '1488298803650学生工作处.zip', 'E://gpmsUpload/2014051656/1488298803650学生工作处.zip', '学生工作处.zip', '3', '2', null, null);
+INSERT INTO `middle_check` VALUES ('4', '7', '2017-03-01 01:59:35', '2013', '2', '1', '1488304775609论文一稿.doc', 'E://gpmsUpload/2014051654/1488304775609论文一稿.doc', '论文一稿.doc', '1', '3', null, null);
+INSERT INTO `middle_check` VALUES ('5', '7', '2017-03-01 11:59:08', '2013', '2', '1', '1488340748200学生工作处.zip', 'E://gpmsUpload/2014051654/1488340748200学生工作处.zip', '学生工作处.zip', '2', '3', null, null);
+INSERT INTO `middle_check` VALUES ('6', '7', '2017-03-01 11:57:49', '2013', '2', '3', '1488340669941xsgz.zip', 'E://gpmsUpload/2014051654/1488340669941xsgz.zip', 'xsgz.zip', '3', '3', null, null);
+INSERT INTO `middle_check` VALUES ('7', '11', '2017-03-15 20:44:04', '2013', '7', '3', '1489581844069论文一稿.doc', 'E://gpmsUpload/2014051629/1489581844069论文一稿.doc', '论文一稿.doc', '1', '2', '中期检查测试1', '2');
+INSERT INTO `middle_check` VALUES ('8', '11', '2017-03-22 15:39:45', '2013', '7', '3', '1490168385325xsgz.zip', 'E://gpmsUpload/2014051629/1490168385325xsgz.zip', 'xsgz.zip', '2', '2', '通过', '2');
+INSERT INTO `middle_check` VALUES ('9', '11', '2017-03-15 20:44:19', '2013', '7', '3', '1489581859581icheck.zip', 'E://gpmsUpload/2014051629/1489581859581icheck.zip', 'icheck.zip', '3', '2', '通过', '2');
 
 -- ----------------------------
 -- Table structure for middle_check_parameter
@@ -716,7 +751,7 @@ CREATE TABLE `teacher_review` (
   `supload_date` datetime NOT NULL,
   `review_tId` int(11) DEFAULT NULL COMMENT '评阅教师id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_review
@@ -725,6 +760,8 @@ INSERT INTO `teacher_review` VALUES ('1', '1', '5', '2', '<p>1、加油<p><p>2�
 INSERT INTO `teacher_review` VALUES ('2', '2', '5', '2', null, null, '2013', '1', '2', '1488308790081论文评阅2.doc', 'E://gpmsUpload/2014051656/1488308790081论文评阅2.doc', '论文评阅2.doc', null, null, null, '2017-03-01 03:06:30', '2');
 INSERT INTO `teacher_review` VALUES ('5', '1', '7', '3', null, null, '2013', '2', '1', '1488342156802论文评阅.doc', 'E://gpmsUpload/2014051654/1488342156802论文评阅.doc', '论文评阅.doc', null, null, null, '2017-03-01 12:22:36', '3');
 INSERT INTO `teacher_review` VALUES ('7', '2', '7', '3', null, null, '2013', '2', '2', '1488343152809论文评阅2.doc', 'E://gpmsUpload/2014051654/1488343152809论文评阅2.doc', '论文评阅2.doc', null, null, null, '2017-03-01 12:39:12', '3');
+INSERT INTO `teacher_review` VALUES ('8', '1', '11', '2', '测试评阅工作', null, '2013', '7', '1', '1490107393410论文评阅.doc', 'E://gpmsUpload/2014051629/1490107393410论文评阅.doc', '论文评阅.doc', '1490156276987教师建议.doc', 'E://gpmsUpload/0001/1490156276987教师建议.doc', '教师建议.doc', '2017-03-21 22:43:13', '2');
+INSERT INTO `teacher_review` VALUES ('9', '2', '11', '2', '评阅工作通过测试', null, '2013', '7', '2', '1490156469669论文评阅2.doc', 'E://gpmsUpload/2014051629/1490156469669论文评阅2.doc', '论文评阅2.doc', null, null, null, '2017-03-22 12:21:09', '2');
 
 -- ----------------------------
 -- Table structure for teacher_year_answer
@@ -734,16 +771,17 @@ CREATE TABLE `teacher_year_answer` (
   `teacher_id` int(11) NOT NULL,
   `year` varchar(5) NOT NULL,
   `answer_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '答辩分组（0未分组1已分组）',
+  `answer_id` int(11) DEFAULT NULL COMMENT '答辩分组id',
   PRIMARY KEY (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_year_answer
 -- ----------------------------
-INSERT INTO `teacher_year_answer` VALUES ('2', '2013', '1');
-INSERT INTO `teacher_year_answer` VALUES ('3', '2013', '1');
-INSERT INTO `teacher_year_answer` VALUES ('4', '2013', '0');
-INSERT INTO `teacher_year_answer` VALUES ('10', '2013', '0');
+INSERT INTO `teacher_year_answer` VALUES ('2', '2013', '1', '1');
+INSERT INTO `teacher_year_answer` VALUES ('3', '2013', '1', '1');
+INSERT INTO `teacher_year_answer` VALUES ('4', '2013', '1', '1');
+INSERT INTO `teacher_year_answer` VALUES ('10', '2013', '0', null);
 
 -- ----------------------------
 -- Table structure for teacher_year_review

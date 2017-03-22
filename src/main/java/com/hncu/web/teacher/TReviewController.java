@@ -37,9 +37,6 @@ public class TReviewController extends BaseController{
     private TReviewService tReviewService;
 
     @Resource
-    private TOpenTitleService tOpenTitleService;
-
-    @Resource
     private UserService userService;
 
     @ModelAttribute
@@ -52,16 +49,11 @@ public class TReviewController extends BaseController{
     }
 
     @RequestMapping(value = "/reviewList")
-    public String reviewList(TeacherOpenTitle teacherOpenTitle, Model model, PageParam pageParam){
-        OpenTitle openTitle = new OpenTitle();
-        openTitle.setTeacherId(UserUtils.getCurrentUser().getId());
-        if(teacherOpenTitle.getOpenTitle() != null){
-            if (StringUtils.isNotBlank(teacherOpenTitle.getOpenTitle().getReportFlag())){
-                openTitle.setReportFlag(teacherOpenTitle.getOpenTitle().getReportFlag());
-            }
-        }
-        teacherOpenTitle.setOpenTitle(openTitle);
-        PageInfo<TeacherOpenTitle> teacherReviewPageInfo = tOpenTitleService.queryListWithPage(teacherOpenTitle, pageParam);
+    public String reviewList(TeacherMarking teacherMarking, Model model, PageParam pageParam){
+        Marking marking = new Marking();
+        marking.setTeacherId(UserUtils.getCurrentUser().getId());
+        teacherMarking.setMarking(marking);
+        PageInfo<TeacherMarking> teacherReviewPageInfo = tReviewService.queryStudentInfoListWithPage(teacherMarking, pageParam);
         model.addAttribute("teacherReviewPageInfo", teacherReviewPageInfo);
         return "teacher/reviewList";
     }

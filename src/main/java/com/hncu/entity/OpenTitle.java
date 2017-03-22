@@ -28,7 +28,7 @@ public class OpenTitle extends BaseEntity {
     private String teacherAdvise;
 
     public OpenTitle(){
-
+        super();
     }
 
     public OpenTitle(List<Schedule> scheduleList){

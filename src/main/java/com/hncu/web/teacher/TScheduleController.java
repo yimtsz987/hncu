@@ -41,8 +41,6 @@ public class TScheduleController extends BaseController{
     @Resource
     private TScheduleService tScheduleService;
 
-    @Resource
-    private TOpenTitleService tOpenTitleService;
 
     @ModelAttribute
     public TeacherSchedule get(@RequestParam(required = false) String id) {
@@ -54,16 +52,11 @@ public class TScheduleController extends BaseController{
     }
 
     @RequestMapping(value = "/scheduleList")
-    public String scheduleList(TeacherOpenTitle teacherOpenTitle, Model model, PageParam pageParam){
-        OpenTitle openTitle = new OpenTitle();
-        openTitle.setTeacherId(UserUtils.getCurrentUser().getId());
-        if(teacherOpenTitle.getOpenTitle() != null){
-            if (StringUtils.isNotBlank(teacherOpenTitle.getOpenTitle().getReportFlag())){
-                openTitle.setReportFlag(teacherOpenTitle.getOpenTitle().getReportFlag());
-            }
-        }
-        teacherOpenTitle.setOpenTitle(openTitle);
-        PageInfo<TeacherOpenTitle> teacherSchedulePageInfo = tOpenTitleService.queryListWithPage(teacherOpenTitle, pageParam);
+    public String scheduleList(TeacherSchedule teacherSchedule, Model model, PageParam pageParam){
+        Schedule schedule = new Schedule();
+        schedule.setTeacherId(UserUtils.getCurrentUser().getId());
+        teacherSchedule.setSchedule(schedule);
+        PageInfo<TeacherSchedule> teacherSchedulePageInfo = tScheduleService.queryStudentInfoListWithPage(teacherSchedule, pageParam);
         model.addAttribute("teacherSchedulePageInfo", teacherSchedulePageInfo);
         return "teacher/scheduleList";
     }

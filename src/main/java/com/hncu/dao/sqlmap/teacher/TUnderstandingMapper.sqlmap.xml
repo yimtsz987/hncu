@@ -29,6 +29,7 @@
         FROM understanding_report ur
         <include refid="understandingJoins" />
         WHERE ur.teacher_id = #{understanding.teacherId, jdbcType=NUMERIC}
+        AND ur.year = #{sysYear, jdbcType=VARCHAR}
             <if test="user != null and user.student.node != null and user.student.node != ''">
                 and es.node = #{user.student.node,jdbcType=VARCHAR}
             </if>
@@ -39,6 +40,24 @@
                 and ur.pass_flag = #{understanding.passFlag,jdbcType=INTEGER}
             </if>
         order by es.node ASC
+    </select>
+
+    <select id="queryStudentInfoList" parameterType="TeacherUnderstanding" resultType="TeacherUnderstanding">
+        select <include refid="understandingColumns" />
+        FROM understanding_report ur
+        <include refid="understandingJoins" />
+        WHERE ur.teacher_id = #{understanding.teacherId, jdbcType=NUMERIC}
+        AND ur.year = #{sysYear, jdbcType=VARCHAR}
+        <if test="user != null and user.student.node != null and user.student.node != ''">
+            and es.node = #{user.student.node,jdbcType=VARCHAR}
+        </if>
+        <if test="user != null and user.name != null and user.name != ''">
+            and u.name like concat ('%', #{user.name}, '%')
+        </if>
+        <if test="understanding != null and understanding.passFlag != null and understanding.passFlag != ''">
+            and ur.pass_flag = #{understanding.passFlag,jdbcType=INTEGER}
+        </if>
+        GROUP BY u.id
     </select>
 
     <select id="queryById" parameterType="string" resultType="TeacherUnderstanding">

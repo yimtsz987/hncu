@@ -75,4 +75,20 @@ public class TAnswerController extends BaseController {
         return "student/answerTeacherInfo";
     }
 
+    @RequestMapping(value = "/teacherAnswerInfoList")
+    public String teacherAnswerInfoList(Model model){
+        Answer answer = answerService.queryById(UserUtils.getCurrentUser().getTeacher().getAnswerId());
+        User leader = userService.queryById(answer.getLeaderId());
+        String[] teacherId = StringUtils.split(answer.getTeacherIds(),",");
+        List<User> teacherList = Lists.newArrayList();
+        User user = null;
+        for (int i = 0; i < teacherId.length; i++) {
+            user = userService.queryById(teacherId[i]);
+            teacherList.add(user);
+        }
+        model.addAttribute("leader", leader);
+        model.addAttribute("teacherList", teacherList);
+        return "teacher/teacherAnswerInfoList";
+    }
+
 }

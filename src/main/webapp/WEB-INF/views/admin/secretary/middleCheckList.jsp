@@ -4,7 +4,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
-	<title>查看评阅学生列表</title>
+	<title>中期检查资料学生列表</title>
 	<script type="text/javascript">
         function page(n, s) {
             $("#pageNum").val(n);
@@ -18,9 +18,9 @@
 		<div class="page-content">
 			<div class="page-search">
 				<div class="search-title">搜索查询</div>
-				<form:form id="searchForm" modelAttribute="teacherMarking" action="${ctx}/teacher/middleCheckList" method="post" cssClass="form-horizontal">
-					<input id="pageNum" name="pageNum" type="hidden" value="${teacherReviewPageInfo.pageNum}"/>
-					<input id="pageSize" name="pageSize" type="hidden" value="${teacherReviewPageInfo.pageSize}"/>
+				<form:form id="searchForm" modelAttribute="teacherMiddleCheck" action="${ctx}/secretary/middleCheckList" method="post" cssClass="form-horizontal">
+					<input id="pageNum" name="pageNum" type="hidden" value="${teacherMiddleCheckPageInfo.pageNum}"/>
+					<input id="pageSize" name="pageSize" type="hidden" value="${teacherMiddleCheckPageInfo.pageSize}"/>
 					<div class="form-group pull-left col-lg-3">
 						<label for="node" class="col-lg-3 control-label">学号</label>
 						<div class="col-lg-9">
@@ -36,7 +36,7 @@
 					<div class="form-group pull-left col-lg-3">
 						<label for="state" class="col-lg-3 control-label">状态</label>
 						<div class="col-lg-9">
-							<form:select path="user.student.step8" cssClass="form-control" id="state">
+							<form:select path="user.student.step7" cssClass="form-control" id="state">
 								<form:option value="" label="选择状态" />
 								<form:options items="${gpms:getDictList('step')}" itemLabel="label" itemValue="value" />
 							</form:select>
@@ -48,7 +48,7 @@
 			</div>
 			<sys:msg msgObj="${msg}" />
 			<div class="page-title" style="font-weight:600;text-indent:20px;">
-				查看评阅学生列表
+				中期检查资料学生列表
 			</div>
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
@@ -63,19 +63,19 @@
 						</tr>
 					</thead>
 					<tbody  id="tbodyId">
-					<c:forEach items="${teacherReviewPageInfo.list}" var="review">
+					<c:forEach items="${teacherMiddleCheckPageInfo.list}" var="middleCheck">
 						<tr>
 							<td><input type="checkbox" name="node"/></td>
-							<td>${review.user.student.node}</td>
-							<td>${review.user.name}</td>
-							<td>${review.user.student.titleName}</td>
+							<td>${middleCheck.user.student.node}</td>
+							<td>${middleCheck.user.name}</td>
+							<td>${middleCheck.user.student.titleName}</td>
 							<td>
 								<span class="label label-success label-custom">
-										${gpms:getDictLabel(review.user.student.step8, 'step')}
+										${gpms:getDictLabel(middleCheck.user.student.step7, 'step')}
 								</span>
 							</td>
 							<td>
-								<a href="${ctx}/teacher/reviewInfoList?marking.studentId=${review.user.id}"  class="btn btn-xs btn-primary" >查看详情</a>
+								<a href="${ctx}/secretary/middleCheckInfoList?middleCheck.studentId=${middleCheck.user.id}"  class="btn btn-xs btn-primary" >查看详情</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -83,7 +83,7 @@
 				</table>
 			</div>
 			<div class="page-info">
-				${gpms:pageStr(teacherReviewPageInfo)}
+				${gpms:pageStr(teacherMiddleCheckPageInfo)}
 			</div>
 		</div>
 	</body>

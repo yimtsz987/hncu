@@ -53,7 +53,7 @@
 				<c:set var="studentName" value="${teacherSchedulePageInfo.list[sc.first].user.name}" scope="page" />
 			</c:forEach>
 			<div class="btn-wrap">
-				<span class="btn-left">
+				<span class="btn-right">
 					<a href="javascript:void(0)" class="btn btn-warning" onclick="history.go(-1)">
 						<i class="glyphicon glyphicon-share-alt"></i>返回上一页
 					</a>

@@ -15,8 +15,11 @@
          s.uploadFileOldName as "schedule.uploadFileOldName",
          s.teacher_id as "schedule.teacherId",
          s.teacher_advise as "schedule.teacherAdvise",
+         s.year as "schedule.year",
          u.name as "user.name",
+         u.id as "user.id",
          es.node as "user.student.node",
+         es.step_5 as "user.student.step5",
          es.schedule_num as "user.student.scheduleNum",
          gt.title as "user.student.titleName"
     </sql>
@@ -34,6 +37,7 @@
         WHERE s.teacher_id = #{schedule.teacherId, jdbcType=NUMERIC}
         AND s.report_id = #{schedule.reportId, jdbcType=NUMERIC}
         AND s.student_id = #{schedule.studentId, jdbcType=NUMERIC}
+        AND s.year = #{sysYear, jdbcType=VARCHAR}
         <if test="user != null and user.student.node != null and user.student.node != ''">
                 and es.node = #{user.student.node,jdbcType=VARCHAR}
             </if>
@@ -44,6 +48,24 @@
                 and s.report_flag = #{schedule.reportFlag,jdbcType=INTEGER}
             </if>
         order by s.sort ASC
+    </select>
+
+    <select id="queryStudentInfoList" parameterType="TeacherSchedule" resultType="TeacherSchedule">
+        select <include refid="scheduleColumns" />
+        FROM graduation_schedule s
+        <include refid="scheduleJoins" />
+        WHERE s.teacher_id = #{schedule.teacherId, jdbcType=NUMERIC}
+        AND s.year = #{sysYear, jdbcType=VARCHAR}
+        <if test="user != null and user.student.node != null and user.student.node != ''">
+            and es.node = #{user.student.node,jdbcType=VARCHAR}
+        </if>
+        <if test="user != null and user.name != null and user.name != ''">
+            and u.name like concat ('%', #{user.name}, '%')
+        </if>
+        <if test="user != null and user.student.step5 != null and user.student.step5 != ''">
+            and es.step_5 = #{user.student.step5,jdbcType=INTEGER}
+        </if>
+        GROUP BY u.id
     </select>
 
     <select id="queryById" parameterType="string" resultType="TeacherSchedule">

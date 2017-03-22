@@ -4,7 +4,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
-		<title>开题报告审核</title>
+		<title>中期检查审核</title>
 	<style type="text/css">
 		.custom-label:hover{
 			color: #2489c5;
@@ -15,76 +15,62 @@
 		<div class="page-content">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#">开题报告审核</a>
+					<a href="#">中期检查审核</a>
 				</li>
 			</ul>
-			<form:form action="${ctx}/teacher/saveReviewWorkCheck" enctype="multipart/form-data" method="post" cssClass="form-horizontal" id="form-id" modelAttribute="teacherMarking">
-				<form:hidden path="marking.id" />
+			<form:form action="${ctx}/secretary/saveMiddleCheck" enctype="multipart/form-data" method="post" cssClass="form-horizontal" id="form-id" modelAttribute="teacherMiddleCheck">
+				<form:hidden path="middleCheck.id" />
 				<form:hidden path="user.id" />
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">课题:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<div class="inp" style="margin: 7px;">${teacherMarking.user.student.titleName}</div>
+						<div class="inp" style="margin: 7px;">${teacherMiddleCheck.user.student.titleName}</div>
 					</div>
 				</div>
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">学生附件:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<strong><a href="${ctx}/teacher/downloadStudentReviewWork?id=${teacherMarking.marking.id}&checkStr=${teacherMarking.marking.studentCheckStr}" class="inp" style="line-height: 30px;">${teacherMarking.marking.suploadFileOldName}（点击下载）</a></strong>
+						<strong><a href="${ctx}/secretary/downloadStudentMiddleCheck?id=${teacherMiddleCheck.middleCheck.id}&checkStr=${teacherMiddleCheck.middleCheck.checkStr}" class="inp" style="line-height: 30px;">${teacherMiddleCheck.middleCheck.uploadFileOldName}（点击下载）</a></strong>
 					</div>
 				</div>
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">教师建议:</label>
 					<div class="col-lg-5 col-xs-5 col-sm-5 has-feedback">
-						<c:if test="${teacherMarking.marking.state ne 0}">
-							${teacherMarking.marking.teacherAdvise}
+						<c:if test="${teacherMiddleCheck.middleCheck.state ne 1 and teacherMiddleCheck.middleCheck.state ne 0}">
+							${teacherMiddleCheck.middleCheck.teacherAdvise}
 						</c:if>
-						<c:if test="${teacherMarking.marking.state eq 0}">
-							<form:textarea path="marking.teacherAdvise" cols="60" rows="15" id="area1" cssStyle="width:100%;"/>
+						<c:if test="${teacherMiddleCheck.middleCheck.state eq 1 and teacherMiddleCheck.middleCheck.state ne 0}">
+							<form:textarea path="middleCheck.teacherAdvise" cols="60" rows="15" id="area1" cssStyle="width:100%;"/>
 						</c:if>
 					</div>
 				</div>
 				<div class="form-group control-group">
-					<c:if test="${teacherMarking.marking.state ne 0}">
-						<label class="control-label col-lg-2 col-xs-2 col-sm-2">教师附件:</label>
-						<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-							<strong><a href="${ctx}/teacher/downloadTeacherReviewWork?id=${teacherMarking.marking.id}&checkStr=${teacherMarking.marking.teacherCheckStr}" class="inp" style="line-height: 30px;">${teacherMarking.marking.tuploadFileOldName}（点击下载）</a></strong>
-						</div>
-					</c:if>
-					<c:if test="${teacherMarking.marking.state eq 0}">
-						<label class="control-label col-lg-2 col-xs-2 col-sm-2">附件上传:</label>
-						<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-							<input type="file" accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="file" id="input01">
-						</div>
-					</c:if>
-				</div>
-				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">审核:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<c:if test="${teacherMarking.marking.state eq 2}">
+						<c:if test="${teacherMiddleCheck.middleCheck.state ne 1 and teacherMiddleCheck.middleCheck.state ne 0}">
 							<label class="control-label custom-label" style="margin-right: 30px;cursor: pointer;">
-								<form:radiobutton path="marking.state" value="2" disabled="true" />
+								<form:radiobutton path="middleCheck.state" value="3" disabled="true" />
 								<span style="margin-left: 5px;font-size: 14px;">通过</span>
 							</label>
 							<label class="control-label custom-label" style="cursor: pointer;">
-								<form:radiobutton path="marking.state" value="1" disabled="true" />
+								<form:radiobutton path="middleCheck.state" value="2" disabled="true" />
 								<span style="margin-left: 5px;font-size: 14px;color: #e9e7e3;">未通过</span>
 							</label>
 						</c:if>
-						<c:if test="${teacherMarking.marking.state ne 2}">
+						<c:if test="${teacherMiddleCheck.middleCheck.state eq 1 and teacherMiddleCheck.middleCheck.state ne 0}">
 							<label class="control-label custom-label" style="margin-right: 30px;cursor: pointer;">
-								<form:radiobutton path="marking.state" value="2" />
+								<form:radiobutton path="middleCheck.state" value="3" />
 								<span style="margin-left: 5px;font-size: 14px;">通过</span>
 							</label>
 							<label class="control-label custom-label" style="cursor: pointer;">
-								<form:radiobutton path="marking.state" value="1"/>
+								<form:radiobutton path="middleCheck.state" value="2"/>
 								<span style="margin-left: 5px;font-size: 14px;">未通过</span>
 							</label>
 						</c:if>
 					</div>
 				</div>
 				<div class="form-action">
-					<c:if test="${teacherMarking.marking.state eq 0}">
+					<c:if test="${teacherMiddleCheck.middleCheck.state eq 1 and teacherMiddleCheck.middleCheck.state ne 0}">
 						<input class="btn btn-primary" type="submit" value="提交" />
 					</c:if>
 					<input class="btn btn-default" type="button" value="返回" onclick="history.go(-1)"/>

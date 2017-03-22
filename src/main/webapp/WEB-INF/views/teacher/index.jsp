@@ -190,21 +190,54 @@
 								</a>
 							</li>
 						</c:if>
-						<li class="first-nav">
-							<a href="javascript:void(0)" title="答辩分组" class="iframeurl" name="inform.html">
-								<i class="glyphicon glyphicon-home"></i>答辩分组
-							</a>
-						</li>
+						<c:if test="${gpms:getUser().teacher.answerFlag eq 1}">
+							<li class="first-nav">
+								<a href="javascript:void(0)" title="答辩分组" class="iframeurl" name="${ctx}/teacher/teacherAnswerInfoList">
+									<i class="glyphicon glyphicon-home"></i>答辩分组
+								</a>
+							</li>
+						</c:if>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="通知公告" class="iframeurl" name="inform.html">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="资料下载" class="iframeurl" name="download.html">
-							   <i class="glyphicon glyphicon-home"></i>资料下载
+							<a href="javascript:void(0)" title="相关资料" class="iframeurl">
+							   <i class="glyphicon glyphicon-home"></i>相关资料
+								<b class="nav-sign arrow glyphicon glyphicon-plus"></b>
 							</a>
 						</li>
+						<ul class="submenu">
+							<li>
+								<a href="#" title="资料上传" class="iframeurl" name="${ctx}/teacher/studentList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>1、资料上传
+								</a>
+							</li>
+							<li>
+								<a href="#" title="资料下载" class="iframeurl" name="${ctx}/teacher/studentList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、资料下载
+								</a>
+							</li>
+						</ul>
+						<li class="first-nav">
+							<a href="javascript:void(0)" title="毕设流程" class="iframeurl">
+								<i class="glyphicon glyphicon-home"></i>往期资料
+								<b class="nav-sign arrow glyphicon glyphicon-plus"></b>
+							</a>
+						</li>
+						<ul class="submenu">
+							<li>
+								<a href="#" title="往期课题" class="iframeurl" name="${ctx}/teacher/studentList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>1、往期课题
+								</a>
+							</li>
+							<li>
+								<a href="#" title="往期学生" class="iframeurl" name="${ctx}/teacher/studentList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、往期学生
+								</a>
+							</li>
+						</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="修改密码" class="iframeurl" name="password.html">
 							   <i class="glyphicon glyphicon-home"></i>修改密码

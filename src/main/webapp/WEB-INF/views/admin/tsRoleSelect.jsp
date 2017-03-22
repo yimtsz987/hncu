@@ -69,7 +69,7 @@ h2{font-weight:normal;}
     	<div class="logintest">请选择登录角色</div>
     <ul class="loginlist">
     <li style="margin-left:0px"><a href="${ctx}/teacher/index"><img src="${ctxStatic}/img/jszc.png" width="135px" height="135px"  alt="教师"/><p>教师</p></a></li>
-    <li style="margin-right:0px; float: right;"><a href="login2.html"><img src="${ctxStatic}/img/l01.png"  alt="教务秘书"/><p>教务秘书</p></a></li>
+    <li style="margin-right:0px; float: right;"><a href="${ctx}/secretary/index"><img src="${ctxStatic}/img/l01.png"  alt="教务秘书"/><p>教务秘书</p></a></li>
     </ul>
     </div>
     </div>

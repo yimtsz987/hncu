@@ -21,6 +21,10 @@ public class Answer extends BaseEntity {
     private List<User> studentList = Lists.newArrayList(); //答辩组学生集合
     private List<User> teacherList = Lists.newArrayList(); //答辩组老师集合
 
+    public Answer(){
+        super();
+    }
+
     public String getLeaderId() {
         return leaderId;
     }

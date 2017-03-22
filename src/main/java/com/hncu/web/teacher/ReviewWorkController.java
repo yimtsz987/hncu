@@ -150,7 +150,7 @@ public class ReviewWorkController extends BaseController{
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_REMOVE, "提交失败！！"));
         }
-        return "redirect:/teacher/reviewWorkStudentList";
+        return "redirect:/teacher/reviewWorkInfoList?marking.studentId=" + teacherMarking.getUser().getId();
     }
 
     @RequestMapping(value = "/updateStudentReviewStep")

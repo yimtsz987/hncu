@@ -21,6 +21,10 @@ public class Title extends BaseEntity {
     private String checkTitle;
     private String studentId;
 
+    public Title(){
+        super();
+    }
+
     public String getTitle() {
         return title;
     }

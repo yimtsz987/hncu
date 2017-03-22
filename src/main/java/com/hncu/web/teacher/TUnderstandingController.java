@@ -57,13 +57,8 @@ public class TUnderstandingController extends BaseController{
     public String understandingList(TeacherUnderstanding teacherUnderstanding, Model model, PageParam pageParam){
         Understanding understanding = new Understanding();
         understanding.setTeacherId(UserUtils.getCurrentUser().getId());
-        if(teacherUnderstanding.getUnderstanding() != null){
-            if (StringUtils.isNotBlank(teacherUnderstanding.getUnderstanding().getPassFlag())){
-                understanding.setPassFlag(teacherUnderstanding.getUnderstanding().getPassFlag());
-            }
-        }
         teacherUnderstanding.setUnderstanding(understanding);
-        PageInfo<TeacherUnderstanding> teacherUnderstandingPageInfo = tUnderstandingService.queryListWithPage(teacherUnderstanding, pageParam);
+        PageInfo<TeacherUnderstanding> teacherUnderstandingPageInfo = tUnderstandingService.queryStudentInfoListWithPage(teacherUnderstanding, pageParam);
         model.addAttribute("teacherUnderstandingPageInfo", teacherUnderstandingPageInfo);
         return "teacher/understandingList";
     }

@@ -18,6 +18,7 @@
         FROM graduation_title t
         LEFT JOIN sys_user su on su.id = t.student_id
         WHERE t.teacher_id = #{teacherId}
+        AND t.year = #{sysYear, jdbcType=VARCHAR}
             <if test="title != null and title != ''">
                 and t.title like concat ('%', #{title}, '%')
             </if>

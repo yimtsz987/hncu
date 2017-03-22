@@ -29,11 +29,11 @@
 
     <insert id="uploadOpenReport" parameterType="OpenTitle" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO opening_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName,teacher_id)
-        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{sysYear, jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
     </insert>
 
     <insert id="insertSchedule" parameterType="OpenTitle">
-        INSERT INTO graduation_schedule (student_id,sort,content,start_date,end_date,report_id,teacher_id)
+        INSERT INTO graduation_schedule (student_id,sort,content,start_date,end_date,report_id,teacher_id,year)
         VALUES
         <foreach collection="scheduleList" item="schedule" separator=",">
             (#{studentId,jdbcType=INTEGER},#{schedule.sort,jdbcType=VARCHAR},#{schedule.content,jdbcType=VARCHAR},#{schedule.startDate,jdbcType=TIMESTAMP},#{schedule.endDate,jdbcType=TIMESTAMP},#{id,jdbcType=INTEGER},#{teacherId, jdbcType=NUMERIC})

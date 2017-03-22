@@ -25,6 +25,9 @@ public class Understanding extends BaseEntity {
     private String teacherId;
     private String teacherAdvise;
 
+    public Understanding(){
+        super();
+    }
 
     /**
      * 上传之前调用

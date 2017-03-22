@@ -37,6 +37,7 @@
         <include refid="markingJoins" />
         WHERE tm.teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
         AND tm.student_id = #{marking.studentId, jdbcType=NUMERIC}
+        AND tm.year = #{sysYear, jdbcType=VARCHAR}
             <if test="marking != null and marking.sort != null and marking.sort != ''">
                 and tm.sort = #{marking.sort,jdbcType=INTEGER}
             </if>
@@ -54,6 +55,7 @@
         FROM teacher_marking tm
         <include refid="markingJoins" />
         WHERE tm.teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
+        AND tm.year = #{sysYear, jdbcType=VARCHAR}
         <if test="marking != null and marking.sort != null and marking.sort != ''">
             and tm.sort = #{marking.sort,jdbcType=INTEGER}
         </if>

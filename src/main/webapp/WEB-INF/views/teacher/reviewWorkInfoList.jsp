@@ -48,6 +48,14 @@
 				</form:form>
 			</div>
 			<sys:msg msgObj="${msg}" />
+			<div class="btn-wrap">
+				<span class="btn-right">
+					<a href="javascript:void(0)" class="btn btn-warning" onclick="history.go(-1)">
+						<i class="glyphicon glyphicon-share-alt"></i>返回上一页
+					</a>
+				</span>
+				<span class="btn-title">评阅工作</span>
+			</div>
 			<div class="page-title" style="font-weight:600;text-indent:20px;">
 				课题：${studentInfo.student.titleName} —— ${studentInfo.name}
 			</div>
@@ -77,10 +85,10 @@
 							</td>
 							<td>
 								<c:if test="${review.marking.state eq 0}">
-									<a href="${ctx}/teacher/markingCheck?id=${review.marking.id}" class="btn btn-xs btn-danger">评阅</a>
+									<a href="${ctx}/teacher/reviewWorkCheck?id=${review.marking.id}" class="btn btn-xs btn-danger">评阅</a>
 								</c:if>
 								<c:if test="${review.marking.state ne 0}">
-									<a href="${ctx}/teacher/markingCheck?id=${review.marking.id}" class="btn btn-xs btn-primary">查看评阅</a>
+									<a href="${ctx}/teacher/reviewWorkCheck?id=${review.marking.id}" class="btn btn-xs btn-primary">查看评阅</a>
 								</c:if>
 							</td>
 						</tr>
