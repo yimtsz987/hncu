@@ -9,6 +9,8 @@ import com.hncu.entity.TeacherInfo;
 import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.TeacherService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +27,7 @@ import java.util.List;
  * 教师管理控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class TeacherController extends BaseController{
 
     @Resource
@@ -34,6 +36,7 @@ public class TeacherController extends BaseController{
     @Resource
     private DepartmentService departmentService;
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @ModelAttribute
     public TeacherInfo get(@RequestParam(required = false) String id) {
         if (StringUtils.isBlank(id)){
@@ -43,6 +46,7 @@ public class TeacherController extends BaseController{
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/teacherList")
     public String queryTeacherList(TeacherInfo teacherInfo, Model model, PageParam pageParam){
         PageInfo<TeacherInfo> teacherInfoPageInfo = teacherService.queryListWithPage(teacherInfo, pageParam);
@@ -50,6 +54,7 @@ public class TeacherController extends BaseController{
         return "admin/sys/teacherList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/teacherEdit")
     public String teacherEdit(TeacherInfo teacherInfo, Model model){
         List<Department> departmentList = departmentService.queryList(new Department());
@@ -59,6 +64,7 @@ public class TeacherController extends BaseController{
         return "admin/sys/teacherEdit";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/saveTeacherInfo")
     public String saveTeacherInfo(@Valid TeacherInfo teacherInfo, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
@@ -87,6 +93,7 @@ public class TeacherController extends BaseController{
         return "redirect:/admin/teacherList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/deleteTeacherInfo")
     public String deleteTeacherInfo(@RequestParam String id, RedirectAttributes redirectAttributes){
         TeacherInfo teacherInfo = new TeacherInfo(id);

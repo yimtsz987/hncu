@@ -7,6 +7,8 @@ import com.hncu.common.PageParam;
 import com.hncu.entity.Department;
 import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +25,7 @@ import java.util.List;
  * 院系信息控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class DepartmentController extends BaseController {
 
     @Resource
@@ -38,6 +40,7 @@ public class DepartmentController extends BaseController {
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/departmentList")
     public String queryDepartmentList(Department department, Model model, PageParam pageParam){
         List<String> nameList = departmentService.queryNameList();
@@ -50,13 +53,14 @@ public class DepartmentController extends BaseController {
         return "admin/sys/departmentList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/departmentEdit")
     public String departmentEdit(Department department, Model model){
         model.addAttribute("department", department);
         return "admin/sys/departmentEdit";
     }
 
-    @RequestMapping(value = "/saveDepartment")
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     public String saveDepartment(@Valid Department department, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
             return departmentEdit(department, model);
@@ -77,6 +81,7 @@ public class DepartmentController extends BaseController {
         return "redirect:/admin/departmentList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/deleteDepartment")
     public String deleteDepartment(@RequestParam String id,RedirectAttributes redirectAttributes){
         Department department = new Department(id);

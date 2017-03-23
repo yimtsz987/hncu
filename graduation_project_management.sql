@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-03-22 16:19:48
+Date: 2017-03-23 13:40:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -186,7 +186,7 @@ CREATE TABLE `download` (
   `uploadPath` varchar(500) NOT NULL,
   `uploadFileOldName` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of download
@@ -205,6 +205,7 @@ INSERT INTO `download` VALUES ('13', '图片', '1', '2017-01-19 16:38:50', '测�
 INSERT INTO `download` VALUES ('15', '图片', '1', '2017-01-20 07:25:08', '测试', '4,5', '1484868294696QQ截图20170105012353.png', 'E://gpmsUpload/admin/1484868294696QQ截图20170105012353.png', 'QQ截图20170105012353.png');
 INSERT INTO `download` VALUES ('16', '图片', '1', '2017-01-20 08:23:00', '测试', '4,5', '1484871779847QQ截图20161222110826.png', 'E://gpmsUpload/admin/1484871779847QQ截图20161222110826.png', 'QQ截图20161222110826.png');
 INSERT INTO `download` VALUES ('17', '图片', '1', '2017-01-20 08:26:32', '测试', '3,4,5', '14848719926812016年项目清单.xlsx', 'E://gpmsUpload/admin/14848719926812016年项目清单.xlsx', '2016年项目清单.xlsx');
+INSERT INTO `download` VALUES ('18', '教务秘书资料上传测试', '2', '2017-03-22 21:03:25', '教务秘书资料上传测试', '5', '1490187805370icheck.zip', 'E://gpmsUpload/0001/1490187805370icheck.zip', 'icheck.zip');
 
 -- ----------------------------
 -- Table structure for expand_student
@@ -817,8 +818,8 @@ CREATE TABLE `teacher_year_student` (
 -- ----------------------------
 -- Records of teacher_year_student
 -- ----------------------------
-INSERT INTO `teacher_year_student` VALUES ('2', '2013', '3', '5,8,11,', '2');
-INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,', '3');
+INSERT INTO `teacher_year_student` VALUES ('2', '2013', '3', '5,8,11,', null);
+INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,', null);
 
 -- ----------------------------
 -- Table structure for understanding_report

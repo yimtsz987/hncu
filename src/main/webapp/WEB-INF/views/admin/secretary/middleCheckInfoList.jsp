@@ -56,7 +56,8 @@
 						</a>
 					</c:if>
 					<c:if test="${studentInfo.student.step6 ne 2 && studentInfo.student.step7 eq 0}">
-						<a href="javascript:void(0);" class="btn btn-warning disabled" disabled="disabled">
+						<a href="javascript:void(0);" class="btn btn-wa
+						rning disabled" disabled="disabled">
 							<i class="glyphicon glyphicon-ok"></i>通过
 						</a>
 					</c:if>

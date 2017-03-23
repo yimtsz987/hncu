@@ -9,6 +9,8 @@ import com.hncu.entity.Major;
 import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.MajorService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +27,7 @@ import java.util.List;
  * 专业菜单信息控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class MajorController extends BaseController {
 
     @Resource
@@ -43,6 +45,7 @@ public class MajorController extends BaseController {
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/majorList")
     public String queryMajorList(Major major, Model model, PageParam pageParam){
         List<String> nameList = majorService.queryMajorNameList();
@@ -54,6 +57,7 @@ public class MajorController extends BaseController {
         return "admin/sys/majorList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/majorEdit")
     public String majorEdit(Major major,Model model){
         model.addAttribute("major", major);
@@ -62,6 +66,7 @@ public class MajorController extends BaseController {
         return "admin/sys/majorEdit";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/saveMajor")
     public String saveMajor(@Valid Major major, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
@@ -83,6 +88,7 @@ public class MajorController extends BaseController {
         return "redirect:/admin/majorList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/deleteMajor")
     public String deleteMajor(@RequestParam String id,RedirectAttributes redirectAttributes){
         Major major = new Major(id);

@@ -10,6 +10,8 @@ import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.MajorService;
 import com.hncu.service.admin.sys.StudentService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,7 @@ import java.util.List;
  * 学生管理控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class StudentController extends BaseController {
 
     @Resource
@@ -50,6 +52,7 @@ public class StudentController extends BaseController {
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/studentList")
     public String queryStudentList(StudentInfo studentInfo, Model model, PageParam pageParam){
         List<Major> majorList =  majorService.queryList(new Major());
@@ -62,6 +65,7 @@ public class StudentController extends BaseController {
         return "admin/sys/studentList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/studentEdit")
     public String studentEdit(StudentInfo studentInfo, Model model){
         List<Major> majorList =  majorService.queryList(new Major());
@@ -75,6 +79,7 @@ public class StudentController extends BaseController {
         return "admin/sys/studentEdit";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/saveStudentInfo")
     public String saveStudentInfo(@Valid StudentInfo studentInfo, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
@@ -103,6 +108,7 @@ public class StudentController extends BaseController {
         return "redirect:/admin/studentList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/deleteStudentInfo")
     public String deleteStudentInfo(@RequestParam String id, RedirectAttributes redirectAttributes){
         StudentInfo studentInfo = new StudentInfo(id);

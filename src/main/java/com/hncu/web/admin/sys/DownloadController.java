@@ -9,6 +9,8 @@ import com.hncu.service.admin.sys.DownloadService;
 import com.hncu.utils.MyFileUtil;
 import com.hncu.utils.StringUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,7 +30,7 @@ import java.io.IOException;
  * 下载
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class DownloadController extends BaseController {
 
     @Resource
@@ -44,6 +46,7 @@ public class DownloadController extends BaseController {
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/downloadList")
     public String queryDownloadList(DownLoad downLoad, Model model, PageParam pageParam){
         PageInfo<DownLoad> downLoadPageInfo = downloadService.queryListWithPage(downLoad, pageParam);
@@ -51,6 +54,7 @@ public class DownloadController extends BaseController {
         return "admin/sys/download";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/downloadData", produces = "application/octet-stream;charset=UTF-8")
     public ResponseEntity<byte[]> download(@RequestParam String id) throws IOException {
         DownLoad downLoad = downloadService.queryById(id);
@@ -64,6 +68,7 @@ public class DownloadController extends BaseController {
             return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/deleteData")
     public String deleteData(@RequestParam String id, RedirectAttributes redirectAttributes){
         DownLoad downLoad = downloadService.queryById(id);

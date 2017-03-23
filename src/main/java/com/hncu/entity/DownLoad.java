@@ -19,6 +19,7 @@ public class DownLoad extends BaseEntity {
     private String uploadFile;
     private String uploadPath;
     private String uploadFileOldName;
+    private String receiveName;
 
     public  DownLoad(){
 
@@ -91,5 +92,13 @@ public class DownLoad extends BaseEntity {
 
     public void setUploadFileOldName(String uploadFileOldName) {
         this.uploadFileOldName = uploadFileOldName;
+    }
+
+    public String getReceiveName() {
+        return receiveName;
+    }
+
+    public void setReceiveName(String receiveName) {
+        this.receiveName = receiveName;
     }
 }

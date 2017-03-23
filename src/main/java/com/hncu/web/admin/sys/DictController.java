@@ -7,6 +7,7 @@ import com.hncu.common.PageParam;
 import com.hncu.entity.Dict;
 import com.hncu.service.admin.sys.DictService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,6 +47,7 @@ public class DictController extends BaseController{
      * @param pageParam
      * @return
      */
+    @RequiresPermissions(value = "admin")
     @RequestMapping(value = "/dictList")
     public String queryDictList (Dict dict, Model model, PageParam pageParam){
         List<String> typeList = dictService.queryTypeList(dict);
@@ -56,12 +58,14 @@ public class DictController extends BaseController{
         return "admin/sys/dictList";
     }
 
+    @RequiresPermissions(value = "admin")
     @RequestMapping(value = "/dictEdit")
     public String dictEdit(Dict dict, Model model){
         model.addAttribute("dict", dict);
         return "admin/sys/dictEdit";
     }
 
+    @RequiresPermissions(value = "admin")
     @RequestMapping(value = "/saveDict")
     public String saveDict(@Valid Dict dict, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
@@ -83,6 +87,7 @@ public class DictController extends BaseController{
         return "redirect:/admin/dictList";
     }
 
+    @RequiresPermissions(value = "admin")
     @RequestMapping(value = "/deleteDict")
     public  String deleteDict(@RequestParam String id,
                               @RequestParam String type,

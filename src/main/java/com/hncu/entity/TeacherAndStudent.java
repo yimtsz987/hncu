@@ -2,6 +2,8 @@ package com.hncu.entity;
 
 import com.hncu.common.BaseEntity;
 
+import java.util.List;
+
 /**
  * 教师学生实体类
  */
@@ -13,6 +15,9 @@ public class TeacherAndStudent extends BaseEntity {
     private Integer studentSum;
     private String studentIds;
     private String reviewTeacherId;
+    private String reviewTeacherName;
+    private User teacherInfo;
+    private List<TeacherAndStudent> teacherAndStudentList;
 
     public TeacherAndStudent(){
         super();
@@ -56,5 +61,29 @@ public class TeacherAndStudent extends BaseEntity {
 
     public void setReviewTeacherId(String reviewTeacherId) {
         this.reviewTeacherId = reviewTeacherId;
+    }
+
+    public String getReviewTeacherName() {
+        return reviewTeacherName;
+    }
+
+    public void setReviewTeacherName(String reviewTeacherName) {
+        this.reviewTeacherName = reviewTeacherName;
+    }
+
+    public User getTeacherInfo() {
+        return teacherInfo;
+    }
+
+    public void setTeacherInfo(User teacherInfo) {
+        this.teacherInfo = teacherInfo;
+    }
+
+    public List<TeacherAndStudent> getTeacherAndStudentList() {
+        return teacherAndStudentList;
+    }
+
+    public void setTeacherAndStudentList(List<TeacherAndStudent> teacherAndStudentList) {
+        this.teacherAndStudentList = teacherAndStudentList;
     }
 }

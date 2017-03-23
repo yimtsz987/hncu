@@ -57,6 +57,7 @@
 							<th>标题</th>
 							<th>发布人</th>
 							<th>发布时间</th>
+							<th>接收人</th>
 							<th>备注</th>
 							<th>操作</th>
 						</tr>
@@ -69,6 +70,7 @@
 							<td>${download.title}</td>
 							<td>${download.issuer.name}</td>
 							<td><fmt:formatDate value="${download.issueDate}" type="date" pattern="yyyy-MM-dd" /></td>
+							<td>${download.receiveName}</td>
 							<td>${download.description}</td>
 							<td>
 								<a href="${ctx}/admin/downloadData?id=${download.id}" class="btn btn-xs btn-primary">下载</a>
@@ -102,6 +104,7 @@
             var trLength = $("#tbodyId tr").length;
             for (var i=0;i<10-trLength;i++) {
                 $("#tbodyId").append("<tr> "
+                    + "<td></td> "
                     + "<td></td> "
                     + "<td></td> "
                     + "<td></td> "

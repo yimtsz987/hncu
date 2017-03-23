@@ -7,6 +7,8 @@ import com.hncu.common.PageParam;
 import com.hncu.entity.SysParam;
 import com.hncu.service.admin.sys.SysParamService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +25,7 @@ import java.util.List;
  * 系统参数控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class SysParamController extends BaseController {
 
     @Resource
@@ -38,6 +40,7 @@ public class SysParamController extends BaseController {
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/sysParamList")
     public String queryParamList(SysParam sysParam, Model model, PageParam pageParam){
         List<String> keyList = sysParamService.queryKeyList(sysParam);
@@ -49,11 +52,13 @@ public class SysParamController extends BaseController {
         return "admin/sys/sysParamList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/sysParamEdit")
     public String sysParamEdit(SysParam sysParam,Model model){
         return "admin/sys/sysParamEdit";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/saveSysParam")
     public String saveSysParam(@Valid SysParam sysParam, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
@@ -71,6 +76,7 @@ public class SysParamController extends BaseController {
         return "redirect:/admin/sysParamList";
     }
 
+    @RequiresPermissions(value = "admin")
     @RequestMapping(value = "/deleteSysParam")
     public String deleteSysParam(@RequestParam String id,RedirectAttributes redirectAttributes){
         SysParam sysParam = new SysParam(id);

@@ -124,12 +124,12 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="个人信息" class="iframeurl" name="${ctx}/admin/info">
+							<a href="javascript:void(0)" title="个人信息" class="iframeurl" name="${ctx}/secretary/info">
 							   <i class="glyphicon glyphicon-home" ></i>个人信息
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="学生管理" class="iframeurl" name="${ctx}/admin/studentList">
+							<a href="javascript:void(0)" title="学生管理" class="iframeurl" name="${ctx}/secretary/studentList">
 							   <i class="glyphicon glyphicon-home" ></i>学生管理
 							</a>
 						</li>
@@ -141,7 +141,7 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="设置当前年级" class="iframeurl" name="${ctx}/admin/teacherList">
+									<a href="#" title="设置当前年级" class="iframeurl" name="${ctx}/secretary/teacherList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、教师管理
 									</a>
 								</li>
@@ -157,7 +157,7 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="#" title="" class="iframeurl" name="${ctx}/admin/downloadList">
+							<a href="#" title="" class="iframeurl" name="${ctx}/secretary/reviewGroupList">
 								<i class="glyphicon glyphicon-home"></i>评阅分组
 							</a>
 						</li>
@@ -169,7 +169,7 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="系统参数" class="iframeurl" name="${ctx}/admin/sysParamList">
+									<a href="#" title="系统参数" class="iframeurl" name="${ctx}/secretary/sysParamList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、系统参数
 									</a>
 								</li>
@@ -179,11 +179,10 @@
 									</a>
 								</li>
 								<li>
-									<a href="#" title="上传资料"class="iframeurl" name="${ctx}/admin/uploadDate">
+									<a href="#" title="上传资料"class="iframeurl" name="${ctx}/secretary/uploadDate">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>3、上传资料
 									</a>
 								</li>
-								
 							</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="成绩查询">
@@ -193,26 +192,20 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="院系菜单" class="iframeurl" name="${ctx}/admin/departmentList">
+									<a href="#" title="院系菜单" class="iframeurl" name="${ctx}/secretary/departmentList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、院系菜单
 									</a>
 								</li>
 								<li>
-									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/majorList">
+									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/secretary/majorList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>2、专业菜单
 									</a>
 								</li>
 								<li>
-									<a href="#" title="班级菜单" class="iframeurl" name="${ctx}/admin/classesList">
+									<a href="#" title="班级菜单" class="iframeurl" name="${ctx}/secretary/classesList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>3、班级菜单
 									</a>
 								</li>
-								<li>
-									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/dictList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>4、通用字典
-									</a>
-								</li>
-								
 							</ul>
 						<li class="first-nav">
 							<a href="#" title="通知公告" class="iframeurl" name="Announcements.html">
@@ -220,10 +213,23 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="#" title="" class="iframeurl" name="${ctx}/admin/downloadList">
-							   <i class="glyphicon glyphicon-home"></i>资料下载
+							<a href="javascript:void(0)" title="相关资料">
+							   <i class="glyphicon glyphicon-home"></i>相关资料
+								<b class="nav-sign arrow glyphicon glyphicon-plus"></b>
 							</a>
 						</li>
+						<ul class="submenu">
+							<li>
+								<a href="#" title="上传资料"class="iframeurl" name="${ctx}/secretary/uploadDate">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>3、资料上传
+								</a>
+							</li>
+							<li>
+								<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/secretary/downloadList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、资料下载
+								</a>
+							</li>
+						</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="修改密码">
 							   <i class="glyphicon glyphicon-home"></i>修改密码

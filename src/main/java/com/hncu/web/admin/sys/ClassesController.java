@@ -11,6 +11,8 @@ import com.hncu.service.admin.sys.ClassesService;
 import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.MajorService;
 import com.hncu.utils.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ import java.util.List;
  * 班级菜单信息控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = {"/admin","/secretary"})
 public class ClassesController extends BaseController {
 
     @Resource
@@ -49,6 +51,7 @@ public class ClassesController extends BaseController {
         }
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/classesList")
     public String queryClassesList(Classes classes, Model model, PageParam pageParam){
         List<Department> departmentList = departmentService.queryList(new Department());
@@ -61,6 +64,7 @@ public class ClassesController extends BaseController {
         return "admin/sys/classesList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/classesEdit")
     public String classesEdit(Classes classes, Model model){
         model.addAttribute("classes", classes);
@@ -71,6 +75,7 @@ public class ClassesController extends BaseController {
         return "admin/sys/classesEdit";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/saveClasses")
     public String saveClasses(@Valid Classes classes, BindingResult br, Model model, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
@@ -92,6 +97,7 @@ public class ClassesController extends BaseController {
         return "redirect:/admin/classesList";
     }
 
+    @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @RequestMapping(value = "/deleteClasses")
     public String deleteClasses(@RequestParam String id,RedirectAttributes redirectAttributes){
         Msg msg;

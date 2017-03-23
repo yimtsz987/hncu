@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.secretary.ReviewGroupMapper">
+    <sql id="tStudentColumns">
+        tys.teacher_id as "teacherId",
+        tys.year,
+        tys.student_sum as "studentSum",
+        tys.student_ids as "studentIds",
+        tys.review_tId as "reviewTeacherId",
+        rs.name as "reviewTeacherName",
+        u.name as "teacherInfo.name",
+        et.node as "teacherInfo.teacher.node",
+        tyr.review_flag as "teacherInfo.teacher.reviewFlag"
+    </sql>
+
+    <sql id="tStudentJoins">
+        LEFT JOIN sys_user u on u.id = tys.teacher_id
+        LEFT JOIN expand_teacher et on et.t_id = tys.teacher_id
+        LEFT JOIN system_parameter sp on sp.id = u.sysYear_paramId
+        LEFT JOIN teacher_year_review tyr on tyr.teacher_id = tys.teacher_id and tyr.year = sp.param_value
+        LEFT JOIN sys_user rs on rs.id = tys.review_tId
+    </sql>
+
+    <select id="queryList" parameterType="TeacherAndStudent" resultType="TeacherAndStudent">
+        select <include refid="tStudentColumns" />
+        FROM teacher_year_student tys
+        <include refid="tStudentJoins" />
+        WHERE tys.year = #{sysYear, jdbcType=VARCHAR}
+        <if test="teacherInfo != null and teacherInfo.teacher != null and teacherInfo.teacher.node != null  and teacherInfo.teacher.node != ''">
+            and et.node = #{teacherInfo.teacher.node,jdbcType=INTEGER}
+        </if>
+        <if test="teacherInfo != null and teacherInfo.name != null  and teacherInfo.name != ''">
+            and u.name = #{teacherInfo.name,jdbcType=INTEGER}
+        </if>
+        order by et.node ASC
+    </select>
+
+    <update id="randomGroup" parameterType="java.util.List">
+        update teacher_year_student set
+        review_tId =
+        <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
+            when #{item.teacherId,jdbcType=DECIMAL} then #{item.reviewTeacherId,jdbcType=VARCHAR}
+        </foreach>
+        where teacher_id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.teacherId,jdbcType=DECIMAL}
+        </foreach>
+    </update>
+</mapper>
