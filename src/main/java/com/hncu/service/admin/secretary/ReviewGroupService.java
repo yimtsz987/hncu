@@ -23,6 +23,7 @@ public class ReviewGroupService extends BaseService<ReviewGroupMapper, TeacherAn
         List<TeacherAndStudent> teacherAndStudentListOld = queryList(new TeacherAndStudent());
         List<TeacherAndStudent> teacherAndStudentListNew = Lists.newArrayList();
         List<String> teacherIds = Lists.newArrayList();
+        int count = 0;
         for (int i = 0; i < teacherAndStudentListOld.size(); i++) {
             TeacherAndStudent teacherAndStudent = teacherAndStudentListOld.get(i);
             if (StringUtils.isEmpty(teacherAndStudent.getReviewTeacherId())){
@@ -34,7 +35,11 @@ public class ReviewGroupService extends BaseService<ReviewGroupMapper, TeacherAn
         for (int i = 0; i < teacherAndStudentListNew.size(); i++) {
             teacherAndStudentListNew.get(i).setReviewTeacherId(teacherIds.get(i));
         }
-
-        return mapper.randomGroup(teacherAndStudentListNew) > 0;
+        for (int i = 0; i < teacherAndStudentListNew.size(); i++) {
+            TeacherAndStudent teacherAndStudent = teacherAndStudentListNew.get(i);
+            mapper.randomGroup(teacherAndStudent);
+            count++;
+        }
+        return count > 0;
     }
 }

@@ -16,5 +16,5 @@ public interface ReviewGroupMapper extends BaseMapper<TeacherAndStudent>{
      * 评阅随机分组
      * @return
      */
-    int randomGroup(List<TeacherAndStudent> list);
+    int randomGroup(TeacherAndStudent teacherAndStudent);
 }

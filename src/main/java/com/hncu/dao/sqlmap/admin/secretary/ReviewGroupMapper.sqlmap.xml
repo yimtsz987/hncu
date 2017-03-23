@@ -30,12 +30,19 @@
             and et.node = #{teacherInfo.teacher.node,jdbcType=INTEGER}
         </if>
         <if test="teacherInfo != null and teacherInfo.name != null  and teacherInfo.name != ''">
-            and u.name = #{teacherInfo.name,jdbcType=INTEGER}
+            and u.name = #{teacherInfo.name,jdbcType=VARCHAR}
         </if>
         order by et.node ASC
     </select>
 
-    <update id="randomGroup" parameterType="java.util.List">
+    <update id="randomGroup" parameterType="TeacherAndStudent">
+            update teacher_year_student set
+                review_tId = #{reviewTeacherId,jdbcType=INTEGER}
+            where teacher_id = #{teacherId,jdbcType=INTEGER}
+            and year = #{sysYear, jdbcType=VARCHAR}
+    </update>
+
+    <update id="randomGroup1" parameterType="java.util.List">
         update teacher_year_student set
         review_tId =
         <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
