@@ -118,6 +118,14 @@ public class BaseEntity implements Serializable {
      * 批阅状态 - 已批阅
      */
     public static final String MARKING_FLAG_YES = "1";
+    /**
+     * 评阅分组状态 - 已分组
+     */
+    public static final String REVIEW_FLAG_YES = "1";
+    /**
+     * 评阅分组状态 - 未分组
+     */
+    public static final String REVIEW_FLAG_NO = "0";
 
 
 

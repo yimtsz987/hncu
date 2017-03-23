@@ -14,6 +14,7 @@ public class Classes extends BaseEntity {
     private Major major;
     private Department department;
     private String count;
+    private String year;
 
     public Classes() {
     }
@@ -54,4 +55,11 @@ public class Classes extends BaseEntity {
         this.count = count;
     }
 
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
 }

@@ -36,21 +36,16 @@
     </select>
 
     <update id="randomGroup" parameterType="TeacherAndStudent">
-            update teacher_year_student set
-                review_tId = #{reviewTeacherId,jdbcType=INTEGER}
-            where teacher_id = #{teacherId,jdbcType=INTEGER}
-            and year = #{sysYear, jdbcType=VARCHAR}
+        update teacher_year_student set
+            review_tId = #{reviewTeacherId,jdbcType=INTEGER}
+        where teacher_id = #{teacherId,jdbcType=INTEGER}
+        and year = #{sysYear, jdbcType=VARCHAR}
     </update>
 
-    <update id="randomGroup1" parameterType="java.util.List">
-        update teacher_year_student set
-        review_tId =
-        <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
-            when #{item.teacherId,jdbcType=DECIMAL} then #{item.reviewTeacherId,jdbcType=VARCHAR}
-        </foreach>
-        where teacher_id in
-        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
-            #{item.teacherId,jdbcType=DECIMAL}
-        </foreach>
+    <update id="updateReviewFlag" parameterType="TeacherAndStudent">
+         update teacher_year_review set
+            review_flag = #{REVIEW_FLAG_YES,jdbcType=INTEGER}
+         where teacher_id = #{teacherId,jdbcType=INTEGER}
+         and year = #{sysYear, jdbcType=VARCHAR}
     </update>
 </mapper>

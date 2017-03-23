@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-03-23 13:40:20
+Date: 2017-03-23 22:45:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,17 +21,18 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `answer_group`;
 CREATE TABLE `answer_group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `leader_id` int(11) NOT NULL,
+  `leader_id` int(11) DEFAULT NULL,
   `year` varchar(5) NOT NULL,
   `student_ids` varchar(300) DEFAULT NULL,
   `teacher_ids` varchar(300) DEFAULT NULL,
+  `answer_classes` varchar(15) DEFAULT NULL COMMENT '答辩班级',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of answer_group
 -- ----------------------------
-INSERT INTO `answer_group` VALUES ('1', '2', '2013', '5,7,', '3,4,');
+INSERT INTO `answer_group` VALUES ('1', '2', '2013', '5,7,', '3,4,', null);
 
 -- ----------------------------
 -- Table structure for answer_group_member
@@ -73,6 +74,7 @@ CREATE TABLE `classes` (
   `major_id` int(11) NOT NULL,
   `department_no` int(11) NOT NULL,
   `count` int(11) DEFAULT '0',
+  `year` varchar(5) NOT NULL,
   PRIMARY KEY (`id`,`class_id`),
   UNIQUE KEY `classID` (`class_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -80,10 +82,10 @@ CREATE TABLE `classes` (
 -- ----------------------------
 -- Records of classes
 -- ----------------------------
-INSERT INTO `classes` VALUES ('1', '1406102', '1', '6', '4');
-INSERT INTO `classes` VALUES ('3', '1406101', '1', '6', '2');
-INSERT INTO `classes` VALUES ('4', '1406401', '2', '6', '0');
-INSERT INTO `classes` VALUES ('5', '1406402', '2', '6', '0');
+INSERT INTO `classes` VALUES ('1', '1406102', '1', '6', '4', '2013');
+INSERT INTO `classes` VALUES ('3', '1406101', '1', '6', '2', '2013');
+INSERT INTO `classes` VALUES ('4', '1406401', '2', '6', '0', '2013');
+INSERT INTO `classes` VALUES ('5', '1406402', '2', '6', '0', '2013');
 
 -- ----------------------------
 -- Table structure for department
@@ -818,8 +820,8 @@ CREATE TABLE `teacher_year_student` (
 -- ----------------------------
 -- Records of teacher_year_student
 -- ----------------------------
-INSERT INTO `teacher_year_student` VALUES ('2', '2013', '3', '5,8,11,', null);
-INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,', null);
+INSERT INTO `teacher_year_student` VALUES ('2', '2013', '3', '5,8,11,', '3');
+INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,', '2');
 
 -- ----------------------------
 -- Table structure for understanding_report

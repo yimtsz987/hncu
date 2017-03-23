@@ -7,6 +7,7 @@
         c.major_id as "major.id",
         c.department_no as "department.dNo",
         c.count,
+        c.year,
         d.name as "major.name",
         m.name as "department.name"
     </sql>

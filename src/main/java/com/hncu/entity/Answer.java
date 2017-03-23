@@ -17,6 +17,7 @@ public class Answer extends BaseEntity {
     private String year;
     private String studentIds;
     private String teacherIds;
+    private String answerClasses;
 
     private List<User> studentList = Lists.newArrayList(); //答辩组学生集合
     private List<User> teacherList = Lists.newArrayList(); //答辩组老师集合
@@ -71,6 +72,14 @@ public class Answer extends BaseEntity {
 
     public void setTeacherList(List<User> teacherList) {
         this.teacherList = teacherList;
+    }
+
+    public String getAnswerClasses() {
+        return answerClasses;
+    }
+
+    public void setAnswerClasses(String answerClasses) {
+        this.answerClasses = answerClasses;
     }
 
     public List<String> getStudentIdList (){

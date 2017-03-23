@@ -45,6 +45,9 @@
 				</span>
 			</div>
 			<sys:msg msgObj="${msg}" />
+			<div class="page-title" style="font-weight:600;text-indent:20px;">
+				当前系统年级：<strong>${gpms:getParamValue("year")}</strong>
+			</div>
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
 					<thead>
@@ -54,7 +57,6 @@
 							<th>姓名</th>
 							<th>学生数量</th>
 							<th>评阅教师</th>
-							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody  id="tbodyId">
@@ -65,10 +67,6 @@
 							<td>${reviewGroup.teacherInfo.name}</td>
 							<td>${reviewGroup.studentSum}</td>
 							<td>${reviewGroup.reviewTeacherName}</td>
-							<th>
-								<a href="#}" class="btn btn-xs btn-primary">撤回</a>
-								<a href="#" class="btn btn-xs btn-danger">分组</a>
-							</th>
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -102,7 +100,6 @@
 						+ "<td></td> "
 						+ "<td></td> "
 						+ "<td></td> "
-                        + "<td></td> "
 						+ "</tr>");
 			}
 		}

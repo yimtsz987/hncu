@@ -17,4 +17,11 @@ public interface ReviewGroupMapper extends BaseMapper<TeacherAndStudent>{
      * @return
      */
     int randomGroup(TeacherAndStudent teacherAndStudent);
+
+    /**
+     * 更新评阅分组状态
+     * @param teacherAndStudent
+     * @return
+     */
+    int updateReviewFlag(TeacherAndStudent teacherAndStudent);
 }
