@@ -8,8 +8,8 @@
         c.department_no as "department.dNo",
         c.count,
         c.year,
-        d.name as "major.name",
-        m.name as "department.name"
+        m.name as "major.name",
+        d.name as "department.name"
     </sql>
 
     <sql id="classesJoins">
@@ -48,6 +48,14 @@
         <include refid="classesJoins" />
         WHERE c.id = #{id, jdbcType=NUMERIC}
     </select>
+
+    <select id="queryByClasses" parameterType="string" resultType="Classes">
+        SELECT <include refid="ClassesColumns" />
+        FROM classes c
+        <include refid="classesJoins" />
+        WHERE c.class_id = #{classes, jdbcType=NUMERIC}
+    </select>
+
     <insert id="insert" parameterType="Classes" useGeneratedKeys="true"
             keyProperty="id">
         INSERT INTO classes (class_id,major_id,department_no) VALUES (#{classId},#{major.id},#{department.dNo})
