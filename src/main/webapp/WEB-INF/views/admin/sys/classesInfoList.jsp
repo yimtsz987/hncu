@@ -4,7 +4,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
-		<title>学生管理</title>
+		<title>班级学生信息</title>
 		<script type="text/javascript">
 			function page(n, s) {
 				$("#pageNum").val(n);
@@ -18,9 +18,9 @@
 		<div class="page-content">
 			<div class="page-search">
 				<div class="search-title">学生搜索查询</div>
-				<form:form id="searchForm" modelAttribute="studentInfo" action="${ctx}/admin/studentList" method="post" cssClass="form-horizontal">
-					<input id="pageNum" name="pageNum" type="hidden" value="${userPageInfo.pageNum}"/>
-					<input id="pageSize" name="pageSize" type="hidden" value="${userPageInfo.pageSize}"/>
+				<form:form id="searchForm" modelAttribute="studentInfo" action="${ctx}/admin/classesInfoList" method="post" cssClass="form-horizontal">
+					<input id="pageNum" name="pageNum" type="hidden" value="${studentInfoPageInfo.pageNum}"/>
+					<input id="pageSize" name="pageSize" type="hidden" value="${studentInfoPageInfo.pageSize}"/>
 					<div class="form-group pull-left col-lg-3">
 						<label for="node" class="col-lg-3 control-label">学号</label>
 						<div class="col-lg-9">
@@ -33,39 +33,22 @@
 							<form:input path="name" cssClass="form-control" maxlength="50" id="name" />
 						</div>
 					</div>
-					<div class="form-group pull-left col-lg-3">
-						<label for="major" class="col-lg-3 control-label">专业</label>
-						<div class="col-lg-9">
-							<form:select path="major.id" cssClass="form-control" id="major">
-								<form:option value="" label="选择专业" />
-								<form:options items="${majorList}" itemLabel="name" itemValue="id"  />
-							</form:select>
-						</div>
-					</div>
-					<div class="form-group pull-left col-lg-3">
-						<label for="type" class="col-lg-3 control-label">班级</label>
-						<div class="col-lg-9">
-							<form:select path="classes" cssClass="form-control" id="classes">
-								<form:option value="" label="选择班级" />
-								<form:options items="${classesList}" itemLabel="classId" itemValue="classId" />
-							</form:select>
-						</div>
-					</div>
 					<input type="submit" class="btn btn-primary mybtn" value="查询" />
 					<div class="clearfix"></div>
 				</form:form>
 			</div>
+			<sys:msg msgObj="${msg}" />
 			<div class="btn-wrap">
-				<span class="btn-left">
-					<a href="${ctx}/admin/studentEdit" class="btn btn-warning">
-						<i class="glyphicon glyphicon-plus"></i>新增学生
-					</a>
-					<a href="javascript:void(0)" class="btn btn-danger">
-						<i class="glyphicon glyphicon-trash"></i>批量上传
+				<span class="btn-right">
+					<a href="javascript:void(0)" class="btn btn-warning" onclick="history.go(-1)">
+						<i class="glyphicon glyphicon-share-alt"></i>返回上一页
 					</a>
 				</span>
+				<span class="btn-title" style="letter-spacing: normal">分组班级：${classesInfo.classId}班</span>
 			</div>
-			<sys:msg msgObj="${msg}" />
+			<div class="page-title" style="font-weight:600;text-indent:20px;">
+				${classesInfo.department.name} —— ${classesInfo.major.name}
+			</div>
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
 					<thead>
@@ -75,9 +58,6 @@
 							<th>姓名</th>
 							<th>性别</th>
 							<th>年龄</th>
-							<th>院系</th>
-							<th>专业</th>
-							<th>班级</th>
 							<th>级数</th>
 							<th>手机</th>
 							<th>邮箱</th>
@@ -85,20 +65,16 @@
 							<th>所选课题</th>
 							<th>进度</th>
 							<th>成绩</th>
-							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody id="tbodyId">
-					<c:forEach items="${userPageInfo.list}" var="student">
+					<c:forEach items="${studentInfoPageInfo.list}" var="student">
 						<tr>
 							<td><input type="checkbox" name="node"/></td>
 							<td>${student.node}</td>
 							<td>${student.name}</td>
 							<td>${gpms:getDictLabel(student.sex, 'sex')}</td>
 							<td>${student.age}</td>
-							<td>${student.department.name}</td>
-							<td>${student.major.name}</td>
-							<td>${student.classes}</td>
 							<td>${student.year}</td>
 							<td>${student.mobile}</td>
 							<td>${student.email}</td>
@@ -133,19 +109,13 @@
 									</c:if>
 							    </strong>
 							</td>
-							<td>
-								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-primary">修改资料</a>
-								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-success">更改教师</a>
-								<a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="deleteBtn(this,${student.id})">删除</a>
-								<a href="chakan.html" class="btn btn-xs btn-info">查看文件</a>
-							</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
 			</div>
 				<div class="page-info">
-					${gpms:pageStr(userPageInfo)}
+					${gpms:pageStr(studentInfoPageInfo)}
 				</div>
 
 		</div>
@@ -173,10 +143,6 @@
             var trLength = $("#tbodyId tr").length;
             for (var i=0;i<10-trLength;i++) {
                 $("#tbodyId").append("<tr>"
-                    + "<td></td>"
-                    + "<td></td>"
-                    + "<td></td>"
-                    + "<td></td>"
                     + "<td></td>"
                     + "<td></td>"
                     + "<td></td>"

@@ -32,17 +32,30 @@ public class StudentAnswerController extends BaseController{
 
     @RequestMapping(value = "/answerList")
     public String answerList(Model model){
-        Answer answer = answerService.queryById(UserUtils.getCurrentUser().getStudent().getAnswerId());
-        User leader = userService.queryById(answer.getLeaderId());
-        String[] teacherId = StringUtils.split(answer.getTeacherIds(),",");
-        List<User> teacherList = Lists.newArrayList();
-        User user = null;
-        for (int i = 0; i < teacherId.length; i++) {
-            user = userService.queryById(teacherId[i]);
-            teacherList.add(user);
+        Answer answer = answerService.queryByClasses(UserUtils.getCurrentUser().getStudent().getClasses());
+        Boolean answerFlag = false;
+        if (StringUtils.isNotEmpty(answer.getLeaderId())){
+            User leader = userService.queryById(answer.getLeaderId());
+            if (StringUtils.isNotEmpty(answer.getTeacherIds())){
+                String[] teacherId = StringUtils.split(answer.getTeacherIds(),",");
+                List<User> teacherList = Lists.newArrayList();
+                User user = null;
+                for (int i = 0; i < teacherId.length; i++) {
+                    user = userService.queryById(teacherId[i]);
+                    teacherList.add(user);
+                }
+                answerFlag = true;
+                model.addAttribute("leader", leader);
+                model.addAttribute("teacherList", teacherList);
+                model.addAttribute("answerFlag", answerFlag);
+            } else {
+                model.addAttribute("answer",answer);
+                model.addAttribute("answerFlag", answerFlag);
+            }
+        } else {
+            model.addAttribute("answer",answer);
+            model.addAttribute("answerFlag", answerFlag);
         }
-        model.addAttribute("leader", leader);
-        model.addAttribute("teacherList", teacherList);
         return "student/answerList";
     }
 

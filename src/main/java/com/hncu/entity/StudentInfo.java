@@ -25,7 +25,7 @@ public class StudentInfo extends BaseEntity {
     private String node;
     private Department department;
     private Major major;
-    private Classes classes;
+    private String classes;
     private Title title;
     private TeacherInfo teacher;
     private String year;
@@ -190,11 +190,11 @@ public class StudentInfo extends BaseEntity {
         this.major = major;
     }
 
-    public Classes getClasses() {
+    public String getClasses() {
         return classes;
     }
 
-    public void setClasses(Classes classes) {
+    public void setClasses(String classes) {
         this.classes = classes;
     }
 

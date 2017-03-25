@@ -2,6 +2,7 @@ package com.hncu.dao.mapper.admin.sys;
 
 import com.hncu.common.BaseMapper;
 import com.hncu.entity.Classes;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,4 +10,11 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ClassesMapper extends BaseMapper<Classes> {
+
+    /**
+     * 通过班级号查询班级信息
+     * @param classes
+     * @return
+     */
+    Classes queryByClasses(@Param("classes") String classes);
 }

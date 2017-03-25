@@ -15,7 +15,7 @@ public class StudentExpand implements Serializable {
     private String node;
     private Department department;
     private Major major;
-    private Classes classes;
+    private String classes;
     private String titleId;
     private String titleName;
     private String teacherId;
@@ -72,11 +72,11 @@ public class StudentExpand implements Serializable {
         this.major = major;
     }
 
-    public Classes getClasses() {
+    public String getClasses() {
         return classes;
     }
 
-    public void setClasses(Classes classes) {
+    public void setClasses(String classes) {
         this.classes = classes;
     }
 

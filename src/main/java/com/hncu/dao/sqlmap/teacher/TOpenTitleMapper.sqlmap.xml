@@ -17,6 +17,7 @@
         u.name as "user.name",
         es.node as "user.student.node",
         es.answer_id as "user.student.answerId",
+        es.classes as "user.student.classes",
         es.step_4 as "user.student.step4",
         gt.title as "user.student.titleName"
     </sql>

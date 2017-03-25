@@ -6,6 +6,8 @@ import com.hncu.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 学生管理数据持久化操作接口层
  */
@@ -67,4 +69,11 @@ public interface StudentMapper extends BaseMapper<StudentInfo> {
      * @return
      */
     int deleteStudentRole(StudentInfo studentInfo);
+
+    /**
+     * 通过班级查询学生信息
+     * @param studentInfo
+     * @return
+     */
+    List<StudentInfo> queryStudentListByClasses(StudentInfo studentInfo);
 }

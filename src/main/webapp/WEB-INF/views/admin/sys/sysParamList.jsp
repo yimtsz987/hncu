@@ -76,7 +76,6 @@
 								<td>${sysParam.paramValue}</td>
 								<td>
 									<a href="${ctx}/admin/sysParamEdit?id=${sysParam.id}" class="btn btn-xs btn-primary">修改</a>
-									<a href="javascript:void(0)" class="btn btn-xs btn-danger"onclick="deleteDict(this,${sysParam.id})">删除</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -107,11 +106,11 @@
 				$("#tbodyId").append("<tr> "
 						+ "<td></td> "
 				        + "<td></td> "
-				+ "<td></td> "
-				+ "<td></td> "
-				+ "<td></td> "
-				+ "<td></td> "
-				+ "</tr>");
+						+ "<td></td> "
+						+ "<td></td> "
+						+ "<td></td> "
+						+ "<td></td> "
+						+ "</tr>");
 			}
 		}
 	</script>

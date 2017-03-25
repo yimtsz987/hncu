@@ -12,5 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClassesService extends BaseService<ClassesMapper, Classes> {
 
-
+    public Classes queryByClasses(String classes){
+        return mapper.queryByClasses(classes);
+    }
 }

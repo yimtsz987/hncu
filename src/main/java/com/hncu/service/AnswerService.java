@@ -10,4 +10,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AnswerService extends BaseService<AnswerMapper, Answer>{
+
+    public Answer queryByClasses(String answerClasses){
+        return mapper.queryByClasses(answerClasses);
+    }
 }

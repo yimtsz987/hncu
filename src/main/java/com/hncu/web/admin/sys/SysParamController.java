@@ -76,8 +76,12 @@ public class SysParamController extends BaseController {
         return "redirect:/admin/sysParamList";
     }
 
-    @RequiresPermissions(value = "admin")
-    @RequestMapping(value = "/deleteSysParam")
+    /**
+     * 删除系统参数（暂时移除，功能保留）
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
     public String deleteSysParam(@RequestParam String id,RedirectAttributes redirectAttributes){
         SysParam sysParam = new SysParam(id);
         Msg msg;

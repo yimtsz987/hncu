@@ -94,4 +94,40 @@
             ${gpms:getDictLabel("1", "sex")}
         </example>
     </function>
+
+    <function>
+        <description>
+            根据用户ID查询用户信息
+        </description>
+        <name>queryUserById</name>
+        <function-class>com.hncu.utils.UserUtils</function-class>
+        <function-signature>com.hncu.entity.User queryUserById(java.lang.String)</function-signature>
+        <example>
+            ${gpms:queryUserById("2")}
+        </example>
+    </function>
+
+    <function>
+        <description>
+            查询所有专业信息
+        </description>
+        <name>queryMajorList</name>
+        <function-class>com.hncu.utils.UserUtils</function-class>
+        <function-signature>java.util.List queryMajorList()</function-signature>
+        <example>
+            ${gpms:queryMajorList()}
+        </example>
+    </function>
+
+    <function>
+        <description>
+            查询所有班级信息
+        </description>
+        <name>queryClassesList</name>
+        <function-class>com.hncu.utils.UserUtils</function-class>
+        <function-signature>java.util.List queryClassesList()</function-signature>
+        <example>
+            ${gpms:queryClassesList()}
+        </example>
+    </function>
 </taglib>

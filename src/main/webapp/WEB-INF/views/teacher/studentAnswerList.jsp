@@ -60,12 +60,7 @@
 							<td>${studentAnswer.user.name}</td>
 							<td>${studentAnswer.user.student.titleName}</td>
 							<td>
-								<c:if test="${studentAnswer.user.student.answerId == null}">
-									<strong>未分组</strong>
-								</c:if>
-								<c:if test="${studentAnswer.user.student.answerId != null}">
-									<a href="${ctx}/teacher/studentAnswerInfoList?answerId=${studentAnswer.user.student.answerId}"  class="btn btn-xs btn-primary" >查看分组</a>
-								</c:if>
+								<a href="${ctx}/teacher/studentAnswerInfoList?answerClasses=${studentAnswer.user.student.classes}"  class="btn btn-xs btn-primary" >查看分组</a>
 							</td>
 						</tr>
 					</c:forEach>

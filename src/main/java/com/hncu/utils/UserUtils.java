@@ -1,9 +1,13 @@
 package com.hncu.utils;
 
 import com.hncu.common.SpringContextHolder;
+import com.hncu.entity.Classes;
+import com.hncu.entity.Major;
 import com.hncu.entity.User;
 import com.hncu.security.Principal;
 import com.hncu.service.UserService;
+import com.hncu.service.admin.sys.ClassesService;
+import com.hncu.service.admin.sys.MajorService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -16,6 +20,8 @@ import java.util.List;
 public class UserUtils {
 
     private static UserService userService = SpringContextHolder.getBean(UserService.class);
+    private static MajorService majorService = SpringContextHolder.getBean(MajorService.class);
+    private static ClassesService classesService = SpringContextHolder.getBean(ClassesService.class);
 
     public static final String CACHE_ROLE_LIST = "user_role_list";
     public static final String CACHE_MENU_LIST = "user_menu_list";
@@ -91,5 +97,29 @@ public class UserUtils {
 
     public static void removeCache (String key) {
         getSession().removeAttribute(key);
+    }
+
+    /**
+     * 通过ID查询用户信息
+     * @param userId
+     * @return
+     */
+    public static User queryUserById(String userId){
+        User user = userService.queryById(userId);
+        if (user != null){
+            return user;
+        } else {
+            return new User();
+        }
+    }
+
+    public static List<Major> queryMajorList(){
+        List<Major> majorList = majorService.queryList(new Major());
+        return majorList;
+    }
+
+    public static List<Classes> queryClassesList(){
+        List<Classes> classesList = classesService.queryList(new Classes());
+        return classesList;
     }
 }

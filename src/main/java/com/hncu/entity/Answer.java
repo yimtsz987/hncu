@@ -5,6 +5,7 @@ import com.hncu.common.BaseEntity;
 import com.hncu.utils.CollectionUtil;
 import com.hncu.utils.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,6 +19,8 @@ public class Answer extends BaseEntity {
     private String studentIds;
     private String teacherIds;
     private String answerClasses;
+    private String address;
+    private String answerTime;
 
     private List<User> studentList = Lists.newArrayList(); //答辩组学生集合
     private List<User> teacherList = Lists.newArrayList(); //答辩组老师集合
@@ -82,7 +85,33 @@ public class Answer extends BaseEntity {
         this.answerClasses = answerClasses;
     }
 
-    public List<String> getStudentIdList (){
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAnswerTime() {
+        return answerTime;
+    }
+
+    public void setAnswerTime(String answerTime) {
+        this.answerTime = answerTime;
+    }
+
+    public String getTeacherNameString(){
+        String teacherName = CollectionUtil.extractToString(teacherList,"name","，");
+        if (StringUtils.isNotEmpty(teacherName)){
+            return teacherName;
+        } else {
+            teacherName = "-";
+            return teacherName;
+        }
+    }
+
+    /*public List<String> getStudentIdList (){
         List<String> studentIdList = Lists.newArrayList();
         for (User user : studentList){
             studentIdList.add(user.getId());
@@ -134,6 +163,6 @@ public class Answer extends BaseEntity {
             String[] ids = StringUtils.split(teacherIds, ",");
             setTeacherIdList(Lists.<String>newArrayList(ids));
         }
-    }
+    }*/
 
 }

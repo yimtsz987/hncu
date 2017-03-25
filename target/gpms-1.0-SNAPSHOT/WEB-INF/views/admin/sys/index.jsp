@@ -146,8 +146,8 @@
 									</a>
 								</li>
 								<li>
-									<a href="#" title="发送通知" class="iframeurl" name="answer-table.html">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、答辩组
+									<a href="#" title="发送通知" class="iframeurl" name="${ctx}/admin/answerGroupList">
+										<i class="subicon glyphicon glyphicon-hand-right"></i>2、答辩分组
 									</a>
 								</li>
 								

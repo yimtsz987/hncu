@@ -24,7 +24,7 @@
         s.node as "node",
         s.department_no as "department.dNo",
         s.major_id as "major.id",
-        s.classes as "classes.classId",
+        s.classes as "classes",
         s.title_id as "title.id",
         s.teacher_id as "teacher.id",
         s.year as "year",
@@ -72,8 +72,32 @@
         <if test="name != null and name != ''">
             and u.name like concat ('%', #{name}, '%')
         </if>
-        <if test="classes != null and classes.classId != null and classes.classId != ''">
-            and s.classes like concat ('%', #{classes.classId}, '%')
+        <if test="classes != null and classes != ''">
+            and s.classes like concat ('%', #{classes,jdbcType=INTEGER}, '%')
+        </if>
+        <if test="department != null and department.dNo != null and department.dNo != ''">
+            and s.department_no = #{department.dNo,jdbcType=INTEGER}
+        </if>
+        <if test="major != null and major.id != null and major.id != ''">
+            and s.major_id = #{major.id,jdbcType=INTEGER}
+        </if>
+        <if test="year != null and year != ''">
+            and s.year = #{year,jdbcType=VARCHAR}
+        </if>
+        ORDER BY s.node ASC
+    </select>
+
+    <select id="queryStudentListByClasses" parameterType="Student" resultType="Student">
+        SELECT <include refid="studentColumns" />
+        FROM sys_user u
+        <include refid="studentJoins" />
+        WHERE u.expand_flag = '1'
+        and s.classes = #{classes,jdbcType=INTEGER}
+        <if test="node != null and node != ''">
+            and s.node = #{node,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null and name != ''">
+            and u.name like concat ('%', #{name}, '%')
         </if>
         <if test="department != null and department.dNo != null and department.dNo != ''">
             and s.department_no = #{department.dNo,jdbcType=INTEGER}
@@ -239,7 +263,7 @@
             <if test="major != null and major.id != null and major.id != ''" >
                 major_id,
             </if>
-            <if test="classes != null and classes.classId != null and classes.classId != ''" >
+            <if test="classes != null and classes != ''" >
                 classes,
             </if>
             <if test="year != null" >
@@ -260,8 +284,8 @@
             <if test="major != null and major.id != null and major.id != ''" >
                 #{major.id,jdbcType=INTEGER},
             </if>
-            <if test="classes != null and classes.classId != null and classes.classId != ''" >
-                #{classes.classId,jdbcType=INTEGER},
+            <if test="classes != null and classes != ''" >
+                #{classes,jdbcType=INTEGER},
             </if>
             <if test="year != null" >
                 #{year,jdbcType=VARCHAR},
@@ -346,8 +370,8 @@
             <if test="major != null and major.id != null and major.id != ''" >
                 major_id = #{major.id,jdbcType=INTEGER},
             </if>
-            <if test="classes != null and classes.classId != null and classes.classId != ''" >
-                classes = #{classes.classId,jdbcType=INTEGER},
+            <if test="classes != null and classes != ''" >
+                classes = #{classes,jdbcType=INTEGER},
             </if>
             <if test="year != null" >
                 year = #{year,jdbcType=VARCHAR},

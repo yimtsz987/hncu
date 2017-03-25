@@ -1,13 +1,18 @@
 package com.hncu.service.admin.sys;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hncu.common.BaseMapper;
 import com.hncu.common.BaseService;
+import com.hncu.common.PageParam;
 import com.hncu.dao.mapper.admin.sys.StudentMapper;
 import com.hncu.entity.StudentInfo;
 import com.hncu.entity.User;
 import com.hncu.utils.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 学生管理服务层
@@ -39,5 +44,15 @@ public class StudentService extends BaseService<StudentMapper, StudentInfo> {
         mapper.deleteExpandInfo(studentInfo);
         int res = mapper.deleteStudentRole(studentInfo);
         return res>0;
+    }
+
+    public PageInfo<StudentInfo> queryStudentListByClassesWithPage (StudentInfo studentInfo, PageParam pageParam) {
+        //判断是否含有排序的字符串
+        if (StringUtils.isNotBlank(pageParam.getOrderBy())) {
+            PageHelper.orderBy(pageParam.getOrderBy());
+        }
+        PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize());
+        List<StudentInfo> resultList = mapper.queryStudentListByClasses(studentInfo);
+        return new PageInfo<StudentInfo>(resultList);
     }
 }
