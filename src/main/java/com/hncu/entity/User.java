@@ -22,7 +22,7 @@ public class User extends BaseEntity {
     private String sex;
     private String age;
     private String email;
-    private String is_validate;
+    private String isValidate;
     private String qq;
     private String expandFlag;
     private StudentExpand student;
@@ -119,12 +119,12 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    public String getIs_validate() {
-        return is_validate;
+    public String getIsValidate() {
+        return isValidate;
     }
 
-    public void setIs_validate(String is_validate) {
-        this.is_validate = is_validate;
+    public void setIsValidate(String isValidate) {
+        this.isValidate = isValidate;
     }
 
     public String getQq() {

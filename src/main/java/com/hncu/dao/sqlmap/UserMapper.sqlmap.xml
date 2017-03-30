@@ -121,15 +121,9 @@
 
     <update id="update" parameterType="User">
         update sys_user
-        <set >
+        <set>
             <if test="name != null" >
                 name = #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="username != null" >
-                username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null" >
-                password = #{password,jdbcType=VARCHAR},
             </if>
             <if test="idcard != null">
                 idcard = #{idcard,jdbcType=VARCHAR},

@@ -109,6 +109,9 @@
 					<a href="#">个人信息</a>
 				</li>
 				<li>
+					<a href="#">修改信息</a>
+				</li>
+				<li>
 					<a href="#">头像上传</a>
 				</li>
 			</ul>
@@ -118,7 +121,6 @@
 						<img src="${ctxStatic}/${gpms:getUser().headerPic}" />
 					</div>
 					<div class="info-text">
-					   <p>系统管理员</p>
 					   <p>${gpms:getUser().name}</p>
 						<p>${gpms:getUser().username}</p>
 					</div>
@@ -127,69 +129,65 @@
 					</div>
 				</div>
 				<div class="info-right">
-					<form:form id="form-id" action="${ctx}/admin/info" modelAttribute="user">
-						<form:hidden path="id" />
 						<div class="info-main form-horizontal" id="info">
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;名:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<span>${gpms:getUser().username}</span>
+									<div class="info-right-text">${gpms:getUser().username}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<input type="text" class="form-control input-sm" name="title" id="title" value="15116741993"  disabled="disabled" />
+									<div class="info-right-text">${gpms:getDictLabel(gpms:getUser().sex, 'sex')}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<form:input path="age" cssClass="form-control input-sm" disabled="true" />
+									<div class="info-right-text">${gpms:getUser().age}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">身&nbsp;&nbsp;&nbsp;份&nbsp;&nbsp;证:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<form:input path="idcard" cssClass="form-control input-sm" disabled="true" />
+									<div class="info-right-text">${gpms:getUser().idcard}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<form:input path="mobile" cssClass="form-control input-sm" disabled="true" />
+									<div class="info-right-text">${gpms:getUser().mobile}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<form:input path="email" cssClass="form-control input-sm" disabled="true" />
+									<div class="info-right-text">${gpms:getUser().email}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<form:input path="qq" cssClass="form-control input-sm" disabled="true" />
+									<div class="info-right-text">${gpms:getUser().qq}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<form:input path="address" cssClass="form-control input-sm" disabled="true" />
+									<div class="info-right-text">${gpms:getUser().address}</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-										${gpms:getUser().expandFlag}
+									<div class="info-right-text">${gpms:getUser().expandFlag}</div>
 								</div>
 							</div>
 						</div>
 						<div class="center-block" style="width:48%;">
-							<a href="javascript:void(0)" class="btn btn-primary" id="modify">修改信息</a>
-							<input type="submit" class="btn btn-success" style="margin-left: 20px;" value="保存信息" id="save" />
+							<a href="${ctx}/admin/adminInfoEdit" class="btn btn-primary">修改信息</a>
 						</div>
-					</form:form>
 				</div>
 			</div>
 		</div>
@@ -214,22 +212,6 @@
 					$(".info-wrap").css({'margin-top':0});
 				}
 			});
-		</script>
-		<script type="text/javascript">
-			$(function() {
-				$("#modify").click(function() {
-					$("#info input,select,textarea").each(function() {
-						$(this).removeAttr("disabled");
-					});
-				});
-
-				$("#save").click(function() {
-					$("#info input,select,textarea").each(function() {
-						$(this).attr("disabled", "disabled");
-					});
-				})
-
-			})
 		</script>
 	</body>
 </html>

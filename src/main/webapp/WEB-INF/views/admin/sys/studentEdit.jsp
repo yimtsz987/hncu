@@ -85,7 +85,7 @@
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">班级:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<form:select path="classes.classId" cssClass="form-control" id="classes" datatype="*" nullmsg="请选择班级">
+						<form:select path="classes" cssClass="form-control" id="classes" datatype="*" nullmsg="请选择班级">
 							<form:option value="" label="选择班级" />
 							<form:options items="${classesList}" itemLabel="classId" itemValue="classId" />
 						</form:select>
