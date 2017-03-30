@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hncu.entity.SysParam;
 import com.hncu.entity.User;
-import com.hncu.utils.SpringViewListener;
-import com.hncu.utils.SysParamUtil;
-import com.hncu.utils.UserUtils;
+import com.hncu.utils.*;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
@@ -138,6 +136,7 @@ public class BaseEntity implements Serializable {
     @Length(max = 100, message = "备注信息不能超过100个字符")
     protected String remarks;
     protected String sysYear;
+    protected String checkId;
 
     /**
      * 执行新增操作之前需要执行的操作
@@ -165,11 +164,11 @@ public class BaseEntity implements Serializable {
     }
 
     public BaseEntity() {
-        this.sysYear = SpringViewListener.getSysParamYear();
+        this.sysYear = SysYear.sysYear;
     }
 
     public BaseEntity(String id) {
-        this.sysYear = SpringViewListener.getSysParamYear();
+        this.sysYear = SysYear.sysYear;
         this.id = id;
     }
 
@@ -240,5 +239,17 @@ public class BaseEntity implements Serializable {
 
     public void setSysYear(String sysYear) {
         this.sysYear = sysYear;
+    }
+
+    public String getCheckId() {
+        if (StringUtils.isNotEmpty(this.id)){
+            return MD5Util.string2MD5(this.id);
+        } else {
+            return checkId;
+        }
+    }
+
+    public void setCheckId(String checkId) {
+        this.checkId = checkId;
     }
 }

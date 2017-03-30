@@ -9,7 +9,8 @@
         a.teacher_ids as "teacherIds",
         a.answer_classes as "answerClasses",
         a.address,
-        a.answerTime
+        a.answerTime,
+        a.teacher_num as "teacherNum"
     </sql>
 
     <select id="queryList" parameterType="Answer" resultType="Answer">
@@ -24,6 +25,46 @@
         </if>
         ORDER BY a.id ASC
     </select>
+
+    <update id="updateLeader" parameterType="Teacher">
+        UPDATE answer_group SET
+        leader_id = #{tId, jdbcType=INTEGER}
+        WHERE answer_classes = #{queryClasses,jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateAnswerInfo" parameterType="Teacher">
+        UPDATE teacher_year_answer SET
+        answer_flag = #{ANSWER_FLAG_YES, jdbcType=INTEGER},
+        answer_id = #{answerId, jdbcType=INTEGER}
+        WHERE teacher_id = #{tId,jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateAnswerTeacher" parameterType="Answer">
+        UPDATE answer_group SET
+        teacher_ids = #{teacherIds, jdbcType=VARCHAR},
+        teacher_num = #{teacherNum, jdbcType=INTEGER}
+        WHERE answer_classes = #{answerClasses,jdbcType=NUMERIC}
+    </update>
+
+    <update id="deleteLeader" parameterType="Teacher">
+        UPDATE answer_group SET
+        leader_id = #{tId, jdbcType=INTEGER}
+        WHERE answer_classes = #{queryClasses,jdbcType=NUMERIC}
+    </update>
+
+    <update id="deleteAnswerInfo" parameterType="Teacher">
+        UPDATE teacher_year_answer SET
+        answer_flag = #{ANSWER_FLAG_NO, jdbcType=INTEGER},
+        answer_id = #{answerId, jdbcType=INTEGER}
+        WHERE teacher_id = #{tId,jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateAnswerTimeInfo" parameterType="Answer">
+        UPDATE answer_group SET
+        address = #{address, jdbcType=VARCHAR},
+        answerTime = #{answerTime, jdbcType=VARCHAR}
+        WHERE answer_classes = #{answerClasses,jdbcType=NUMERIC}
+    </update>
 
     <select id="queryById" parameterType="string" resultType="Answer">
         SELECT <include refid="answerColumns" />

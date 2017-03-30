@@ -75,7 +75,7 @@
 								<td>${sysParam.paramKey}</td>
 								<td>${sysParam.paramValue}</td>
 								<td>
-									<a href="${ctx}/admin/sysParamEdit?id=${sysParam.id}" class="btn btn-xs btn-primary">修改</a>
+									<a href="${ctx}/admin/sysParamEdit?id=${sysParam.id}&paramKey=${sysParam.paramKey}" class="btn btn-xs btn-primary">修改</a>
 								</td>
 							</tr>
 						</c:forEach>

@@ -6,6 +6,8 @@ import com.hncu.entity.TeacherInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 教师管理数据持久化接口层
  */
@@ -67,4 +69,13 @@ public interface TeacherMapper extends BaseMapper<TeacherInfo> {
      * @return
      */
     int deleteTeacherRole(TeacherInfo teacherInfo);
+
+    /**
+     * 查询未答辩分组的教师信息
+     * @param teacherInfo
+     * @return
+     */
+    List<TeacherInfo> queryAnswerNotSelectList(TeacherInfo teacherInfo);
+
+    List<TeacherInfo> queryTeacherIdList();
 }

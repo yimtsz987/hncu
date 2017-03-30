@@ -25,14 +25,14 @@
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">键名:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<form:input id="valueInput" path="paramKey" cssClass="form-control input-sm" maxlength="50" datatype="*" nullmsg="请输入键名" />
+						<form:input id="valueInput" path="paramKey" cssClass="form-control input-sm disabled" disabled="true" maxlength="50" datatype="*" nullmsg="请输入键名" />
 					</div>
 					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请输入键名！</span></div>
 				</div>
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">标签:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<form:input path="label" cssClass="form-control input-sm" maxlength="50" datatype="*" nullmsg="请输入标签" />
+						<form:input path="label" cssClass="form-control input-sm disabled" disabled="true" maxlength="50" datatype="*" nullmsg="请输入标签" />
 					</div>
 					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请输入标签！</span></div>
 				</div>

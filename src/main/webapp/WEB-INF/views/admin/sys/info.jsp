@@ -119,43 +119,77 @@
 					</div>
 					<div class="info-text">
 					   <p>系统管理员</p>
-					   <p>陈立帆</p>
+					   <p>${gpms:getUser().name}</p>
+						<p>${gpms:getUser().username}</p>
 					</div>
 					<div class="info-left-btn">
 						<i class="glyphicon glyphicon-chevron-right"style="margin-top:5px;"></i>
 					</div>
 				</div>
 				<div class="info-right">
-				    <div class="info-main form-horizontal" id="info">
-				        <div class="form-group">
-							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;名:</label>
-							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<input type="text" class="form-control input-sm" name="title" id="title" value="系统管理员"  disabled="disabled" />							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
-							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<input type="text" class="form-control input-sm" name="title" id="title" value="15116741993"  disabled="disabled" />
+					<form:form id="form-id" action="${ctx}/admin/info" modelAttribute="user">
+						<form:hidden path="id" />
+						<div class="info-main form-horizontal" id="info">
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;名:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<span>${gpms:getUser().username}</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<input type="text" class="form-control input-sm" name="title" id="title" value="15116741993"  disabled="disabled" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<form:input path="age" cssClass="form-control input-sm" disabled="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">身&nbsp;&nbsp;&nbsp;份&nbsp;&nbsp;证:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<form:input path="idcard" cssClass="form-control input-sm" disabled="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<form:input path="mobile" cssClass="form-control input-sm" disabled="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<form:input path="email" cssClass="form-control input-sm" disabled="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<form:input path="qq" cssClass="form-control input-sm" disabled="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+									<form:input path="address" cssClass="form-control input-sm" disabled="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限:</label>
+								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+										${gpms:getUser().expandFlag}
+								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:</label>
-							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<input type="text" class="form-control input-sm" name="title" id="title" value="湖南城市学院毕业设计管理中心" disabled="disabled" />
-							</div>
+						<div class="center-block" style="width:48%;">
+							<a href="javascript:void(0)" class="btn btn-primary" id="modify">修改信息</a>
+							<input type="submit" class="btn btn-success" style="margin-left: 20px;" value="保存信息" id="save" />
 						</div>
-						<div class="form-group">
-							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限:</label>
-							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<input type="text" class="form-control input-sm" name="title" id="title" value="系统管理员"  disabled="disabled" />
-							</div>
-						</div>
-						
-				    </div>
-				    <div class="center-block" style="width:48%;">
-					    <a href="javascript:void(0)" class="btn btn-primary" id="modify">修改信息</a>
-					    <a href="javascript:void(0)" class="btn btn-success" style="margin-left: 20px;" id="save">保存信息</a>
-			        </div>
+					</form:form>
 				</div>
 			</div>
 		</div>

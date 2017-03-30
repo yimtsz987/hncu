@@ -8,6 +8,11 @@
         param_value as "paramValue"
     </sql>
 
+    <resultMap type="TeacherYearInfo" id="teacherYearInfoMap">
+        <result column="teacher_id" property="teacherId" jdbcType="NUMERIC" />
+        <result column="year" property="year" jdbcType="VARCHAR" />
+    </resultMap>
+
     <select id="queryParamByKey" resultType="SysParam" parameterType="string">
       SELECT <include refid="sysParamColumn" />
         from system_parameter
@@ -72,4 +77,33 @@
       DELETE FROM system_parameter WHERE id = #{id,jdbcType=NUMERIC}
     </delete>
 
+    <insert id="insertTeacherYearAnswer" parameterType="java.util.List">
+        INSERT INTO teacher_year_answer (teacher_id,year)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.teacherId},#{item.year})
+        </foreach>
+    </insert>
+
+    <insert id="insertTeacherYearReview" parameterType="java.util.List">
+        INSERT INTO teacher_year_review (teacher_id,year)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.teacherId},#{item.year})
+        </foreach>
+    </insert>
+
+    <insert id="insertTeacherYearStudent" parameterType="java.util.List">
+        INSERT INTO teacher_year_student (teacher_id,year)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.teacherId},#{item.year})
+        </foreach>
+    </insert>
+
+    <select id="queryTeacherYearInfo" parameterType="string" resultType="TeacherYearInfo">
+        SELECT teacher_id,year
+        FROM teacher_year_student
+        WHERE teacher_id = #{teacherId,jdbcType=NUMERIC}
+    </select>
 </mapper>

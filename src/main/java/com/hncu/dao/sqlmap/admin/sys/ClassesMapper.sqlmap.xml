@@ -58,8 +58,9 @@
 
     <insert id="insert" parameterType="Classes" useGeneratedKeys="true"
             keyProperty="id">
-        INSERT INTO classes (class_id,major_id,department_no) VALUES (#{classId},#{major.id},#{department.dNo})
+        INSERT INTO classes (class_id,major_id,department_no,year) VALUES (#{classId},#{major.id},#{department.dNo},#{year,jdbcType=VARCHAR})
     </insert>
+
     <update id="update" parameterType="Classes">
         UPDATE classes SET
           class_id = #{classId},

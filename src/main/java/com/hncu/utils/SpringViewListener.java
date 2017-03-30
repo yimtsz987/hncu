@@ -1,5 +1,6 @@
 package com.hncu.utils;
 
+import com.hncu.common.SysYear;
 import com.hncu.entity.SysParam;
 import com.hncu.service.admin.sys.SysParamService;
 import org.springframework.web.context.ServletContextAware;
@@ -28,14 +29,20 @@ public class SpringViewListener implements ServletContextAware{
 
     @Override
     public void setServletContext(ServletContext servletContext) {
-        SysParam sysParam = null;
+        SysParam sysParam = sysParamService.queryParamByKey("year");
+        SysYear.sysYear = sysParam.getParamValue();
+        /*SysParam sysParam = null;
         try {
             sysParam = sysParamService.queryParamByKey("year");
             sysParamYear = sysParam.getParamValue();
         } catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
     }
 
+    /*
+    public static void setSysYear(String sysYear){
+        sysParamYear = sysYear;
+    }*/
 
 }

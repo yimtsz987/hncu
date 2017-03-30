@@ -141,68 +141,50 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="设置当前年级" class="iframeurl" name="${ctx}/secretary/teacherList">
+									<a href="javascript:void(0)" title="设置当前年级" class="iframeurl" name="${ctx}/secretary/teacherList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、教师管理
 									</a>
 								</li>
 								<li>
-									<a href="#" title="发送通知" class="iframeurl" name="answer-table.html">
+									<a href="javascript:void(0)" title="发送通知" class="iframeurl" name="answer-table.html">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>2、答辩组
 									</a>
 								</li>
 						</ul>
 						<li class="first-nav">
-							<a href="#" title="" class="iframeurl" name="${ctx}/secretary/middleCheckList">
+							<a href="javascript:void(0)" title="" class="iframeurl" name="${ctx}/secretary/middleCheckList">
 								<i class="glyphicon glyphicon-home"></i>中期检查
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="#" title="" class="iframeurl" name="${ctx}/secretary/reviewGroupList">
+							<a href="javascript:void(0)" title="" class="iframeurl" name="${ctx}/secretary/reviewGroupList">
 								<i class="glyphicon glyphicon-home"></i>评阅分组
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="系统管理">
-							   <i class="glyphicon glyphicon-home"></i>系统管理
-							   <b class="nav-sign arrow glyphicon glyphicon-plus"></b>
+							<a href="javascript:void(0)" title="系统设置" name="${ctx}/secretary/settingSystem">
+							   <i class="glyphicon glyphicon-home"></i>系统设置
 							</a>
 						</li>
-						<ul class="submenu">
-								<li>
-									<a href="#" title="系统参数" class="iframeurl" name="${ctx}/secretary/sysParamList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>1、系统参数
-									</a>
-								</li>
-								<li>
-									<a href="#" title="发送通知"class="iframeurl" name="inform.html">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、发送通知
-									</a>
-								</li>
-								<li>
-									<a href="#" title="上传资料"class="iframeurl" name="${ctx}/secretary/uploadDate">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>3、上传资料
-									</a>
-								</li>
-							</ul>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="成绩查询">
+							<a href="javascript:void(0)" title="字典管理">
 							   <i class="glyphicon glyphicon-home"></i>字典管理
 							     <b class="nav-sign arrow glyphicon glyphicon-plus"></b>
 							</a>
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="院系菜单" class="iframeurl" name="${ctx}/secretary/departmentList">
+									<a href="javascript:void(0)" title="院系菜单" class="iframeurl" name="${ctx}/secretary/departmentList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、院系菜单
 									</a>
 								</li>
 								<li>
-									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/secretary/majorList">
+									<a href="javascript:void(0)" title="专业菜单" class="iframeurl" name="${ctx}/secretary/majorList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>2、专业菜单
 									</a>
 								</li>
 								<li>
-									<a href="#" title="班级菜单" class="iframeurl" name="${ctx}/secretary/classesList">
+									<a href="javascript:void(0)" title="班级菜单" class="iframeurl" name="${ctx}/secretary/classesList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>3、班级菜单
 									</a>
 								</li>

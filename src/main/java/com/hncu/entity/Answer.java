@@ -21,6 +21,11 @@ public class Answer extends BaseEntity {
     private String answerClasses;
     private String address;
     private String answerTime;
+    private Integer teacherNum;
+
+    private String TeacherId;
+
+    private String teacherNameString;
 
     private List<User> studentList = Lists.newArrayList(); //答辩组学生集合
     private List<User> teacherList = Lists.newArrayList(); //答辩组老师集合
@@ -101,14 +106,28 @@ public class Answer extends BaseEntity {
         this.answerTime = answerTime;
     }
 
-    public String getTeacherNameString(){
-        String teacherName = CollectionUtil.extractToString(teacherList,"name","，");
-        if (StringUtils.isNotEmpty(teacherName)){
-            return teacherName;
-        } else {
-            teacherName = "-";
-            return teacherName;
-        }
+    public Integer getTeacherNum() {
+        return teacherNum;
+    }
+
+    public void setTeacherNum(Integer teacherNum) {
+        this.teacherNum = teacherNum;
+    }
+
+    public String getTeacherNameString() {
+        return teacherNameString;
+    }
+
+    public void setTeacherNameString(String teacherNameString) {
+        this.teacherNameString = teacherNameString;
+    }
+
+    public String getTeacherId() {
+        return TeacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        TeacherId = teacherId;
     }
 
     /*public List<String> getStudentIdList (){

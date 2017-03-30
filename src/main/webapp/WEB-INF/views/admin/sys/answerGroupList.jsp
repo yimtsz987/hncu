@@ -37,17 +37,10 @@
 					<div class="clearfix"></div>
 				</form:form>
 			</div>
-			<div class="btn-wrap">
-				<span class="btn-left">
-					<a href="javascript:void(0);" class="btn btn-warning">
-						<i class="glyphicon glyphicon-plus"></i>新增系统参数
-					</a>
-					<a href="javascript:void(0)" class="btn btn-danger">
-						<i class="glyphicon glyphicon-trash"></i>批量删除
-					</a>
-				</span>
-			</div>
 			<sys:msg msgObj="${msg}" />
+			<div class="btn-wrap">
+				<span class="btn-title" style="letter-spacing: normal">${gpms:getParamValue("year")} 级答辩分组列表</span>
+			</div>
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
 					<thead>
@@ -57,6 +50,7 @@
 							<th>分组班级</th>
 							<th>组长</th>
 							<th>组员</th>
+							<th>组员信息</th>
 							<th>学生信息</th>
 							<th>答辩地点</th>
 							<th>答辩时间</th>
@@ -85,7 +79,10 @@
 									</strong>
 								</td>
 								<td>
-									<a href="${ctx}/admin/classesInfoList?classes=${answer.answerClasses}" class="btn btn-xs btn-primary">分组学生</a>
+									<a href="${ctx}/admin/teacherAnswerInfoList?id=${answer.id}&answerClasses=${answer.answerClasses}" class="btn btn-xs btn-info">分组教师</a>
+								</td>
+								<td>
+									<a href="${ctx}/admin/classesInfoList?classes=${answer.answerClasses}" class="btn btn-xs btn-warning">分组学生</a>
 								</td>
 								<td>
 									<c:if test="${answer.address != null}">
@@ -104,8 +101,18 @@
 									</c:if>
 								</td>
 								<td>
-									<a href="javascript:void(0);" class="btn btn-xs btn-primary">设置组长</a>
-									<a href="javascript:void(0);" class="btn btn-xs btn-primary">设置组员</a>
+									<c:if test="${answer.leaderId != null}">
+										<a href="${ctx}/admin/deleteLeader?tId=${answer.leaderId}&queryClasses=${answer.answerClasses}" class="btn btn-xs btn-danger">撤除组长</a>
+									</c:if>
+									<c:if test="${answer.leaderId == null }">
+										<a href="${ctx}/admin/settingAnswerLeader?queryClasses=${answer.answerClasses}&answerId=${answer.id}" class="btn btn-xs btn-primary">设置组长</a>
+									</c:if>
+									<c:if test="${answer.address != null and answer.answerTime != null}">
+										<a href="${ctx}/admin/settingAnswerTimeInfo?answerClasses=${answer.answerClasses}" class="btn btn-xs btn-success">修改答辩信息</a>
+									</c:if>
+									<c:if test="${answer.address == null and answer.answerTime == null}">
+										<a href="${ctx}/admin/settingAnswerTimeInfo?answerClasses=${answer.answerClasses}" class="btn btn-xs btn-primary">设置答辩信息</a>
+									</c:if>
 								</td>
 							</tr>
 						</c:forEach>
@@ -143,6 +150,7 @@
                         + "<td></td> "
 						+ "<td></td> "
 						+ "<td></td> "
+					    + "<td></td> "
 						+ "</tr>");
 			}
 		}

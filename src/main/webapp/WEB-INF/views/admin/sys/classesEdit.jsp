@@ -48,6 +48,13 @@
 					</div>
 					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请选择所属院系！</span></div>
 				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">级数:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<form:input id="valueInput" path="year" cssClass="form-control input-sm" maxlength="50" datatype="*" nullmsg="请输入级数" />
+					</div>
+					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请输入级数！</span></div>
+				</div>
 				<div class="form-action">
 					<input class="btn btn-primary" type="submit" value="保存" />
 					<input class="btn btn-default" type="button" value="返回" onclick="history.go(-1)"/>

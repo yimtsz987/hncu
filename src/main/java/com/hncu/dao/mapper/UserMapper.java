@@ -16,4 +16,8 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     User queryUserByUsername(User user);
+
+    int updateStudentExpandInfo(User user);
+
+    int updateTeacherExpandInfo(User user);
 }

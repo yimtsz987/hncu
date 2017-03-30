@@ -26,11 +26,18 @@ public class TeacherInfo extends BaseEntity {
     private String researchDirection;
     private String professionalTitle;
     private String expandFlag = EXPAND_FLAG_TEACHER;
+    private String answerFlag;
+    private String reviewFlag;
+    private String answerId;
 
     //choose
     private String year;
     private Integer studentSum;
     private String studentIds;
+
+    private String sysAdvice;
+    private Integer classesStudentNumber;  //指导该班级学生数量
+    private String queryClasses;
 
     public TeacherInfo(){
 
@@ -215,5 +222,53 @@ public class TeacherInfo extends BaseEntity {
 
     public void setStudentIds(String studentIds) {
         this.studentIds = studentIds;
+    }
+
+    public String getAnswerFlag() {
+        return answerFlag;
+    }
+
+    public void setAnswerFlag(String answerFlag) {
+        this.answerFlag = answerFlag;
+    }
+
+    public String getReviewFlag() {
+        return reviewFlag;
+    }
+
+    public void setReviewFlag(String reviewFlag) {
+        this.reviewFlag = reviewFlag;
+    }
+
+    public String getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
+    }
+
+    public String getSysAdvice() {
+        return sysAdvice;
+    }
+
+    public void setSysAdvice(String sysAdvice) {
+        this.sysAdvice = sysAdvice;
+    }
+
+    public Integer getClassesStudentNumber() {
+        return classesStudentNumber;
+    }
+
+    public void setClassesStudentNumber(Integer classesStudentNumber) {
+        this.classesStudentNumber = classesStudentNumber;
+    }
+
+    public String getQueryClasses() {
+        return queryClasses;
+    }
+
+    public void setQueryClasses(String queryClasses) {
+        this.queryClasses = queryClasses;
     }
 }

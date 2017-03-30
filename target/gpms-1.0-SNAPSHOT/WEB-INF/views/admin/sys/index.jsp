@@ -140,20 +140,17 @@
 							</a>
 						</li>
 						<ul class="submenu">
-								<li>
-									<a href="#" title="设置当前年级" class="iframeurl" name="${ctx}/admin/teacherList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>1、教师管理
-									</a>
-								</li>
-								<li>
-									<a href="#" title="发送通知" class="iframeurl" name="${ctx}/admin/answerGroupList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、答辩分组
-									</a>
-								</li>
-								
-							</ul>
-						
-						
+							<li>
+								<a href="javascript:void(0)" title="设置当前年级" class="iframeurl" name="${ctx}/admin/teacherList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>1、教师管理
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" title="发送通知" class="iframeurl" name="${ctx}/admin/answerGroupList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、答辩分组
+								</a>
+							</li>
+						</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="系统管理">
 							   <i class="glyphicon glyphicon-home"></i>系统管理
@@ -161,23 +158,17 @@
 							</a>
 						</li>
 						<ul class="submenu">
-								<li>
-									<a href="#" title="系统参数" class="iframeurl" name="${ctx}/admin/sysParamList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>1、系统参数
-									</a>
-								</li>
-								<li>
-									<a href="#" title="发送通知"class="iframeurl" name="inform.html">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、发送通知
-									</a>
-								</li>
-								<li>
-									<a href="#" title="上传资料"class="iframeurl" name="${ctx}/admin/uploadDate">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>3、上传资料
-									</a>
-								</li>
-								
-							</ul>
+							<li>
+								<a href="javascript:void(0)" title="系统参数" class="iframeurl" name="${ctx}/admin/sysParamList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>1、系统参数
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" title="发送通知"class="iframeurl" name="inform.html">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、发送通知
+								</a>
+							</li>
+						</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="成绩查询">
 							   <i class="glyphicon glyphicon-home"></i>字典管理
@@ -185,38 +176,50 @@
 							</a>
 						</li>
 						<ul class="submenu">
-								<li>
-									<a href="#" title="院系菜单" class="iframeurl" name="${ctx}/admin/departmentList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>1、院系菜单
-									</a>
-								</li>
-								<li>
-									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/majorList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、专业菜单
-									</a>
-								</li>
-								<li>
-									<a href="#" title="班级菜单" class="iframeurl" name="${ctx}/admin/classesList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>3、班级菜单
-									</a>
-								</li>
-								<li>
-									<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/dictList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>4、通用字典
-									</a>
-								</li>
-								
-							</ul>
+							<li>
+								<a href="#" title="院系菜单" class="iframeurl" name="${ctx}/admin/departmentList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>1、院系菜单
+								</a>
+							</li>
+							<li>
+								<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/majorList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、专业菜单
+								</a>
+							</li>
+							<li>
+								<a href="#" title="班级菜单" class="iframeurl" name="${ctx}/admin/classesList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>3、班级菜单
+								</a>
+							</li>
+							<li>
+								<a href="#" title="专业菜单" class="iframeurl" name="${ctx}/admin/dictList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>4、通用字典
+								</a>
+							</li>
+						</ul>
 						<li class="first-nav">
-							<a href="#" title="通知公告" class="iframeurl" name="Announcements.html">
+							<a href="javascript:void(0)" title="通知公告" class="iframeurl" disabled="disabled">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="#" title="" class="iframeurl" name="${ctx}/admin/downloadList">
-							   <i class="glyphicon glyphicon-home"></i>资料下载
+							<a href="javascript:void(0)" title="相关资料">
+								<i class="glyphicon glyphicon-home"></i>相关资料
+								<b class="nav-sign arrow glyphicon glyphicon-plus"></b>
 							</a>
 						</li>
+						<ul class="submenu">
+							<li>
+								<a href="javascript:void(0)" title="上传资料"class="iframeurl" name="${ctx}/admin/uploadDate">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>3、资料上传
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" title="专业菜单" class="iframeurl" name="${ctx}/admin/downloadList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>2、资料下载
+								</a>
+							</li>
+						</ul>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="修改密码">
 							   <i class="glyphicon glyphicon-home"></i>修改密码

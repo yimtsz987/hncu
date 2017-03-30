@@ -27,12 +27,22 @@
         t.research_direction as "researchDirection",
         t.professional_title as "professionalTitle",
         t.expand_flag as "expandFlag",
-        d.name as "department.name"
+        d.name as "department.name",
+        sp.param_value as "sysParamYear",
+        tya.answer_flag as "answerFlag",
+        tya.answer_id as "answerId",
+        tyr.review_flag as "reviewFlag",
+        tys.student_ids as "studentIds",
+        tys.student_sum as "studentSum"
     </sql>
 
     <sql id="teacherJoins">
         LEFT JOIN expand_teacher t on t.t_id = u.id
         LEFT JOIN department d on d.d_no = t.department_no
+        LEFT JOIN system_parameter sp on sp.id = u.sysYear_paramId
+        LEFT JOIN teacher_year_answer tya on tya.teacher_id = u.id and tya.year = sp.param_value
+        LEFT JOIN teacher_year_review tyr on tyr.teacher_id = u.id and tyr.year = sp.param_value
+        LEFT JOIN teacher_year_student tys on tys.teacher_id = u.id and tys.year = sp.param_value
     </sql>
 
     <select id="queryList" parameterType="Teacher" resultType="Teacher">
@@ -40,6 +50,32 @@
         FROM sys_user u
         <include refid="teacherJoins" />
         WHERE u.expand_flag = '2'
+        <if test="node != null and node != ''">
+            and t.node like concat ('%', #{node}, '%')
+        </if>
+        <if test="name != null and name != ''">
+            and u.name like concat ('%', #{name}, '%')
+        </if>
+        <if test="professionalTitle != null and professionalTitle != ''">
+            and t.professional_title = #{professionalTitle,jdbcType=INTEGER}
+        </if>
+        <if test="researchDirection != null and researchDirection != ''">
+            and t.research_direction like concat ('%', #{researchDirection}, '%')
+        </if>
+    </select>
+
+    <select id="queryTeacherIdList" parameterType="Teacher" resultType="Teacher">
+        SELECT u.id
+        FROM sys_user u
+        WHERE u.expand_flag = '2'
+    </select>
+
+    <select id="queryAnswerNotSelectList" parameterType="Teacher" resultType="Teacher">
+        SELECT <include refid="teacherColumns" />
+        FROM sys_user u
+        <include refid="teacherJoins" />
+        WHERE u.expand_flag = '2'
+        and tya.answer_flag = #{ANSWER_FLAG_NO,jdbcType=INTEGER}
         <if test="node != null and node != ''">
             and t.node like concat ('%', #{node}, '%')
         </if>
