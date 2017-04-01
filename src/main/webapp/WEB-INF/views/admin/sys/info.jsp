@@ -93,6 +93,8 @@
 				color: #999c9d;
 				font-size: 14px;
 				font-weight: 500;
+				line-height: 32px !important;
+				padding-top: 0px !important;
 			}
 			.form-control{
 				width: 200px;
@@ -106,10 +108,7 @@
 		<div class="page-content">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#">个人信息</a>
-				</li>
-				<li>
-					<a href="#">修改信息</a>
+					<a href="javascript:void(0)">个人信息</a>
 				</li>
 				<li>
 					<a href="#">头像上传</a>
@@ -179,9 +178,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限:</label>
+								<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色:</label>
 								<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-									<div class="info-right-text">${gpms:getUser().expandFlag}</div>
+									<div class="info-right-text">${gpms:getDictLabel(gpms:getUser().expandFlag, 'role')}</div>
 								</div>
 							</div>
 						</div>

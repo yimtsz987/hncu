@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.NoticeMapper">
+    <sql id="noticeColumns">
+        n.id,
+        n.title,
+        n.content,
+        n.issue_id as "issueId"
+        n.issueDate,
+        n.user_object as "userObject",
+        n.user_role as "userRole",
+        n.user_roles as "userRoles".
+        nu.notice_id as "noticeId",
+        nu.user_id as "userId",
+        nu.is_read as "isRead"
+    </sql>
+
+    <sql id="noticeJoins">
+        LEFT JOIN notice_user nu on nu.notice_id = n.id
+    </sql>
+
+    <select id="queryList" parameterType="Notice" resultType="Notice">
+        SELECT <include refid="titleColumns" />
+        FROM notice n
+        <include refid="noticeJoins" />
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Title">
+        SELECT <include refid="titleColumns" />
+        FROM graduation_title t
+        LEFT JOIN sys_user su on su.id = t.student_id
+        WHERE t.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <insert id="insertTitle" parameterType="Title">
+        INSERT INTO graduation_title(title,description,level,kind,teacher_id,year)
+        VALUES (#{title,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{level,jdbcType=INTEGER},#{kind,jdbcType=INTEGER},#{teacherId,jdbcType=INTEGER},#{year,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateTitle" parameterType="Title">
+        UPDATE graduation_title SET title = #{title,jdbcType=VARCHAR},description = #{description,jdbcType=VARCHAR},level = #{level,jdbcType=INTEGER},kind = #{kind,jdbcType=INTEGER},year = #{year,jdbcType=VARCHAR}
+        WHERE id = #{id, jdbcType=NUMERIC}
+        AND teacher_id = #{teacherId,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteTitle" parameterType="string">
+        DELETE FROM graduation_title WHERE id = #{id, jdbcType=NUMERIC}
+        AND teacher_id = #{teacherId,jdbcType=INTEGER}
+    </delete>
+</mapper>

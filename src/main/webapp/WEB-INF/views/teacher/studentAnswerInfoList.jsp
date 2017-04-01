@@ -25,8 +25,8 @@
 							<div class="caption">
 								<p class="text-center">${leader.name}</p>
 								<p class="text-center">${leader.teacher.department.name}</p>
-								<p class="text-center">${gpms:getDictLabel(leader.teacher.professional_title, 'professional')}</p>
-								<p class="text-center">${leader.teacher.research_direction}</p>
+								<p class="text-center">${gpms:getDictLabel(leader.teacher.professionalTitle, 'professional')}</p>
+								<p class="text-center">${leader.teacher.researchDirection}</p>
 							</div>
 							<div class="center-block" style="width: 70px;margin-top: 5px;margin-bottom: 5px;">
 								<a href="${ctx}/student/answerTeacherInfo?id=${leader.id}" class="btn btn-info btn-sm">查看更多</a>
@@ -41,8 +41,8 @@
 								<div class="caption">
 									<p class="text-center">${teacher.name}</p>
 									<p class="text-center">${teacher.teacher.department.name}</p>
-									<p class="text-center">${gpms:getDictLabel(teacher.teacher.professional_title, 'professional')}</p>
-									<p class="text-center">${teacher.teacher.research_direction}</p>
+									<p class="text-center">${gpms:getDictLabel(teacher.teacher.professionalTitle, 'professional')}</p>
+									<p class="text-center">${teacher.teacher.researchDirection}</p>
 								</div>
 								<div class="center-block" style="width: 70px;margin-top: 5px;margin-bottom: 5px;">
 									<a href="${ctx}/student/answerTeacherInfo?id=${teacher.id}" class="btn btn-info btn-sm">查看更多</a>

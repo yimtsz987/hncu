@@ -2,11 +2,13 @@ package com.hncu.utils;
 
 import com.hncu.common.SpringContextHolder;
 import com.hncu.entity.Classes;
+import com.hncu.entity.Department;
 import com.hncu.entity.Major;
 import com.hncu.entity.User;
 import com.hncu.security.Principal;
 import com.hncu.service.UserService;
 import com.hncu.service.admin.sys.ClassesService;
+import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.MajorService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -22,6 +24,7 @@ public class UserUtils {
     private static UserService userService = SpringContextHolder.getBean(UserService.class);
     private static MajorService majorService = SpringContextHolder.getBean(MajorService.class);
     private static ClassesService classesService = SpringContextHolder.getBean(ClassesService.class);
+    private static DepartmentService departmentService = SpringContextHolder.getBean(DepartmentService.class);
 
     public static final String CACHE_ROLE_LIST = "user_role_list";
     public static final String CACHE_MENU_LIST = "user_menu_list";
@@ -121,5 +124,10 @@ public class UserUtils {
     public static List<Classes> queryClassesList(){
         List<Classes> classesList = classesService.queryList(new Classes());
         return classesList;
+    }
+
+    public static List<Department> queryDepartmentList(){
+        List<Department> departmentList = departmentService.queryList(new Department());
+        return departmentList;
     }
 }

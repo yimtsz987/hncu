@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-03-30 13:55:39
+Date: 2017-04-01 15:50:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,7 +112,7 @@ CREATE TABLE `dict` (
   `sort` decimal(10,0) NOT NULL COMMENT '排序（升序）',
   `parent_id` varchar(64) DEFAULT '0' COMMENT '父级编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dict
@@ -151,6 +151,9 @@ INSERT INTO `dict` VALUES ('31', '1', '通过', 'report', '成绩状态', '20', 
 INSERT INTO `dict` VALUES ('32', '0', '未开始', 'step', '步骤状态', '10', '0');
 INSERT INTO `dict` VALUES ('33', '1', '正在进行', 'step', '步骤状态', '20', '0');
 INSERT INTO `dict` VALUES ('34', '2', '已完成', 'step', '步骤状态', '30', '0');
+INSERT INTO `dict` VALUES ('35', '0', '管理员', 'role', '角色', '10', '0');
+INSERT INTO `dict` VALUES ('36', '1', '学生', 'role', '角色', '20', '0');
+INSERT INTO `dict` VALUES ('37', '2', '教师', 'role', '角色', '30', '0');
 
 -- ----------------------------
 -- Table structure for download
@@ -422,6 +425,7 @@ CREATE TABLE `notice` (
   `issueDate` datetime NOT NULL,
   `user_object` tinyint(1) NOT NULL COMMENT '用户对象（0单个用户1多个用户2全部用户4用户类型）',
   `user_role` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户角色(0默认1学生2教师3教务秘书)',
+  `user_roles` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -685,8 +689,8 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', '系统管理员', 'admin', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '0', '0', '0', '0', '0', 'img/man.jpg', '1', '2016-12-23 16:39:19', '1', '2016-12-23 16:39:15', '', '0', '1');
-INSERT INTO `sys_user` VALUES ('2', '周建存', '0001', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '18670050440', '湖南益阳', '0', '40', '123456@qq.com', '0', '123456', '2', 'img/man.jpg', null, '2016-12-23 16:41:26', '1', '2017-02-22 11:41:55', null, '0', '1');
+INSERT INTO `sys_user` VALUES ('1', '系统管理员', 'admin', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '430124199403116559', '18670050440', '湖南益阳', '0', '20', '394702110@qq.com', '0', '394702110', '0', 'img/man.jpg', '1', '2016-12-23 16:39:19', '1', '2017-03-30 20:12:01', '', '0', '1');
+INSERT INTO `sys_user` VALUES ('2', '周建存', '0001', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '18670050440', '湖南益阳', '0', '40', '123456@qq.com', '0', '123456', '2', 'img/man.jpg', null, '2016-12-23 16:41:26', '2', '2017-03-30 21:39:32', null, '0', '1');
 INSERT INTO `sys_user` VALUES ('3', '小明', '0002', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '30', '222222@qq.com', '0', '222222', '2', 'img/man.jpg', null, '2016-12-23 16:42:24', null, null, null, '0', '1');
 INSERT INTO `sys_user` VALUES ('4', '小红', '0003', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '1', '30', '333333@qq.com', '0', '333333', '2', 'img/woman.jpg', null, '2016-12-23 16:43:14', null, null, null, '0', '1');
 INSERT INTO `sys_user` VALUES ('5', '刘佳乐', '2014051656', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '43012419403116559', '18670050440', '湖南长沙', '0', '22', '394702110@qq.com', '0', '394702110', '1', 'img/man.jpg', null, '2016-12-23 16:44:12', null, null, null, '0', '1');

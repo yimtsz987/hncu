@@ -29,6 +29,7 @@ public class Notice extends BaseEntity{
     private Date issueDate;
     private String userObject;
     private String userRole;
+    private String userRoles;
     private String noticeId;
     private String userId;
     private String isRead;
@@ -85,6 +86,14 @@ public class Notice extends BaseEntity{
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    public String getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(String userRoles) {
+        this.userRoles = userRoles;
     }
 
     public String getNoticeId() {

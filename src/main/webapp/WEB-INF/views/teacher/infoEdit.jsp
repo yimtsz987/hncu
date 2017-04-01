@@ -19,11 +19,11 @@
 					<a href="#">头像上传</a>
 				</li>
 			</ul>
-			<form:form cssClass="form-horizontal" action="${ctx}/admin/saveAdminInfo" method="post" modelAttribute="user" id="form-id">
+			<form:form cssClass="form-horizontal" action="${ctx}/teacher/saveTeacherInfo" method="post" modelAttribute="user" id="form-id">
 				<form:hidden path="id" />
 				<form:hidden path="isValidate" />
 				<div class="form-group control-group">
-					<label class="control-label col-lg-2 col-xs-2 col-sm-2">用户名:</label>
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">教工号:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
 						${gpms:getUser().username}
 					</div>
@@ -96,6 +96,35 @@
 					</div>
 					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2">
 						<span style="padding-left: 20px;" class="Validform_checktip pull-left">请输入地址</span>
+					</div>
+				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">所属院系:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<form:select path="teacher.department.dNo" cssClass="form-control input-sm" id="department" datatype="*" nullmsg="请选择所属院系">
+							<form:option value="" label="选择院系名称" />
+							<form:options items="${gpms:queryDepartmentList()}" itemLabel="name" itemValue="dNo" />
+						</form:select>
+					</div>
+					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请选择所属院系！</span></div>
+				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">职称:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<form:select path="teacher.professionalTitle" cssClass="form-control input-sm" id="professionalTitle" datatype="*" nullmsg="请选择职称">
+							<form:option value="" label="请选择职称" />
+							<form:options items="${gpms:getDictList('professional')}" itemLabel="label" itemValue="value" />
+						</form:select>
+					</div>
+					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请选择所属院系！</span></div>
+				</div>
+				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">研究方向:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<form:input path="teacher.researchDirection" id="researchDirection" cssClass="form-control input-sm" datatype="*" nullmsg="请输入研究方向" maxlength="50" />
+					</div>
+					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2">
+						<span style="padding-left: 20px;" class="Validform_checktip pull-left">请输入研究方向</span>
 					</div>
 				</div>
 				<div class="form-action">

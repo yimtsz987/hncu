@@ -130,4 +130,16 @@
             ${gpms:queryClassesList()}
         </example>
     </function>
+
+    <function>
+        <description>
+            查询所有院系信息
+        </description>
+        <name>queryDepartmentList</name>
+        <function-class>com.hncu.utils.UserUtils</function-class>
+        <function-signature>java.util.List queryDepartmentList()</function-signature>
+        <example>
+            ${gpms:queryDepartmentList()}
+        </example>
+    </function>
 </taglib>

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
-		<title>查看教师信息</title>
+		<title>个人信息</title>
 		<style type="text/css">
 		    body,html{box-sizing: border-box;}
 		    body{background: #f7f7f7;}
@@ -30,7 +30,7 @@
 				height: 100%;
 				border-radius: 0 10px 10px 0;
 				box-sizing: border-box;
-				padding-top: 75px;
+				padding-top: 20px;
 				padding-right: 100px;
 				padding-left: 100px;
 			}
@@ -78,6 +78,9 @@
 				font-size: 14px;
 				font-weight: 500;
 			}
+			.form-horizontal .form-group{
+				margin-bottom: 12px !important;
+			}
 		</style>
 	</head>
 	<body>
@@ -85,13 +88,14 @@
 			<div class="info-wrap">
 				<div class="info-left">
 					<div class="info-headerpic">
-						<img src="${ctxStatic}/${teacher.headerPic}" />
+						<img src="${ctxStatic}/${gpms:getUser().headerPic}" />
 					</div>
 					<div class="info-text">
-					   <p>${teacher.teacher.department.name}</p>
-					   <p>${teacher.name}</p>
-					   <p>${gpms:getDictLabel(teacher.teacher.professionalTitle, 'professional')}</p>
-					   <p>${teacher.teacher.researchDirection}</p>
+					   <p>${user.name}</p>
+					   <p>${user.teacher.node}</p>
+						<p>${user.teacher.department.name}</p>
+					   <p>${gpms:getDictLabel(user.teacher.professionalTitle, 'professional')}</p>
+					   <p>${user.teacher.researchDirection}</p>
 					</div>
 					<div class="info-left-btn">
 						<i class="glyphicon glyphicon-chevron-right"></i>
@@ -99,56 +103,81 @@
 				</div>
 				<div class="info-right">
 				    <div class="info-main form-horizontal">
+				        <div class="form-group">
+							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">教&nbsp;&nbsp;工&nbsp;&nbsp;号:</label>
+							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+								<div class="info-right-text">${user.teacher.node}</div>
+							</div>
+						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${teacher.name}</div>
+								<div class="info-right-text">${user.name}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${gpms:getDictLabel(teacher.sex, 'sex')}</div>
+								<div class="info-right-text">${gpms:getDictLabel(user.sex, 'sex')}</div>
 							</div>
-						</div><div class="form-group">
+						</div>
+						<div class="form-group">
+							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:</label>
+							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+								<div class="info-right-text">${gpms:getUser().age}</div>
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${teacher.teacher.department.name}</div>
+								<div class="info-right-text">${user.teacher.department.name}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${gpms:getDictLabel(teacher.teacher.professionalTitle, 'professional')}</div>
+								<div class="info-right-text">${gpms:getDictLabel(user.teacher.professionalTitle, 'professional')}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">研&nbsp;究&nbsp;方&nbsp;向:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${teacher.teacher.researchDirection}</div>
+								<div class="info-right-text">${user.teacher.researchDirection}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${teacher.mobile}</div>
+								<div class="info-right-text">${user.mobile}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${teacher.email}</div>
+								<div class="info-right-text">${user.email}</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${teacher.qq}</div>
+								<div class="info-right-text">${user.qq}</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:</label>
+							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+								<div class="info-right-text">${gpms:getUser().address}</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色:</label>
+							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
+								<div class="info-right-text">${gpms:getDictLabel(gpms:getUser().expandFlag, 'role')}</div>
 							</div>
 						</div>
 				    </div>
-					<div class="center-block" style="width: 150px;">
-						<div class="btn btn-info center-block" onclick="history.go(-1)">返回</div>
+					<div class="center-block" style="width:48%;">
+						<a href="${ctx}/teacher/teacherInfoEdit" class="btn btn-primary">修改信息</a>
 					</div>
 				</div>
 			</div>

@@ -116,7 +116,7 @@
 					     	<p>教工号：${gpms:getUser().teacher.node}</p>
 					     	<p>${gpms:getUser().name}，老师${gpms:getUser().sysYear}</p>
 							<p>${gpms:getUser().teacher.department.name}</p>
-					     	<p>职称：${gpms:getDictLabel(gpms:getUser().teacher.professional_title, 'professional' )}</p>
+					     	<p>职称：${gpms:getDictLabel(gpms:getUser().teacher.professionalTitle, 'professional' )}</p>
 					     </div>
 					</div>
 					<ul class="nav-list">
@@ -126,7 +126,7 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="个人信息" class="iframeurl" name="info.html">
+							<a href="javascript:void(0)" title="个人信息" class="iframeurl" name="${ctx}/teacher/info">
 							   <i class="glyphicon glyphicon-home" ></i>个人信息
 							</a>
 						</li>
@@ -138,47 +138,47 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="#" title="查看学生" class="iframeurl" name="${ctx}/teacher/studentList">
+									<a href="javascript:void(0)" title="查看学生" class="iframeurl" name="${ctx}/teacher/studentList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看学生
 									</a>
 								</li>
 								<li>
-									<a href="#" title="发布课题" class="iframeurl" name="${ctx}/teacher/titleList">
+									<a href="javascript:void(0)" title="发布课题" class="iframeurl" name="${ctx}/teacher/titleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>2、查看课题
 									</a>
 								</li>
 								<li>
-									<a href="#" title="检查审题报告" class="iframeurl" name="${ctx}/teacher/understandingList">
+									<a href="javascript:void(0)" title="检查审题报告" class="iframeurl" name="${ctx}/teacher/understandingList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>3、查看审题报告
 									</a>
 								</li>
 								<li>
-									<a href="#" title="检查开题报告" class="iframeurl" name="${ctx}/teacher/openTitleList">
+									<a href="javascript:void(0)" title="检查开题报告" class="iframeurl" name="${ctx}/teacher/openTitleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>4、查看开题报告
 									</a>
 								</li>
 								<li>
-									<a href="#" title="学生分期报告" class="iframeurl" name="${ctx}/teacher/scheduleList">
+									<a href="javascript:void(0)" title="学生分期报告" class="iframeurl" name="${ctx}/teacher/scheduleList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>5、学生分期报告
 									</a>
 								</li>
 								<li>
-									<a href="#" title="学生分期报告" class="iframeurl" name="${ctx}/teacher/markingList">
+									<a href="javascript:void(0)" title="学生分期报告" class="iframeurl" name="${ctx}/teacher/markingList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>6、教师批阅
 									</a>
 								</li>
 								<li>
-									<a href="#" title="审阅中期资料" class="iframeurl" name="${ctx}/teacher/middleCheckList">
+									<a href="javascript:void(0)" title="审阅中期资料" class="iframeurl" name="${ctx}/teacher/middleCheckList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>7、查看中期资料
 									</a>
 								</li>
 								<li>
-									<a href="#" title="查看评阅材料" class="iframeurl" name="${ctx}/teacher/reviewList">
+									<a href="javascript:void(0)" title="查看评阅材料" class="iframeurl" name="${ctx}/teacher/reviewList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>8、查看评阅材料
 									</a>
 								</li>
 								<li>
-									<a href="#" title="查看答辩信息" class="iframeurl" name="${ctx}/teacher/studentAnswerList">
+									<a href="javascript:void(0)" title="查看答辩信息" class="iframeurl" name="${ctx}/teacher/studentAnswerList">
 										<i class="subicon glyphicon glyphicon-hand-right"></i>9、查看答辩信息
 									</a>
 								</li>
@@ -198,7 +198,7 @@
 							</li>
 						</c:if>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="通知公告" class="iframeurl" name="inform.html">
+							<a href="javascript:void(0)" title="通知公告" class="iframeurl">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>
@@ -210,12 +210,12 @@
 						</li>
 						<ul class="submenu">
 							<li>
-								<a href="#" title="资料上传" class="iframeurl" name="${ctx}/teacher/studentList">
+								<a href="javascript:void(0)" title="资料上传" class="iframeurl" name="${ctx}/teacher/studentList">
 									<i class="subicon glyphicon glyphicon-hand-right"></i>1、资料上传
 								</a>
 							</li>
 							<li>
-								<a href="#" title="资料下载" class="iframeurl" name="${ctx}/teacher/studentList">
+								<a href="javascript:void(0)" title="资料下载" class="iframeurl" name="${ctx}/teacher/studentList">
 									<i class="subicon glyphicon glyphicon-hand-right"></i>2、资料下载
 								</a>
 							</li>

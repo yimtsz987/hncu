@@ -37,6 +37,8 @@
 		<typeAlias type="com.hncu.entity.TeacherMarking" alias="TeacherMarking" />
 		<typeAlias type="com.hncu.entity.TeacherMiddleCheck" alias="TeacherMiddleCheck" />
 		<typeAlias type="com.hncu.entity.TeacherYearInfo" alias="TeacherYearInfo" />
+		<typeAlias type="com.hncu.entity.Notice" alias="Notice" />
+		<typeAlias type="com.hncu.entity.NoticeUser" alias="NoticeUser" />
 	</typeAliases>
 
 

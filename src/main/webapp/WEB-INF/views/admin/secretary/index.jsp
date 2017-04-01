@@ -89,6 +89,7 @@
 							<div class="user-arrow"></div>
 							<ul>
 								<li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;个人资料</a></li>
+								<li><a href="${ctx}/tsRoleSelect"><span class="glyphicon glyphicon-registration-mark"></span>&nbsp;&nbsp;角色切换</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;修改密码</a></li>
 								<li class="divider"></li>
 								<li><a href="/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;注销</a></li>
@@ -190,7 +191,7 @@
 								</li>
 							</ul>
 						<li class="first-nav">
-							<a href="#" title="通知公告" class="iframeurl" name="Announcements.html">
+							<a href="javascript:void(0)" title="通知公告" class="iframeurl">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>

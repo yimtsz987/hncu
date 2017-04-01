@@ -1,13 +1,9 @@
-package com.hncu.web.admin.sys;
+package com.hncu.web.teacher;
 
 import com.hncu.common.BaseController;
 import com.hncu.common.Msg;
 import com.hncu.entity.User;
 import com.hncu.service.InfoService;
-import com.hncu.service.UserService;
-import com.hncu.service.admin.sys.AdminInfoService;
-import com.hncu.utils.MD5Util;
-import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,46 +17,46 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
- * 系统管理员信息控制层
+ * 教师端信息控制层
  */
 @Controller
-@RequestMapping(value = "/admin")
-public class InfoController extends BaseController{
+@RequestMapping(value = {"/teacher","/secretary"})
+public class TeacherInfoController extends BaseController {
 
     @Resource
     private InfoService infoService;
 
     @ModelAttribute
     public User get(@RequestParam(required = false) String id) {
-         return infoService.queryById(UserUtils.getCurrentUser().getId());
+        return infoService.queryById(UserUtils.getCurrentUser().getId());
     }
 
     @RequestMapping(value = "/info")
-    public String adminInfoPage(User user, Model model){
+    public String teacherInfoPage(User user, Model model){
         model.addAttribute("user", user);
-        return "admin/sys/info";
+        return "teacher/info";
     }
 
-    @RequestMapping(value = "/adminInfoEdit")
-    public String adminInfoEdit(User user,Model model){
+    @RequestMapping(value = "/teacherInfoEdit")
+    public String teacherInfoEdit(User user,Model model){
         model.addAttribute("user", user);
-        return "admin/sys/infoEdit";
+        return "teacher/infoEdit";
     }
 
-    @RequestMapping(value = "/saveAdminInfo")
-    public String saveAdminInfo(@Valid User user, Model model, BindingResult br, RedirectAttributes redirectAttributes){
+    @RequestMapping(value = "/saveTeacherInfo")
+    public String saveTeacherInfo(@Valid User user, Model model, BindingResult br, RedirectAttributes redirectAttributes){
         if (br.hasErrors()){
-            return adminInfoEdit(user, model);
+            return teacherInfoEdit(user, model);
         }
         Msg msg;
         try {
-            infoService.updateAdminInfo(user);
+            infoService.updateTeacherInfo(user);
             msg = new Msg(Msg.MSG_TYPE_OK, "个人信息成功！！");
         } catch (Exception e){
             logger.error("个人信息失败！！",e);
             msg = new Msg(Msg.MSG_TYPE_REMOVE, "个人信息失败！！");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
-        return "redirect:/admin/info";
+        return "redirect:/teacher/info";
     }
 }

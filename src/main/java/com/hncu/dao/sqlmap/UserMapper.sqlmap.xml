@@ -47,7 +47,7 @@
         s.answer_flag as "student.answerFlag",
         s.expand_flag as "student.expandFlag",
         t.node as "teacher.node",
-        t.department_no as "teacher.department.d_no",
+        t.department_no as "teacher.department.dNo",
         t.research_direction as "teacher.researchDirection",
         t.professional_title as "teacher.professionalTitle",
         d.name as "student.department.name",
@@ -156,10 +156,10 @@
                 header_pic = #{headerPic,jdbcType=VARCHAR},
             </if>
             <if test="updateBy != null" >
-                update_date = update_by = #{updateBy.id,jdbcType=VARCHAR},
+                update_by = #{updateBy.id,jdbcType=VARCHAR},
             </if>
             <if test="updateDate != null" >
-                #{updateDate,jdbcType=TIMESTAMP}
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

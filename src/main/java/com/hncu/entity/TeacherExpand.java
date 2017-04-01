@@ -43,20 +43,20 @@ public class TeacherExpand implements Serializable {
         this.department = department;
     }
 
-    public String getResearch_direction() {
+    public String getResearchDirection() {
         return researchDirection;
     }
 
-    public void setResearch_direction(String research_direction) {
-        this.researchDirection = research_direction;
+    public void setResearchDirection(String researchDirection) {
+        this.researchDirection = researchDirection;
     }
 
-    public String getProfessional_title() {
+    public String getProfessionalTitle() {
         return professionalTitle;
     }
 
-    public void setProfessional_title(String professional_title) {
-        this.professionalTitle = professional_title;
+    public void setProfessionalTitle(String professionalTitle) {
+        this.professionalTitle = professionalTitle;
     }
 
     public String getExpandFlag() {
