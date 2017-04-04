@@ -156,7 +156,7 @@ public class TMarkingController extends BaseController{
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_REMOVE, "提交失败！！"));
         }
-        return "redirect:/teacher/markingInfoList";
+        return "redirect:/teacher/markingList";
     }
 
     @RequestMapping(value = "/updateStudentStep")

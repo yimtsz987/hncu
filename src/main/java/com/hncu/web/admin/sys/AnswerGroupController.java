@@ -9,6 +9,7 @@ import com.hncu.service.admin.sys.AnswerGroupService;
 import com.hncu.service.admin.sys.ClassesService;
 import com.hncu.service.admin.sys.StudentService;
 import com.hncu.service.admin.sys.TeacherService;
+import com.hncu.utils.DateUtils;
 import com.hncu.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -177,6 +178,7 @@ public class AnswerGroupController extends BaseController{
         }
         Msg msg;
         try {
+            answer.setAnswerTime(DateUtils.parse(answer.getDateString(), "yyyy-MM-dd HH:mm:ss"));
             answerGroupService.updateAnswerTimeInfo(answer);
             msg = new Msg(Msg.MSG_TYPE_OK, "答辩时间信息保存成功！！");
         } catch (Exception e){

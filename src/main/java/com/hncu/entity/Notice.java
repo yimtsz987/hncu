@@ -2,7 +2,11 @@ package com.hncu.entity;
 
 import com.google.common.collect.Lists;
 import com.hncu.common.BaseEntity;
+import com.hncu.utils.CollectionUtil;
+import com.hncu.utils.StringUtils;
+import com.hncu.utils.UserUtils;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +37,20 @@ public class Notice extends BaseEntity{
     private String noticeId;
     private String userId;
     private String isRead;
+    private List<Role> roleList = Lists.newArrayList();
+
+    private String userRoleName;
+
+    public Notice(String id){
+        super();
+        super.id = id;
+    }
+
+    public void preInserNotice(){
+        Date now = Calendar.getInstance().getTime();
+        this.setIssueId(UserUtils.getCurrentUser().getId());
+        this.setIssueDate(now);
+    }
 
     private List<NoticeUser> noticeUserList = Lists.newArrayList();  //用户通知列表
 
@@ -126,5 +144,35 @@ public class Notice extends BaseEntity{
 
     public void setNoticeUserList(List<NoticeUser> noticeUserList) {
         this.noticeUserList = noticeUserList;
+    }
+
+    public String getUserRoleName() {
+        return userRoleName;
+    }
+
+    public void setUserRoleName(String userRoleName) {
+        this.userRoleName = userRoleName;
+    }
+
+    public List<String> getRoleIdList(){
+        List<String> roleIdList = Lists.newArrayList();
+        for (Role role : roleList){
+            roleIdList.add(role.getId());
+        }
+        return roleIdList;
+    }
+
+    public void setRoleIdList(List<String> roleIdList) {
+        roleList = Lists.newArrayList();
+        for (String roleId : roleIdList) {
+            if (StringUtils.isNotBlank(roleId)) {
+                Role role = new Role(roleId);
+                roleList.add(role);
+            }
+        }
+    }
+
+    public String getRoleIds (){
+        return CollectionUtil.extractToString(roleList, "id", ",");
     }
 }

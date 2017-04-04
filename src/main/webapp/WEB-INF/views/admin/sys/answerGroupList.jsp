@@ -94,7 +94,7 @@
 								</td>
 								<td>
 									<c:if test="${answer.answerTime != null}">
-										${gpms:getParamValue("answerDate")}&nbsp;${answer.answerTime}
+										<fmt:formatDate value="${answer.answerTime}" pattern="yyyy-MM-dd HH:mm" />
 									</c:if>
 									<c:if test="${answer.answerTime == null}">
 										-

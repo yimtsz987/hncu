@@ -42,4 +42,11 @@ public interface TStudentMapper extends BaseMapper<TeacherAndStudent>{
      * @return
      */
     int deleteTeacherId(User user);
+
+    /**
+     * 查询评阅学生信息
+     * @param teacherAndStudent
+     * @return
+     */
+    TeacherAndStudent queryReviewStudentInfoList(TeacherAndStudent teacherAndStudent);
 }

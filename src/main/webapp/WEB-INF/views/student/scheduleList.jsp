@@ -98,11 +98,8 @@
 								<c:if test="${schedule.reportFlag eq '1'}">
 									<strong>请等待审查结果</strong>
 								</c:if>
-								<c:if test="${schedule.reportFlag eq '2'}">
-									<a href="${ctx}/student/uploadSchedulePage?id=${schedule.id}" class="btn btn-xs btn-success">修改</a>
-								</c:if>
-								<c:if test="${schedule.reportFlag eq '3'}">
-									<a href="${ctx}/student/downloadSchedule?id=${schedule.id}" class="btn btn-xs btn-danger">下载</a>
+								<c:if test="${schedule.reportFlag ne '1' && schedule.reportFlag ne '0'}">
+									<a href="${ctx}/student/scheduleInfo?id=${schedule.id}" class="btn btn-xs btn-info">查看详情</a>
 								</c:if>
 							</td>
 						</tr>

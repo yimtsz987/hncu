@@ -5,7 +5,10 @@ import com.hncu.common.BaseController;
 import com.hncu.common.Msg;
 import com.hncu.common.PageParam;
 import com.hncu.entity.Marking;
+import com.hncu.entity.User;
+import com.hncu.service.UserService;
 import com.hncu.service.student.MarkingService;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
 import org.apache.commons.io.FileUtils;
@@ -37,6 +40,9 @@ public class MarkingController extends BaseController{
 
     @Resource
     private MarkingService markingService;
+
+    @Resource
+    private UserService userService;
 
     @ModelAttribute
     public Marking get(@RequestParam(required = false) String id) {
@@ -81,35 +87,58 @@ public class MarkingController extends BaseController{
 
     @RequestMapping(value = "/markingInfo")
     public String markingInfo(Marking marking, Model model){
+        User studentInfo = userService.queryById(marking.getStudentId());
+        model.addAttribute("studentInfo", studentInfo);
         return "student/markingInfo";
     }
 
     @RequestMapping(value = "/downloadStudentMarking", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> downloadStudentMarking(@RequestParam String id) throws IOException {
+    public ResponseEntity<byte[]> downloadStudentMarking(@RequestParam String id, @RequestParam String studentCheckStr) throws IOException {
         Marking marking = markingService.queryById(id);
-        if (StringUtils.isNotBlank(marking.getSuploadFileOldName())){
-            File file = new File(marking.getSuploadPath());
-            String dfileName = marking.getSuploadFileOldName();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
-            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
-        }else {
+        if (marking != null){
+            if (StringUtils.isNotBlank(marking.getSuploadFileOldName()) && StringUtils.isNotEmpty(studentCheckStr)){
+                if (studentCheckStr.equals(MD5Util.string2MD5(marking.getSuploadFileOldName()))) {
+                    File file = new File(marking.getSuploadPath());
+                    String dfileName = marking.getSuploadFileOldName();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+                    return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+                } else {
+                    return null;
+                }
+            }else {
+                return null;
+            }
+        } else {
             return null;
         }
+
     }
 
     @RequestMapping(value = "/downloadTeacherMarking", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> downloadTeacherMarking(@RequestParam String id) throws IOException {
+    public ResponseEntity<byte[]> downloadTeacherMarking(@RequestParam String id,  @RequestParam String teacherCheckStr) throws IOException {
         Marking marking = markingService.queryById(id);
-        if (StringUtils.isNotBlank(marking.getTuploadFileOldName())){
-            File file = new File(marking.getTuploadPath());
-            String dfileName = marking.getTuploadFileOldName();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
-            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
-        }else {
+        if (marking != null) {
+            if (StringUtils.isNotBlank(marking.getSuploadFileOldName()) && StringUtils.isNotEmpty(teacherCheckStr)) {
+                if (teacherCheckStr.equals(MD5Util.string2MD5(marking.getTuploadFileOldName()))) {
+                    if (StringUtils.isNotBlank(marking.getTuploadFileOldName())) {
+                        File file = new File(marking.getTuploadPath());
+                        String dfileName = marking.getTuploadFileOldName();
+                        HttpHeaders headers = new HttpHeaders();
+                        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                        headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+                        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        } else {
             return null;
         }
     }

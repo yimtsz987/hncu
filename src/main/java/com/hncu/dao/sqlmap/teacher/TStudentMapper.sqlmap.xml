@@ -31,4 +31,10 @@
         UPDATE expand_student SET step_1 = #{STEP_FLAG_NO,jdbcType=INTEGER},step_now = #{STEP_NOW_1,jdbcType=INTEGER},title_id = '' WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
 
+    <select id="queryReviewStudentInfoList" parameterType="TeacherAndStudent" resultType="TeacherAndStudent">
+        select <include refid="tStudentColumns" />
+        FROM teacher_year_student tys
+        WHERE tys.review_tId = #{reviewTeacherId, jdbcType=NUMERIC}
+        AND tys.year = #{sysYear, jdbcType=VARCHAR}
+    </select>
 </mapper>

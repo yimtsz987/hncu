@@ -31,13 +31,6 @@
 				<div class="form-group control-group">
 					<label  class="control-label col-lg-2 col-xs-2 col-sm-2">接收人:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<!--<select id="receive" name="receive" class="selectpicker bla bla bli form-control " data-live-search="true" datatype="*" nullmsg="请选择接收人">
-							<option value="">--请选择接收人--</option>
-							<option value="2">教务秘书</option>
-							<option value="3">教研室主任</option>
-							<option value="4">教师</option>
-							<option value="5">学生</option>
-						</select>-->
 						<form:checkboxes path="roleIdList"  items="${roleList}" itemLabel="name" itemValue="id" />
 					</div>
 					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2">

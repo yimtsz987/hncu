@@ -1,6 +1,7 @@
 package com.hncu.entity;
 
 import com.hncu.common.BaseEntity;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.UserUtils;
 
 import java.util.Date;
@@ -137,7 +138,7 @@ public class Schedule extends BaseEntity {
     }
 
     public void setCheckStr(String checkStr) {
-        this.checkStr = checkStr;
+        this.checkStr = MD5Util.string2MD5(this.uploadFileOldName);
     }
 
     public String getTeacherId() {

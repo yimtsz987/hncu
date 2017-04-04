@@ -19,30 +19,25 @@
 			<div class="page-search">
 				<div class="search-title">搜索查询</div>
 				<form:form id="searchForm" modelAttribute="teacherMarking" action="${ctx}/teacher/reviewWorkStudentList" method="post" cssClass="form-horizontal">
-					<input id="pageNum" name="pageNum" type="hidden" value="${teacherReviewPageInfo.pageNum}"/>
-					<input id="pageSize" name="pageSize" type="hidden" value="${teacherReviewPageInfo.pageSize}"/>
 					<div class="form-group pull-left col-lg-3">
 						<label for="node" class="col-lg-3 control-label">学号</label>
 						<div class="col-lg-9">
-							<form:input path="user.student.node" cssClass="form-control" maxlength="50" id="node" />
+							<form:input path="user.student.node" cssClass="form-control" maxlength="50" id="node" disabled="true" />
 						</div>
 					</div>
 					<div class="form-group pull-left col-lg-3">
 						<label for="name" class="col-lg-3 control-label">姓名</label>
 						<div class="col-lg-9">
-							<form:input path="user.name" cssClass="form-control" maxlength="50" id="name" />
+							<form:input path="user.name" cssClass="form-control" maxlength="50" id="name" disabled="true" />
 						</div>
 					</div>
 					<div class="form-group pull-left col-lg-3">
 						<label for="state" class="col-lg-3 control-label">状态</label>
 						<div class="col-lg-9">
-							<form:select path="user.student.step8" cssClass="form-control" id="state">
-								<form:option value="" label="选择状态" />
-								<form:options items="${gpms:getDictList('step')}" itemLabel="label" itemValue="value" />
-							</form:select>
+
 						</div>
 					</div>
-					<input type="submit" class="btn btn-primary" value="查询" />
+					<input type="submit" class="btn btn-primary disabled" value="查询" disabled />
 					<div class="clearfix"></div>
                 </form:form>
 			</div>
@@ -63,27 +58,24 @@
 						</tr>
 					</thead>
 					<tbody  id="tbodyId">
-					<c:forEach items="${teacherReviewPageInfo.list}" var="review">
+					<c:forEach items="${reviewStudentInfo}" var="review">
 						<tr>
 							<td><input type="checkbox" name="node"/></td>
-							<td>${review.user.student.node}</td>
-							<td>${review.user.name}</td>
-							<td>${review.user.student.titleName}</td>
+							<td>${review.student.node}</td>
+							<td>${review.name}</td>
+							<td>${review.student.titleName}</td>
 							<td>
 								<span class="label label-success label-custom">
-									${gpms:getDictLabel(review.user.student.step8, 'step')}
+									${gpms:getDictLabel(review.student.step8, 'step')}
 								</span>
 							</td>
 							<td>
-								<a href="${ctx}/teacher/reviewWorkInfoList?marking.studentId=${review.user.id}"  class="btn btn-xs btn-primary" >查看</a>
+								<a href="${ctx}/teacher/reviewWorkInfoList?marking.studentId=${review.id}"  class="btn btn-xs btn-primary" >查看</a>
 							</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
-			</div>
-			<div class="page-info">
-				${gpms:pageStr(teacherReviewPageInfo)}
 			</div>
 		</div>
 	</body>

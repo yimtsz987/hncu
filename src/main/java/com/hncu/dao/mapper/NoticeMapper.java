@@ -9,4 +9,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface NoticeMapper extends BaseMapper<Notice> {
+
+    int insertNoticeByRole(Notice notice);
+
+    int updateNotice(Notice notice);
+
+    int deleteNotice(Notice notice);
 }

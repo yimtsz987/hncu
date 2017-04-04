@@ -19,6 +19,13 @@ public interface AnswerGroupMapper extends BaseMapper<Answer> {
     int updateLeader(TeacherInfo teacherInfo);
 
     /**
+     * 更新组长答辩分组标记信息
+     * @param teacherInfo
+     * @return
+     */
+    int updateAnswerLeaderInfo(TeacherInfo teacherInfo);
+
+    /**
      * 更新答辩分组标记信息
      * @param teacherInfo
      * @return

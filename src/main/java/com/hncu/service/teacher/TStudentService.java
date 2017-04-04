@@ -50,4 +50,8 @@ public class TStudentService extends BaseService<TStudentMapper, TeacherAndStude
         }
         return userList;
     }
+
+    public TeacherAndStudent queryReviewStudentInfoList(TeacherAndStudent teacherAndStudent){
+        return mapper.queryReviewStudentInfoList(teacherAndStudent);
+    }
 }

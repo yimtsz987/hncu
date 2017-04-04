@@ -7,10 +7,7 @@ import com.hncu.common.PageParam;
 import com.hncu.dao.mapper.student.ScheduleMapper;
 import com.hncu.entity.Schedule;
 import com.hncu.entity.UploadParam;
-import com.hncu.utils.DateUtils;
-import com.hncu.utils.StringUtils;
-import com.hncu.utils.UploadUtil;
-import com.hncu.utils.UserUtils;
+import com.hncu.utils.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +26,13 @@ import static com.hncu.common.BaseEntity.STEP_FLAG_PASS;
  */
 @Service
 public class ScheduleService extends BaseService<ScheduleMapper, Schedule> {
+
+    @Override
+    public Schedule queryById(String id) {
+        Schedule schedule = mapper.queryById(id);
+        schedule.setCheckStr(MD5Util.string2MD5(schedule.getUploadFileOldName()));
+        return schedule;
+    }
 
     @Override
     public PageInfo<Schedule> queryListWithPage(Schedule schedule, PageParam pageParam) {
@@ -62,6 +66,7 @@ public class ScheduleService extends BaseService<ScheduleMapper, Schedule> {
             schedule.setUploadFileOldName(uploadParam.getUploadFileOldName());
             schedule.setUploadPath(uploadParam.getUploadPath());
             schedule.preInsertReport();
+            schedule.setTeacherAdvise(null);
             mapper.uploadScheduleReport(schedule);
         }
 

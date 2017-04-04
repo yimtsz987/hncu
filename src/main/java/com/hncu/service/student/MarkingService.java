@@ -5,6 +5,8 @@ import com.hncu.dao.mapper.student.MarkingMapper;
 import com.hncu.entity.Marking;
 import com.hncu.entity.Schedule;
 import com.hncu.entity.UploadParam;
+import com.hncu.utils.MD5Util;
+import com.hncu.utils.StringUtils;
 import com.hncu.utils.UploadUtil;
 import com.hncu.utils.UserUtils;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,16 @@ import java.io.IOException;
  */
 @Service
 public class MarkingService extends BaseService<MarkingMapper, Marking> {
+
+    @Override
+    public Marking queryById(String id) {
+        Marking marking = mapper.queryById(id);
+        marking.setStudentCheckStr(MD5Util.string2MD5(marking.getSuploadFileOldName()));
+        if (StringUtils.isNotEmpty(marking.getTuploadFileOldName())){
+            marking.setTeacherCheckStr(MD5Util.string2MD5(marking.getTuploadFileOldName()));
+        }
+        return marking;
+    }
 
     @Transactional(readOnly = false)
     public void uploadMarkingReport(Marking marking, HttpServletRequest request, HttpServletResponse response) throws IOException {

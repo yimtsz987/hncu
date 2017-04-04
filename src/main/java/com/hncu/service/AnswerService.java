@@ -3,6 +3,7 @@ package com.hncu.service;
 import com.hncu.common.BaseService;
 import com.hncu.dao.mapper.AnswerMapper;
 import com.hncu.entity.Answer;
+import com.hncu.utils.DateUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +13,14 @@ import org.springframework.stereotype.Service;
 public class AnswerService extends BaseService<AnswerMapper, Answer>{
 
     public Answer queryByClasses(String answerClasses){
-        return mapper.queryByClasses(answerClasses);
+        Answer answer = mapper.queryByClasses(answerClasses);
+        if (answer.getAnswerTime() != null){
+            answer.setCountDown(String.valueOf(DateUtils.distanceDays(answer.getAnswerTime())));
+        }
+        return answer;
+    }
+
+    public Answer queryByLeaderId(String leaderId){
+        return mapper.queryByLeaderId(leaderId);
     }
 }

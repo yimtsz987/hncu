@@ -33,6 +33,17 @@
 					</div>
 				</div>
 				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">学生问题:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<c:if test="${teacherMarking.marking.studentQuestion == null}">
+							<strong>-</strong>
+						</c:if>
+						<c:if test="${teacherMarking.marking.studentQuestion != null}">
+							${teacherMarking.marking.studentQuestion}
+						</c:if>
+					</div>
+				</div>
+				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">教师建议:</label>
 					<div class="col-lg-5 col-xs-5 col-sm-5 has-feedback">
 						<c:if test="${teacherMarking.marking.state eq 1}">

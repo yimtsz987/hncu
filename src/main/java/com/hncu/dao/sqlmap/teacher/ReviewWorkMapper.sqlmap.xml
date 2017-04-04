@@ -35,8 +35,7 @@
         select <include refid="reviewColumns" />
         FROM teacher_review tr
         <include refid="reviewJoins" />
-        WHERE tr.review_tId = #{marking.reviewTeacherId, jdbcType=NUMERIC}
-        AND tr.student_id = #{marking.studentId, jdbcType=NUMERIC}
+        WHERE tr.student_id = #{marking.studentId, jdbcType=NUMERIC}
         AND tr.year = #{sysYear, jdbcType=VARCHAR}
             <if test="marking != null and marking.sort != null and marking.sort != ''">
                 and tr.sort = #{marking.sort,jdbcType=INTEGER}
@@ -76,9 +75,8 @@
     </select>
 
     <update id="reviewWorkCheck" parameterType="TeacherMarking">
-        UPDATE teacher_review SET state = #{marking.state},teacher_advise = #{marking.teacherAdvise},tuploadFile = #{marking.tuploadFile,jdbcType=VARCHAR},tuploadPath = #{marking.tuploadPath,jdbcType=VARCHAR},tuploadFileOldName = #{marking.tuploadFileOldName,jdbcType=VARCHAR}
+        UPDATE teacher_review SET state = #{marking.state},teacher_advise = #{marking.teacherAdvise},tuploadFile = #{marking.tuploadFile,jdbcType=VARCHAR},tuploadPath = #{marking.tuploadPath,jdbcType=VARCHAR},tuploadFileOldName = #{marking.tuploadFileOldName,jdbcType=VARCHAR},review_tId = #{marking.reviewTeacherId, jdbcType=NUMERIC}
         WHERE id = #{marking.id, jdbcType=NUMERIC}
-        and review_tId = #{marking.reviewTeacherId, jdbcType=NUMERIC}
     </update>
 
     <update id="updateStudentReviewStep" parameterType="User">

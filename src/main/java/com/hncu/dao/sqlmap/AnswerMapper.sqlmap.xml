@@ -8,6 +8,8 @@
         a.student_ids as "studentIds",
         a.teacher_ids as "teacherIds",
         a.answer_classes as "answerClasses",
+        a.answerTime,
+        a.teacher_num as "teacherNum",
         a.address
     </sql>
 
@@ -27,5 +29,11 @@
         SELECT <include refid="answerColumns" />
         FROM answer_group a
         WHERE a.answer_classes = #{answerClasses,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryByLeaderId" parameterType="string" resultType="Answer">
+        SELECT <include refid="answerColumns" />
+        FROM answer_group a
+        WHERE a.leader_id = #{leaderId,jdbcType=VARCHAR}
     </select>
 </mapper>

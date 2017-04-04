@@ -29,6 +29,7 @@ public class TeacherInfo extends BaseEntity {
     private String answerFlag;
     private String reviewFlag;
     private String answerId;
+    private String isLeader;
 
     //choose
     private String year;
@@ -270,5 +271,13 @@ public class TeacherInfo extends BaseEntity {
 
     public void setQueryClasses(String queryClasses) {
         this.queryClasses = queryClasses;
+    }
+
+    public String getIsLeader() {
+        return isLeader;
+    }
+
+    public void setIsLeader(String isLeader) {
+        this.isLeader = isLeader;
     }
 }

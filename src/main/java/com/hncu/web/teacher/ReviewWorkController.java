@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 教师端 - 评阅控制层
@@ -55,12 +56,9 @@ public class ReviewWorkController extends BaseController{
     }
 
     @RequestMapping(value = "/reviewWorkStudentList")
-    public String reviewWorkStudentList(TeacherMarking teacherMarking, Model model, PageParam pageParam){
-        Marking marking = new Marking();
-        marking.setReviewTeacherId(UserUtils.getCurrentUser().getId());
-        teacherMarking.setMarking(marking);
-        PageInfo<TeacherMarking> teacherReviewPageInfo = reviewWorkService.queryStudentInfoListWithPage(teacherMarking, pageParam);
-        model.addAttribute("teacherReviewPageInfo", teacherReviewPageInfo);
+    public String reviewWorkStudentList(TeacherMarking teacherMarking, Model model){
+        List<User> reviewStudentInfo = reviewWorkService.queryReviewStudentInfoList(UserUtils.getCurrentUser().getId());
+        model.addAttribute("reviewStudentInfo", reviewStudentInfo);
         return "teacher/reviewWorkStudentList";
     }
 

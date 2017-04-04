@@ -44,6 +44,7 @@
         FROM sys_user u
         <include refid="teacherJoins" />
         WHERE u.expand_flag = '2'
+        and tys.year = #{sysYear,jdbcType=VARCHAR}
         <if test="node != null and node != ''">
             and t.node like concat ('%', #{node}, '%')
         </if>
@@ -67,7 +68,10 @@
     </select>
 
     <update id="chooseTeacher" parameterType="Teacher">
-        UPDATE teacher_year_student SET student_sum = #{studentSum,jdbcType=INTEGER},student_ids = #{studentIds,jdbcType=VARCHAR} WHERE teacher_id = #{id,jdbcType=INTEGER}
+        UPDATE teacher_year_student SET
+        student_sum = #{studentSum,jdbcType=INTEGER},student_ids = #{studentIds,jdbcType=VARCHAR}
+        WHERE teacher_id = #{id,jdbcType=INTEGER}
+         and year = #{sysYear, jdbcType=VARCHAR}
     </update>
     
     <update id="stepOneEnd" parameterType="User">

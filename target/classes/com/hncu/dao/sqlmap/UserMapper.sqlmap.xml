@@ -61,6 +61,7 @@
         sp.param_value as "sysParamYear",
         tya.answer_flag as "teacher.answerFlag",
         tya.answer_id as "teacher.answerId",
+        tya.is_leader as "teacher.isLeader",
         tyr.review_flag as "teacher.reviewFlag"
     </sql>
 

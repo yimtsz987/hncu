@@ -4,10 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.hncu.common.BaseController;
 import com.hncu.common.Msg;
 import com.hncu.common.PageParam;
-import com.hncu.entity.OpenTitle;
-import com.hncu.entity.Schedule;
-import com.hncu.entity.TeacherOpenTitle;
-import com.hncu.entity.TeacherSchedule;
+import com.hncu.entity.*;
+import com.hncu.service.UserService;
 import com.hncu.service.teacher.TOpenTitleService;
 import com.hncu.service.teacher.TScheduleService;
 import com.hncu.utils.MD5Util;
@@ -40,6 +38,9 @@ public class TScheduleController extends BaseController{
 
     @Resource
     private TScheduleService tScheduleService;
+
+    @Resource
+    private UserService userService;
 
 
     @ModelAttribute
@@ -75,7 +76,9 @@ public class TScheduleController extends BaseController{
         }
         teacherSchedule.setSchedule(schedule);
         PageInfo<TeacherSchedule> teacherSchedulePageInfo = tScheduleService.queryListWithPage(teacherSchedule, pageParam);
+        User studentInfo = userService.queryById(schedule.getStudentId());
         model.addAttribute("teacherSchedulePageInfo", teacherSchedulePageInfo);
+        model.addAttribute("studentInfo", studentInfo);
         return "teacher/scheduleInfoList";
     }
 

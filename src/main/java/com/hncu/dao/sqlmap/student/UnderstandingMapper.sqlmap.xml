@@ -31,11 +31,11 @@
 
     <insert id="uploadReport" parameterType="Understanding">
         INSERT INTO understanding_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName,teacher_id)
-        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
+        VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{sysYear, jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
     </insert>
 
     <update id="uploadReportAlter" parameterType="Understanding">
-        UPDATE understanding_report SET upload_date = #{uploadDate,jdbcType=TIMESTAMP},uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},pass_flag = #{PASS_FLAG_CHECK,jdbcType=INTEGER}
+        UPDATE understanding_report SET upload_date = #{uploadDate,jdbcType=TIMESTAMP},uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},pass_flag = #{PASS_FLAG_CHECK,jdbcType=INTEGER},teacher_advise = #{teacherAdvise,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 

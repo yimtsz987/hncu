@@ -17,4 +17,11 @@ public interface AnswerMapper extends BaseMapper<Answer>{
      * @return
      */
     Answer queryByClasses(@Param("answerClasses") String answerClasses);
+
+    /**
+     * 通过组长ID查询答辩分组
+     * @param leaderId
+     * @return
+     */
+    Answer queryByLeaderId(@Param("leaderId") String leaderId);
 }

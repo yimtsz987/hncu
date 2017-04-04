@@ -47,8 +47,8 @@
     </select>
 
     <insert id="uploadMarkingReport" parameterType="Marking">
-        INSERT INTO teacher_marking(student_id,supload_date,suploadFile,suploadPath,suploadFileOldName,sort,year,title_id,teacher_id)
-        VALUES (#{studentId,jdbcType=INTEGER},#{suploadDate,jdbcType=TIMESTAMP},#{suploadFile,jdbcType=VARCHAR},#{suploadPath,jdbcType=VARCHAR},#{suploadFileOldName,jdbcType=VARCHAR},#{sort,jdbcType=INTEGER},#{year,jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{teacherId,jdbcType=INTEGER})
+        INSERT INTO teacher_marking(student_id,supload_date,suploadFile,suploadPath,suploadFileOldName,sort,year,title_id,teacher_id,student_question)
+        VALUES (#{studentId,jdbcType=INTEGER},#{suploadDate,jdbcType=TIMESTAMP},#{suploadFile,jdbcType=VARCHAR},#{suploadPath,jdbcType=VARCHAR},#{suploadFileOldName,jdbcType=VARCHAR},#{sort,jdbcType=INTEGER},#{sysYear, jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{teacherId,jdbcType=INTEGER},#{studentQuestion, jdbcType=VARCHAR})
     </insert>
 
     

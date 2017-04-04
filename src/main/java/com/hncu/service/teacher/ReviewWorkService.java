@@ -2,13 +2,13 @@ package com.hncu.service.teacher;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import com.hncu.common.BaseService;
 import com.hncu.common.PageParam;
 import com.hncu.dao.mapper.teacher.ReviewWorkMapper;
 import com.hncu.dao.mapper.teacher.TReviewMapper;
-import com.hncu.entity.TeacherMarking;
-import com.hncu.entity.UploadParam;
-import com.hncu.entity.User;
+import com.hncu.entity.*;
+import com.hncu.service.UserService;
 import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UploadUtil;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,6 +31,12 @@ import static com.hncu.common.BaseEntity.PASS_FLAG_YES;
  */
 @Service
 public class ReviewWorkService extends BaseService<ReviewWorkMapper, TeacherMarking>{
+
+    @Resource
+    private TStudentService tStudentService;
+
+    @Resource
+    private UserService userService;
 
     @Override
     public TeacherMarking queryById(String id) {
@@ -64,5 +71,19 @@ public class ReviewWorkService extends BaseService<ReviewWorkMapper, TeacherMark
         return mapper.updateStudentReviewStep(user) > 0;
     }
 
+    public List<User> queryReviewStudentInfoList(String reviewTeacherId){
+        TeacherAndStudent teacherAndStudent = new TeacherAndStudent();
+        teacherAndStudent.setReviewTeacherId(reviewTeacherId);
+        TeacherAndStudent studentIds = tStudentService.queryReviewStudentInfoList(teacherAndStudent);
+        String[] studentId = StringUtils.split(studentIds.getStudentIds(), ",");
+        List<User> reviewStudentInfoList = Lists.newArrayList();
+        for (int i = 0; i < studentId.length; i++) {
+            User studentInfo = userService.queryById(studentId[i]);
+            if (studentInfo != null){
+                reviewStudentInfoList.add(studentInfo);
+            }
+        }
+        return reviewStudentInfoList;
+    }
 }
 

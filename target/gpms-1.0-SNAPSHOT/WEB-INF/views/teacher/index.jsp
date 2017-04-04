@@ -138,13 +138,13 @@
 						</li>
 						<ul class="submenu">
 								<li>
-									<a href="javascript:void(0)" title="查看学生" class="iframeurl" name="${ctx}/teacher/studentList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看学生
+									<a href="javascript:void(0)" title="发布课题" class="iframeurl" name="${ctx}/teacher/titleList">
+										<i class="subicon glyphicon glyphicon-hand-right"></i>1、查看课题
 									</a>
 								</li>
 								<li>
-									<a href="javascript:void(0)" title="发布课题" class="iframeurl" name="${ctx}/teacher/titleList">
-										<i class="subicon glyphicon glyphicon-hand-right"></i>2、查看课题
+									<a href="javascript:void(0)" title="查看学生" class="iframeurl" name="${ctx}/teacher/studentList">
+										<i class="subicon glyphicon glyphicon-hand-right"></i>2、查看学生
 									</a>
 								</li>
 								<li>
@@ -197,8 +197,15 @@
 								</a>
 							</li>
 						</c:if>
+						<c:if test="${gpms:getUser().teacher.isLeader eq 1}">
+							<li class="first-nav">
+								<a href="javascript:void(0)" title="成绩上传" class="iframeurl" name="${ctx}/teacher/teacherAnswerInfoList">
+									<i class="glyphicon glyphicon-home"></i>成绩上传
+								</a>
+							</li>
+						</c:if>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="通知公告" class="iframeurl">
+							<a href="javascript:void(0)" title="通知公告" class="iframeurl" name="${ctx}/notice/noticeTeacherList">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>

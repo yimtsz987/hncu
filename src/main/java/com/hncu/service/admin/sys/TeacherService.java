@@ -67,7 +67,7 @@ public class TeacherService extends BaseService<TeacherMapper, TeacherInfo>{
             int count = 0;
             if (studentIds != null){
                 for (int j = 0; j < studentIds.length; j++) {
-                    studentInfo = userService.queryById(studentIds[i]);
+                    studentInfo = userService.queryById(studentIds[j]);
                     studentList.add(studentInfo);
                 }
                 for (int j = 0; j < studentList.size(); j++) {

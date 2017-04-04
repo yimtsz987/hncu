@@ -62,7 +62,7 @@ public class AnswerGroupService extends BaseService<AnswerGroupMapper, Answer>{
     @Transactional(readOnly = false)
     public void updateLeader(TeacherInfo teacherInfo){
         mapper.updateLeader(teacherInfo);
-        mapper.updateAnswerInfo(teacherInfo);
+        mapper.updateAnswerLeaderInfo(teacherInfo);
     }
 
     @Transactional(readOnly = false)

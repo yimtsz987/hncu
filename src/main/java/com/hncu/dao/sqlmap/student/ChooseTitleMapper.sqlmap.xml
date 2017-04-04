@@ -17,6 +17,7 @@
         SELECT <include refid="titleColumns" />
         FROM graduation_title t
         WHERE t.teacher_id = #{teacherId}
+        and t.year = #{sysYear, jdbcType=VARCHAR}
             <if test="title != null and title != ''">
                 and t.title like concat ('%', #{title}, '%')
             </if>
@@ -38,7 +39,8 @@
     </select>
 
     <update id="chooseTitle" parameterType="Title">
-        UPDATE graduation_title SET select_flag = '1',student_id = {studentId, jdbcType=INTEGER} WHERE id = #{id,jdbcType=INTEGER}
+        UPDATE graduation_title SET select_flag = '1',student_id = #{studentId, jdbcType=INTEGER}
+        WHERE id = #{id,jdbcType=INTEGER}
     </update>
     
     <update id="stepTwoEnd" parameterType="User">

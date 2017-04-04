@@ -276,7 +276,7 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" class="iframeurl" name="Announcements.html" title="通知公告">
+							<a href="javascript:void(0)" class="iframeurl" name="${ctx}/notice/noticeStudentList" title="通知公告">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>

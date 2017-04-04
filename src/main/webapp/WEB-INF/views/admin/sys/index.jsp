@@ -164,7 +164,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="javascript:void(0)" title="发送通知"class="iframeurl" name="inform.html">
+								<a href="javascript:void(0)" title="发送通知"class="iframeurl" name="${ctx}/notice/noticeEdit">
 									<i class="subicon glyphicon glyphicon-hand-right"></i>2、发送通知
 								</a>
 							</li>
@@ -198,7 +198,7 @@
 							</li>
 						</ul>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="通知公告" class="iframeurl" disabled="disabled">
+							<a href="javascript:void(0)" title="通知公告" class="iframeurl" name="${ctx}/notice/noticeList" >
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>

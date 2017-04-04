@@ -32,11 +32,21 @@
         WHERE answer_classes = #{queryClasses,jdbcType=NUMERIC}
     </update>
 
+    <update id="updateAnswerLeaderInfo" parameterType="Teacher">
+        UPDATE teacher_year_answer SET
+        answer_flag = #{ANSWER_FLAG_YES, jdbcType=INTEGER},
+        answer_id = #{answerId, jdbcType=INTEGER},
+        is_leader = #{LEADER_YES, jdbcType=INTEGER}
+        WHERE teacher_id = #{tId,jdbcType=NUMERIC}
+        and year = #{sysYear, jdbcType=VARCHAR}
+    </update>
+
     <update id="updateAnswerInfo" parameterType="Teacher">
         UPDATE teacher_year_answer SET
         answer_flag = #{ANSWER_FLAG_YES, jdbcType=INTEGER},
         answer_id = #{answerId, jdbcType=INTEGER}
         WHERE teacher_id = #{tId,jdbcType=NUMERIC}
+        and year = #{sysYear, jdbcType=VARCHAR}
     </update>
 
     <update id="updateAnswerTeacher" parameterType="Answer">
@@ -55,14 +65,16 @@
     <update id="deleteAnswerInfo" parameterType="Teacher">
         UPDATE teacher_year_answer SET
         answer_flag = #{ANSWER_FLAG_NO, jdbcType=INTEGER},
-        answer_id = #{answerId, jdbcType=INTEGER}
+        answer_id = #{answerId, jdbcType=INTEGER},
+        is_leader = #{LEADER_NO, jdbcType=INTEGER}
         WHERE teacher_id = #{tId,jdbcType=NUMERIC}
+        and year = #{sysYear, jdbcType=VARCHAR}
     </update>
 
     <update id="updateAnswerTimeInfo" parameterType="Answer">
         UPDATE answer_group SET
         address = #{address, jdbcType=VARCHAR},
-        answerTime = #{answerTime, jdbcType=VARCHAR}
+        answerTime = #{answerTime, jdbcType=TIMESTAMP}
         WHERE answer_classes = #{answerClasses,jdbcType=NUMERIC}
     </update>
 

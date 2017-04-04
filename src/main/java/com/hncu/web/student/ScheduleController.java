@@ -6,6 +6,7 @@ import com.hncu.common.Msg;
 import com.hncu.common.PageParam;
 import com.hncu.entity.Schedule;
 import com.hncu.service.student.ScheduleService;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
 import org.apache.commons.io.FileUtils;
@@ -55,6 +56,12 @@ public class ScheduleController extends BaseController{
         return "student/scheduleList";
     }
 
+    @RequestMapping(value = "/scheduleInfo")
+    public String scheduleInfo(Schedule schedule, Model model){
+        model.addAttribute("schedule", schedule);
+        return "student/scheduleInfo";
+    }
+
     @RequestMapping(value = "/uploadSchedulePage")
     public String uploadSchedulePage(Schedule schedule, Model model){
         model.addAttribute("schedule", schedule);
@@ -76,16 +83,24 @@ public class ScheduleController extends BaseController{
     }
 
     @RequestMapping(value = "/downloadSchedule", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> download(@RequestParam String id) throws IOException {
+    public ResponseEntity<byte[]> download(@RequestParam String id, @RequestParam String checkStr) throws IOException {
         Schedule schedule = scheduleService.queryById(id);
-        if (StringUtils.isNotBlank(schedule.getUploadFileOldName())) {
-            File file = new File(schedule.getUploadPath());
-            String dfileName = schedule.getUploadFileOldName();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
-            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
-        }else {
+        if (schedule != null){
+            if (StringUtils.isNotBlank(schedule.getUploadFileOldName()) && StringUtils.isNotEmpty(checkStr)) {
+                if (checkStr.equals(MD5Util.string2MD5(schedule.getUploadFileOldName()))) {
+                    File file = new File(schedule.getUploadPath());
+                    String dfileName = schedule.getUploadFileOldName();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+                    return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+                } else {
+                    return null;
+                }
+            }else {
+                return null;
+            }
+        } else {
             return null;
         }
     }

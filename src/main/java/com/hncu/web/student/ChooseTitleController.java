@@ -39,7 +39,7 @@ public class ChooseTitleController extends BaseController {
     }
 
     @RequestMapping(value = "/chooseTitleList")
-    public String chooseTeacherList(Title title, Model model, PageParam pageParam){
+    public String chooseTitleList(Title title, Model model, PageParam pageParam){
         if (StringUtils.isBlank(UserUtils.getCurrentUser().getStudent().getTitleId())){
             title.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
             PageInfo<Title> titlePageInfo = chooseTitleService.queryListWithPage(title, pageParam);
@@ -48,6 +48,14 @@ public class ChooseTitleController extends BaseController {
         } else {
             return "redirect:/student/chooseTitleInfo";
         }
+    }
+
+    @RequestMapping(value = "/titleInfoList")
+    public String titleInfoList(Title title, Model model, PageParam pageParam){
+        title.setTeacherId(title.getTeacherId());
+        PageInfo<Title> titlePageInfo = chooseTitleService.queryListWithPage(title, pageParam);
+        model.addAttribute("titlePageInfo", titlePageInfo);
+        return "student/titleInfoList";
     }
 
     @RequestMapping(value = "/chooseTitle")

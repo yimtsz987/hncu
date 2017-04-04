@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : localhost
 Source Server Version : 50714
 Source Host           : localhost:3306
 Source Database       : graduation_project_management
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-04-01 15:50:15
+Date: 2017-04-04 15:06:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `answer_group` (
   `teacher_ids` varchar(300) DEFAULT NULL,
   `answer_classes` varchar(15) NOT NULL COMMENT '答辩班级',
   `address` varchar(50) DEFAULT NULL,
-  `answerTime` varchar(100) DEFAULT NULL COMMENT '答辩时间',
+  `answerTime` datetime DEFAULT NULL COMMENT '答辩时间',
   `teacher_num` int(11) NOT NULL DEFAULT '0' COMMENT '教师数量',
   PRIMARY KEY (`id`,`answer_classes`),
   KEY `ac` (`answer_classes`)
@@ -36,8 +36,8 @@ CREATE TABLE `answer_group` (
 -- ----------------------------
 -- Records of answer_group
 -- ----------------------------
-INSERT INTO `answer_group` VALUES ('1', '2', '2013', '5,7,', '4,3,', '1406102', '信息楼502', '14:00', '2');
-INSERT INTO `answer_group` VALUES ('2', '10', '2013', null, '12,13,', '1406101', '信息楼406', '09:00', '2');
+INSERT INTO `answer_group` VALUES ('1', '2', '2013', '5,7,', '4,3,14,', '1406102', '信息楼502', '2017-07-01 14:00:00', '3');
+INSERT INTO `answer_group` VALUES ('2', '10', '2013', null, '12,13,', '1406101', null, null, '2');
 INSERT INTO `answer_group` VALUES ('4', null, '2013', null, null, '1406401', null, null, '0');
 INSERT INTO `answer_group` VALUES ('5', null, '2013', null, null, '1406402', null, null, '0');
 INSERT INTO `answer_group` VALUES ('11', null, '2013', null, null, '1406601', null, null, '0');
@@ -60,7 +60,7 @@ CREATE TABLE `classes` (
 -- ----------------------------
 -- Records of classes
 -- ----------------------------
-INSERT INTO `classes` VALUES ('1', '1406102', '1', '6', '3', '2013');
+INSERT INTO `classes` VALUES ('1', '1406102', '1', '6', '24', '2013');
 INSERT INTO `classes` VALUES ('3', '1406101', '1', '6', '1', '2013');
 INSERT INTO `classes` VALUES ('4', '1406401', '2', '6', '0', '2013');
 INSERT INTO `classes` VALUES ('5', '1406402', '2', '6', '0', '2013');
@@ -232,6 +232,7 @@ INSERT INTO `expand_student` VALUES ('5', '2014051656', '6', '1', '1406102', '1'
 INSERT INTO `expand_student` VALUES ('7', '2014051654', '6', '1', '1406102', '2', '3', '3', '2013', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '3', '1', '0', '1', null);
 INSERT INTO `expand_student` VALUES ('8', '2014051655', '6', '1', '1406102', '3', '2', '2', '2013', null, '2', '2', '2', '2', '2', '2', '0', '0', '0', '0', '7', null, null, '0', '1', null);
 INSERT INTO `expand_student` VALUES ('11', '2014051629', '6', '1', '1406101', '7', '2', '2', '2013', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '3', null, '0', '1', null);
+INSERT INTO `expand_student` VALUES ('15', '2014051657', '6', '1', '1406102', '8', '16', null, '2013', null, '2', '2', '2', '2', '2', '2', '2', '2', '0', '0', '9', '1', null, '0', '1', null);
 
 -- ----------------------------
 -- Table structure for expand_teacher
@@ -257,6 +258,7 @@ INSERT INTO `expand_teacher` VALUES ('10', '0004', '6', '嵌入式', '1', '2');
 INSERT INTO `expand_teacher` VALUES ('12', '0005', '6', 'web', '1', '2');
 INSERT INTO `expand_teacher` VALUES ('13', '0006', '6', '物联网', '1', '2');
 INSERT INTO `expand_teacher` VALUES ('14', '0007', '6', '测试', '1', '2');
+INSERT INTO `expand_teacher` VALUES ('16', '0008', '6', '测试1', '1', '2');
 
 -- ----------------------------
 -- Table structure for graduation_schedule
@@ -278,7 +280,7 @@ CREATE TABLE `graduation_schedule` (
   `teacher_advise` text COMMENT '教师意见',
   `year` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graduation_schedule
@@ -294,6 +296,7 @@ INSERT INTO `graduation_schedule` VALUES ('8', '8', '2', '系统设计', '2017-0
 INSERT INTO `graduation_schedule` VALUES ('9', '11', '1', '需求分析', '2017-03-15 00:00:00', '2017-04-15 00:00:00', '8', '3', '1489577059523需求分析报告.doc', 'E://gpmsUpload/2014051629/1489577059523需求分析报告.doc', '需求分析报告.doc', '2', '<br>', '2013');
 INSERT INTO `graduation_schedule` VALUES ('10', '11', '2', '系统设计', '2017-04-16 00:00:00', '2017-05-16 00:00:00', '8', '3', '1489577152894系统设计报告.doc', 'E://gpmsUpload/2014051629/1489577152894系统设计报告.doc', '系统设计报告.doc', '2', '通过', '2013');
 INSERT INTO `graduation_schedule` VALUES ('11', '11', '3', '系统测试', '2017-05-17 00:00:00', '2017-06-17 00:00:00', '8', '3', '1489577190744系统测试报告.doc', 'E://gpmsUpload/2014051629/1489577190744系统测试报告.doc', '系统测试报告.doc', '2', '测试', '2013');
+INSERT INTO `graduation_schedule` VALUES ('20', '15', '1', '需求分析', '2017-04-03 00:00:00', '2017-05-03 00:00:00', '16', '3', '1491208159155需求分析报告 （改）.doc', 'E://gpmsUpload/2014051657/1491208159155需求分析报告 （改）.doc', '需求分析报告 （改）.doc', '16', '通过测试', '2013');
 
 -- ----------------------------
 -- Table structure for graduation_title
@@ -310,7 +313,7 @@ CREATE TABLE `graduation_title` (
   `select_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否选择（0未选1已选）',
   `student_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graduation_title
@@ -319,6 +322,7 @@ INSERT INTO `graduation_title` VALUES ('1', '基于java的毕业设计管理系�
 INSERT INTO `graduation_title` VALUES ('2', '基于java的XXXX系统开发', '测试', '1', '1', '3', '2013', '1', '7');
 INSERT INTO `graduation_title` VALUES ('3', '基于XXXXX', '测试', '1', '2', '2', '2013', '1', '8');
 INSERT INTO `graduation_title` VALUES ('7', '基于spring的毕业设计管理系统', 'javase', '3', '1', '2', '2013', '1', '11');
+INSERT INTO `graduation_title` VALUES ('8', '测试课题1', '测试课题1', '3', '1', '16', '2013', '1', '15');
 
 -- ----------------------------
 -- Table structure for major
@@ -379,7 +383,7 @@ CREATE TABLE `middle_check` (
   `teacher_advise` text COMMENT '教师意见',
   `check_id` int(11) DEFAULT NULL COMMENT '审核教师id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of middle_check
@@ -393,6 +397,9 @@ INSERT INTO `middle_check` VALUES ('6', '7', '2017-03-01 11:57:49', '2013', '2',
 INSERT INTO `middle_check` VALUES ('7', '11', '2017-03-15 20:44:04', '2013', '7', '3', '1489581844069论文一稿.doc', 'E://gpmsUpload/2014051629/1489581844069论文一稿.doc', '论文一稿.doc', '1', '2', '中期检查测试1', '2');
 INSERT INTO `middle_check` VALUES ('8', '11', '2017-03-22 15:39:45', '2013', '7', '3', '1490168385325xsgz.zip', 'E://gpmsUpload/2014051629/1490168385325xsgz.zip', 'xsgz.zip', '2', '2', '通过', '2');
 INSERT INTO `middle_check` VALUES ('9', '11', '2017-03-15 20:44:19', '2013', '7', '3', '1489581859581icheck.zip', 'E://gpmsUpload/2014051629/1489581859581icheck.zip', 'icheck.zip', '3', '2', '通过', '2');
+INSERT INTO `middle_check` VALUES ('10', '15', '2017-04-03 17:44:39', '2013', '8', '3', '1491212679272论文评阅.doc', 'E://gpmsUpload/2014051657/1491212679272论文评阅.doc', '论文评阅.doc', '1', '16', '通过啊啊啊啊啊啊啊', '2');
+INSERT INTO `middle_check` VALUES ('11', '15', '2017-04-03 18:03:36', '2013', '8', '3', '1491213816112学生工作处.zip', 'E://gpmsUpload/2014051657/1491213816112学生工作处.zip', '学生工作处.zip', '2', '16', '<br>', '2');
+INSERT INTO `middle_check` VALUES ('12', '15', '2017-04-03 17:44:58', '2013', '8', '3', '1491212698804学生工作处.zip', 'E://gpmsUpload/2014051657/1491212698804学生工作处.zip', '学生工作处.zip', '3', '16', '<br>', '2');
 
 -- ----------------------------
 -- Table structure for middle_check_parameter
@@ -418,20 +425,26 @@ INSERT INTO `middle_check_parameter` VALUES ('3', '相关文件', '毕设相关�
 -- ----------------------------
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `issue_id` int(11) NOT NULL,
   `issueDate` datetime NOT NULL,
-  `user_object` tinyint(1) NOT NULL COMMENT '用户对象（0单个用户1多个用户2全部用户4用户类型）',
+  `user_object` tinyint(1) NOT NULL DEFAULT '4' COMMENT '用户对象（0单个用户1多个用户2全部用户4用户类型）',
   `user_role` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户角色(0默认1学生2教师3教务秘书)',
   `user_roles` varchar(100) DEFAULT NULL,
+  `year` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of notice
 -- ----------------------------
+INSERT INTO `notice` VALUES ('2', '通知公共测试', '通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试通知公共测试<br>', '1', '2017-04-02 22:46:45', '4', '0', '4,5', '2013');
+INSERT INTO `notice` VALUES ('3', '通知公共测试2', '通知公共测试2通知公共测试2通知公共测试2通知公共测试2通知公共测试2通知公共测试2通知公共测试2通知公共测试2<br>', '1', '2017-04-02 22:55:30', '4', '0', '2,4,5', '2013');
+INSERT INTO `notice` VALUES ('4', '教务秘书通知公告测试', '教务秘书通知公告测试教务秘书通知公告测试教务秘书通知公告测试教务秘书通知公告测试教务秘书通知公告测试教务秘书通知公告测试<br>', '2', '2017-04-02 22:59:13', '4', '0', '4,5', '2013');
+INSERT INTO `notice` VALUES ('5', '学生', '学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生学生', '1', '2017-04-02 23:13:23', '4', '0', '5', '2013');
+INSERT INTO `notice` VALUES ('6', '教师', '教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师教师<br>', '1', '2017-04-02 23:13:36', '4', '0', '4', '2013');
 
 -- ----------------------------
 -- Table structure for notice_user
@@ -464,7 +477,7 @@ CREATE TABLE `opening_report` (
   `teacher_id` int(11) DEFAULT NULL,
   `teacher_advise` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of opening_report
@@ -473,6 +486,7 @@ INSERT INTO `opening_report` VALUES ('1', '5', '2017-02-26 11:06:33', '2013', '1
 INSERT INTO `opening_report` VALUES ('6', '7', '2017-02-28 16:05:45', '2013', '2', '1', '1488269145404开题报告.doc', 'E://gpmsUpload/2014051654/1488269145404开题报告.doc', '开题报告.doc', '3', null);
 INSERT INTO `opening_report` VALUES ('7', '8', '2017-03-02 22:36:04', '2013', '3', '2', '1488465364222需求分析报告.doc', 'E://gpmsUpload/2014051655/1488465364222需求分析报告.doc', '需求分析报告.doc', '2', '<div style=\"text-align: center;\"><span style=\"letter-spacing: 0px;\"><font size=\"5\">1、测试一</font></span></div><div style=\"text-align: left;\"><span style=\"letter-spacing: 0px;\"><font size=\"5\">2、测试二</font></span></div>');
 INSERT INTO `opening_report` VALUES ('8', '11', '2017-03-15 19:23:17', '2013', '7', '2', '1489576997735开题报告.doc', 'E://gpmsUpload/2014051629/1489576997735开题报告.doc', '开题报告.doc', '2', '恭喜，开题报告通过');
+INSERT INTO `opening_report` VALUES ('16', '15', '2017-04-03 13:01:58', '2013', '8', '2', '1491195718369中期检查.doc', 'E://gpmsUpload/2014051657/1491195718369中期检查.doc', '中期检查.doc', '16', '<font face=\"黑体\" size=\"6\"><u>通过测试</u></font><br>');
 
 -- ----------------------------
 -- Table structure for permission
@@ -625,13 +639,31 @@ CREATE TABLE `school_report` (
   `score` varchar(3) NOT NULL,
   `pass_flag` tinyint(1) NOT NULL COMMENT '0未通过1通过',
   `date_time` datetime DEFAULT NULL,
+  `old_score` varchar(3) DEFAULT NULL COMMENT '原成绩',
+  `year` varchar(5) NOT NULL,
+  `createBy` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of school_report
 -- ----------------------------
-INSERT INTO `school_report` VALUES ('1', '201405165620170302', '5', '95', '0', '2017-03-02 12:14:22');
+INSERT INTO `school_report` VALUES ('1', '201405165620170302', '5', '95', '1', '2017-03-02 12:14:22', null, '2013', '2');
+
+-- ----------------------------
+-- Table structure for second_answer
+-- ----------------------------
+DROP TABLE IF EXISTS `second_answer`;
+CREATE TABLE `second_answer` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `year` varchar(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of second_answer
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for system_parameter
@@ -684,7 +716,7 @@ CREATE TABLE `sys_user` (
   `del_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除（0不删除1删除）',
   `sysYear_paramId` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统年级参数ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_user
@@ -701,6 +733,8 @@ INSERT INTO `sys_user` VALUES ('11', '陈立帆', '2014051629', '3c9e87237581d16
 INSERT INTO `sys_user` VALUES ('12', '阿三', '0005', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '18670050440', '湖南益阳', '0', '30', '394702110@qq.com', '0', '0', '2', 'img/man.jpg', '1', '2017-03-26 15:22:00', '1', '2017-03-26 15:21:53', null, '0', '1');
 INSERT INTO `sys_user` VALUES ('13', '李四', '0006', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '30', '0', '0', '0', '2', 'img/man.jpg', '1', '2017-03-27 12:43:46', '1', '2017-03-27 12:43:41', null, '0', '1');
 INSERT INTO `sys_user` VALUES ('14', '王舞', '0007', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '0', '0', '湖南益阳', '0', '26', '0', '0', '0', '2', 'img/woman.jpg', '1', '2017-03-27 12:49:43', '1', '2017-03-27 12:49:35', null, '0', '1');
+INSERT INTO `sys_user` VALUES ('15', '测试', '2014051657', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '430124199403116559', '18670050440', '湖南益阳', '0', '22', '394702110@qq.com', '0', '394702110', '1', 'img/man.jpg', '1', '2017-04-02 23:29:04', '1', '2017-04-02 23:29:04', null, '0', '1');
+INSERT INTO `sys_user` VALUES ('16', '测试教师', '0008', '3c9e87237581d165b5f139bf901bd778296f8becb8268e363fe2dbbe', '430124199403116559', '18670050440', '湖南益阳', '1', '30', '394702110@qq.com', '0', '394702110', '2', 'img/woman.jpg', '1', '2017-04-02 23:30:11', '1', '2017-04-02 23:30:11', null, '0', '1');
 
 -- ----------------------------
 -- Table structure for teacher_marking
@@ -725,7 +759,7 @@ CREATE TABLE `teacher_marking` (
   `tuploadPath` varchar(500) DEFAULT NULL,
   `tuploadFileOldName` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_marking
@@ -737,6 +771,11 @@ INSERT INTO `teacher_marking` VALUES ('4', '5', '2017-03-01 02:50:58', null, '2'
 INSERT INTO `teacher_marking` VALUES ('5', '7', '2017-03-01 12:07:22', null, '3', null, null, '2', '2013', '2', '1', '1488341242221论文评阅.doc', 'E://gpmsUpload/2014051654/1488341242221论文评阅.doc', '论文评阅.doc', null, null, null);
 INSERT INTO `teacher_marking` VALUES ('6', '8', '2017-03-13 21:05:22', null, '2', '<font size=\"5\">测试测试测试</font>', null, '1', '2013', '3', '1', '1489410322473论文评阅.doc', 'E://gpmsUpload/2014051655/1489410322473论文评阅.doc', '论文评阅.doc', null, null, null);
 INSERT INTO `teacher_marking` VALUES ('7', '11', '2017-03-15 20:32:33', null, '2', '测试通过', null, '1', '2013', '7', '1', '1489581153524论文一稿.doc', 'E://gpmsUpload/2014051629/1489581153524论文一稿.doc', '论文一稿.doc', '1489581445337教师建议.doc', 'E://gpmsUpload/0001/1489581445337教师建议.doc', '教师建议.doc');
+INSERT INTO `teacher_marking` VALUES ('8', '15', '2017-04-03 16:37:59', null, '16', '不通过测试', null, '1', '2013', '8', '1', '1491208679486论文评阅.doc', 'E://gpmsUpload/2014051657/1491208679486论文评阅.doc', '论文评阅.doc', null, null, null);
+INSERT INTO `teacher_marking` VALUES ('9', '15', '2017-04-03 17:24:50', null, '16', '批阅测试1111111111111', null, '2', '2013', '8', '1', '1491211490481论文一稿.doc', 'E://gpmsUpload/2014051657/1491211490481论文一稿.doc', '论文一稿.doc', '1491211562558教师建议.doc', 'E://gpmsUpload/0008/1491211562558教师建议.doc', '教师建议.doc');
+INSERT INTO `teacher_marking` VALUES ('10', '15', '2017-04-03 17:30:01', '<font face=\"幼圆\" size=\"6\">啊啊啊啊啊啊测试测试测试</font>', '16', '惺惺惜惺惺想寻寻寻寻寻寻寻寻寻寻寻', null, '3', '2013', '8', '1', '1491211801173论文一稿.doc', 'E://gpmsUpload/2014051657/1491211801173论文一稿.doc', '论文一稿.doc', '1491211957184教师建议.doc', 'E://gpmsUpload/0008/1491211957184教师建议.doc', '教师建议.doc');
+INSERT INTO `teacher_marking` VALUES ('11', '15', '2017-04-03 17:33:32', '啊啊啊啊啊啊啊啊', '16', '66666666', null, '4', '2013', '8', '1', '1491212012761论文一稿.doc', 'E://gpmsUpload/2014051657/1491212012761论文一稿.doc', '论文一稿.doc', '1491212309840教师建议.doc', 'E://gpmsUpload/0008/1491212309840教师建议.doc', '教师建议.doc');
+INSERT INTO `teacher_marking` VALUES ('12', '15', '2017-04-03 17:41:17', '66666', '16', '5555555', null, '5', '2013', '8', '1', '1491212477566论文一稿.doc', 'E://gpmsUpload/2014051657/1491212477566论文一稿.doc', '论文一稿.doc', '1491212494765教师建议.doc', 'E://gpmsUpload/0008/1491212494765教师建议.doc', '教师建议.doc');
 
 -- ----------------------------
 -- Table structure for teacher_review
@@ -761,7 +800,7 @@ CREATE TABLE `teacher_review` (
   `supload_date` datetime NOT NULL,
   `review_tId` int(11) DEFAULT NULL COMMENT '评阅教师id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_review
@@ -772,6 +811,8 @@ INSERT INTO `teacher_review` VALUES ('5', '1', '7', '3', null, null, '2013', '2'
 INSERT INTO `teacher_review` VALUES ('7', '2', '7', '3', null, null, '2013', '2', '2', '1488343152809论文评阅2.doc', 'E://gpmsUpload/2014051654/1488343152809论文评阅2.doc', '论文评阅2.doc', null, null, null, '2017-03-01 12:39:12', '2');
 INSERT INTO `teacher_review` VALUES ('8', '1', '11', '2', '测试评阅工作', null, '2013', '7', '1', '1490107393410论文评阅.doc', 'E://gpmsUpload/2014051629/1490107393410论文评阅.doc', '论文评阅.doc', '1490156276987教师建议.doc', 'E://gpmsUpload/0001/1490156276987教师建议.doc', '教师建议.doc', '2017-03-21 22:43:13', '3');
 INSERT INTO `teacher_review` VALUES ('9', '2', '11', '2', '评阅工作通过测试', null, '2013', '7', '2', '1490156469669论文评阅2.doc', 'E://gpmsUpload/2014051629/1490156469669论文评阅2.doc', '论文评阅2.doc', null, null, null, '2017-03-22 12:21:09', '3');
+INSERT INTO `teacher_review` VALUES ('10', '1', '15', '16', '评阅测试不通过', null, '2013', '8', '1', '1491214027670论文评阅.doc', 'E://gpmsUpload/2014051657/1491214027670论文评阅.doc', '论文评阅.doc', '1491215858981教师建议.doc', 'E://gpmsUpload/0004/1491215858981教师建议.doc', '教师建议.doc', '2017-04-03 18:07:07', '10');
+INSERT INTO `teacher_review` VALUES ('11', '2', '15', '16', '评阅测试通过', null, '2013', '8', '2', '1491215878438论文评阅2.doc', 'E://gpmsUpload/2014051657/1491215878438论文评阅2.doc', '论文评阅2.doc', '1491215894869教师建议.doc', 'E://gpmsUpload/0004/1491215894869教师建议.doc', '教师建议.doc', '2017-04-03 18:37:58', '10');
 
 -- ----------------------------
 -- Table structure for teacher_year_answer
@@ -781,26 +822,28 @@ CREATE TABLE `teacher_year_answer` (
   `teacher_id` int(11) NOT NULL,
   `year` varchar(5) NOT NULL,
   `answer_flag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '答辩分组（0未分组1已分组）',
-  `answer_id` int(11) DEFAULT NULL COMMENT '答辩分组id'
+  `answer_id` int(11) DEFAULT NULL COMMENT '答辩分组id',
+  `is_leader` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为组长（0否1是）'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_year_answer
 -- ----------------------------
-INSERT INTO `teacher_year_answer` VALUES ('2', '2013', '1', '1');
-INSERT INTO `teacher_year_answer` VALUES ('3', '2013', '1', '1');
-INSERT INTO `teacher_year_answer` VALUES ('4', '2013', '1', '1');
-INSERT INTO `teacher_year_answer` VALUES ('10', '2013', '1', '2');
-INSERT INTO `teacher_year_answer` VALUES ('12', '2013', '1', '2');
-INSERT INTO `teacher_year_answer` VALUES ('13', '2013', '1', '2');
-INSERT INTO `teacher_year_answer` VALUES ('14', '2013', '0', null);
-INSERT INTO `teacher_year_answer` VALUES ('2', '2014', '0', null);
-INSERT INTO `teacher_year_answer` VALUES ('3', '2014', '0', null);
-INSERT INTO `teacher_year_answer` VALUES ('4', '2014', '0', null);
-INSERT INTO `teacher_year_answer` VALUES ('10', '2014', '0', null);
-INSERT INTO `teacher_year_answer` VALUES ('12', '2014', '0', null);
-INSERT INTO `teacher_year_answer` VALUES ('13', '2014', '1', '2');
-INSERT INTO `teacher_year_answer` VALUES ('14', '2014', '0', null);
+INSERT INTO `teacher_year_answer` VALUES ('2', '2013', '1', '1', '1');
+INSERT INTO `teacher_year_answer` VALUES ('3', '2013', '1', '1', '0');
+INSERT INTO `teacher_year_answer` VALUES ('4', '2013', '1', '1', '0');
+INSERT INTO `teacher_year_answer` VALUES ('10', '2013', '1', '2', '1');
+INSERT INTO `teacher_year_answer` VALUES ('12', '2013', '1', '2', '0');
+INSERT INTO `teacher_year_answer` VALUES ('13', '2013', '1', '2', '0');
+INSERT INTO `teacher_year_answer` VALUES ('14', '2013', '1', '1', '0');
+INSERT INTO `teacher_year_answer` VALUES ('2', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('3', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('4', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('10', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('12', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('13', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('14', '2014', '0', null, '0');
+INSERT INTO `teacher_year_answer` VALUES ('16', '2013', '0', null, '0');
 
 -- ----------------------------
 -- Table structure for teacher_year_review
@@ -817,11 +860,11 @@ CREATE TABLE `teacher_year_review` (
 -- ----------------------------
 INSERT INTO `teacher_year_review` VALUES ('2', '2013', '1');
 INSERT INTO `teacher_year_review` VALUES ('3', '2013', '1');
-INSERT INTO `teacher_year_review` VALUES ('4', '2013', '0');
-INSERT INTO `teacher_year_review` VALUES ('10', '2013', '0');
-INSERT INTO `teacher_year_review` VALUES ('12', '2013', '0');
-INSERT INTO `teacher_year_review` VALUES ('13', '2013', '0');
-INSERT INTO `teacher_year_review` VALUES ('14', '2013', '0');
+INSERT INTO `teacher_year_review` VALUES ('4', '2013', '1');
+INSERT INTO `teacher_year_review` VALUES ('10', '2013', '1');
+INSERT INTO `teacher_year_review` VALUES ('12', '2013', '1');
+INSERT INTO `teacher_year_review` VALUES ('13', '2013', '1');
+INSERT INTO `teacher_year_review` VALUES ('14', '2013', '1');
 INSERT INTO `teacher_year_review` VALUES ('2', '2014', '0');
 INSERT INTO `teacher_year_review` VALUES ('3', '2014', '0');
 INSERT INTO `teacher_year_review` VALUES ('4', '2014', '0');
@@ -829,6 +872,7 @@ INSERT INTO `teacher_year_review` VALUES ('10', '2014', '0');
 INSERT INTO `teacher_year_review` VALUES ('12', '2014', '0');
 INSERT INTO `teacher_year_review` VALUES ('13', '2014', '0');
 INSERT INTO `teacher_year_review` VALUES ('14', '2014', '0');
+INSERT INTO `teacher_year_review` VALUES ('16', '2013', '1');
 
 -- ----------------------------
 -- Table structure for teacher_year_student
@@ -845,13 +889,13 @@ CREATE TABLE `teacher_year_student` (
 -- ----------------------------
 -- Records of teacher_year_student
 -- ----------------------------
-INSERT INTO `teacher_year_student` VALUES ('2', '2013', '3', '5,8,11,', '3');
-INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,', '2');
-INSERT INTO `teacher_year_student` VALUES ('4', '2013', '0', null, null);
-INSERT INTO `teacher_year_student` VALUES ('10', '2013', '0', null, null);
-INSERT INTO `teacher_year_student` VALUES ('12', '2013', '0', null, null);
-INSERT INTO `teacher_year_student` VALUES ('13', '2013', '0', null, null);
-INSERT INTO `teacher_year_student` VALUES ('14', '2013', '0', null, null);
+INSERT INTO `teacher_year_student` VALUES ('2', '2013', '3', '5,8,11,', '12');
+INSERT INTO `teacher_year_student` VALUES ('3', '2013', '1', '7,', '4');
+INSERT INTO `teacher_year_student` VALUES ('4', '2013', '0', null, '3');
+INSERT INTO `teacher_year_student` VALUES ('10', '2013', '0', null, '16');
+INSERT INTO `teacher_year_student` VALUES ('12', '2013', '0', null, '2');
+INSERT INTO `teacher_year_student` VALUES ('13', '2013', '0', null, '14');
+INSERT INTO `teacher_year_student` VALUES ('14', '2013', '0', null, '13');
 INSERT INTO `teacher_year_student` VALUES ('2', '2014', '0', null, null);
 INSERT INTO `teacher_year_student` VALUES ('3', '2014', '0', null, null);
 INSERT INTO `teacher_year_student` VALUES ('4', '2014', '0', null, null);
@@ -859,6 +903,7 @@ INSERT INTO `teacher_year_student` VALUES ('10', '2014', '0', null, null);
 INSERT INTO `teacher_year_student` VALUES ('12', '2014', '0', null, null);
 INSERT INTO `teacher_year_student` VALUES ('13', '2014', '0', null, null);
 INSERT INTO `teacher_year_student` VALUES ('14', '2014', '0', null, null);
+INSERT INTO `teacher_year_student` VALUES ('16', '2013', '1', '15,', '10');
 
 -- ----------------------------
 -- Table structure for understanding_report
@@ -877,7 +922,7 @@ CREATE TABLE `understanding_report` (
   `teacher_id` int(11) NOT NULL,
   `teacher_advise` text COMMENT '教师意见',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of understanding_report
@@ -886,6 +931,7 @@ INSERT INTO `understanding_report` VALUES ('5', '5', '2017-02-24 17:17:06', '201
 INSERT INTO `understanding_report` VALUES ('6', '7', '2017-02-25 13:16:50', '2013', '2', '2', '14879998105562010091013583525.doc', 'E://gpmsUpload/2014051654/14879998105562010091013583525.doc', '2010091013583525.doc', '3', null);
 INSERT INTO `understanding_report` VALUES ('7', '8', '2017-03-02 22:33:28', '2013', '3', '2', '1488465208498论文一稿.doc', 'E://gpmsUpload/2014051655/1488465208498论文一稿.doc', '论文一稿.doc', '2', '<font size=\"5\">1、测试；</font><div><font size=\"5\">2、测试；</font></div>');
 INSERT INTO `understanding_report` VALUES ('8', '11', '2017-03-15 19:12:17', '2013', '7', '2', '1489576337523审题报告.doc', 'E://gpmsUpload/2014051629/1489576337523审题报告.doc', '审题报告.doc', '2', '恭喜通过');
+INSERT INTO `understanding_report` VALUES ('9', '15', '2017-04-03 00:57:45', '2013', '8', '2', '1491152265733论文一稿.doc', 'E://gpmsUpload/2014051657/1491152265733论文一稿.doc', '论文一稿.doc', '16', '<font size=\"5\" face=\"楷体\">通过通过通过</font>');
 
 -- ----------------------------
 -- Table structure for user_role
@@ -910,6 +956,11 @@ INSERT INTO `user_role` VALUES ('7', '5');
 INSERT INTO `user_role` VALUES ('8', '5');
 INSERT INTO `user_role` VALUES ('10', '4');
 INSERT INTO `user_role` VALUES ('11', '5');
+INSERT INTO `user_role` VALUES ('15', '5');
+INSERT INTO `user_role` VALUES ('16', '4');
+INSERT INTO `user_role` VALUES ('12', '4');
+INSERT INTO `user_role` VALUES ('13', '4');
+INSERT INTO `user_role` VALUES ('14', '4');
 DROP TRIGGER IF EXISTS `answerGroupByClassesInsert`;
 DELIMITER ;;
 CREATE TRIGGER `answerGroupByClassesInsert` BEFORE INSERT ON `classes` FOR EACH ROW begin

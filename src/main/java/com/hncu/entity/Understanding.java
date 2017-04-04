@@ -36,7 +36,6 @@ public class Understanding extends BaseEntity {
         Date now = Calendar.getInstance().getTime();
         this.setUploadDate(now);
         this.setStudentId(UserUtils.getCurrentUser().getId());
-        this.setYear(SysParamUtil.getParamValue("year"));
         this.setTitleId(UserUtils.getCurrentUser().getStudent().getTitleId());
         this.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
     }

@@ -1,7 +1,9 @@
 package com.hncu.entity;
 
 import com.hncu.common.BaseEntity;
+import com.hncu.utils.UserUtils;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -15,6 +17,15 @@ public class SchoolReport extends BaseEntity {
     private String score;
     private String passFlag;
     private Date dateTime;
+    private String oldScore;
+    private String year;
+    private String createById;
+
+    public void preInsertSchoolReport(){
+        Date now = Calendar.getInstance().getTime();
+        this.setDateTime(now);
+        this.setCreateById(UserUtils.getCurrentUser().getId());
+    }
 
     public String getReportId() {
         return reportId;
@@ -54,5 +65,29 @@ public class SchoolReport extends BaseEntity {
 
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public String getOldScore() {
+        return oldScore;
+    }
+
+    public void setOldScore(String oldScore) {
+        this.oldScore = oldScore;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getCreateById() {
+        return createById;
+    }
+
+    public void setCreateById(String createById) {
+        this.createById = createById;
     }
 }

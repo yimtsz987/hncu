@@ -41,7 +41,6 @@ public class Marking extends BaseEntity {
         Date now = Calendar.getInstance().getTime();
         this.setSuploadDate(now);
         this.setStudentId(UserUtils.getCurrentUser().getId());
-        this.setYear(SysParamUtil.getParamValue("year"));
         this.setTitleId(UserUtils.getCurrentUser().getStudent().getTitleId());
         this.setTeacherId(UserUtils.getCurrentUser().getStudent().getTeacherId());
         this.setReviewTeacherId(UserUtils.getCurrentUser().getStudent().getReviewTeacherId());

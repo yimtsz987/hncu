@@ -84,8 +84,9 @@
 								</span>
 							</td>
 							<td>
+								<a href="${ctx}/student/titleInfoList?teacherId=${teacher.id}" class="btn btn-xs btn-info">查看课题</a>
 								<c:if test="${teacher.studentSum < maxTeacherNum}">
-								   <a href="javascript:void(0)" class="btn btn-xs btn-primary"onclick="chooseBtn(this,${teacher.id})">选择</a>
+								   <a href="javascript:void(0)" class="btn btn-xs btn-primary" onclick="chooseBtn(this,${teacher.id})">选择</a>
 								</c:if>
 								<c:if test="${teacher.studentSum eq maxTeacherNum}">
 									<strong>不可操作</strong>
@@ -111,9 +112,9 @@
             btn: ['确定','取消'] //按钮
         },function(){
             window.location.href = "${ctx}/student/chooseTeacher?id="+id;
-            layer.msg('删除成功！',{icon:1});
+            layer.msg('选择成功！',{icon:1});
         },function(){
-            layer.msg('取消删除！',{icon:1});
+            layer.msg('取消选择！',{icon:1});
         });
     }
     if($("#tbodyId tr").length<10){

@@ -47,11 +47,6 @@
                 </form:form>
 			</div>
 			<sys:msg msgObj="${msg}" />
-			<c:forEach items="${teacherSchedulePageInfo.list}" var="schedule" varStatus="sc">
-				<c:set var="lastSort" value="${teacherSchedulePageInfo.list[sc.first].user.student.scheduleNum}" scope="page" />
-				<c:set var="titleName" value="${teacherSchedulePageInfo.list[sc.first].user.student.titleName}" scope="page" />
-				<c:set var="studentName" value="${teacherSchedulePageInfo.list[sc.first].user.name}" scope="page" />
-			</c:forEach>
 			<div class="btn-wrap">
 				<span class="btn-right">
 					<a href="javascript:void(0)" class="btn btn-warning" onclick="history.go(-1)">
@@ -61,7 +56,7 @@
 				<span class="btn-title">分期报告</span>
 			</div>
 			<div class="page-title" style="font-weight:600;text-indent:20px;">
-				课题：${titleName} —— ${studentName}
+				课题：${studentInfo.student.titleName} —— ${studentInfo.name}
 			</div>
 			<div class="table-responsive table-custom">
 				<table class="table table-hover table-bordered table-striped">
@@ -104,10 +99,10 @@
 									<strong>等待学生上传</strong>
 								</c:if>
 								<c:if test="${schedule.schedule.reportFlag eq 1}">
-									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${lastSort}"  class="btn btn-xs btn-danger" >审核</a>
+									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${studentInfo.student.scheduleNum}"  class="btn btn-xs btn-danger" >审核</a>
 								</c:if>
 								<c:if test="${schedule.schedule.reportFlag ne 1 and schedule.schedule.reportFlag ne 0}">
-									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${lastSort}"  class="btn btn-xs btn-primary" >查看审核</a>
+									<a href="${ctx}/teacher/scheduleCheck?id=${schedule.schedule.id}&schedule.lastSort=${studentInfo.student.scheduleNum}"  class="btn btn-xs btn-primary" >查看审核</a>
 								</c:if>
 							</td>
 						</tr>

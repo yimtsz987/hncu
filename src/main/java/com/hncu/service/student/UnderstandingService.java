@@ -38,6 +38,7 @@ public class UnderstandingService extends BaseService<UnderstandingMapper, Under
             understanding.setUploadFile(uploadParam.getUploadFile());
             understanding.setUploadFileOldName(uploadParam.getUploadFileOldName());
             understanding.setUploadPath(uploadParam.getUploadPath());
+            understanding.setTeacherAdvise(null);
             mapper.uploadReportAlter(understanding);
         }
     }

@@ -167,6 +167,11 @@
 							   <i class="glyphicon glyphicon-home"></i>系统设置
 							</a>
 						</li>
+						<li>
+							<a href="javascript:void(0)" title="发送通知" class="iframeurl" name="${ctx}/notice/noticeEdit">
+								<i class="glyphicon glyphicon-home"></i>发送通知
+							</a>
+						</li>
 						<li class="first-nav">
 							<a href="javascript:void(0)" title="字典管理">
 							   <i class="glyphicon glyphicon-home"></i>字典管理
@@ -191,7 +196,7 @@
 								</li>
 							</ul>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="通知公告" class="iframeurl">
+							<a href="javascript:void(0)" title="通知公告" class="iframeurl" name="${ctx}/notice/noticeList">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
 						</li>

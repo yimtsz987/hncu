@@ -125,6 +125,9 @@ public class BaseEntity implements Serializable {
      */
     public static final String REVIEW_FLAG_NO = "0";
 
+    public static final String LEADER_NO = "0";
+    public static final String LEADER_YES = "1";
+
 
 
     protected String id;  //主键

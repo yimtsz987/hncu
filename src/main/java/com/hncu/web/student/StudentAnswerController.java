@@ -48,6 +48,7 @@ public class StudentAnswerController extends BaseController{
                 model.addAttribute("leader", leader);
                 model.addAttribute("teacherList", teacherList);
                 model.addAttribute("answerFlag", answerFlag);
+                model.addAttribute("answer",answer);
             } else {
                 model.addAttribute("answer",answer);
                 model.addAttribute("answerFlag", answerFlag);

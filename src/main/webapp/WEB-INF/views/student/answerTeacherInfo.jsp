@@ -34,7 +34,7 @@
 				padding-right: 100px;
 				padding-left: 100px;
 			}
-			
+
 			.info-wrap .info-left .info-headerpic{
 				width: 150px;
 				height: 150px;
