@@ -79,6 +79,7 @@ public class BaseEntity implements Serializable {
     public static final String STEP_NOW_7 = "7";
     public static final String STEP_NOW_8 = "8";
     public static final String STEP_NOW_9 = "9";
+    public static final String STEP_NOW_10 = "10";
 
     /**
      * 上传标记 - 未上传

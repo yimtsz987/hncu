@@ -39,6 +39,7 @@ public class StudentExpand implements Serializable {
     private String answerFlag;
     private String expandFlag;
     private SchoolReport schoolReport;
+    private String schoolReportId;
 
     public String getsId() {
         return sId;
@@ -262,5 +263,13 @@ public class StudentExpand implements Serializable {
 
     public void setSchoolReport(SchoolReport schoolReport) {
         this.schoolReport = schoolReport;
+    }
+
+    public String getSchoolReportId() {
+        return schoolReportId;
+    }
+
+    public void setSchoolReportId(String schoolReportId) {
+        this.schoolReportId = schoolReportId;
     }
 }

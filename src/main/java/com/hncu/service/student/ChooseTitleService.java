@@ -11,11 +11,16 @@ import com.hncu.utils.UserUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+
 /**
  * 选择课题服务层
  */
 @Service
 public class ChooseTitleService extends BaseService<ChooseTitleMapper, Title>{
+
+    @Resource
+    private ChooseTeacherService chooseTeacherService;
 
     @Transactional(readOnly = false)
     public void chooseTitle(Title title){
@@ -27,4 +32,9 @@ public class ChooseTitleService extends BaseService<ChooseTitleMapper, Title>{
         }
     }
 
+    @Transactional(readOnly = false)
+    public void chooseTitleAndTeacher(Title title,TeacherInfo teacherInfo){
+        chooseTeacherService.chooseTeacher(teacherInfo, UserUtils.getCurrentUser());
+        chooseTitle(title);
+    }
 }

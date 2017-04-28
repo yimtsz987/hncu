@@ -2,6 +2,7 @@ package com.hncu.dao.mapper.teacher;
 
 import com.hncu.common.BaseMapper;
 import com.hncu.entity.SchoolReport;
+import com.hncu.entity.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -37,4 +38,11 @@ public interface TSchoolReportMapper extends BaseMapper<SchoolReport> {
      * @return
      */
     int deleteSecondAnswer(SchoolReport schoolReport);
+
+    /**
+     * 更新学生步骤
+     * @param user
+     * @return
+     */
+    int updateStudentStep(User user);
 }

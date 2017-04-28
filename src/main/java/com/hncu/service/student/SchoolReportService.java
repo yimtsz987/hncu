@@ -3,6 +3,7 @@ package com.hncu.service.student;
 import com.hncu.common.BaseService;
 import com.hncu.dao.mapper.student.SchoolReportMapper;
 import com.hncu.entity.SchoolReport;
+import com.hncu.entity.User;
 import com.hncu.utils.UserUtils;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,9 @@ public class SchoolReportService extends BaseService<SchoolReportMapper, SchoolR
 
     public SchoolReport querySchoolReportById(){
         return mapper.querySchoolReportById(UserUtils.getCurrentUser().getId(), UserUtils.getCurrentUser().getStudent().getSchoolReport().getReportId());
+    }
+
+    public SchoolReport querySchoolReportById(String studentId, String reportId){
+        return mapper.querySchoolReportById(studentId, reportId);
     }
 }

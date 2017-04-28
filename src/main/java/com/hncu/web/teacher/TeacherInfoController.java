@@ -51,10 +51,10 @@ public class TeacherInfoController extends BaseController {
         Msg msg;
         try {
             infoService.updateTeacherInfo(user);
-            msg = new Msg(Msg.MSG_TYPE_OK, "个人信息成功！！");
+            msg = new Msg(Msg.MSG_TYPE_OK, "个人信息修改成功！！");
         } catch (Exception e){
-            logger.error("个人信息失败！！",e);
-            msg = new Msg(Msg.MSG_TYPE_REMOVE, "个人信息失败！！");
+            logger.error("个人信息修改失败！！",e);
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "个人信息修改失败！！");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/teacher/info";

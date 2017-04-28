@@ -9,6 +9,7 @@ import com.hncu.entity.Title;
 import com.hncu.service.student.ChooseTeacherService;
 import com.hncu.service.student.ChooseTitleService;
 import com.hncu.utils.StringUtils;
+import com.hncu.utils.SysParamUtil;
 import com.hncu.utils.UserUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,9 @@ public class ChooseTitleController extends BaseController {
 
     @Resource
     private ChooseTitleService chooseTitleService;
+
+    @Resource
+    private ChooseTeacherService chooseTeacherService;
 
     @ModelAttribute
     public Title get(@RequestParam(required = false) String id) {
@@ -59,16 +63,21 @@ public class ChooseTitleController extends BaseController {
     }
 
     @RequestMapping(value = "/chooseTitle")
-    public String chooseTitle(@RequestParam String id, Model model, RedirectAttributes redirectAttributes){
+    public String chooseTitle(@RequestParam String id, RedirectAttributes redirectAttributes){
         Title title = chooseTitleService.queryById(id);
         Msg msg;
         try {
-            chooseTitleService.chooseTitle(title);
-            msg = new Msg(Msg.MSG_TYPE_OK, "选择【"+title.getTitle()+"】课题成功！！");
+            if (title.getSelectFlag().equals("0") && title.getTeacherId().equals(UserUtils.getCurrentUser().getStudent().getTeacherId())){
+                chooseTitleService.chooseTitle(title);
+                msg = new Msg(Msg.MSG_TYPE_OK, "选择【"+title.getTitle()+"】课题成功！！");
+            } else {
+                msg = new Msg(Msg.MSG_TYPE_OK, "【"+title.getTitle()+"】课题已被选择！！");
+            }
         } catch (Exception e){
             logger.error("选择老师失败！！", e);
             msg = new Msg(Msg.MSG_TYPE_OK, "选择【"+title.getTitle()+"】课题失败！！");
         }
+        redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/student/chooseTitleInfo";
     }
 
@@ -81,6 +90,27 @@ public class ChooseTitleController extends BaseController {
         } else {
             return "redirect:/student/chooseTitleList";
         }
+    }
 
+    @RequestMapping(value = "/chooseTitleAndTeacher")
+    public String chooseTitleAndTeacher(@RequestParam String id, @RequestParam String teacherId,  RedirectAttributes redirectAttributes){
+        Title title = chooseTitleService.queryById(id);
+        TeacherInfo teacherInfo = chooseTeacherService.queryTeacherInfoById(new TeacherInfo(teacherId));
+        try {
+            if (title.getSelectFlag().equals("0") && title.getTeacherId().equals(teacherId)
+                    && StringUtils.isEmpty(UserUtils.getCurrentUser().getStudent().getTeacherId())
+                    && teacherInfo.getStudentSum() <= Integer.parseInt(SysParamUtil.getParamValue("maxTeacherNum"))){
+                chooseTitleService.chooseTitleAndTeacher(title, teacherInfo);
+                redirectAttributes.addFlashAttribute("msg", new Msg(Msg.MSG_TYPE_OK, "选择【"+title.getTitle()+"】课题和【"+ UserUtils.queryUserById(title.getTeacherId()).getName() +"】老师成功！！"));
+                return "redirect:/student/chooseTitleInfo";
+            } else {
+                redirectAttributes.addFlashAttribute("msg", new Msg(Msg.MSG_TYPE_REMOVE, "【"+title.getTitle()+"】课题已被选择或者教师学生已满！！"));
+                return "redirect:/student/chooseTeacherList";
+            }
+        } catch (Exception e){
+            logger.error("选择课题和老师失败！！", e);
+            redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_REMOVE, "选择【"+title.getTitle()+"】课题和【"+ UserUtils.queryUserById(title.getTeacherId()).getName() +"】老师失败！！"));
+            return "redirect:/student/chooseTeacherList";
+        }
     }
 }

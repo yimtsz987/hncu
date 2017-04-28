@@ -231,7 +231,7 @@
     function changeIndex() {
         var i = 1;
         $("#dynamicTable tbody tr").each(function() { //循环tab tbody下的tr
-            $(this).find("input[name='NO']").val(i++); //更新行号
+            $(this).find("input[name='sort']").val(i++); //更新行号
         });
     }
 

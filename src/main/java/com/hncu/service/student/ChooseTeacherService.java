@@ -14,6 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ChooseTeacherService extends BaseService<ChooseTeacherMapper, TeacherInfo>{
 
+    public TeacherInfo queryTeacherInfoById(TeacherInfo teacherInfo){
+        return mapper.queryTeacherInfoById(teacherInfo);
+    }
+
     /**
      * 选择函数
      * @param teacherInfo
@@ -45,5 +49,6 @@ public class ChooseTeacherService extends BaseService<ChooseTeacherMapper, Teach
             choose(teacherInfo,user);
         }
     }
+
 
 }

@@ -114,6 +114,10 @@
 								<p>很遗憾，本次答辩未通过！</p>
 								<p>请于XXXX年XX月XX日进行二次答辩。</p>
 							</c:if>
+							<c:if test="${schoolReport.passFlag eq 1}">
+								<p style="color: #000;">教师评语：</p>
+								<p style="text-indent: 30px;color: #000;">${schoolReport.teacherComment}</p>
+							</c:if>
 						</div>
 						<div class="bottom1 bottom">湖南城市学院</div>
 						<div class="bottom2 bottom">${gpms:getParamValue('department')}</div>

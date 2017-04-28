@@ -27,11 +27,17 @@ public class TStudentService extends BaseService<TStudentMapper, TeacherAndStude
         List<User> userList = Lists.newArrayList();
         TeacherAndStudent teacherAndStudent =  mapper.queryByTeacherId(teacherId, sysYear);
         User user;
-        for (String id : StringUtils.split(teacherAndStudent.getStudentIds(),",")){
-            user = userService.queryById(id);
-            userList.add(user);
+        if (StringUtils.isNotEmpty(teacherAndStudent.getStudentIds())){
+            for (String id : StringUtils.split(teacherAndStudent.getStudentIds(),",")){
+                user = userService.queryById(id);
+                userList.add(user);
+            }
+            return userList;
+        } else {
+            userList = null;
+            return userList;
         }
-        return userList;
+
     }
 
     @Transactional(readOnly = false)

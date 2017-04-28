@@ -67,6 +67,13 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	}
 
 	/**
+	 * 得到日期时间字符串，转换格式（yyyy-MM-dd HH:mm:ss）
+	 */
+	public static String formatDateTimeSchoolReportId(Date date) {
+		return formatDate(date, "yyyyMMdd");
+	}
+
+	/**
 	 * 得到当前时间字符串 格式（HH:mm:ss）
 	 */
 	public static String getTime() {

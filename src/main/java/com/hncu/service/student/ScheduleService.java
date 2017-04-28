@@ -30,7 +30,9 @@ public class ScheduleService extends BaseService<ScheduleMapper, Schedule> {
     @Override
     public Schedule queryById(String id) {
         Schedule schedule = mapper.queryById(id);
-        schedule.setCheckStr(MD5Util.string2MD5(schedule.getUploadFileOldName()));
+        if (StringUtils.isNotEmpty(schedule.getUploadFileOldName())){
+            schedule.setCheckStr(MD5Util.string2MD5(schedule.getUploadFileOldName()));
+        }
         return schedule;
     }
 

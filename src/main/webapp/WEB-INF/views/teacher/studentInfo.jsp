@@ -132,7 +132,7 @@
 						<div class="form-group">
 							<label class="control-label col-lg-3 col-xs-3 col-sm-3 label-size">班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:</label>
 							<div class="col-lg-6 col-xs-6 col-sm-6 has-feedback">
-								<div class="info-right-text">${studentInfo.student.classes.classId}</div>
+								<div class="info-right-text">${studentInfo.student.classes}</div>
 							</div>
 						</div>
 						<div class="form-group">

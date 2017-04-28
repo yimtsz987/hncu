@@ -12,7 +12,7 @@
 					<img src="${ctxStatic}/img/logo1.png" width="700" height="75"/>
 				</div>
 			</div>
-			<div class="logo-info pull-left">—— ${gpms:getParamValue("department")}${gpms:getParamValue("year")}启用</div>
+			<div class="logo-info pull-left">—— ${gpms:getParamValue("department")}${gpms:getParamValue("year")}启用(测试版Beta)</div>
 			<div class="header-btn pull-right">
 				<ul>
 					<li>
@@ -88,7 +88,9 @@
 							<div class="user-arrow"></div>
 							<ul>
 								<li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;个人资料</a></li>
-								<li><a href="${ctx}/tsRoleSelect"><span class="glyphicon glyphicon-registration-mark"></span>&nbsp;&nbsp;角色切换</a></li>
+								<shiro:hasRole name="secretary,director">
+									<li><a href="${ctx}/tsRoleSelect"><span class="glyphicon glyphicon-registration-mark"></span>&nbsp;&nbsp;角色切换</a></li>
+								</shiro:hasRole>
 								<li><a href="password.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;修改密码</a></li>
 								<li class="divider"></li>
 								<li><a href="/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;注销</a></li>
@@ -199,7 +201,7 @@
 						</c:if>
 						<c:if test="${gpms:getUser().teacher.isLeader eq 1}">
 							<li class="first-nav">
-								<a href="javascript:void(0)" title="成绩上传" class="iframeurl" name="${ctx}/teacher/teacherAnswerInfoList">
+								<a href="javascript:void(0)" title="成绩上传" class="iframeurl" name="${ctx}/teacher/schoolReportStudentList">
 									<i class="glyphicon glyphicon-home"></i>成绩上传
 								</a>
 							</li>
@@ -342,10 +344,10 @@
                 $("#nav-collapse").attr("class","nav-collapse nav-collapse-small");
                 nav_collapse();
             }else if(win_width >= 1366){
-                $(".logo").css({'width':700});
-                $(".logo-img").css({'width':700});
+                $(".logo").css({'width':630});
+                $(".logo-img").css({'width':630});
                 $(".logo-img img").attr('src','${ctxStatic}/img/logo1.png');
-                $(".logo-img img").attr('width','700');
+                $(".logo-img img").attr('width','630');
                 $("#nav-collapse").attr("class","nav-collapse nav-collapse-large");
                 nav_collapse();
             }
@@ -365,10 +367,10 @@
                 $("#nav-collapse").attr("class","nav-collapse nav-collapse-small");
                 nav_collapse();
             }else if(win_width >= 1366){
-                $(".logo").css({'width':700});
-                $(".logo-img").css({'width':700});
+                $(".logo").css({'width':630});
+                $(".logo-img").css({'width':630});
                 $(".logo-img img").attr('src','${ctxStatic}/img/logo1.png');
-                $(".logo-img img").attr('width','700');
+                $(".logo-img img").attr('width','630');
                 $("#nav-collapse").attr("class","nav-collapse nav-collapse-large");
                 nav_collapse();
             }
