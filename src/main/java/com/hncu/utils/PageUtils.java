@@ -17,8 +17,7 @@ public class PageUtils {
             sb.append("<li class=\"disabled\"><a href=\"javascript:\">首页</a></li>");
             sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>");
         } else {
-            sb.append("<li><a href=\"javascript:page(");
-            sb.append(pageInfo.getFirstPage()).append(",");
+            sb.append("<li><a href=\"javascript:page(1,");
             sb.append(pageInfo.getPageSize()).append(")\">首页</a></li>");
             sb.append("<li><a href=\"javascript:page(");
             sb.append(pageInfo.getPrePage()).append(",");
@@ -47,7 +46,7 @@ public class PageUtils {
             sb.append(pageInfo.getNextPage()).append(",");
             sb.append(pageInfo.getPageSize()).append(")\">下一页 &#187;</a></li>");
             sb.append("<li><a href=\"javascript:page(");
-            sb.append(pageInfo.getLastPage()).append(",");
+            sb.append(pageInfo.getPages()).append(",");
             sb.append(pageInfo.getPageSize()).append(")\">尾页</a></li>");
         }
 
