@@ -9,10 +9,16 @@
 			html,body{
 				background: #fafafa;
 			}
-			.header{
+			.login_header{
 				width: 100%;
 				min-width: 1366px;
-				height: 100px;
+				height: 120px;
+			}
+			.login_header .h_main{
+				width: 1366px;
+				height: 120px;
+				margin: 0 auto;
+				background: black;
 			}
 			.login-wrap{
 				width: 100%;
@@ -133,6 +139,48 @@
 			.margin-bottom-10{
 				margin-bottom: 10px !important;
 			}
+
+			.login_footer{
+				width: 100%;
+				margin-top: 230px;
+			}
+			.login_footer .f_main{
+				width: 1366px;
+				margin: 0 auto;
+			}
+			.login_footer .f_main .link{
+				border-top: 1px solid #ddd;
+				border-bottom: 1px solid #ddd;
+				line-height: 36px;
+				height:36px;
+			}
+			.login_footer .f_main .link ul li{
+				float: left;
+				padding: 0 10px;
+			}
+			.login_footer .f_main .link b {
+				display: inline;
+				float: left;
+				margin: 0 3px;
+				font-weight: 400;
+				color: #ddd;
+			}
+			.login_footer .f_main .copyright{
+				width: 100%;
+				line-height: 50px;
+				color: #9c9c9c;
+				font-size: 16px;
+				text-align: center;
+				float: left;
+			}
+			.login_footer .f_main .about{
+				width: 100%;
+				line-height: 30px;
+				color: #9c9c9c;
+				font-size: 16px;
+				text-align: center;
+				float: left;
+			}
 		</style>
 		<script language="JavaScript">
 			if (window != top)
@@ -140,8 +188,8 @@
 		</script>
 	</head>
 	<body>
-	<div class="header">
-
+	<div class="login_header">
+		<div class="h_main"></div>
 	</div>
 	<div class="login-wrap">
 		<div class="login-bg"></div>
@@ -185,6 +233,25 @@
 						</div>
 					</form>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="login_footer">
+		<div class="f_main">
+			<div class="link">
+				<ul>
+					<li><a href="#">湖南城市学院主站</a></li>
+					<b>|</b>
+					<li><a href="#">信息与电子工程学院</a></li>
+					<b>|</b>
+					<li><a href="#">XXX网</a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				&copy; 湖南城市学院&nbsp;信息与电子工程学院&nbsp;&nbsp;版权所有
+			</div>
+			<div class="about">
+				技术支持：智相科技
 			</div>
 		</div>
 	</div>
