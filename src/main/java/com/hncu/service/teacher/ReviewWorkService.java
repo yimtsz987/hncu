@@ -75,12 +75,14 @@ public class ReviewWorkService extends BaseService<ReviewWorkMapper, TeacherMark
         TeacherAndStudent teacherAndStudent = new TeacherAndStudent();
         teacherAndStudent.setReviewTeacherId(reviewTeacherId);
         TeacherAndStudent studentIds = tStudentService.queryReviewStudentInfoList(teacherAndStudent);
-        String[] studentId = StringUtils.split(studentIds.getStudentIds(), ",");
         List<User> reviewStudentInfoList = Lists.newArrayList();
-        for (int i = 0; i < studentId.length; i++) {
-            User studentInfo = userService.queryById(studentId[i]);
-            if (studentInfo != null){
-                reviewStudentInfoList.add(studentInfo);
+        String[] studentId = StringUtils.split(studentIds.getStudentIds(), ",");
+        if(studentId != null){
+            for (int i = 0; i < studentId.length; i++) {
+                User studentInfo = userService.queryById(studentId[i]);
+                if (studentInfo != null){
+                    reviewStudentInfoList.add(studentInfo);
+                }
             }
         }
         return reviewStudentInfoList;

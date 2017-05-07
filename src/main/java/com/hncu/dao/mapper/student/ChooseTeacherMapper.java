@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ChooseTeacherMapper extends BaseMapper<TeacherInfo> {
 
+    TeacherInfo queryTeacherInfoById(TeacherInfo teacherInfo);
+
     /**
      * 选择老师
      * @param teacherInfo

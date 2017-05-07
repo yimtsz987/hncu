@@ -20,6 +20,7 @@ public class SchoolReport extends BaseEntity {
     private String oldScore;
     private String year;
     private String createById;
+    private String teacherComment;
 
     public void preInsertSchoolReport(){
         Date now = Calendar.getInstance().getTime();
@@ -89,5 +90,13 @@ public class SchoolReport extends BaseEntity {
 
     public void setCreateById(String createById) {
         this.createById = createById;
+    }
+
+    public String getTeacherComment() {
+        return teacherComment;
+    }
+
+    public void setTeacherComment(String teacherComment) {
+        this.teacherComment = teacherComment;
     }
 }

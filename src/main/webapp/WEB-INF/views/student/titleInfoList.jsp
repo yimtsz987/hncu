@@ -73,6 +73,7 @@
 							<th>难度</th>
 							<th>类别</th>
 							<th>状态</th>
+							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody id="tbodyId">
@@ -89,6 +90,14 @@
 									${gpms:getDictLabel(title.selectFlag, 'state')}
 								</span>
 							</td>
+							<td>
+								<c:if test="${title.selectFlag eq 0}">
+									<a href="javascript:void(0)" class="btn btn-xs btn-primary" onclick="chooseBtn(this,${title.id},'${title.teacherId}')">选择</a>
+								</c:if>
+								<c:if test="${title.selectFlag eq 1}">
+									<strong>不可操作</strong>
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -103,11 +112,11 @@
     function checkAll(obj){
         $(".table-custom input[type='checkbox']").prop('checked', $(obj).prop('checked'));
     }
-    function chooseBtn(obj,id){
+    function chooseBtn(obj,id, teacherId){
         layer.confirm('您是否确定选择？（注意：选择之后不允许更改，请慎重选择！！）', {
             btn: ['确定','取消'] //按钮
         },function(){
-            window.location.href = "${ctx}/student/chooseTitle?id="+id;
+            window.location.href =  "${ctx}/student/chooseTitleAndTeacher?id="+id+"&teacherId="+teacherId;
             layer.msg('删除成功！',{icon:1});
         },function(){
             layer.msg('取消删除！',{icon:1});
@@ -117,6 +126,7 @@
         var trLength = $("#tbodyId tr").length;
         for (var i=0;i<10-trLength;i++) {
             $("#tbodyId").append("<tr>"
+                + "<td></td>"
                 + "<td></td>"
                 + "<td></td>"
                 + "<td></td>"

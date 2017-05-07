@@ -10,7 +10,7 @@
 		<div class="page-content">
 			<ul class="nav nav-tabs">
 				<li>
-					<a href="${ctx}/admin/info">个人信息</a>
+					<a href="${ctx}/teacher/info">个人信息</a>
 				</li>
 				<li class="active">
 					<a href="javascript:void(0)">修改信息</a>

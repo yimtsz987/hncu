@@ -80,7 +80,11 @@ public class UnderstandingController extends BaseController {
     @RequestMapping(value = "/understandingInfo")
     public String understandingInfo(Model model){
         Understanding understandingInfo = understandingService.queryUnderstandingByStudentId(UserUtils.getCurrentUser().getId());
-        understandingInfo.setCheckStr(MD5Util.string2MD5(understandingInfo.getUploadFileOldName()));
+        if (understandingInfo != null){
+            if (StringUtils.isNotEmpty(understandingInfo.getUploadFileOldName())){
+                understandingInfo.setCheckStr(MD5Util.string2MD5(understandingInfo.getUploadFileOldName()));
+            }
+        }
         model.addAttribute("understandingInfo", understandingInfo);
         return "/student/understandingInfo";
     }

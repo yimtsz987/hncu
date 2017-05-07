@@ -17,22 +17,27 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<c:forEach items="${studentList}" var="student">
-					<div class="col-md-3 col-lg-3 col-sm-6 margin-bottom">
-						<div class="infor">
-							<a href="#"><img src="${ctxStatic}/${student.headerPic}"></a>
-							<div class="caption">
-								<p class="text-center">${student.student.node} ，${student.name}</p>
-								<p class="text-center">${student.student.department.name}</p>
-								<p class="text-center">${student.student.major.name}</p>
-								<p class="text-center">课题:${student.student.titleName}</p>
-							</div>
-							<div class="center-block" style="width: 70px;margin-top: 5px;margin-bottom: 5px;">
-								<a href="${ctx}/teacher/studentInfo?id=${student.id}" class="btn btn-info btn-sm">查看更多</a>
+				<c:if test="${studentList == null}">
+					<h1>请等待学生选择！！</h1>
+				</c:if>
+				<c:if test="${studentList != null}">
+					<c:forEach items="${studentList}" var="student">
+						<div class="col-md-3 col-lg-3 col-sm-6 margin-bottom">
+							<div class="infor">
+								<a href="#"><img src="${ctxStatic}/${student.headerPic}"></a>
+								<div class="caption">
+									<p class="text-center">${student.student.node} ，${student.name}</p>
+									<p class="text-center">${student.student.department.name}</p>
+									<p class="text-center">${student.student.major.name}</p>
+									<p class="text-center">课题:${student.student.titleName}</p>
+								</div>
+								<div class="center-block" style="width: 70px;margin-top: 5px;margin-bottom: 5px;">
+									<a href="${ctx}/teacher/studentInfo?id=${student.id}" class="btn btn-info btn-sm">查看更多</a>
+								</div>
 							</div>
 						</div>
-					</div>
-			    </c:forEach>
+					</c:forEach>
+				</c:if>
 			</div>
 		</div>
 	</body>

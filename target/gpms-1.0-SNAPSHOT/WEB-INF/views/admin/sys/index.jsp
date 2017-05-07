@@ -13,7 +13,7 @@
 					<img src="${ctxStatic}/img/logo1.png" width="700" height="75"/>
 				</div>
 			</div>
-			<div class="logo-info pull-left">—— ${gpms:getParamValue("department")}${gpms:getParamValue("year")}级启用</div>
+			<div class="logo-info pull-left">—— ${gpms:getParamValue("department")}${gpms:getParamValue("year")}级启用(测试版Beta)</div>
 			<div class="header-btn pull-right">
 				<ul>
 					<li>
@@ -317,10 +317,10 @@
 				$("#nav-collapse").attr("class","nav-collapse nav-collapse-small");
 				nav_collapse();
 			}else if(win_width >= 1366){
-				$(".logo").css({'width':700});
-				$(".logo-img").css({'width':700});
+				$(".logo").css({'width':630});
+				$(".logo-img").css({'width':630});
 				$(".logo-img img").attr('src','${ctxStatic}/img/logo1.png');
-				$(".logo-img img").attr('width','700');
+				$(".logo-img img").attr('width','630');
 				$("#nav-collapse").attr("class","nav-collapse nav-collapse-large");
 				nav_collapse();
 			}
@@ -340,10 +340,10 @@
 				$("#nav-collapse").attr("class","nav-collapse nav-collapse-small");
 				nav_collapse();
 			}else if(win_width >= 1366){
-				$(".logo").css({'width':700});
-				$(".logo-img").css({'width':700});
+				$(".logo").css({'width':630});
+				$(".logo-img").css({'width':630});
 				$(".logo-img img").attr('src','${ctxStatic}/img/logo1.png');
-				$(".logo-img img").attr('width','700');
+				$(".logo-img img").attr('width','630');
 				$("#nav-collapse").attr("class","nav-collapse nav-collapse-large");
 				nav_collapse();
 			}

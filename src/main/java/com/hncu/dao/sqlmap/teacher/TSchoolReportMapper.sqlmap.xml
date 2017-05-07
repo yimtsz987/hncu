@@ -10,6 +10,7 @@
         sr.date_time as "dateTime",
         sr.old_score as "oldScore",
         sr.createBy,
+        sr.teacherComment,
         sr.year
     </sql>
 
@@ -32,9 +33,9 @@
         WHERE sr.id = #{id, jdbcType=NUMERIC}
     </select>
 
-    <insert id="uploadSchoolReport" parameterType="SchoolReport">
-        INSERT INTO school_report(report_id,student_id,score,pass_flag,date_time,year,createBy)
-        VALUES (#{reportId,jdbcType=INTEGER},#{studentId,jdbcType=INTEGER},#{score,jdbcType=VARCHAR},#{passFlag,jdbcType=INTEGER},#{dateTime,jdbcType=TIMESTAMP},#{sysYear, jdbcType=VARCHAR},#{createById,jdbcType=INTEGER})
+    <insert id="uploadSchoolReport" parameterType="SchoolReport" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO school_report(report_id,student_id,score,pass_flag,date_time,year,createBy,teacherComment)
+        VALUES (#{reportId,jdbcType=INTEGER},#{studentId,jdbcType=INTEGER},#{score,jdbcType=VARCHAR},#{passFlag,jdbcType=INTEGER},#{dateTime,jdbcType=TIMESTAMP},#{sysYear, jdbcType=VARCHAR},#{createById,jdbcType=INTEGER},#{teacherComment, jdbcType=VARCHAR})
     </insert>
 
     <update id="updateSchoolReport" parameterType="SchoolReport">
@@ -50,4 +51,8 @@
     <delete id="deleteSecondAnswer" parameterType="SchoolReport">
         DELETE FROM second_answer WHERE student_id = #{studentId,jdbcType=INTEGER}
     </delete>
+
+    <update id="updateStudentStep" parameterType="User">
+        UPDATE expand_student SET step_9 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_10,jdbcType=INTEGER},school_report_id = #{student.schoolReportId,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

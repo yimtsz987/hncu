@@ -7,7 +7,10 @@
         sr.student_id as "studentId",
         sr.score,
         sr.pass_flag as "passFlag",
-        sr.date_time
+        sr.date_time,
+        sr.year,
+        sr.createBy,
+        sr.teacherComment
     </sql>
 
     <select id="queryById" parameterType="string" resultType="SchoolReport">

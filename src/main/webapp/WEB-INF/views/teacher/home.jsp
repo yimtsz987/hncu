@@ -83,7 +83,7 @@
 	<body>
 		<div class="page-content">
 			<div class="alert alert-success">
-				<span class="glyphicon glyphicon-ok"></span>欢迎使用<strong>毕业设计管理系统(${gpms:getParamValue("version")})</strong>,你本次登录时间为${nowDate},登录IP为:${loginIp}<span id="close-alert" class="close">&times;</span>
+				<span class="glyphicon glyphicon-ok"></span>欢迎使用<strong>毕业设计管理系统(${gpms:getParamValue("version")})</strong>,你本次登录时间为${nowDate},登录IP为:${loginIp}<strong style="color: red">（注意：该版本为测试版，如有问题发邮件<span style="color: blue">[ 394702110@qq.com ]</span>至开发者，谢谢合作）</strong><span id="close-alert" class="close">&times;</span>
 				<script type="text/javascript">
 					$("#close-alert").click(function(){
 						$(".alert").remove();
@@ -108,13 +108,9 @@
 					通知公告
 				</div>
 				<ul class="notice-list">
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
-					<li><i class="glyphicon glyphicon-bell"></i><a href="#">距提交开题报告到期时间仅剩一天</a></li>
+					<c:forEach items="${noticePageInfo.list}" var="notice">
+						<li><i class="glyphicon glyphicon-bell"></i><a href="${ctx}/notice/noticeContent?id=${notice.id}">${notice.title}</a></li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="page-course-wrap">
