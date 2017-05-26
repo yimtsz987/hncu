@@ -27,6 +27,8 @@ public class OpenTitle extends BaseEntity {
     private String teacherId;
     private String teacherAdvise;
 
+    private String step;
+
     public OpenTitle(){
         super();
     }
@@ -142,5 +144,13 @@ public class OpenTitle extends BaseEntity {
 
     public void setTeacherAdvise(String teacherAdvise) {
         this.teacherAdvise = teacherAdvise;
+    }
+
+    public String getStep() {
+        return step;
+    }
+
+    public void setStep(String step) {
+        this.step = step;
     }
 }

@@ -4,7 +4,9 @@ import com.github.pagehelper.PageInfo;
 import com.hncu.common.BaseController;
 import com.hncu.common.Msg;
 import com.hncu.common.PageParam;
+import com.hncu.entity.Link;
 import com.hncu.entity.SysParam;
+import com.hncu.service.LinkService;
 import com.hncu.service.admin.sys.SysParamService;
 import com.hncu.utils.StringUtils;
 import org.apache.shiro.authz.annotation.Logical;
@@ -30,6 +32,9 @@ public class SysParamController extends BaseController {
 
     @Resource
     private SysParamService sysParamService;
+
+    @Resource
+    private LinkService linkService;
 
     @ModelAttribute
     public SysParam get(@RequestParam(required = false) String id) {
@@ -98,5 +103,34 @@ public class SysParamController extends BaseController {
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/sysParamList";
+    }
+
+    @RequestMapping(value = "/linkList")
+    public String linkList(Link link, Model model, PageParam pageParam){
+        PageInfo<Link> linkPageInfo = linkService.queryListWithPage(link, pageParam);
+        model.addAttribute("linkPageInfo", linkPageInfo);
+
+        return "admin/sys/linkList";
+    }
+
+    @RequestMapping(value = "/linkEdit")
+    public String linkEdit(Link link, Model model){
+        return "admin/sys/linkEdit";
+    }
+
+    @RequestMapping(value = "/saveLink")
+    public String saveLink(@Valid Link link, BindingResult br, Model model, RedirectAttributes redirectAttributes){
+        if (br.hasErrors()){
+            return linkEdit(link, model);
+        }
+        Msg msg;
+        try {
+            linkService.save(link);
+            msg = new Msg(Msg.MSG_TYPE_OK, "友情链接保存成功");
+        } catch (Exception e){
+            logger.error("友情链接保存失败");
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "友情链接保存失败");
+        }
+        return "redirect:/admin/linkList";
     }
 }

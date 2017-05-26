@@ -8,7 +8,9 @@ import com.hncu.entity.MiddleCheck;
 import com.hncu.entity.MiddleCheckParam;
 import com.hncu.service.MiddleCheckParamService;
 import com.hncu.service.student.MiddleCheckService;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
+import com.hncu.utils.UserUtils;
 import org.apache.commons.io.FileUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -73,17 +75,37 @@ public class MiddleCheckController extends BaseController{
     }
 
     @RequestMapping(value = "/downloadMiddleCheck", produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> downloadMiddleCheck(@RequestParam String id) throws IOException {
-        MiddleCheck middleCheck = middleCheckService.queryById(id);
-        if (StringUtils.isNotBlank(middleCheck.getUploadFileOldName())){
-            File file = new File(middleCheck.getUploadPath());
-            String dfileName = middleCheck.getUploadFileOldName();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
-            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+    public ResponseEntity<byte[]> downloadMiddleCheck(@RequestParam String id, @RequestParam String checkStr) throws IOException {
+        MiddleCheck middleCheck = middleCheckService.queryDownloadByInfo(id);
+        if (middleCheck != null){
+            if (StringUtils.isNotEmpty(middleCheck.getUploadFileOldName())){
+                if (checkStr.equals(MD5Util.string2MD5(middleCheck.getUploadFileOldName()))){
+                    File file = new File(middleCheck.getUploadPath());
+                    String dfileName = middleCheck.getUploadFileOldName();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+                    return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
         }else {
             return null;
         }
+    }
+
+    @RequestMapping(value = "/middleCheckInfo")
+    public String middleCheckInfo(@RequestParam String paramId, Model model){
+        MiddleCheck middleCheck = middleCheckService.queryMiddleCheckByParamId(UserUtils.getCurrentUser().getId(), paramId);
+        if (middleCheck != null){
+            if (StringUtils.isNotEmpty(middleCheck.getUploadFileOldName())){
+                middleCheck.setCheckStr(MD5Util.string2MD5(middleCheck.getUploadFileOldName()));
+            }
+        }
+        model.addAttribute("middleCheck", middleCheck);
+        return "student/middleCheckInfo";
     }
 }

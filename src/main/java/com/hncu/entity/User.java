@@ -33,6 +33,8 @@ public class User extends BaseEntity {
     private String sysYearParamId;
     private String sysParamYear;
 
+    private String newPassword;
+
     public User(){
         super();
     }
@@ -198,5 +200,13 @@ public class User extends BaseEntity {
 
     public void setSysParamYear(String sysParamYear) {
         this.sysParamYear = sysParamYear;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 }

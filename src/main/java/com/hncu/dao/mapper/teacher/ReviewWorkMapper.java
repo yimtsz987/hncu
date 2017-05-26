@@ -34,4 +34,11 @@ public interface ReviewWorkMapper extends BaseMapper<TeacherMarking>{
      * @return
      */
     List<TeacherMarking> queryStudentInfoList(TeacherMarking teacherMarking);
+
+    /**
+     * 更新评阅成绩
+     * @param teacherMarking
+     * @return
+     */
+    int updateSchoolReportReview(TeacherMarking teacherMarking);
 }

@@ -21,6 +21,7 @@
 				<form:form id="searchForm" modelAttribute="studentInfo" action="${ctx}/admin/classesInfoList" method="post" cssClass="form-horizontal">
 					<input id="pageNum" name="pageNum" type="hidden" value="${studentInfoPageInfo.pageNum}"/>
 					<input id="pageSize" name="pageSize" type="hidden" value="${studentInfoPageInfo.pageSize}"/>
+					<form:hidden path="classes" />
 					<div class="form-group pull-left col-lg-3">
 						<label for="node" class="col-lg-3 control-label">学号</label>
 						<div class="col-lg-9">

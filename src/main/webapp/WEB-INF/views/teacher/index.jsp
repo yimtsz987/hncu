@@ -116,7 +116,7 @@
 					     </div>
 					     <div class="info-text">
 					     	<p>教工号：${gpms:getUser().teacher.node}</p>
-					     	<p>${gpms:getUser().name}，老师${gpms:getUser().sysYear}</p>
+					     	<p>${gpms:getUser().name}，老师</p>
 							<p>${gpms:getUser().teacher.department.name}</p>
 					     	<p>职称：${gpms:getDictLabel(gpms:getUser().teacher.professionalTitle, 'professional' )}</p>
 					     </div>
@@ -207,6 +207,11 @@
 							</li>
 						</c:if>
 						<li class="first-nav">
+							<a href="javascript:void(0)" title="问题解答" class="iframeurl" name="${ctx}/teacher/questionList">
+								<i class="glyphicon glyphicon-home"></i>问题解答
+							</a>
+						</li>
+						<li class="first-nav">
 							<a href="javascript:void(0)" title="通知公告" class="iframeurl" name="${ctx}/notice/noticeTeacherList">
 							   <i class="glyphicon glyphicon-home"></i>通知公告
 							</a>
@@ -248,8 +253,8 @@
 							</li>
 						</ul>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="修改密码" class="iframeurl" name="password.html">
-							   <i class="glyphicon glyphicon-home"></i>修改密码
+							<a href="javascript:void(0)" title="修改密码" class="iframeurl" name="${ctx}/user/changePwdEdit">
+								<i class="glyphicon glyphicon-home"></i>修改密码
 							</a>
 						</li>
 						<li class="first-nav">

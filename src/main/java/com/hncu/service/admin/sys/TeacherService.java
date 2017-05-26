@@ -76,9 +76,6 @@ public class TeacherService extends BaseService<TeacherMapper, TeacherInfo>{
                     }
                     resultList.get(i).setClassesStudentNumber(count);
                 }
-                if (resultList.get(i).getClassesStudentNumber() <= Integer.parseInt(SysParamUtil.getParamValue("sysAdviceAnswerTeacher"))){
-                    resultList.get(i).setSysAdvice("系统建议设置");
-                }
             } else {
                 resultList.get(i).setClassesStudentNumber(count);
                 resultList.get(i).setSysAdvice("系统建议设置");
@@ -89,5 +86,9 @@ public class TeacherService extends BaseService<TeacherMapper, TeacherInfo>{
 
     public List<TeacherInfo> queryTeacherIdList(){
         return mapper.queryTeacherIdList();
+    }
+
+    public boolean updateSelectFlag(TeacherInfo teacherInfo){
+        return mapper.updateSelectFlag(teacherInfo) > 0;
     }
 }

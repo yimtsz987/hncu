@@ -54,5 +54,6 @@
     <delete id="deleteTitle" parameterType="string">
         DELETE FROM graduation_title WHERE id = #{id, jdbcType=NUMERIC}
         AND teacher_id = #{teacherId,jdbcType=INTEGER}
+        AND select_flag = #{SELECT_NO}
     </delete>
 </mapper>

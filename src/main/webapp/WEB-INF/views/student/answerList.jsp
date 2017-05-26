@@ -15,11 +15,12 @@
 		.caption_left{float: left;}
 		.caption_left p{margin: 0 0 10px;}
 		.caption_right{float: right;}
-		.caption_right p{margin: 0 0 10px;height: 20px}
+		.caption_right p{margin: 0 0 10px;height: 20px;width: 126px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis}
 		.text-custom{font-weight: 600;line-height: 45px;}
 		.count-down{height: 100px;padding-left: 40px;padding-right: 40px;}
 		.count-down .count{font-size: 50px;font-weight: 900;line-height: 100px;float: left;width: 120px;text-align: center;}
 		.count-down .count-font{font-size: 50px;font-weight: 900;line-height: 100px;float: right;width: 50px;}
+		.end{font-size: 50px;font-weight: 900;line-height: 100px;text-align: center;}
 	</style>
 </head>
 	<body>
@@ -47,14 +48,19 @@
 					<div class="infor" style="height: 160px;">
 						<h4 class="text-center text-custom">倒计时</h4>
 						<div class="count-down">
-							<div class="count">${answer.countDown}</div>
-							<div class="count-font">天</div>
+							<c:if test="${answer.countDown >= 0}">
+								<div class="count">${answer.countDown}</div>
+								<div class="count-font">天</div>
+							</c:if>
+							<c:if test="${answer.countDown < 0}">
+								<div class="end">已结束</div>
+							</c:if>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 col-lg-4 col-sm-4">
 					<div class="infor">
-						<p class="text-center text-info" style="margin: 18px; background: url(${ctxStatic}/img/3.png) no-repeat center;">副组长</p>
+						<p class="text-center text-info" style="margin: 18px; background: url(${ctxStatic}/img/3.png) no-repeat center;">组长</p>
 						<a href="#"><img class="img" src="${ctxStatic}/${leader.headerPic}"></a>
 						<div class="caption">
 							<div class="caption_left">

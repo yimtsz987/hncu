@@ -39,6 +39,10 @@
 		<typeAlias type="com.hncu.entity.TeacherYearInfo" alias="TeacherYearInfo" />
 		<typeAlias type="com.hncu.entity.Notice" alias="Notice" />
 		<typeAlias type="com.hncu.entity.NoticeUser" alias="NoticeUser" />
+		<typeAlias type="com.hncu.entity.Link" alias="Link" />
+		<typeAlias type="com.hncu.entity.ReportAndFile" alias="ReportAndFile" />
+		<typeAlias type="com.hncu.entity.ScoreScale" alias="ScoreScale" />
+		<typeAlias type="com.hncu.entity.TeacherQuestion" alias="TeacherQuestion" />
 	</typeAliases>
 
 

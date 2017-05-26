@@ -44,15 +44,12 @@ public class StudentAnswerController extends BaseController{
                     user = userService.queryById(teacherId[i]);
                     teacherList.add(user);
                 }
-                answerFlag = true;
-                model.addAttribute("leader", leader);
                 model.addAttribute("teacherList", teacherList);
-                model.addAttribute("answerFlag", answerFlag);
-                model.addAttribute("answer",answer);
-            } else {
-                model.addAttribute("answer",answer);
-                model.addAttribute("answerFlag", answerFlag);
             }
+            answerFlag = true;
+            model.addAttribute("leader", leader);
+            model.addAttribute("answerFlag", answerFlag);
+            model.addAttribute("answer",answer);
         } else {
             model.addAttribute("answer",answer);
             model.addAttribute("answerFlag", answerFlag);

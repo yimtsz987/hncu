@@ -107,7 +107,6 @@ public class AnswerGroupController extends BaseController{
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/answerGroupList";
-        //todo 撤除组长做弹窗
     }
 
     @RequestMapping(value = "/teacherAnswerInfoList")

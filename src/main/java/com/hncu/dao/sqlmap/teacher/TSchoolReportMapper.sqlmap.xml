@@ -11,7 +11,12 @@
         sr.old_score as "oldScore",
         sr.createBy,
         sr.teacherComment,
-        sr.year
+        sr.year,
+        sr.marking_score as "markingScore",
+        sr.review_score as "reviewScore",
+        sr.answer_score as "answerScore",
+        sr.score_md5 as "scoreMD5",
+        sr.check_flag as "checkFlag"
     </sql>
 
     <select id="queryList" parameterType="SchoolReport" resultType="SchoolReport">
@@ -33,14 +38,16 @@
         WHERE sr.id = #{id, jdbcType=NUMERIC}
     </select>
 
-    <insert id="uploadSchoolReport" parameterType="SchoolReport" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO school_report(report_id,student_id,score,pass_flag,date_time,year,createBy,teacherComment)
-        VALUES (#{reportId,jdbcType=INTEGER},#{studentId,jdbcType=INTEGER},#{score,jdbcType=VARCHAR},#{passFlag,jdbcType=INTEGER},#{dateTime,jdbcType=TIMESTAMP},#{sysYear, jdbcType=VARCHAR},#{createById,jdbcType=INTEGER},#{teacherComment, jdbcType=VARCHAR})
-    </insert>
+    <select id="queryByStudentId" parameterType="string" resultType="SchoolReport">
+        SELECT <include refid="schoolReportColumns" />
+        FROM school_report sr
+        WHERE sr.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
 
     <update id="updateSchoolReport" parameterType="SchoolReport">
-        UPDATE school_report SET score = #{score,jdbcType=VARCHAR},pass_flag = #{passFlag,jdbcType=INTEGER},date_time = #{dateTime,jdbcType=TIMESTAMP}
-        WHERE id = #{id,jdbcType=INTEGER}
+        UPDATE school_report SET answer_score = #{answerScore,jdbcType=VARCHAR},pass_flag = #{passFlag,jdbcType=INTEGER},
+        date_time = #{dateTime,jdbcType=TIMESTAMP},score = #{score,jdbcType=VARCHAR},score_md5 = #{scoreMD5,jdbcType=VARCHAR},teacherComment = #{teacherComment,jdbcType=VARCHAR}
+        WHERE student_id = #{studentId,jdbcType=INTEGER}
     </update>
 
     <insert id="insertSecondAnswer" parameterType="SchoolReport">
@@ -53,6 +60,6 @@
     </delete>
 
     <update id="updateStudentStep" parameterType="User">
-        UPDATE expand_student SET step_9 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_10,jdbcType=INTEGER},school_report_id = #{student.schoolReportId,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+        UPDATE expand_student SET step_9 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_10 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_10,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

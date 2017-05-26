@@ -26,6 +26,7 @@
         FROM teacher_year_student tys
         <include refid="tStudentJoins" />
         WHERE tys.year = #{sysYear, jdbcType=VARCHAR}
+        and tys.student_sum > 0
         <if test="teacherInfo != null and teacherInfo.teacher != null and teacherInfo.teacher.node != null  and teacherInfo.teacher.node != ''">
             and et.node = #{teacherInfo.teacher.node,jdbcType=INTEGER}
         </if>

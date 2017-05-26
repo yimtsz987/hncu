@@ -4,15 +4,16 @@
     <sql id="openTitleColumns">
         ot.id,
         ot.student_id as "studentId",
-        ot.upload_date as "uploadDate",
+        ot.supload_date as "uploadDate",
         ot.year,
         ot.title_id as "titleId",
         ot.report_flag as "reportFlag",
-        ot.uploadFile as "uploadFile",
-        ot.uploadPath as "uploadPath",
-        ot.uploadFileOldName as "uploadFileOldName",
+        ot.suploadFile as "uploadFile",
+        ot.suploadPath as "uploadPath",
+        ot.suploadFileOldName as "uploadFileOldName",
         ot.teacher_id as "teacherId",
-        ot.teacher_advise as "teacherAdvise"
+        ot.teacher_advise as "teacherAdvise",
+        ot.step
     </sql>
 
     <select id="queryById" parameterType="string" resultType="OpenTitle">
@@ -27,8 +28,15 @@
         WHERE ot.student_id = #{studentId, jdbcType=NUMERIC}
     </select>
 
+    <select id="queryDownloadByInfo" parameterType="string" resultType="OpenTitle">
+        SELECT <include refid="openTitleColumns" />
+        FROM opening_report ot
+        WHERE ot.id = #{id, jdbcType=NUMERIC}
+        and ot.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
     <insert id="uploadOpenReport" parameterType="OpenTitle" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO opening_report(student_id,upload_date,year,title_id,uploadFile,uploadPath,uploadFileOldName,teacher_id)
+        INSERT INTO opening_report(student_id,supload_date,year,title_id,suploadFile,suploadPath,suploadFileOldName,teacher_id)
         VALUES (#{studentId,jdbcType=INTEGER},#{uploadDate,jdbcType=TIMESTAMP},#{sysYear, jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{uploadFile,jdbcType=VARCHAR},#{uploadPath,jdbcType=VARCHAR},#{uploadFileOldName,jdbcType=VARCHAR},#{teacherId, jdbcType=NUMERIC})
     </insert>
 
@@ -45,7 +53,7 @@
     </update>
 
     <update id="uploadOpenReportUpdate" parameterType="OpenTitle">
-        UPDATE opening_report SET upload_date = #{uploadDate,jdbcType=TIMESTAMP},uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},report_flag = #{PASS_FLAG_CHECK,jdbcType=INTEGER},teacher_advise = #{teacherAdvise,jdbcType=VARCHAR}
+        UPDATE opening_report SET supload_date = #{uploadDate,jdbcType=TIMESTAMP},suploadFile = #{uploadFile,jdbcType=VARCHAR},suploadPath = #{uploadPath,jdbcType=VARCHAR},suploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},report_flag = #{PASS_FLAG_CHECK,jdbcType=INTEGER},teacher_advise = #{teacherAdvise,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

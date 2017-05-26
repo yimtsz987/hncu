@@ -88,7 +88,7 @@
 					<hr style="background: #70a18e; height: 2px; margin: 0 0 5px 0;"/>
 					<hr style="background: #70a18e; height: 1px; margin: 0 0 5px 0;"/>
 					<hr style="background: #70a18e; height: 1px; margin: 0 0 25px 0;"/>
-					<p class="number">成绩单编号：<span>${gpms:getUser().student.schoolReport.reportId}</span></p>
+					<p class="number">成绩单编号：<span>${schoolReport.reportId}</span></p>
 					<h1 class="text-center text-success" style="letter-spacing:20px; line-height: 70px;">湖南城市学院毕业设计</h1>
 					<h1 class="text-center text-success" style="letter-spacing:30px; text-indent: 30px;">成绩报告单</h1>
 					<div class="center-block" style="width: 100px; margin-top: 20px;">
@@ -121,7 +121,6 @@
 						</div>
 						<div class="bottom1 bottom">湖南城市学院</div>
 						<div class="bottom2 bottom">${gpms:getParamValue('department')}</div>
-						<div class="stamp"><img src="${ctxStatic}/img/stamp.png" width="150px" height="150px" ></div>
 					</div>
 					
 					<hr style="background: #70a18e; height: 1px; margin: 0px 0 5px 0;"/>

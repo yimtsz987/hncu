@@ -25,6 +25,8 @@ public class Understanding extends BaseEntity {
     private String teacherId;
     private String teacherAdvise;
 
+    private String step;
+
     public Understanding(){
         super();
     }
@@ -126,5 +128,13 @@ public class Understanding extends BaseEntity {
 
     public void setTeacherAdvise(String teacherAdvise) {
         this.teacherAdvise = teacherAdvise;
+    }
+
+    public String getStep() {
+        return step;
+    }
+
+    public void setStep(String step) {
+        this.step = step;
     }
 }

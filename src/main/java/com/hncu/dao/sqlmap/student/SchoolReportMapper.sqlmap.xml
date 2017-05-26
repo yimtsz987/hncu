@@ -46,9 +46,4 @@
         AND sr.student_id = #{studentId,jdbcType=NUMERIC}
     </select>
 
-    <insert id="insetSchoolReport" parameterType="SchoolReport">
-        INSERT INTO school_report(report_id student_id,score,,pass_flag ,date_time)
-        VALUES (#{reportId,jdbcType=VARCHAR},#{studentId,jdbcType=INTEGER},#{score,jdbcType=VARCHAR},#{passFlag, jdbcType=INTEGER},#{dateTime,jdbcType=TIMESTAMP})
-    </insert>
-
 </mapper>

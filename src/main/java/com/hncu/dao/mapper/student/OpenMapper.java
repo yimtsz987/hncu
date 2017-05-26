@@ -40,7 +40,7 @@ public interface OpenMapper extends BaseMapper<OpenTitle> {
     int uploadOpenReportUpdate(OpenTitle openTitle);
 
     /**
-     * 更新学生ID查询开题报告
+     * 根据学生ID查询开题报告
      * @param studentId
      * @return
      */

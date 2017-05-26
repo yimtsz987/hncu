@@ -1,8 +1,10 @@
 package com.hncu.web;
 
+import com.hncu.entity.Link;
 import com.hncu.entity.User;
 import com.hncu.security.FormAuthFilter;
 import com.hncu.security.Principal;
+import com.hncu.service.LinkService;
 import com.hncu.utils.UserUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -22,9 +25,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginController {
 
+    @Resource
+    private LinkService linkService;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String toLogin (Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("link", linkService.queryList(new Link()));
         return "/login";
     }
 
@@ -44,6 +51,7 @@ public class LoginController {
         model.addAttribute(FormAuthFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, exception);
         model.addAttribute(FormAuthFilter.MESSAGE_PARAM, message);
 
+        model.addAttribute("link", linkService.queryList(new Link()));
         return "login";
     }
 

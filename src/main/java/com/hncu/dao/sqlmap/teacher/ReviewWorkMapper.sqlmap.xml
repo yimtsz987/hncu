@@ -22,13 +22,15 @@
          u.id as "user.id",
          es.node as "user.student.node",
          es.step_8 as "user.student.step8",
-         gt.title as "user.student.titleName"
+         gt.title as "user.student.titleName",
+         sr.review_score as "marking.score"
     </sql>
 
     <sql id="reviewJoins">
         LEFT JOIN sys_user u on u.id = tr.student_id
         LEFT JOIN expand_student es on es.s_id = tr.student_id
         LEFT JOIN graduation_title gt on gt.id = es.title_id
+        LEFT JOIN school_report sr on sr.student_id = tr.student_id
     </sql>
 
     <select id="queryList" parameterType="TeacherMarking" resultType="TeacherMarking">
@@ -81,5 +83,10 @@
 
     <update id="updateStudentReviewStep" parameterType="User">
         UPDATE expand_student SET step_8 = #{STEP_FLAG_PASS,jdbcType=INTEGER},step_now = #{STEP_NOW_9,jdbcType=INTEGER} WHERE s_id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSchoolReportReview" parameterType="TeacherMarking">
+        UPDATE school_report SET review_score = #{marking.score,jdbcType=VARCHAR}
+        WHERE student_id = #{user.id,jdbcType=INTEGER}
     </update>
 </mapper>

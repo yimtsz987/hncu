@@ -30,6 +30,10 @@ public class MiddleCheck extends BaseEntity{
 
     private String checkId;
 
+    private String step;
+
+    private String suffix;
+
     public MiddleCheck(){
         super();
     }
@@ -163,5 +167,21 @@ public class MiddleCheck extends BaseEntity{
 
     public void setCheckId(String checkId) {
         this.checkId = checkId;
+    }
+
+    public String getStep() {
+        return step;
+    }
+
+    public void setStep(String step) {
+        this.step = step;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
     }
 }

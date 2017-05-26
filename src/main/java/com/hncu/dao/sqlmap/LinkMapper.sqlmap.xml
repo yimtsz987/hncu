@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.LinkMapper">
+    <sql id="linkColumns">
+        l.id,
+        l.title,
+        l.url,
+        l.sort,
+        l.icon,
+        l.target
+    </sql>
+
+    <select id="queryList" parameterType="Link" resultType="Link">
+        SELECT <include refid="linkColumns" />
+        FROM link l
+        <where>
+            <if test="title != null and title != ''">
+                and l.title like concat ('%', #{title}, '%')
+            </if>
+        </where>
+        ORDER BY l.sort ASC
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="Link">
+        SELECT <include refid="linkColumns" />
+        FROM link l
+        WHERE l.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <insert id="insert" parameterType="Link">
+        INSERT INTO link
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="title != null" >
+                title,
+            </if>
+            <if test="url != null" >
+                url,
+            </if>
+            <if test="sort != null" >
+                sort,
+            </if>
+            <if test="icon != null" >
+                icon,
+            </if>
+            <if test="target != null" >
+                target,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+            <if test="title != null" >
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null" >
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null" >
+                #{sort,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null" >
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="target != null" >
+                #{target,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="Link">
+        UPDATE link
+        <set >
+            <if test="title != null" >
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null" >
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null" >
+                sort = #{sort,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null" >
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="target != null" >
+                target = #{target,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE id = #{id, jdbcType=NUMERIC}
+    </update>
+
+    <delete id="delete" parameterType="Link">
+        DELETE FROM link WHERE id = #{id, jdbcType=NUMERIC}
+    </delete>
+</mapper>

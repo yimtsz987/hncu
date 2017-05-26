@@ -5,6 +5,8 @@ import com.hncu.common.BaseController;
 import com.hncu.common.Msg;
 import com.hncu.common.PageParam;
 import com.hncu.entity.*;
+import com.hncu.service.ReportAndFileService;
+import com.hncu.service.UserService;
 import com.hncu.service.admin.sys.ClassesService;
 import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.MajorService;
@@ -42,6 +44,12 @@ public class StudentController extends BaseController {
 
     @Resource
     private DepartmentService departmentService;
+
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private ReportAndFileService reportAndFileService;
 
     @ModelAttribute
     public StudentInfo get(@RequestParam(required = false) String id) {
@@ -119,6 +127,21 @@ public class StudentController extends BaseController {
         } catch (Exception e){
             logger.error("学生信息删除失败！！");
             msg = new Msg(Msg.MSG_TYPE_OK, "【"+studentInfo.getNode()+"】信息删除失败！！");
+        }
+        redirectAttributes.addFlashAttribute("msg", msg);
+        return "redirect:/admin/studentList";
+    }
+
+    @RequestMapping(value = "/resetStudentPassword")
+    public String resetStudentPassword(@RequestParam String id, RedirectAttributes redirectAttributes){
+        User user = userService.queryById(id);
+        Msg msg;
+        try {
+            userService.resetPassword(user);
+            msg = new Msg(Msg.MSG_TYPE_OK, "【"+ user.getName() +"】学生密码重置成功！！");
+        } catch (Exception e){
+            logger.error("【"+ user.getName() +"】学生密码重置失败！！", e);
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+ user.getName() +"】学生密码重置失败！！");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/studentList";

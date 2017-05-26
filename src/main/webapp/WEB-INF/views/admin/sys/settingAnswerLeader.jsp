@@ -21,6 +21,8 @@
 				<form:form id="searchForm" modelAttribute="teacherInfo" action="${ctx}/admin/settingAnswerLeader" method="post" cssClass="form-horizontal">
 					<input id="pageNum" name="pageNum" type="hidden" value="${teacherInfoPageInfo.pageNum}"/>
 					<input id="pageSize" name="pageSize" type="hidden" value="${teacherInfoPageInfo.pageSize}"/>
+					<form:hidden path="answerId" />
+					<form:hidden path="queryClasses" />
 					<div class="form-group pull-left col-lg-3">
 						<label for="node" class="col-lg-3 control-label">教工号</label>
 						<div class="col-lg-9">

@@ -67,14 +67,12 @@ public class TAnswerController extends BaseController {
                         user = userService.queryById(teacherId[i]);
                         teacherList.add(user);
                     }
-                    answerFlag = true;
-                    model.addAttribute("leader", leader);
                     model.addAttribute("teacherList", teacherList);
-                    model.addAttribute("answerFlag", answerFlag);
-                } else {
-                    model.addAttribute("answer",answer);
-                    model.addAttribute("answerFlag", answerFlag);
                 }
+                answerFlag = true;
+                model.addAttribute("leader", leader);
+                model.addAttribute("answerFlag", answerFlag);
+                model.addAttribute("answer",answer);
             } else {
                 model.addAttribute("answer",answer);
                 model.addAttribute("answerFlag", answerFlag);
@@ -97,18 +95,27 @@ public class TAnswerController extends BaseController {
         Boolean answerFlag = false;
         if (StringUtils.isNotEmpty(UserUtils.getCurrentUser().getTeacher().getAnswerId())) {
             Answer answer = answerService.queryById(UserUtils.getCurrentUser().getTeacher().getAnswerId());
-            User leader = userService.queryById(answer.getLeaderId());
-            String[] teacherId = StringUtils.split(answer.getTeacherIds(),",");
-            List<User> teacherList = Lists.newArrayList();
-            User user = null;
-            for (int i = 0; i < teacherId.length; i++) {
-                user = userService.queryById(teacherId[i]);
-                teacherList.add(user);
+            if (StringUtils.isNotEmpty(answer.getLeaderId())){
+                User leader = userService.queryById(answer.getLeaderId());
+                if (StringUtils.isNotEmpty(answer.getTeacherIds())){
+                    String[] teacherId = StringUtils.split(answer.getTeacherIds(),",");
+                    List<User> teacherList = Lists.newArrayList();
+                    User user = null;
+                    if (teacherId != null){
+                        for (int i = 0; i < teacherId.length; i++) {
+                            user = userService.queryById(teacherId[i]);
+                            teacherList.add(user);
+                        }
+                    }
+                    model.addAttribute("teacherList", teacherList);
+                }
+                answerFlag = true;
+                model.addAttribute("leader", leader);
+                model.addAttribute("answer",answer);
+                model.addAttribute("answerFlag", answerFlag);
+            } else {
+                model.addAttribute("answerFlag", answerFlag);
             }
-            answerFlag = true;
-            model.addAttribute("leader", leader);
-            model.addAttribute("teacherList", teacherList);
-            model.addAttribute("answerFlag", answerFlag);
         } else {
             model.addAttribute("answerFlag", answerFlag);
         }

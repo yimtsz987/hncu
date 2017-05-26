@@ -26,7 +26,11 @@ public class ChooseTeacherService extends BaseService<ChooseTeacherMapper, Teach
     @Transactional(readOnly = false)
     public void choose(TeacherInfo teacherInfo,User user){
         teacherInfo.setStudentSum(teacherInfo.getStudentSum() + 1);
-        teacherInfo.setStudentIds(teacherInfo.getStudentIds() + user.getId() + ",");
+        if (StringUtils.isNotEmpty(teacherInfo.getStudentIds())){
+            teacherInfo.setStudentIds(teacherInfo.getStudentIds() + user.getId() + ",");
+        } else {
+            teacherInfo.setStudentIds(user.getId() + ",");
+        }
         mapper.chooseTeacher(teacherInfo);
         mapper.teacherIdEdit(teacherInfo.getId(),user.getId());
         mapper.stepOneEnd(user);

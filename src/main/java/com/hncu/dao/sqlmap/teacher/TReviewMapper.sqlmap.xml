@@ -18,6 +18,8 @@
          tr.teacher_id as "marking.teacherId",
          tr.teacher_advise as "marking.teacherAdvise",
          tr.review_tId as "marking.reviewTeacherId",
+         tr.step,
+         sr.review_score as "marking.score",
          u.name as "user.name",
          u.id as "user.id",
          es.node as "user.student.node",
@@ -29,6 +31,7 @@
         LEFT JOIN sys_user u on u.id = tr.student_id
         LEFT JOIN expand_student es on es.s_id = tr.student_id
         LEFT JOIN graduation_title gt on gt.id = es.title_id
+        LEFT JOIN school_report sr on sr.student_id = tr.student_id
     </sql>
 
     <select id="queryList" parameterType="TeacherMarking" resultType="TeacherMarking">

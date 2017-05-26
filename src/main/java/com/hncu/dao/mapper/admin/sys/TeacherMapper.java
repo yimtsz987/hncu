@@ -78,4 +78,6 @@ public interface TeacherMapper extends BaseMapper<TeacherInfo> {
     List<TeacherInfo> queryAnswerNotSelectList(TeacherInfo teacherInfo);
 
     List<TeacherInfo> queryTeacherIdList();
+
+    int updateSelectFlag(TeacherInfo teacherInfo);
 }

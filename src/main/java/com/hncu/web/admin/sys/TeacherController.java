@@ -6,6 +6,8 @@ import com.hncu.common.Msg;
 import com.hncu.common.PageParam;
 import com.hncu.entity.Department;
 import com.hncu.entity.TeacherInfo;
+import com.hncu.entity.User;
+import com.hncu.service.UserService;
 import com.hncu.service.admin.sys.DepartmentService;
 import com.hncu.service.admin.sys.TeacherService;
 import com.hncu.utils.StringUtils;
@@ -35,6 +37,9 @@ public class TeacherController extends BaseController{
 
     @Resource
     private DepartmentService departmentService;
+
+    @Resource
+    private UserService userService;
 
     @RequiresPermissions(value = {"admin","secretary"}, logical = Logical.OR)
     @ModelAttribute
@@ -104,6 +109,37 @@ public class TeacherController extends BaseController{
         } catch (Exception e){
             logger.error("教师信息删除失败！！", e);
             msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+teacherInfo.getNode()+"】教师信息删除失败！！");
+        }
+        redirectAttributes.addFlashAttribute("msg", msg);
+        return "redirect:/admin/teacherList";
+    }
+
+    @RequestMapping(value = "/updateSelectFlag")
+    public String updateSelectFlag(@RequestParam String id, @RequestParam String selectFlag, @RequestParam String name,RedirectAttributes redirectAttributes){
+        TeacherInfo teacherInfo = new TeacherInfo(id);
+        teacherInfo.setSelectFlag(selectFlag);
+        Msg msg;
+        try {
+            teacherService.updateSelectFlag(teacherInfo);
+            msg = new Msg(Msg.MSG_TYPE_OK, "【"+ name +"】教师状态修改成功！！");
+        } catch (Exception e){
+            logger.error("【"+ name +"】教师状态修改失败！！", e);
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+ name +"】教师状态修改失败！！");
+        }
+        redirectAttributes.addFlashAttribute("msg", msg);
+        return "redirect:/admin/teacherList";
+    }
+
+    @RequestMapping(value = "/resetTeacherPassword")
+    public String resetTeacherPassword(@RequestParam String id, RedirectAttributes redirectAttributes){
+        User user = userService.queryById(id);
+        Msg msg;
+        try {
+            userService.resetPassword(user);
+            msg = new Msg(Msg.MSG_TYPE_OK, "【"+ user.getName() +"】教师密码重置成功！！");
+        } catch (Exception e){
+            logger.error("【"+ user.getName() +"】教师密码重置失败！！", e);
+            msg = new Msg(Msg.MSG_TYPE_REMOVE, "【"+ user.getName() +"】教师密码重置失败！！");
         }
         redirectAttributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/teacherList";

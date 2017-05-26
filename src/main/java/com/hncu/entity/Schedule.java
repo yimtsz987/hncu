@@ -29,6 +29,8 @@ public class Schedule extends BaseEntity {
     private String lastSort;
     private String year;
 
+    private String step;
+
     public Schedule(){
 
     }
@@ -171,5 +173,13 @@ public class Schedule extends BaseEntity {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getStep() {
+        return step;
+    }
+
+    public void setStep(String step) {
+        this.step = step;
     }
 }

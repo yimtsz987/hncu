@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.student.QuestionMapper">
+    <sql id="questionColumns">
+        q.id,
+        q.student_id as "studentId",
+        q.supload_date as "suploadDate",
+        q.student_question as "studentQuestion",
+        q.suploadFile,
+        q.suploadPath,
+        q.suploadFileOldName,
+        q.teacher_id as "teacherId",
+        q.teacher_advise as "teacherAdvise",
+        q.tupload_date as "tuploadDate",
+        q.tuploadFile,
+        q.tuploadPath,
+        q.tuploadFileOldName,
+        q.sort,
+        q.title_id as "titleId",
+        q.state,
+        q.step
+    </sql>
+
+    <select id="queryById" parameterType="string" resultType="Marking">
+        SELECT <include refid="questionColumns" />
+        FROM question q
+        WHERE q.id = #{id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryList" parameterType="Marking" resultType="Marking">
+        SELECT <include refid="questionColumns" />
+        FROM question q
+        WHERE q.student_id = #{studentId,jdbcType=INTEGER}
+        <if test="sort != null and sort != ''">
+            and q.sort like concat ('%', #{sort}, '%')
+        </if>
+        <if test="suploadFileOldName != null and suploadFileOldName != ''">
+            and q.suploadFileOldName like concat ('%', #{suploadFileOldName}, '%')
+        </if>
+        ORDER BY q.sort ASC
+    </select>
+
+    <select id="queryByStudentId" parameterType="string" resultType="Marking">
+        SELECT <include refid="questionColumns" />
+        FROM question q
+        WHERE q.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
+    <insert id="uploadQuestion" parameterType="Marking">
+        INSERT INTO question(student_id,supload_date,suploadFile,suploadPath,suploadFileOldName,sort,year,title_id,teacher_id,student_question)
+        VALUES (#{studentId,jdbcType=INTEGER},#{suploadDate,jdbcType=TIMESTAMP},#{suploadFile,jdbcType=VARCHAR},#{suploadPath,jdbcType=VARCHAR},#{suploadFileOldName,jdbcType=VARCHAR},#{sort,jdbcType=INTEGER},#{sysYear, jdbcType=VARCHAR},#{titleId,jdbcType=INTEGER},#{teacherId,jdbcType=INTEGER},#{studentQuestion, jdbcType=VARCHAR})
+    </insert>
+</mapper>

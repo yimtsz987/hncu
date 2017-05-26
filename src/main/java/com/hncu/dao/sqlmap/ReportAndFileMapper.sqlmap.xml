@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.ReportAndFileMapper">
+    <sql id="reportAndFileColumns">
+        id,
+        student_id as "studentId",
+        teacher_id as "teacherId",
+        year,
+        suploadFile as "sUploadFile",
+        suploadPath as "sUploadPath",
+        suploadFileOldName as "sUploadFileOldName",
+        tuploadFile as "tUploadFile",
+        tuploadPath as "tUploadPath",
+        tuploadFileOldName as "tUploadFileOldName",
+        step
+    </sql>
+
+    <select id="queryList" parameterType="ReportAndFile" resultType="ReportAndFile">
+            SELECT <include refid="reportAndFileColumns" />
+            FROM understanding_report WHERE student_id = #{studentId, jdbcType=INTEGER}
+                <if test="step != null and step != ''">
+                    and step = #{step,jdbcType=VARCHAR}
+                </if>
+            UNION  ALL
+            SELECT <include refid="reportAndFileColumns" />
+            FROM opening_report WHERE student_id = #{studentId, jdbcType=INTEGER}
+                <if test="step != null and step != ''">
+                    and step = #{step,jdbcType=VARCHAR}
+                </if>
+            UNION  ALL
+            SELECT <include refid="reportAndFileColumns" />
+            FROM graduation_schedule WHERE student_id = #{studentId, jdbcType=INTEGER}
+                <if test="step != null and step != ''">
+                    and step = #{step,jdbcType=VARCHAR}
+                </if>
+            UNION  ALL
+            SELECT <include refid="reportAndFileColumns" />
+            FROM teacher_marking WHERE student_id = #{studentId, jdbcType=INTEGER}
+                <if test="step != null and step != ''">
+                    and step = #{step,jdbcType=VARCHAR}
+                </if>
+            UNION  ALL
+            SELECT <include refid="reportAndFileColumns" />
+            FROM middle_check WHERE student_id = #{studentId, jdbcType=INTEGER}
+                <if test="step != null and step != ''">
+                    and step = #{step,jdbcType=VARCHAR}
+                </if>
+            UNION  ALL
+            SELECT <include refid="reportAndFileColumns" />
+            FROM teacher_review WHERE student_id = #{studentId, jdbcType=INTEGER}
+                <if test="step != null and step != ''">
+                    and step = #{step,jdbcType=VARCHAR}
+                </if>
+            ORDER BY step
+    </select>
+
+</mapper>

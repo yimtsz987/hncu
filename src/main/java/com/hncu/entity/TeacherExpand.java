@@ -20,6 +20,8 @@ public class TeacherExpand implements Serializable {
     private String answerId;
     private String isLeader;
 
+    private String selectFlag;
+
     public String gettId() {
         return tId;
     }
@@ -98,5 +100,13 @@ public class TeacherExpand implements Serializable {
 
     public void setIsLeader(String isLeader) {
         this.isLeader = isLeader;
+    }
+
+    public String getSelectFlag() {
+        return selectFlag;
+    }
+
+    public void setSelectFlag(String selectFlag) {
+        this.selectFlag = selectFlag;
     }
 }

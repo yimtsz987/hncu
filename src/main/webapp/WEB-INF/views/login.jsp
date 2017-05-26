@@ -18,7 +18,6 @@
 				width: 1366px;
 				height: 120px;
 				margin: 0 auto;
-				background: black;
 			}
 			.login-wrap{
 				width: 100%;
@@ -205,7 +204,7 @@
 				<div class="login-form">
 					<form action="${ctx}/login" method="post">
 						<div class="form-group">
-							<input type="text" name="username" id="username" value="" class="form-control login-input" placeholder="请输入用户名"/>
+							<input type="text" name="username" id="username" value="${username}" class="form-control login-input" placeholder="请输入用户名"/>
 							<label class="form-label" for="username">
 								<i class="glyphicon glyphicon-user"></i>
 							</label>
@@ -218,9 +217,9 @@
 						</div>
 						<div class="form-group margin-bottom-10">
 							<label class="login-node-label">验证码：</label>
-							<input type="text" name="" id="" value="" class="form-control login-node" />
+							<input type="text" name="kaptcha" id="kaptcha" class="form-control login-node" maxlength="4" />
 							<div class="login-node-img">
-								<a href="#"><img src="${ctxStatic}/img/node.jpg" /></a>
+								<a href="javascript:void(0);" onclick="changeCode()" ><img src="${ctx}/code/kaptcha.jpg" id="kaptchaImage" /></a>
 							</div>
 						</div><div class="form-group margin-bottom-10">
 						<label class="remberPwd"><input type="checkbox" class="checkbox-style" id="rememberMe" name="rememberMe" ${rememberMe ? 'check' : ''}/>记住密码</label>
@@ -240,11 +239,15 @@
 		<div class="f_main">
 			<div class="link">
 				<ul>
-					<li><a href="#">湖南城市学院主站</a></li>
-					<b>|</b>
-					<li><a href="#">信息与电子工程学院</a></li>
-					<b>|</b>
-					<li><a href="#">XXX网</a></li>
+					<c:forEach items="${link}" var="link" varStatus="lk">
+						<c:if test="${!lk.last}">
+							<li><a href="http://${link.url}" target="${link.target}">${link.title}</a></li>
+							<b>|</b>
+						</c:if>
+						<c:if test="${lk.last}">
+							<li><a href="http://${link.url}" target="${link.target}">${link.title}</a></li>
+						</c:if>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="copyright">
@@ -256,4 +259,15 @@
 		</div>
 	</div>
 	</body>
+	<script type="text/javascript">
+        $(function(){  //生成验证码
+            $('#kaptchaImage').click(function () {
+                $(this).hide().attr('src', '${ctx}/code/kaptcha.jpg?' + Math.floor(Math.random()*100) ).fadeIn(); });
+        });
+
+        function changeCode() {  //刷新
+            $('#kaptchaImage').hide().attr('src', '${ctx}/code/kaptcha.jpg?' + Math.floor(Math.random()*100) ).fadeIn();
+            event.cancelBubble=true;
+        }
+	</script>
 </html>

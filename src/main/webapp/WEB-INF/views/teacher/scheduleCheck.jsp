@@ -4,7 +4,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
-		<title>开题报告审核</title>
+		<title>分期报告报告审核</title>
 	<style type="text/css">
 		.custom-label:hover{
 			color: #2489c5;
@@ -15,7 +15,7 @@
 		<div class="page-content">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#">开题报告审核</a>
+					<a href="#">分期报告报告审核</a>
 				</li>
 			</ul>
 			<form:form action="${ctx}/teacher/saveScheduleCheck" enctype="multipart/form-data" method="post" cssClass="form-horizontal" cssStyle="margin-top: 50px;" id="form-id" modelAttribute="teacherSchedule">
@@ -33,7 +33,7 @@
 				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">学生附件:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
-						<strong><a href="${ctx}/teacher/downloadStudentOpenTitle?id=${teacherSchedule.schedule.id}&checkStr=${teacherSchedule.schedule.checkStr}" class="inp" style="line-height: 30px;">${teacherSchedule.schedule.uploadFileOldName}（点击下载）</a></strong>
+						<strong><a href="${ctx}/teacher/downloadStudentSchedule?id=${teacherSchedule.schedule.id}&checkStr=${teacherSchedule.schedule.checkStr}" class="inp" style="line-height: 30px;">${teacherSchedule.schedule.uploadFileOldName}（点击下载）</a></strong>
 					</div>
 				</div>
 				<div class="form-group control-group">

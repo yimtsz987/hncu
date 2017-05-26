@@ -3,6 +3,7 @@ package com.hncu.dao.mapper.teacher;
 import com.hncu.common.BaseMapper;
 import com.hncu.entity.SchoolReport;
 import com.hncu.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -45,4 +46,11 @@ public interface TSchoolReportMapper extends BaseMapper<SchoolReport> {
      * @return
      */
     int updateStudentStep(User user);
+
+    /**
+     * 根据学生ID查询成绩报告
+     * @param studentId
+     * @return
+     */
+    SchoolReport queryByStudentId(@Param("studentId") String studentId);
 }

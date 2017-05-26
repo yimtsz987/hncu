@@ -18,6 +18,7 @@
          tm.state as "marking.state",
          tm.teacher_id as "marking.teacherId",
          tm.teacher_advise as "marking.teacherAdvise",
+         tm.step,
          u.name as "user.name",
          u.id as "user.id",
          es.node as "user.student.node",

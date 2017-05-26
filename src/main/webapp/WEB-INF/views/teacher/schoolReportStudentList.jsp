@@ -18,7 +18,7 @@
 		<div class="page-content">
 			<div class="page-search">
 				<div class="search-title">学生搜索查询</div>
-				<form:form id="searchForm" modelAttribute="studentInfo" action="${ctx}/admin/classesInfoList" method="post" cssClass="form-horizontal">
+				<form:form id="searchForm" modelAttribute="studentInfo" action="${ctx}/teacher/schoolReportStudentList" method="post" cssClass="form-horizontal">
 					<input id="pageNum" name="pageNum" type="hidden" value="${studentInfoPageInfo.pageNum}"/>
 					<input id="pageSize" name="pageSize" type="hidden" value="${studentInfoPageInfo.pageSize}"/>
 					<div class="form-group pull-left col-lg-3">

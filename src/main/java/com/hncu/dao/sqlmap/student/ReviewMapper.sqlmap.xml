@@ -15,7 +15,8 @@
         tr.tuploadFileOldName,
         tr.sort,
         tr.title_id as "titleId",
-        tr.state
+        tr.state,
+        tr.step
     </sql>
 
     <select id="queryById" parameterType="string" resultType="Marking">

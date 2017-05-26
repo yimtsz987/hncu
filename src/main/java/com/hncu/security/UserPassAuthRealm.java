@@ -13,9 +13,12 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -26,6 +29,9 @@ public class UserPassAuthRealm extends AuthorizingRealm{
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private FormAuthFilter formAuthFilter;
 
     /***
      * 获取授权信息
@@ -69,7 +75,8 @@ public class UserPassAuthRealm extends AuthorizingRealm{
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
         //UsernamePasswordToken对象用来存放提交的登录信息
-        UsernamePasswordToken authTocken = (UsernamePasswordToken)authenticationToken;
+        //UsernamePasswordToken authTocken = (UsernamePasswordToken)authenticationToken;
+        CaptchaAuthenticationToken authTocken = (CaptchaAuthenticationToken) authenticationToken;
         User user = userService.queryUserByUsername(authTocken.getUsername());
         if (user != null){
             byte[] salt = EncryptUtil.decodeHex(user.getPassword().substring(0,16));

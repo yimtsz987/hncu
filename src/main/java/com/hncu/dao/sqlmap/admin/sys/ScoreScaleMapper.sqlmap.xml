@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.admin.sys.ScoreScaleMapper">
+    <sql id="scoreScaleColumns">
+        ss.id,
+        ss.name,
+        ss.scale,
+        ss.key
+    </sql>
+
+    <select id="queryList" parameterType="ScoreScale" resultType="ScoreScale">
+        SELECT <include refid="scoreScaleColumns" />
+        FROM score_scale ss
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="ScoreScale">
+        SELECT <include refid="scoreScaleColumns" />
+        FROM score_scale ss
+        WHERE ss.id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryByKey" parameterType="string" resultType="ScoreScale">
+        SELECT <include refid="scoreScaleColumns" />
+        FROM score_scale ss
+        WHERE ss.key = #{key,jdbcType=VARCHAR}
+    </select>
+
+    <update id="update" parameterType="ScoreScale">
+        UPDATE score_scale SET
+        scale = #{scale,jdbcType=INTEGER}
+        WHERE key = #{key,jdbcType=VARCHAR}
+    </update>
+</mapper>

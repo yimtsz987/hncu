@@ -270,6 +270,13 @@
 								</li>
 							</c:if>
 							</ul>
+						<c:if test="${gpms:getUser().student.teacherId != null}">
+							<li class="first-nav">
+								<a href="javascript:void(0)" title="问题咨询" class="iframeurl" name="${ctx}/student/questionList">
+									<i class="glyphicon glyphicon-home" ></i>问题咨询
+								</a>
+							</li>
+						</c:if>
 						<li class="first-nav">
 							<a href="javascript:void(0)" class="iframeurl" name="procedure.html" title="流程进度">
 							   <i class="glyphicon glyphicon-home"></i>流程进度
@@ -286,8 +293,8 @@
 							</a>
 						</li>
 						<li class="first-nav">
-							<a href="javascript:void(0)" class="iframeurl" name="password.html" title="修改密码">
-							   <i class="glyphicon glyphicon-home"></i>修改密码
+							<a href="javascript:void(0)" title="修改密码" class="iframeurl" name="${ctx}/user/changePwdEdit">
+								<i class="glyphicon glyphicon-home"></i>修改密码
 							</a>
 						</li>
 						<li class="first-nav">

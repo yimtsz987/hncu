@@ -14,6 +14,7 @@ public class Principal implements Serializable {
     private String id;
     private String name;
     private String username;
+    private String kaptcha;
 
     public Principal(User user) {
         this.id = user.getId();
@@ -43,5 +44,13 @@ public class Principal implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getKaptcha() {
+        return kaptcha;
+    }
+
+    public void setKaptcha(String kaptcha) {
+        this.kaptcha = kaptcha;
     }
 }

@@ -2,17 +2,17 @@ package com.hncu.service.teacher;
 
 import com.hncu.common.BaseService;
 import com.hncu.dao.mapper.teacher.TSchoolReportMapper;
-import com.hncu.entity.SchoolReport;
-import com.hncu.entity.StudentExpand;
-import com.hncu.entity.StudentInfo;
-import com.hncu.entity.User;
+import com.hncu.entity.*;
 import com.hncu.service.UserService;
+import com.hncu.service.admin.sys.ScoreScaleService;
 import com.hncu.utils.DateUtils;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 上传成绩服务层
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 public class TSchoolReportService extends BaseService<TSchoolReportMapper, SchoolReport>{
 
     @Resource
-    private UserService userService;
+    private ScoreScaleService scoreScaleService;
 
     @Transactional(readOnly = false)
     public void saveSchoolReport(SchoolReport schoolReport){
@@ -30,14 +30,16 @@ public class TSchoolReportService extends BaseService<TSchoolReportMapper, Schoo
                 mapper.insertSecondAnswer(schoolReport);
             }
             schoolReport.preInsertSchoolReport();
-            User studentInfo = userService.queryById(schoolReport.getStudentId());
-            schoolReport.setReportId(studentInfo.getStudent().getNode()+ DateUtils.formatDateTimeSchoolReportId(schoolReport.getDateTime()));
-            mapper.uploadSchoolReport(schoolReport);
-            User user = new User(schoolReport.getStudentId());
-            StudentExpand studentExpand = new StudentExpand();
-            studentExpand.setSchoolReportId(schoolReport.getId());
-            user.setStudent(studentExpand);
-            mapper.updateStudentStep(user);
+            SchoolReport schoolReportOld = mapper.queryByStudentId(schoolReport.getStudentId());
+            List<ScoreScale> scoreScaleList = scoreScaleService.queryList(new ScoreScale());
+            Double score = (Double.parseDouble(schoolReportOld.getMarkingScore()) * (scoreScaleList.get(0).getScale()*0.01)) +
+                    (Double.parseDouble(schoolReportOld.getReviewScore()) * (scoreScaleList.get(1).getScale()*0.01)) +
+                    (Double.parseDouble(schoolReport.getAnswerScore()) * (scoreScaleList.get(2).getScale()*0.01));
+            String scoreString = String.valueOf((int) Math.rint(score));
+            schoolReport.setScore(scoreString);
+            schoolReport.setScoreMD5(MD5Util.string2MD5(scoreString));
+            mapper.updateSchoolReport(schoolReport);
+            mapper.updateStudentStep(new User(schoolReport.getStudentId()));
         } else {
             if (schoolReport.getPassFlag().equals("0")){
                 mapper.insertSecondAnswer(schoolReport);

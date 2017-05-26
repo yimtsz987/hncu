@@ -17,7 +17,8 @@
         tm.tuploadFileOldName,
         tm.sort,
         tm.title_id as "titleId",
-        tm.state
+        tm.state,
+        tm.step
     </sql>
 
     <select id="queryById" parameterType="string" resultType="Marking">

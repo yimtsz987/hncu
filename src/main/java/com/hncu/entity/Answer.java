@@ -30,7 +30,7 @@ public class Answer extends BaseEntity {
 
     private String teacherNameString;
 
-    private String countDown;
+    private Integer countDown;
 
     private List<User> studentList = Lists.newArrayList(); //答辩组学生集合
     private List<User> teacherList = Lists.newArrayList(); //答辩组老师集合
@@ -143,11 +143,11 @@ public class Answer extends BaseEntity {
         this.dateString = dateString;
     }
 
-    public String getCountDown() {
+    public Integer getCountDown() {
         return countDown;
     }
 
-    public void setCountDown(String countDown) {
+    public void setCountDown(Integer countDown) {
         this.countDown = countDown;
     }
 

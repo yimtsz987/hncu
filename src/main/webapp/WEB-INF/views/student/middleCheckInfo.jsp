@@ -57,14 +57,14 @@
 								<td><input type="checkbox" name="node"/></td>
 								<td>${middleCheck.paramId}</td>
 								<td>${fn:substringBefore(middleCheck.uploadFileOldName, ".")}</td>
-								<td><fmt:formatDate value="${middleCheck.updateDate}" pattern="yyyy年MM月dd日" /></td>
+								<td><fmt:formatDate value="${middleCheck.uploadDate}" pattern="yyyy年MM月dd日" /></td>
 								<td>
 								<span class="label label-success label-custom">
 										${gpms:getDictLabel(middleCheck.state, 'schedule')}
 								</span>
 								</td>
 								<td>
-									<a href="${ctx}/student/downloadMiddleCheck?id=${middleCheck.id}" class="btn btn-xs btn-primary">下载</a>
+									<a href="${ctx}/student/downloadMiddleCheck?id=${middleCheck.id}&checkStr=${middleCheck.checkStr}" class="btn btn-xs btn-primary">下载</a>
 								</td>
 							</tr>
 							</tbody>
@@ -73,14 +73,15 @@
 					<div class="teacher_proposal">
 						<h4>老师建议：</h4>
 						<div class="teacher_proposal_text">
-							${schedule.teacherAdvise}
+							${middleCheck.teacherAdvise}
 						</div>
 					</div>
-				<c:if test="${schedule.reportFlag eq 2}">
 					<div class="submit_btn center-block">
-						<a href="${ctx}/student/uploadMiddleEdit${middleCheck.suffix}?paramId=${middleCheckParam.id}" class="btn btn-info col-lg-12" >重新提交</a>
+						<c:if test="${middleCheck.state eq 2}">
+							<a href="${ctx}/student/uploadMiddleEdit${middleCheck.suffix}?paramId=${middleCheck.paramId}" class="btn btn-info col-lg-5" >重新提交</a>
+				        </c:if>
+						<a href="javascript:void(0);" class="btn btn-default col-lg-5"  onclick="history.go(-1)" style="margin-left: 30px">返回</a>
 					</div>
-				</c:if>
 				</div>
 			</c:if>
 		</div>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hncu.dao.mapper.teacher.TQuestionMapper">
+    <sql id="questionColumns">
+         q.id as "marking.id",
+         q.student_id as "marking.studentId",
+         q.supload_date as "marking.suploadDate",
+         q.student_question as "marking.studentQuestion",
+         q.suploadFile as "marking.suploadFile",
+         q.suploadPath as "marking.suploadPath",
+         q.suploadFileOldName as "marking.suploadFileOldName",
+         q.tupload_date as "marking.tuploadDate",
+         q.tuploadFile as "marking.tuploadFile",
+         q.tuploadPath as "marking.tuploadPath",
+         q.tuploadFileOldName as "marking.tuploadFileOldName",
+         q.sort as "marking.sort",
+         q.title_id as "marking.titleId",
+         q.state as "marking.state",
+         q.teacher_id as "marking.teacherId",
+         q.teacher_advise as "marking.teacherAdvise",
+         q.step,
+         u.name as "user.name",
+         u.id as "user.id",
+         es.node as "user.student.node",
+         gt.title as "user.student.titleName"
+    </sql>
+
+    <sql id="questionJoins">
+        LEFT JOIN sys_user u on u.id = q.student_id
+        LEFT JOIN expand_student es on es.s_id = q.student_id
+        LEFT JOIN graduation_title gt on gt.id = es.title_id
+    </sql>
+
+    <select id="queryList" parameterType="TeacherQuestion" resultType="TeacherQuestion">
+        select <include refid="questionColumns" />
+        FROM question q
+        <include refid="questionJoins" />
+        WHERE q.teacher_id = #{marking.teacherId, jdbcType=NUMERIC}
+        AND q.student_id = #{marking.studentId, jdbcType=NUMERIC}
+        AND q.year = #{sysYear, jdbcType=VARCHAR}
+        <if test="marking != null and marking.sort != null and marking.sort != ''">
+            and q.sort = #{marking.sort,jdbcType=INTEGER}
+        </if>
+        <if test="marking != null and marking.suploadFileOldName != null and marking.suploadFileOldName != ''">
+            and q.suploadFileOldName like concat ('%', #{marking.suploadFileOldName}, '%')
+        </if>
+        <if test="marking != null and marking.state != null and marking.state != ''">
+            and q.state = #{marking.state,jdbcType=INTEGER}
+        </if>
+        order by es.node ASC
+    </select>
+
+    <select id="queryStudentInfoList" parameterType="TeacherQuestion" resultType="TeacherQuestion">
+        select <include refid="questionColumns" />
+        FROM question q
+        <include refid="questionJoins" />
+        WHERE q.teacher_id = #{teacherId, jdbcType=NUMERIC}
+        AND q.year = #{sysYear, jdbcType=VARCHAR}
+        <if test="marking != null and marking.sort != null and marking.sort != ''">
+            and q.sort = #{marking.sort,jdbcType=INTEGER}
+        </if>
+        <if test="marking != null and marking.suploadFileOldName != null and marking.suploadFileOldName != ''">
+            and q.suploadFileOldName like concat ('%', #{marking.suploadFileOldName}, '%')
+        </if>
+        <if test="user != null and user.student.step6 != null and user.student.step6 != ''">
+            and es.step_6 = #{user.student.step6,jdbcType=INTEGER}
+        </if>
+        GROUP BY u.id
+    </select>
+
+    <select id="queryById" parameterType="string" resultType="TeacherQuestion">
+        select <include refid="questionColumns" />
+        FROM question q
+        <include refid="questionJoins" />
+        WHERE q.id = #{marking.id, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryByStudentId" parameterType="string" resultType="Marking">
+        select <include refid="questionColumns" />
+        FROM question q
+        <include refid="questionJoins" />
+        WHERE q.student_id = #{studentId, jdbcType=NUMERIC}
+    </select>
+
+    <select id="queryByTeacherId" parameterType="string" resultType="Marking">
+        select <include refid="questionColumns" />
+        FROM question q
+        <include refid="questionJoins" />
+        WHERE q.teacher_id = #{teacherId, jdbcType=NUMERIC}
+    </select>
+
+    <update id="solveQuestion" parameterType="TeacherQuestion">
+        UPDATE question SET  teacher_advise = #{marking.teacherAdvise,jdbcType=VARCHAR},
+        tupload_date = #{marking.tuploadDate},
+        tuploadFile = #{marking.tuploadFile,jdbcType=VARCHAR},
+        tuploadPath = #{marking.tuploadPath,jdbcType=VARCHAR},
+        tuploadFileOldName = #{marking.tuploadFileOldName,jdbcType=VARCHAR},
+        state = #{MARKING_FLAG_YES}
+        WHERE id = #{marking.id, jdbcType=NUMERIC}
+        AND student_id = #{marking.studentId, jdbcType=NUMERIC}
+    </update>
+</mapper>

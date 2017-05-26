@@ -50,6 +50,7 @@
         t.department_no as "teacher.department.dNo",
         t.research_direction as "teacher.researchDirection",
         t.professional_title as "teacher.professionalTitle",
+        t.select_flag as "teacher.selectFlag",
         d.name as "student.department.name",
         dt.name as "teacher.department.name",
         m.name as "student.major.name",
@@ -84,25 +85,6 @@
         FROM sys_user u
         <include refid="userJoins" />
         WHERE u.del_flag = #{DEL_FLAG_NORMAL}
-        and u.role_id = '2'
-        <if test="no != null and no != ''">
-            and u.no = #{no,jdbcType=VARCHAR}
-        </if>
-        <if test="name != null and name != ''">
-            and u.name like concat ('%', #{name}, '%')
-        </if>
-        <if test="branch != null and branch.id != null and branch.id != ''">
-            and u.branch_id = #{branch.id,jdbcType=INTEGER}
-        </if>
-        <if test="classes != null and classes!= ''">
-            and u.classes like concat ('%', #{classes}, '%')
-        </if>
-        <if test="department != null and department.dNo != null and department.dNo != ''">
-            and u.department_no = #{department.dNo,jdbcType=INTEGER}
-        </if>
-        <if test="enrollmentYear != null and enrollmentYear != ''">
-            and u.enrollment_year = #{enrollmentYear,jdbcType=VARCHAR}
-        </if>
     </select>
 
     <select id="queryById" parameterType="string" resultType="User">
@@ -165,7 +147,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateUserPassword">
+    <update id="updateUserPassword" parameterType="User">
         update sys_user set password = #{password,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -216,4 +198,11 @@
         </set>
         where t_id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="queryStudentInfoListByTeacherId" parameterType="string" resultType="User">
+        SELECT <include refid="userColumns" />
+        FROM sys_user u
+        <include refid="userJoins" />
+        WHERE s.teacher_id = #{teacherId,jdbcType=INTEGER}
+    </select>
 </mapper>

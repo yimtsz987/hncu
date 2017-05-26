@@ -135,9 +135,9 @@
 							</td>
 							<td>
 								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-primary">修改资料</a>
-								<a href="${ctx}/admin/studentEdit?id=${student.id}" class="btn btn-xs btn-success">更改教师</a>
 								<a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="deleteBtn(this,${student.id})">删除</a>
-								<a href="chakan.html" class="btn btn-xs btn-info">查看文件</a>
+								<a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="resetBtn(this,${student.id},'${student.name}')">重置密码</a>
+								<a href="${ctx}/data/reportAndFileList?studentId=${student.id}" class="btn btn-xs btn-info">查看文件</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -167,6 +167,16 @@
                 layer.msg('删除成功！',{icon:1});
             },function(){
                 layer.msg('取消删除！',{icon:1});
+            });
+        }
+        function resetBtn(obj,id,name){
+            layer.confirm('您是否重置【' + name + '】学生登录密码？', {
+                btn: ['确定','取消'] //按钮
+            },function(){
+                window.location.href = "${ctx}/admin/resetStudentPassword?id="+id;
+                layer.msg('重置成功！',{icon:1});
+            },function(){
+                layer.msg('取消重置！',{icon:1});
             });
         }
         if($("#tbodyId tr").length<10){

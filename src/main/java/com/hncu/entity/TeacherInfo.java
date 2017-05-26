@@ -30,6 +30,7 @@ public class TeacherInfo extends BaseEntity {
     private String reviewFlag;
     private String answerId;
     private String isLeader;
+    private String selectFlag;
 
     //choose
     private String year;
@@ -279,5 +280,13 @@ public class TeacherInfo extends BaseEntity {
 
     public void setIsLeader(String isLeader) {
         this.isLeader = isLeader;
+    }
+
+    public String getSelectFlag() {
+        return selectFlag;
+    }
+
+    public void setSelectFlag(String selectFlag) {
+        this.selectFlag = selectFlag;
     }
 }

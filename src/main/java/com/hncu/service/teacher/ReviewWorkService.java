@@ -61,6 +61,7 @@ public class ReviewWorkService extends BaseService<ReviewWorkMapper, TeacherMark
         }
         if (teacherMarking.getMarking().getState().equals(PASS_FLAG_YES)){
             mapper.reviewWorkCheck(teacherMarking);
+            mapper.updateSchoolReportReview(teacherMarking);
             mapper.updateStudentReviewStep(new User(teacherMarking.getUser().getId()));
         } else {
             mapper.reviewWorkCheck(teacherMarking);

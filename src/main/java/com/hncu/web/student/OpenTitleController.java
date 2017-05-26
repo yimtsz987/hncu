@@ -6,8 +6,14 @@ import com.hncu.entity.OpenTitle;
 import com.hncu.entity.Schedule;
 import com.hncu.service.student.OpenTitleService;
 import com.hncu.utils.DateUtils;
+import com.hncu.utils.MD5Util;
 import com.hncu.utils.StringUtils;
 import com.hncu.utils.UserUtils;
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +27,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,8 +88,13 @@ public class OpenTitleController extends BaseController{
     }
 
     @RequestMapping(value = "/openTitleInfo")
-    public String openTitleInfo(OpenTitle openTitle, Model model){
+    public String openTitleInfo(Model model){
         OpenTitle openTitleInfo = openTitleService.queryOpenReportByStudentId();
+        if (openTitleInfo != null){
+            if (StringUtils.isNotEmpty(openTitleInfo.getUploadFileOldName())){
+                openTitleInfo.setCheckStr(MD5Util.string2MD5(openTitleInfo.getUploadFileOldName()));
+            }
+        }
         model.addAttribute("openTitleInfo", openTitleInfo);
         return "student/openTitleInfo";
     }
@@ -103,5 +116,28 @@ public class OpenTitleController extends BaseController{
             redirectAttributes.addFlashAttribute("msg",new Msg(Msg.MSG_TYPE_REMOVE, "上传失败！！"));
         }
         return "redirect:/student/openTitleInfo";
+    }
+
+    @RequestMapping(value = "/downloadOpenTitle", produces = "application/octet-stream;charset=UTF-8")
+    public ResponseEntity<byte[]> download(@RequestParam String id, @RequestParam String checkStr) throws IOException {
+        OpenTitle openTitle = openTitleService.queryDownloadByInfo(id);
+        if (openTitle != null){
+            if (StringUtils.isNotEmpty(openTitle.getUploadFileOldName())){
+                if (checkStr.equals(MD5Util.string2MD5(openTitle.getUploadFileOldName()))){
+                    File file = new File(openTitle.getUploadPath());
+                    String dfileName = openTitle.getUploadFileOldName();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment", new String(dfileName.getBytes("UTF-8"), "ISO8859-1"));
+                    return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }else {
+            return null;
+        }
     }
 }

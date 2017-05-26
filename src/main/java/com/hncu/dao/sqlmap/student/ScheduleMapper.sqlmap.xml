@@ -10,11 +10,12 @@
         s.end_date as "endDate",
         s.report_id,
         s.report_flag as "reportFlag",
-        s.uploadFile,
-        s.uploadPath,
-        s.uploadFileOldName,
+        s.suploadFile as "uploadFile",
+        s.suploadPath as "uploadPath",
+        s.suploadFileOldName as "uploadFileOldName",
         s.teacher_advise as "teacherAdvise",
-        s.year
+        s.year,
+        s.step
     </sql>
 
     <select id="queryList" parameterType="Schedule" resultType="Schedule">
@@ -40,7 +41,7 @@
     </select>
 
     <update id="uploadScheduleReport" parameterType="Schedule">
-        UPDATE graduation_schedule SET uploadFile = #{uploadFile,jdbcType=VARCHAR},uploadPath = #{uploadPath,jdbcType=VARCHAR},uploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},report_flag = #{REPORT_FLAG_CHECK,jdbcType=INTEGER},teacher_advise = #{teacherAdvise, jdbcType=VARCHAR}
+        UPDATE graduation_schedule SET suploadFile = #{uploadFile,jdbcType=VARCHAR},suploadPath = #{uploadPath,jdbcType=VARCHAR},suploadFileOldName = #{uploadFileOldName,jdbcType=VARCHAR},report_flag = #{REPORT_FLAG_CHECK,jdbcType=INTEGER},teacher_advise = #{teacherAdvise, jdbcType=VARCHAR}
         WHERE student_id = #{studentId,jdbcType=INTEGER}
         and id = #{id,jdbcType=NUMERIC}
     </update>

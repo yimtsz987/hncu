@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class SchoolReportService extends BaseService<SchoolReportMapper, SchoolReport>{
 
     public SchoolReport querySchoolReportById(){
-        return mapper.querySchoolReportById(UserUtils.getCurrentUser().getId(), UserUtils.getCurrentUser().getStudent().getSchoolReport().getReportId());
+        return mapper.querySchoolReportById(UserUtils.getCurrentUser().getId(), UserUtils.getCurrentUser().getStudent().getNode());
     }
 
     public SchoolReport querySchoolReportById(String studentId, String reportId){

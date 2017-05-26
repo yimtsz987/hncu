@@ -164,8 +164,13 @@
 								</a>
 							</li>
 							<li>
-								<a href="javascript:void(0)" title="发送通知"class="iframeurl" name="${ctx}/notice/noticeEdit">
+								<a href="javascript:void(0)" title="发送通知" class="iframeurl" name="${ctx}/notice/noticeEdit">
 									<i class="subicon glyphicon glyphicon-hand-right"></i>2、发送通知
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" title="友情链接管理" class="iframeurl" name="${ctx}/admin/linkList">
+									<i class="subicon glyphicon glyphicon-hand-right"></i>3、友情链接管理
 								</a>
 							</li>
 						</ul>
@@ -221,7 +226,7 @@
 							</li>
 						</ul>
 						<li class="first-nav">
-							<a href="javascript:void(0)" title="修改密码">
+							<a href="javascript:void(0)" title="修改密码" class="iframeurl" name="${ctx}/user/changePwdEdit">
 							   <i class="glyphicon glyphicon-home"></i>修改密码
 							</a>
 						</li>

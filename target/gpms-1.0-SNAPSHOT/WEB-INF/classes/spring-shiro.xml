@@ -13,6 +13,7 @@
 	<bean name="shiroFilterChainDefinitions" class="java.lang.String">
 		<constructor-arg>
 			<value>
+				/code/** = anon
 				/static/** = anon
 				/logout = logout
 				/** = authc

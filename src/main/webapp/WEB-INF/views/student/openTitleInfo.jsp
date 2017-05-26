@@ -64,7 +64,7 @@
 								</span>
 								</td>
 								<td>
-									<a href="${ctx}/student/downloadUnderstanding?id=${openTitleInfo.id}" class="btn btn-xs btn-primary">下载</a>
+									<a href="${ctx}/student/downloadOpenTitle?id=${openTitleInfo.id}&checkStr=${openTitleInfo.checkStr}" class="btn btn-xs btn-primary">下载</a>
 								</td>
 							</tr>
 							</tbody>

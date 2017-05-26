@@ -66,7 +66,7 @@
 									<a href="${ctx}/student/uploadMiddleEdit${middleCheckParam.suffix}?paramId=${middleCheckParam.id}" class="btn btn-xs btn-danger">重新上传</a>
 								</c:if>
 								<c:if test="${middleCheckParam.studentState eq 3}">
-									<a href="${ctx}/student/downloadMiddleCheck?id=${middleCheckParam.middleCheckReportId}" class="btn btn-xs btn-primary">下载</a>
+									<a href="${ctx}/student/middleCheckInfo?paramId=${middleCheckParam.id}" class="btn btn-xs btn-primary">查看详情</a>
 								</c:if>
 							</td>
 						</tr>

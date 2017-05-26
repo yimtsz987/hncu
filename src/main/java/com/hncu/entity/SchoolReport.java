@@ -21,6 +21,11 @@ public class SchoolReport extends BaseEntity {
     private String year;
     private String createById;
     private String teacherComment;
+    private String markingScore;
+    private String reviewScore;
+    private String answerScore;
+    private String scoreMD5;
+    private String checkFlag;
 
     public void preInsertSchoolReport(){
         Date now = Calendar.getInstance().getTime();
@@ -98,5 +103,45 @@ public class SchoolReport extends BaseEntity {
 
     public void setTeacherComment(String teacherComment) {
         this.teacherComment = teacherComment;
+    }
+
+    public String getMarkingScore() {
+        return markingScore;
+    }
+
+    public void setMarkingScore(String markingScore) {
+        this.markingScore = markingScore;
+    }
+
+    public String getReviewScore() {
+        return reviewScore;
+    }
+
+    public void setReviewScore(String reviewScore) {
+        this.reviewScore = reviewScore;
+    }
+
+    public String getAnswerScore() {
+        return answerScore;
+    }
+
+    public void setAnswerScore(String answerScore) {
+        this.answerScore = answerScore;
+    }
+
+    public String getScoreMD5() {
+        return scoreMD5;
+    }
+
+    public void setScoreMD5(String scoreMD5) {
+        this.scoreMD5 = scoreMD5;
+    }
+
+    public String getCheckFlag() {
+        return checkFlag;
+    }
+
+    public void setCheckFlag(String checkFlag) {
+        this.checkFlag = checkFlag;
     }
 }

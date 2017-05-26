@@ -15,7 +15,16 @@ public class AnswerService extends BaseService<AnswerMapper, Answer>{
     public Answer queryByClasses(String answerClasses){
         Answer answer = mapper.queryByClasses(answerClasses);
         if (answer.getAnswerTime() != null){
-            answer.setCountDown(String.valueOf(DateUtils.distanceDays(answer.getAnswerTime())));
+            answer.setCountDown((int) DateUtils.distanceDays(answer.getAnswerTime()));
+        }
+        return answer;
+    }
+
+    @Override
+    public Answer queryById(String id) {
+        Answer answer = super.queryById(id);
+        if (answer.getAnswerTime() != null){
+            answer.setCountDown((int) DateUtils.distanceDays(answer.getAnswerTime()));
         }
         return answer;
     }

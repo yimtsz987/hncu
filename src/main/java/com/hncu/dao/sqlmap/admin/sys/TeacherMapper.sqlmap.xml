@@ -27,6 +27,7 @@
         t.research_direction as "researchDirection",
         t.professional_title as "professionalTitle",
         t.expand_flag as "expandFlag",
+        t.select_flag as "selectFlag",
         d.name as "department.name",
         sp.param_value as "sysParamYear",
         tya.answer_flag as "answerFlag",
@@ -368,4 +369,9 @@
     <delete id="deleteTeacherRole" parameterType="Teacher">
         DELETE FROM user_role WHERE user_id = #{id,jdbcType=NUMERIC}
     </delete>
+
+    <update id="updateSelectFlag">
+        update expand_teacher set select_flag = #{selectFlag,jdbcType=INTEGER}
+        where t_id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/views/include/head.jsp"%>
-		<title>开题报告审核</title>
+		<title>教师评阅审核</title>
 	<style type="text/css">
 		.custom-label:hover{
 			color: #2489c5;
@@ -15,7 +15,7 @@
 		<div class="page-content">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#">开题报告审核</a>
+					<a href="#">教师评阅审核</a>
 				</li>
 			</ul>
 			<form:form action="${ctx}/teacher/saveReviewWorkCheck" enctype="multipart/form-data" method="post" cssClass="form-horizontal" id="form-id" modelAttribute="teacherMarking">
@@ -59,6 +59,13 @@
 					</c:if>
 				</div>
 				<div class="form-group control-group">
+					<label class="control-label col-lg-2 col-xs-2 col-sm-2">评阅成绩:</label>
+					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
+						<form:input path="marking.score" cssClass="form-control input-sm" maxlength="50" datatype="*" nullmsg="请输入成绩" />
+					</div>
+					<div class="form-message control-label col-lg-2 col-xs-2 col-sm-2"><span style="padding-left: 20px;" class="Validform_checktip pull-left">请输入成绩！</span></div>
+				</div>
+				<div class="form-group control-group">
 					<label class="control-label col-lg-2 col-xs-2 col-sm-2">审核:</label>
 					<div class="col-lg-3 col-xs-3 col-sm-3 has-feedback">
 						<c:if test="${teacherMarking.marking.state eq 2}">
@@ -99,6 +106,12 @@
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
+    });
+    $("#form-id").Validform({
+        tiptype: 2,
+        datatype: {
+            //"date": /([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))/
+        }
     });
     bkLib.onDomLoaded(function() {
         new nicEditor().panelInstance('area1');

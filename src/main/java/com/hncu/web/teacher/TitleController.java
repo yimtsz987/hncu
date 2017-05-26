@@ -20,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import static com.hncu.common.BaseEntity.SELECT_NO;
+
 /**
  * 教师端 - 课题控制层
  */
@@ -75,12 +77,16 @@ public class TitleController extends BaseController {
         Title title1 = titleService.queryById(id);
         if (title1 != null){
             if (title.equals(MD5Util.string2MD5(title1.getTitle()))){
-                try {
-                    titleService.deleteTitle(id);
-                    msg = new Msg(Msg.MSG_TYPE_OK, "删除课题【"+title1.getTitle()+"】成功！");
-                } catch (Exception e){
-                    logger.error("删除课题【"+title+"】失败", e);
-                    msg = new Msg(Msg.MSG_TYPE_OK, "删除课题【"+title+"】失败");
+                if (title1.getSelectFlag().equals(SELECT_NO)){
+                    try {
+                        titleService.deleteTitle(id);
+                        msg = new Msg(Msg.MSG_TYPE_OK, "删除课题【"+title1.getTitle()+"】成功！");
+                    } catch (Exception e){
+                        logger.error("删除课题【"+title+"】失败", e);
+                        msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除课题【"+title1.getTitle()+"】失败");
+                    }
+                } else {
+                    msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除课题【"+title1.getTitle()+"】失败，课题已有学生选择");
                 }
             } else {
                 msg = new Msg(Msg.MSG_TYPE_REMOVE, "删除课题【"+title1.getTitle()+"】失败！");
